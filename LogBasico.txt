@@ -1,0 +1,94 @@
+0: Linha: Referência de objeto não definida para uma instância de um objeto.
+0: Linha: Referência de objeto não definida para uma instância de um objeto.
+0: Linha: Referência de objeto não definida para uma instância de um objeto.
+0: Linha: Referência de objeto não definida para uma instância de um objeto.
+0: Linha: Referência de objeto não definida para uma instância de um objeto.
+0: Linha: Referência de objeto não definida para uma instância de um objeto.
+0: Linha: Referência de objeto não definida para uma instância de um objeto.
+0: Erro: Referência de objeto não definida para uma instância de um objeto.
+0: Linha: The column name is not valid. [ Node name (if any) = ,Column name = Bairo ]
+0: Linha: An SqlCeParameter with ParameterName 'celularcontato' is not contained by this SqlCeParameterCollection.
+0: Linha: An SqlCeParameter with ParameterName 'observacao' is not contained by this SqlCeParameterCollection.
+0: Linha: @Cep : _____-___ - A cadeia de caracteres de entrada não estava em um formato correto.
+0: Linha: @Cep : _____-___ - A cadeia de caracteres de entrada não estava em um formato correto.
+0: Linha: @Cep : _____-___ - A cadeia de caracteres de entrada não estava em um formato correto.
+0: Linha: @Cep : _____-___ - A cadeia de caracteres de entrada não estava em um formato correto.
+0: Linha: @RG : __,___,___-_ - A cadeia de caracteres de entrada não estava em um formato correto.
+0: Linha: @CPF :    ,   ,   - - A cadeia de caracteres de entrada não estava em um formato correto.
+0: Linha: @Celular : (  )     - - A cadeia de caracteres de entrada não estava em um formato correto.
+0: Linha: An overflow occurred while converting to datetime.
+0: Linha: An overflow occurred while converting to datetime.
+0: Linha: An overflow occurred while converting to datetime.
+0: Linha: An overflow occurred while converting to datetime.
+0: Linha: An overflow occurred while converting to datetime.
+0: Linha: A parameter is missing. [ Parameter ordinal = 1 ]
+0: Linha: A parameter is missing. [ Parameter ordinal = 1 ]
+0: Linha: A parameter is missing. [ Parameter ordinal = 1 ]
+0: Linha: Prepare: CommandText property has not been initialized
+0: Linha: Prepare: CommandText property has not been initialized
+0: Linha: Erro genérico de GDI+.
+0: Linha: Erro genérico de GDI+.
+0: Linha: Erro genérico de GDI+.
+0: Linha: Erro genérico de GDI+.
+0: Linha: Erro genérico de GDI+.
+0: Linha: Erro genérico de GDI+.
+0: Linha: Erro genérico de GDI+.
+0: Cadastro: Referência de objeto não definida para uma instância de um objeto.
+0: Linha: Erro genérico de GDI+.
+0: Linha: Erro genérico de GDI+.
+0: Linha: Erro genérico de GDI+.
+0: Linha: Erro genérico de GDI+.
+0: Linha: Erro genérico de GDI+.
+0: Linha: Erro genérico de GDI+.
+0: Linha: Erro genérico de GDI+.
+0: Linha: Erro genérico de GDI+.
+0: Linha: Erro genérico de GDI+.
+0: Linha: Erro genérico de GDI+.
+0: Linha: The SqlCeParameter with this name is already contained by this SqlCeParameterCollection.
+0: Linha: The SqlCeParameter is already contained by another SqlCeParameterCollection.
+0: Linha: Erro genérico de GDI+.
+0: Linha: Erro genérico de GDI+.
+0: Linha: Erro genérico de GDI+.
+0: Linha: Erro genérico de GDI+.
+0: Linha: Erro genérico de GDI+.
+0: Linha: Erro genérico de GDI+.
+0: Linha: Erro genérico de GDI+.
+0: Linha: Erro genérico de GDI+.
+0: Linha: Erro genérico de GDI+.
+0: Linha: Erro genérico de GDI+.
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: Erro genérico de GDI+.
+0: Linha: The SqlCeParameter with this name is already contained by this SqlCeParameterCollection.
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: Erro genérico de GDI+.
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: Erro genérico de GDI+.
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: Erro genérico de GDI+.
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: Erro genérico de GDI+.
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: Erro genérico de GDI+.
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: Valor não pode ser nulo.
+Nome do parâmetro: encoder
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: Erro genérico de GDI+.
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: Erro genérico de GDI+.
+0: Linha: Referência de objeto não definida para uma instância de um objeto.
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: Erro genérico de GDI+.
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: Erro genérico de GDI+.
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: Erro genérico de GDI+.
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: Erro genérico de GDI+.
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: Erro genérico de GDI+.
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: Erro genérico de GDI+.
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: Tentativa de leitura ou gravação em memória protegida. Normalmente, isso é uma indicação de que outra memória está danificada.
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: Tentativa de leitura ou gravação em memória protegida. Normalmente, isso é uma indicação de que outra memória está danificada.
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: Tentativa de leitura ou gravação em memória protegida. Normalmente, isso é uma indicação de que outra memória está danificada.
+0: Linha: @Pais : String truncation: max=25, len=66, value='BR - BrasilBR - BrasilBR - BrasilBR - BrasilBR - BrasilBR - Brasil'.
+0: Linha: @Pais : String truncation: max=25, len=66, value='BR - BrasilBR - BrasilBR - BrasilBR - BrasilBR - BrasilBR - Brasil'.
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: Referência de objeto não definida para uma instância de um objeto.
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: Referência de objeto não definida para uma instância de um objeto.
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: Referência de objeto não definida para uma instância de um objeto.
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: Referência de objeto não definida para uma instância de um objeto.
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: Tentativa de leitura ou gravação em memória protegida. Normalmente, isso é uma indicação de que outra memória está danificada.
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: O objeto está sendo usado em outro lugar.
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: Tentativa de leitura ou gravação em memória protegida. Normalmente, isso é uma indicação de que outra memória está danificada.
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: Tentativa de leitura ou gravação em memória protegida. Normalmente, isso é uma indicação de que outra memória está danificada.
+0: Você tem certesa? Quer mesmo exclir este registro? O mesmo não poderá mais ser restaurado.: Erro genérico de GDI+.
+0: Linha: The SqlCeParameter is already contained by another SqlCeParameterCollection.
+0: Linha: An SqlCeParameter with ParameterName 'codigodebarras' is not contained by this SqlCeParameterCollection.
+0: Linha: An SqlCeParameter with ParameterName 'codigodebarras' is not contained by this SqlCeParameterCollection.
+0: Linha: @CodigoDeBarras :  - Seqüência de entrada não estava em um formato incorreto.

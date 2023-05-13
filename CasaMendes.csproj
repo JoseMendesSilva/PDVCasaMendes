@@ -1,0 +1,413 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{1DBE2D10-0C36-4FF0-B656-70E78B266EFD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>CasaMendes</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>CasaMendes</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>CasaMendes.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\</OutputPath>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Optimize>false</Optimize>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>CasaMendes.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.9.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>packages\DocumentFormat.OpenXml.2.9.1\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\System.Data.SqlServerCe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".vs\Gestao Comercial Proficional\v15\.suo" />
+    <None Include=".vs\Gestao Comercial Proficional\v15\Server\sqlite3\db.lock" />
+    <None Include=".vs\Gestao Comercial Proficional\v15\Server\sqlite3\storage.ide" />
+    <None Include=".vs\Gestao Comercial Proficional\v15\Server\sqlite3\storage.ide-shm" />
+    <None Include=".vs\Gestao Comercial Proficional\v15\Server\sqlite3\storage.ide-wal" />
+    <None Include="app.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\imagens\JPG\jms.jpg" />
+    <None Include="bin\imagens\Icons\CasaMendes.ico" />
+    <None Include="bin\imagens\JPG\CasaMendes.jpg" />
+    <None Include="bin\imagens\apagar.png" />
+    <Content Include="bin\MDF\loja.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\MDF\loja_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>loja.mdf</DependentUpon>
+    </Content>
+    <Content Include="bin\SDF\loja.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CasaMendes.ico" />
+    <Content Include="Doc\script.txt" />
+    <Content Include="Doc\Temporario.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="4-Views\FrmCadProduto.resx">
+      <DependentUpon>FrmCadProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4-Views\FrmPrincipal.resx">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4-Views\FrmProdutos.resx">
+      <DependentUpon>FrmProdutos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmBuscarCliente.resx">
+      <DependentUpon>FrmBuscarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmBuscarParaVender.resx">
+      <DependentUpon>FrmBuscarParaVender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCarregaCodigoDeNota.resx">
+      <DependentUpon>frmCarregaCodigoDeNota.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmResumoDeVendasAtual.resx">
+      <DependentUpon>FrmResumoDeVendasAtual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmEstoque.resx">
+      <DependentUpon>FrmEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4-Views\frmCadastrarClientes.resx">
+      <DependentUpon>frmCadastrarClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCadastrarProdutos.resx">
+      <DependentUpon>frmCadastrarProdutos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4-Views\frmCadastrarFuncionario.resx">
+      <DependentUpon>frmCadastrarFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCadastrarFornecedores.resx">
+      <DependentUpon>frmCadastrarFornecedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCarregarVenda.resx">
+      <DependentUpon>frmCarregarVenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmClientes.resx">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmFinlizarVendas.resx">
+      <DependentUpon>frmFinlizarVendas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmFornecedores.resx">
+      <DependentUpon>frmFornecedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmCasaMendes.resx">
+      <DependentUpon>FrmCasaMendes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmPDV.resx">
+      <DependentUpon>frmPDV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmPromocao.resx">
+      <DependentUpon>FrmPromocao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MCM\Form1Prototipo.resx">
+      <DependentUpon>Form1Prototipo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include=".vs\001 - Comércial\DesignTimeBuild\" />
+    <Folder Include=".vs\001 - Comércial\v15\Server\sqlite3\" />
+    <Folder Include=".vs\GCProSharp\v15\" />
+    <Folder Include=".vs\GCPro\DesignTimeBuild\" />
+    <Folder Include=".vs\GCPro\v15\Server\sqlite3\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="2-Models\Categoria.cs" />
+    <Compile Include="2-Models\Produto - Cópia .cs" />
+    <Compile Include="2-Models\Promocao.cs" />
+    <Compile Include="2-Models\Cliente.cs" />
+    <Compile Include="2-Models\tFuncionario.cs" />
+    <Compile Include="2-Models\Inadimplente.cs" />
+    <Compile Include="2-Models\FrenteDeCaixa.cs" />
+    <Compile Include="2-Models\PreVenda.cs" />
+    <Compile Include="2-Models\Fornecedor .cs" />
+    <Compile Include="2-Models\SubCategoriia.cs" />
+    <Compile Include="2-Models\tFornecedore.cs" />
+    <Compile Include="4-Views\FrmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4-Views\FrmPrincipal.Designer.cs">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="5-ORM\Base.cs" />
+    <Compile Include="5-ORM\IBase.cs" />
+    <Compile Include="1-DataBase\Dados.cs" />
+    <Compile Include="1-DataBase\DadosBase.cs" />
+    <Compile Include="0-Interfaces\IDados.cs" />
+    <Compile Include="2-Models\tProduto.cs" />
+    <Compile Include="3-Controlls\ProdutoController.cs" />
+    <Compile Include="4-Views\FrmCadProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4-Views\FrmCadProduto.Designer.cs">
+      <DependentUpon>FrmCadProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="5-ORM\OpcoesBase.cs" />
+    <Compile Include="Classes\ADL\Cl_Dados.cs" />
+    <Compile Include="Classes\Estatica\ClsItensPromocao.cs" />
+    <Compile Include="Classes\Estatica\ClsPermiao.cs" />
+    <Compile Include="Classes\Geral\ClsPromocao.cs" />
+    <Compile Include="Classes\Geral\cl_Cliente.cs" />
+    <Compile Include="Classes\Geral\cl_Fornecedores.cs" />
+    <Compile Include="Classes\Geral\cl_FrenteDeCaixa.cs" />
+    <Compile Include="Classes\Geral\cl_Funcionarios.cs" />
+    <Compile Include="Classes\Geral\cl_Inadimplente.cs" />
+    <Compile Include="Classes\Geral\cl_PreVenda.cs" />
+    <Compile Include="Classes\Geral\cl_Produto.cs" />
+    <Compile Include="Classes\Estatica\clsGlobal.cs" />
+    <Compile Include="Classes\Estatica\clsMensagens.cs" />
+    <Compile Include="Enumeradores\Enumeradores.cs" />
+    <Compile Include="Formularios\FrmBuscarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmBuscarCliente.Designer.cs">
+      <DependentUpon>FrmBuscarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmBuscarParaVender.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmBuscarParaVender.Designer.cs">
+      <DependentUpon>FrmBuscarParaVender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCarregaCodigoDeNota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCarregaCodigoDeNota.Designer.cs">
+      <DependentUpon>frmCarregaCodigoDeNota.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmResumoDeVendasAtual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmResumoDeVendasAtual.Designer.cs">
+      <DependentUpon>FrmResumoDeVendasAtual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmEstoque.Designer.cs">
+      <DependentUpon>FrmEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="4-Views\frmCadastrarClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4-Views\frmCadastrarClientes.Designer.cs">
+      <DependentUpon>frmCadastrarClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCadastrarProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCadastrarProdutos.Designer.cs">
+      <DependentUpon>frmCadastrarProdutos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="4-Views\frmCadastrarFuncionario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4-Views\frmCadastrarFuncionario.Designer.cs">
+      <DependentUpon>frmCadastrarFuncionario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCadastrarFornecedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCadastrarFornecedores.Designer.cs">
+      <DependentUpon>frmCadastrarFornecedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCarregarVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCarregarVenda.Designer.cs">
+      <DependentUpon>frmCarregarVenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmClientes.Designer.cs">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmFinlizarVendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmFinlizarVendas.Designer.cs">
+      <DependentUpon>frmFinlizarVendas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmFornecedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmFornecedores.Designer.cs">
+      <DependentUpon>frmFornecedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmCasaMendes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmCasaMendes.Designer.cs">
+      <DependentUpon>FrmCasaMendes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmPDV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmPDV.Designer.cs">
+      <DependentUpon>frmPDV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmPromocao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmPromocao.Designer.cs">
+      <DependentUpon>FrmPromocao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="MCM\Form1Prototipo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MCM\Form1Prototipo.Designer.cs">
+      <DependentUpon>Form1Prototipo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Propriedades\cl_pBase.cs" />
+    <Compile Include="Propriedades\cl_pFornecedores.cs" />
+    <Compile Include="Propriedades\cl_pFrenteDeCaixa.cs" />
+    <Compile Include="Propriedades\cl_pPreVenda.cs" />
+    <Compile Include="Propriedades\cl_pProduto.cs" />
+    <Compile Include="4-Views\FrmProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4-Views\FrmProdutos.Designer.cs">
+      <DependentUpon>FrmProdutos.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
+  <ProjectExtensions>
+    <VisualStudio AllowExistingFolder="true" />
+  </ProjectExtensions>
+</Project>
