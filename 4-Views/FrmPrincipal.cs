@@ -83,7 +83,16 @@ namespace CasaMendes
 
         private void ClienteMenuItem_Click(object sender, EventArgs e)
         {
-            var cliente = new frmCadastrarClientes();
+            //var cliente = new frmCadastrarClientes();
+            //// Set the Parent Form of the Child window.
+            //cliente.MdiParent = this;
+            //cliente.Text = "Janela " + childFormNumber++;
+            //// Display the new form.
+            //cliente.Show();
+            //cliente.WindowState = FormWindowState.Maximized;
+            //this.StatusLabeTtoolStrip.Text = "Cliente cadastrados atualmente: ( " + cliente.StatusLabel + " ) clientes.";
+            
+            var cliente = new frmClientes();
             // Set the Parent Form of the Child window.
             cliente.MdiParent = this;
             cliente.Text = "Janela " + childFormNumber++;

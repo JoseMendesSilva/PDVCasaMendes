@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace CasaMendes
 {
-    class Cliente : Base
+    public class Cliente : Base
     {
         [OpcoesBase(UsarNoBancoDeDados = true, ChavePrimaria = true, UsarParaBuscar = true)]
         public int ClienteId { get; set; }

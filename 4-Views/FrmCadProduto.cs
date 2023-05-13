@@ -20,9 +20,9 @@ namespace CasaMendes
         {
             InitializeComponent();
             Botoes(true);
-            BsProduto = new BindingSource();
-           oProduto = new tProduto();
-           if(oProduto.idProduto.Equals(0)) BsProduto.Add(oProduto);
+            oProduto = new tProduto();
+            BsProduto = new BindingSource { oProduto };
+            if (oProduto.idProduto.Equals(0)) BsProduto.Add(oProduto);
         }
 
         private void VincularBindingSource()
@@ -64,7 +64,8 @@ namespace CasaMendes
 
         private void cbFornecedores_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try {
+            try
+            {
 
                 tFornecedore oFornecedor = new tFornecedore();
                 oFornecedor.RazaoSocial = cbFornecedores.Text;
@@ -72,27 +73,27 @@ namespace CasaMendes
                 txtCodigoDoFornecedor.Text = codigo[0].CodigoDoFornecedor.ToString();
                 oFornecedor = null;
             }
-            catch{ }
+            catch { }
         }
 
     }
 }
 
-            //Fornecedor fornecedor = new Fornecedor();
-            
-            // fornecedor.CriarTabela();
+//Fornecedor fornecedor = new Fornecedor();
 
-            //fornecedor.RazaoSocial = "hh";
-            //fornecedor.Endereco = "hh";
-            //fornecedor.Cep = "88888-000";
-            //fornecedor.Cidade = "hh";
-            //fornecedor.Bairro = "hh";
-            //fornecedor.Estado = "hh";
-            //fornecedor.DataCadastro=DateTime.Now;
-            //fornecedor.Celular = "55555555555";
-            //fornecedor.Telefone = "5555555555";
-            //fornecedor.Email = "email";
-            //fornecedor.SITE = "site";
-            //fornecedor.Cnpj = "00.009.999/0001-88";
-            //fornecedor.InscricaoEstadual = "00.009.998";
-            //fornecedor.Salvar();
+// fornecedor.CriarTabela();
+
+//fornecedor.RazaoSocial = "hh";
+//fornecedor.Endereco = "hh";
+//fornecedor.Cep = "88888-000";
+//fornecedor.Cidade = "hh";
+//fornecedor.Bairro = "hh";
+//fornecedor.Estado = "hh";
+//fornecedor.DataCadastro=DateTime.Now;
+//fornecedor.Celular = "55555555555";
+//fornecedor.Telefone = "5555555555";
+//fornecedor.Email = "email";
+//fornecedor.SITE = "site";
+//fornecedor.Cnpj = "00.009.999/0001-88";
+//fornecedor.InscricaoEstadual = "00.009.998";
+//fornecedor.Salvar();

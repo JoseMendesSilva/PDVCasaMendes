@@ -1,4 +1,4 @@
-﻿namespace CasaMendes.Formularios
+﻿namespace CasaMendes
 {
     partial class frmClientes
     {
@@ -42,9 +42,9 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(562, 376);
+            this.btnFechar.Location = new System.Drawing.Point(525, 380);
             this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(75, 57);
+            this.btnFechar.Size = new System.Drawing.Size(75, 53);
             this.btnFechar.TabIndex = 157;
             this.btnFechar.Text = "Fechar";
             this.btnFechar.UseVisualStyleBackColor = true;
@@ -57,11 +57,12 @@
             this.dgv.Name = "dgv";
             this.dgv.Size = new System.Drawing.Size(588, 237);
             this.dgv.TabIndex = 156;
+            this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellEnter);
             this.dgv.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_RowEnter);
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(245, 380);
+            this.btnExcluir.Location = new System.Drawing.Point(197, 380);
             this.btnExcluir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(70, 53);
@@ -73,7 +74,7 @@
             // btnEditar
             // 
             this.btnEditar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnEditar.Location = new System.Drawing.Point(124, 380);
+            this.btnEditar.Location = new System.Drawing.Point(106, 380);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(70, 53);
@@ -85,7 +86,7 @@
             // btnNovo
             // 
             this.btnNovo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnNovo.Location = new System.Drawing.Point(12, 380);
+            this.btnNovo.Location = new System.Drawing.Point(18, 380);
             this.btnNovo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(70, 53);
@@ -120,7 +121,7 @@
             this.btnInadimplentes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnInadimplentes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInadimplentes.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnInadimplentes.Location = new System.Drawing.Point(466, 380);
+            this.btnInadimplentes.Location = new System.Drawing.Point(431, 380);
             this.btnInadimplentes.Name = "btnInadimplentes";
             this.btnInadimplentes.Size = new System.Drawing.Size(75, 53);
             this.btnInadimplentes.TabIndex = 306;
@@ -143,6 +144,7 @@
             this.Name = "frmClientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
+            this.Load += new System.EventHandler(this.frmClientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.gbBusca.ResumeLayout(false);
             this.gbBusca.PerformLayout();

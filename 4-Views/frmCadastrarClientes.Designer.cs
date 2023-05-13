@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.btnExcluir = new System.Windows.Forms.Button();
             this.lblTelefone = new System.Windows.Forms.Label();
             this.lblInscricaoEstadual = new System.Windows.Forms.Label();
             this.lblCep = new System.Windows.Forms.Label();
@@ -64,7 +63,6 @@
             this.lblEndereco = new System.Windows.Forms.Label();
             this.txtEndereco = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.BtnBuscar = new System.Windows.Forms.Button();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -81,8 +79,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.cbStatus = new System.Windows.Forms.CheckBox();
-            this.BtnNovo = new System.Windows.Forms.Button();
-            this.BtnCancelar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnlPessoaFisica.SuspendLayout();
             this.pnlPessoaJuridica.SuspendLayout();
@@ -107,18 +103,6 @@
             this.txtCodigo.Size = new System.Drawing.Size(105, 27);
             this.txtCodigo.TabIndex = 270;
             this.txtCodigo.Text = "3";
-            // 
-            // btnExcluir
-            // 
-            this.btnExcluir.FlatAppearance.BorderSize = 0;
-            this.btnExcluir.ForeColor = System.Drawing.Color.Blue;
-            this.btnExcluir.Location = new System.Drawing.Point(206, 428);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(76, 46);
-            this.btnExcluir.TabIndex = 2;
-            this.btnExcluir.Text = "Excluir";
-            this.btnExcluir.UseVisualStyleBackColor = true;
-            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // lblTelefone
             // 
@@ -488,7 +472,7 @@
             this.btnFechar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnFechar.FlatAppearance.BorderSize = 0;
             this.btnFechar.ForeColor = System.Drawing.Color.Blue;
-            this.btnFechar.Location = new System.Drawing.Point(518, 428);
+            this.btnFechar.Location = new System.Drawing.Point(518, 448);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(76, 46);
             this.btnFechar.TabIndex = 3;
@@ -498,9 +482,10 @@
             // 
             // btnGravar
             // 
+            this.btnGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnGravar.FlatAppearance.BorderSize = 0;
             this.btnGravar.ForeColor = System.Drawing.Color.Blue;
-            this.btnGravar.Location = new System.Drawing.Point(101, 428);
+            this.btnGravar.Location = new System.Drawing.Point(6, 448);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(76, 46);
             this.btnGravar.TabIndex = 1;
@@ -568,7 +553,6 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.BtnBuscar);
             this.panel1.Controls.Add(this.txtNome);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.cbEstado);
@@ -587,20 +571,10 @@
             this.panel1.Controls.Add(this.txtBairro);
             this.panel1.Controls.Add(this.dtpDataNascimento);
             this.panel1.Controls.Add(this.lblDataCadastro);
-            this.panel1.Location = new System.Drawing.Point(6, 19);
+            this.panel1.Location = new System.Drawing.Point(6, 28);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(588, 179);
             this.panel1.TabIndex = 292;
-            // 
-            // BtnBuscar
-            // 
-            this.BtnBuscar.Location = new System.Drawing.Point(534, 25);
-            this.BtnBuscar.Name = "BtnBuscar";
-            this.BtnBuscar.Size = new System.Drawing.Size(36, 29);
-            this.BtnBuscar.TabIndex = 291;
-            this.BtnBuscar.Text = "...";
-            this.BtnBuscar.UseVisualStyleBackColor = true;
-            this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
             // 
             // txtNome
             // 
@@ -617,7 +591,6 @@
             this.txtNome.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtNome.Size = new System.Drawing.Size(396, 27);
             this.txtNome.TabIndex = 0;
-            this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
             this.txtNome.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNome_KeyDown);
             // 
             // label5
@@ -639,7 +612,7 @@
             // 
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(22, 0);
+            this.label1.Location = new System.Drawing.Point(22, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(102, 28);
             this.label1.TabIndex = 0;
@@ -652,7 +625,7 @@
             this.pnlPessoaFisica.Controls.Add(this.mkbRg);
             this.pnlPessoaFisica.Controls.Add(this.lblCpf);
             this.pnlPessoaFisica.Controls.Add(this.mkbCpf);
-            this.pnlPessoaFisica.Location = new System.Drawing.Point(298, 216);
+            this.pnlPessoaFisica.Location = new System.Drawing.Point(298, 228);
             this.pnlPessoaFisica.Name = "pnlPessoaFisica";
             this.pnlPessoaFisica.Size = new System.Drawing.Size(296, 61);
             this.pnlPessoaFisica.TabIndex = 293;
@@ -662,7 +635,7 @@
             this.lblPessoaFisica.AutoSize = true;
             this.lblPessoaFisica.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblPessoaFisica.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPessoaFisica.Location = new System.Drawing.Point(308, 201);
+            this.lblPessoaFisica.Location = new System.Drawing.Point(308, 213);
             this.lblPessoaFisica.Name = "lblPessoaFisica";
             this.lblPessoaFisica.Size = new System.Drawing.Size(123, 24);
             this.lblPessoaFisica.TabIndex = 1;
@@ -675,7 +648,7 @@
             this.pnlPessoaJuridica.Controls.Add(this.lblInscricaoEstadual);
             this.pnlPessoaJuridica.Controls.Add(this.mkbCnpj);
             this.pnlPessoaJuridica.Controls.Add(this.lblCnpj);
-            this.pnlPessoaJuridica.Location = new System.Drawing.Point(298, 216);
+            this.pnlPessoaJuridica.Location = new System.Drawing.Point(298, 228);
             this.pnlPessoaJuridica.Name = "pnlPessoaJuridica";
             this.pnlPessoaJuridica.Size = new System.Drawing.Size(297, 61);
             this.pnlPessoaJuridica.TabIndex = 295;
@@ -686,7 +659,7 @@
             this.lblPessoaJuridica.AutoSize = true;
             this.lblPessoaJuridica.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblPessoaJuridica.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPessoaJuridica.Location = new System.Drawing.Point(308, 201);
+            this.lblPessoaJuridica.Location = new System.Drawing.Point(308, 213);
             this.lblPessoaJuridica.Name = "lblPessoaJuridica";
             this.lblPessoaJuridica.Size = new System.Drawing.Size(144, 24);
             this.lblPessoaJuridica.TabIndex = 296;
@@ -697,7 +670,7 @@
             // 
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(22, 280);
+            this.label4.Location = new System.Drawing.Point(23, 301);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(102, 28);
             this.label4.TabIndex = 297;
@@ -714,7 +687,7 @@
             this.panel4.Controls.Add(this.lblEmail);
             this.panel4.Controls.Add(this.lblSite);
             this.panel4.Controls.Add(this.txtSite);
-            this.panel4.Location = new System.Drawing.Point(6, 301);
+            this.panel4.Location = new System.Drawing.Point(7, 322);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(588, 111);
             this.panel4.TabIndex = 298;
@@ -724,7 +697,7 @@
             this.label2.AutoSize = true;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(22, 201);
+            this.label2.Location = new System.Drawing.Point(22, 213);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 24);
             this.label2.TabIndex = 299;
@@ -735,7 +708,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.rbPJ);
             this.panel2.Controls.Add(this.rbPF);
-            this.panel2.Location = new System.Drawing.Point(6, 216);
+            this.panel2.Location = new System.Drawing.Point(6, 228);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(145, 61);
             this.panel2.TabIndex = 300;
@@ -770,7 +743,7 @@
             this.label3.AutoSize = true;
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(188, 201);
+            this.label3.Location = new System.Drawing.Point(188, 213);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 24);
             this.label3.TabIndex = 303;
@@ -780,7 +753,7 @@
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.cbStatus);
-            this.panel3.Location = new System.Drawing.Point(175, 216);
+            this.panel3.Location = new System.Drawing.Point(175, 228);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(100, 61);
             this.panel3.TabIndex = 304;
@@ -800,36 +773,11 @@
             this.cbStatus.UseVisualStyleBackColor = true;
             this.cbStatus.CheckedChanged += new System.EventHandler(this.cbStatus_CheckedChanged);
             // 
-            // BtnNovo
-            // 
-            this.BtnNovo.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.BtnNovo.FlatAppearance.BorderSize = 0;
-            this.BtnNovo.ForeColor = System.Drawing.Color.Blue;
-            this.BtnNovo.Location = new System.Drawing.Point(6, 428);
-            this.BtnNovo.Name = "BtnNovo";
-            this.BtnNovo.Size = new System.Drawing.Size(76, 46);
-            this.BtnNovo.TabIndex = 0;
-            this.BtnNovo.Text = "Novo";
-            this.BtnNovo.UseVisualStyleBackColor = true;
-            this.BtnNovo.Click += new System.EventHandler(this.BtnNovo_Click);
-            // 
-            // BtnCancelar
-            // 
-            this.BtnCancelar.FlatAppearance.BorderSize = 0;
-            this.BtnCancelar.ForeColor = System.Drawing.Color.Blue;
-            this.BtnCancelar.Location = new System.Drawing.Point(6, 428);
-            this.BtnCancelar.Name = "BtnCancelar";
-            this.BtnCancelar.Size = new System.Drawing.Size(76, 46);
-            this.BtnCancelar.TabIndex = 306;
-            this.BtnCancelar.Text = "Cancelar";
-            this.BtnCancelar.UseVisualStyleBackColor = true;
-            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
-            // 
             // frmCadastrarClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 483);
+            this.ClientSize = new System.Drawing.Size(604, 504);
             this.ControlBox = false;
             this.Controls.Add(this.lblPessoaJuridica);
             this.Controls.Add(this.label4);
@@ -838,22 +786,18 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.btnGravar);
             this.Controls.Add(this.lblPessoaFisica);
             this.Controls.Add(this.pnlPessoaJuridica);
-            this.Controls.Add(this.BtnNovo);
-            this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.pnlPessoaFisica);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmCadastrarClientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastrar Cliente";
-            this.Activated += new System.EventHandler(this.frmCadastrarClientes_Activated);
             this.Load += new System.EventHandler(this.frmCadastrarClientes_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -875,7 +819,6 @@
         #endregion
 
         public System.Windows.Forms.TextBox txtCodigo;
-        internal System.Windows.Forms.Button btnExcluir;
         public System.Windows.Forms.Label lblTelefone;
         public System.Windows.Forms.Label lblInscricaoEstadual;
         public System.Windows.Forms.Label lblCep;
@@ -926,8 +869,5 @@
         private System.Windows.Forms.CheckBox cbStatus;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel3;
-        internal System.Windows.Forms.Button BtnNovo;
-        internal System.Windows.Forms.Button BtnCancelar;
-        private System.Windows.Forms.Button BtnBuscar;
     }
 }

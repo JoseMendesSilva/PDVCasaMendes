@@ -170,7 +170,7 @@
     <EmbeddedResource Include="Formularios\frmCarregarVenda.resx">
       <DependentUpon>frmCarregarVenda.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmClientes.resx">
+    <EmbeddedResource Include="4-Views\frmClientes.resx">
       <DependentUpon>frmClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmFinlizarVendas.resx">
@@ -321,10 +321,10 @@
     <Compile Include="Formularios\frmCarregarVenda.Designer.cs">
       <DependentUpon>frmCarregarVenda.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmClientes.cs">
+    <Compile Include="4-Views\frmClientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmClientes.Designer.cs">
+    <Compile Include="4-Views\frmClientes.Designer.cs">
       <DependentUpon>frmClientes.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmFinlizarVendas.cs">
