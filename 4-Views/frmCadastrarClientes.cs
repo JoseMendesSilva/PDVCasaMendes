@@ -40,6 +40,7 @@ namespace CasaMendes
             //Este metodo cria uma tabela no database com base no modelo previamente criado,
             //mas antes, ele dropa a tabela se ela existir.
             //oCliente.CriarTabela();
+
             editar = novo = false;
         }
 
@@ -86,6 +87,48 @@ namespace CasaMendes
             txtEmail.DataBindings.Add(new Binding("Text", BsCliente, "Email"));
             //,[SITE]
             txtSite.DataBindings.Add(new Binding("Text", BsCliente, "SITE"));
+
+        }
+
+        private void Limpar()
+        {
+            txtCodigo.Clear();
+            // [Nome]
+            txtNome.Clear();
+            //,[Endereco]
+            txtEndereco.Clear();
+            //,[Cep]
+            mkbCep.Clear();
+            //,[Cidade]
+            txtCidade.Clear();
+            //,[Bairro]
+            txtBairro.Clear();
+
+            //,[DataNascimento]
+            dtpDataNascimento.Value=DateTime.Now;
+
+            //,[Rg]
+            mkbRg.Clear();
+
+            //,[Cpf]
+            mkbCpf.Clear();
+
+            //,[InscricaoEstadual]
+            mkbInscricaoEstadual.Clear();
+
+            //,[Cnpj]
+            mkbCnpj.Clear();
+
+            //,[Telefone]
+            mkbTelefone.Clear();
+
+            //,[Celular]
+            mkbCelular.Clear();
+
+            //,[Email]
+            txtEmail.Clear();
+            //,[SITE]
+            txtSite.Clear();
 
         }
 
@@ -259,7 +302,7 @@ namespace CasaMendes
 
         #endregion
 
-        #region frmCadastrarClientes
+        #region Formulário
 
         private void frmCadastrarClientes_Activated(object sender, EventArgs e)
         {
@@ -269,6 +312,7 @@ namespace CasaMendes
 
         private void frmCadastrarClientes_Load(object sender, EventArgs e)
         {
+            Limpar();
             clsGlobal.CarregarPaises(this.cbPais);
             clsGlobal.CarregarEstados(this.cbEstado);
 
@@ -417,7 +461,7 @@ namespace CasaMendes
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
-            if (txtCodigo.Text != "0" && txtCodigo.Text != "")
+            if (txtCodigo.Text != "0" && txtCodigo.Text != "" && editar.Equals(true))
             {
                 oCliente.ClienteId = int.Parse(txtCodigo.Text);
                 BsCliente.DataSource = oCliente.Busca();
@@ -436,18 +480,25 @@ namespace CasaMendes
                 {
                     if (novo) return;
                     MessageBox.Show("Registro não encontrado!", Application.ProductName);
+                    string nome = this.txtNome.Text;
+                    Limpar();
+                    //oCliente.Nome = nome;
+                    if (oCliente.ClienteId>0) 
+                        BsCliente.DataSource = oCliente;
                 }
             }
             if (oCliente.ClienteId != 0)
             {
                 editar = true;
-                novo = false;
+                //novo = false;
             }
             else
             {
                 editar = false;
-                novo = true;
+                //novo = true;
             }
+            txtNome.Focus();
+            txtNome.SelectAll();
         }
 
         #endregion

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // As informações gerais sobre um assembly são controladas por
 // conjunto de atributos. Altere estes valores de atributo para modificar as informações
 // associada a um assembly.
-[assembly: AssemblyTitle("Gestão Comércial Proficional")]
+[assembly: AssemblyTitle("GCP Casa Mendes")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Casa Mendes")]
-[assembly: AssemblyProduct("Gestão Comércial Proficional")]
+[assembly: AssemblyCompany("GCP - CM")]
+[assembly: AssemblyProduct("GCP Casa Mendes")]
 [assembly: AssemblyCopyright("2019")]
 [assembly: AssemblyTrademark("JMS")]
 [assembly: AssemblyCulture("")]
