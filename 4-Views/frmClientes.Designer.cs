@@ -112,6 +112,7 @@
             this.txtBusca.Name = "txtBusca";
             this.txtBusca.Size = new System.Drawing.Size(576, 26);
             this.txtBusca.TabIndex = 0;
+            this.txtBusca.TextChanged += new System.EventHandler(this.txtBusca_TextChanged);
             // 
             // btnInadimplentes
             // 

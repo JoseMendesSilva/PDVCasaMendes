@@ -15,7 +15,6 @@ namespace CasaMendes
 
         #region Variáveis
 
-        bool _Fechar = false;
         Cliente oCliente;
         BindingSource BsCliente;
         bool editar;
@@ -29,6 +28,8 @@ namespace CasaMendes
         public string StatusLabel { get; set; }
 
         #endregion
+
+        #region construtor
 
         public frmClientes()
         {
@@ -45,6 +46,10 @@ namespace CasaMendes
             RedimencionarGrade();
             this.dgv.Focus();
         }
+
+        #endregion
+
+        #region Métodos auxiliares
 
         private void RedimencionarGrade()
         {
@@ -140,6 +145,10 @@ namespace CasaMendes
             btnNovo.Enabled = b;
         }
 
+        #endregion
+
+        #region KeyDown
+
         private void dgv_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -151,6 +160,8 @@ namespace CasaMendes
                 btnFechar.PerformClick();
             }
         }
+
+        #endregion
 
         #region Click
 
@@ -191,7 +202,7 @@ namespace CasaMendes
 
         #endregion
 
-        #region
+        #region Enter
 
         private void dgv_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
@@ -214,6 +225,16 @@ namespace CasaMendes
             }
             editar = false;
             btnEditar.Enabled = editar;
+        }
+
+        #endregion
+
+        #region TextChanged
+
+        private void txtBusca_TextChanged(object sender, EventArgs e)
+        {
+            oCliente.Nome=txtBusca.Text;
+            dgv.DataSource = oCliente.Busca();
         }
 
         #endregion

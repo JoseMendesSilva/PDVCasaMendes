@@ -176,7 +176,7 @@
     <EmbeddedResource Include="Formularios\frmFinlizarVendas.resx">
       <DependentUpon>frmFinlizarVendas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmFornecedores.resx">
+    <EmbeddedResource Include="4-Views\frmFornecedores.resx">
       <DependentUpon>frmFornecedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmCasaMendes.resx">
@@ -333,10 +333,10 @@
     <Compile Include="Formularios\frmFinlizarVendas.Designer.cs">
       <DependentUpon>frmFinlizarVendas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmFornecedores.cs">
+    <Compile Include="4-Views\frmFornecedores.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmFornecedores.Designer.cs">
+    <Compile Include="4-Views\frmFornecedores.Designer.cs">
       <DependentUpon>frmFornecedores.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\FrmCasaMendes.cs">

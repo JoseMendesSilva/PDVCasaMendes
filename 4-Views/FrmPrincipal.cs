@@ -1,5 +1,4 @@
-﻿using CasaMendes.Formularios;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace CasaMendes
@@ -101,5 +100,18 @@ namespace CasaMendes
             cliente.WindowState = FormWindowState.Maximized;
             this.StatusLabeTtoolStrip.Text = "Cliente cadastrados atualmente: ( " + cliente.StatusLabel + " ) clientes.";
         }
+
+        private void FornecedorMenuItem_Click(object sender, EventArgs e)
+        {
+            var fornecedores = new frmFornecedores();
+            // Set the Parent Form of the Child window.
+            fornecedores.MdiParent = this;
+            fornecedores.Text = "Janela " + childFormNumber++;
+            // Display the new form.
+            fornecedores.Show();
+            fornecedores.WindowState = FormWindowState.Maximized;
+            this.StatusLabeTtoolStrip.Text = "Cliente cadastrados atualmente: ( " + fornecedores.StatusLabel + " ) clientes.";
+        }
+
     }
 }

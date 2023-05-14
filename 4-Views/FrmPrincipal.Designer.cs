@@ -224,6 +224,7 @@
             this.FornecedorMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
             this.FornecedorMenuItem.Size = new System.Drawing.Size(186, 22);
             this.FornecedorMenuItem.Text = "&Fornecedor";
+            this.FornecedorMenuItem.Click += new System.EventHandler(this.FornecedorMenuItem_Click);
             // 
             // CategoriaMenuItem
             // 
