@@ -12,18 +12,9 @@ namespace CasaMendes
             InitializeComponent();
         }
 
-        private void ShowNewForm(object sender, EventArgs e)
-        {
-            var produtos = new FrmProdutos();
-            // Set the Parent Form of the Child window.
-            produtos.MdiParent = this;
-            produtos.Text = "Janela " + childFormNumber++;
-            // Display the new form.
-            produtos.Show();
-            produtos.WindowState = FormWindowState.Maximized;
-            this.StatusLabeTtoolStrip.Text = "Produtos cadastrados atualmente em estoque: ( " + produtos.StatusLabel + " ) Itens.";
-
-        }
+        //private void ShowNewForm(object sender, EventArgs e)
+        //{
+        //}
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -113,5 +104,28 @@ namespace CasaMendes
             this.StatusLabeTtoolStrip.Text = "Cliente cadastrados atualmente: ( " + fornecedores.StatusLabel + " ) clientes.";
         }
 
+        private void ProdutoMenuItem_Click(object sender, EventArgs e)
+        {
+            var produtos = new FrmProdutos();
+            // Set the Parent Form of the Child window.
+            produtos.MdiParent = this;
+            produtos.Text = "Janela " + childFormNumber++;
+            // Display the new form.
+            produtos.Show();
+            produtos.WindowState = FormWindowState.Maximized;
+            this.StatusLabeTtoolStrip.Text = "Produtos cadastrados atualmente em estoque: ( " + produtos.StatusLabel + " ) Itens.";
+        }
+
+        private void EstoqueMenuItem_Click(object sender, EventArgs e)
+        {
+            var estoque = new FrmEstoque();
+            // Set the Parent Form of the Child window.
+            estoque.MdiParent = this;
+            estoque.Text = "Janela " + childFormNumber++;
+            // Display the new form.
+            estoque.Show();
+            estoque.WindowState = FormWindowState.Maximized;
+            this.StatusLabeTtoolStrip.Text = "Produtos em estoque: ( " + estoque.StatusLabel + " ) Itens.";
+        }
     }
 }

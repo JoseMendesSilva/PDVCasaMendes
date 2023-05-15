@@ -74,6 +74,7 @@
             this.dgv.Name = "dgv";
             this.dgv.Size = new System.Drawing.Size(605, 315);
             this.dgv.TabIndex = 164;
+            this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellEnter);
             // 
             // btnExcluir
             // 
@@ -84,6 +85,7 @@
             this.btnExcluir.TabIndex = 168;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnEditar
             // 
@@ -95,6 +97,7 @@
             this.btnEditar.TabIndex = 167;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnNovo
             // 
@@ -106,6 +109,7 @@
             this.btnNovo.TabIndex = 166;
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // frmFornecedores
             // 

@@ -72,7 +72,7 @@ namespace CasaMendes.Formularios
 
         private void btnEstoque_Click(object sender, EventArgs e)
         {
-            FrmEstoque f = new FrmEstoque();
+            FrmEstoque2 f = new FrmEstoque2();
 
             clsGlobal.TagForm = "FrmCasaMendes";
             f.ShowDialog();

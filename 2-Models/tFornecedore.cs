@@ -1,11 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading;
 
 namespace CasaMendes
 {
-    class tFornecedore : Base
+   public class tFornecedore : Base, IDisposable
     {
+        // Flag: Has Dispose already been called?
+        bool disposed;
+
+        public tFornecedore()
+        {
+            // Do not re-create Dispose clean-up code here.
+            // Calling Dispose(disposing: false) is optimal in terms of
+            // readability and maintainability.
+            disposed = false;
+            Dispose(disposing: false);
+        }
+
+        ~tFornecedore()
+        {
+            // Do not re-create Dispose clean-up code here.
+            // Calling Dispose(disposing: false) is optimal in terms of
+            // readability and maintainability.
+            Dispose(disposing: false);
+        }
+
         [OpcoesBase(UsarNoBancoDeDados = true, ChavePrimaria = true, UsarParaBuscar = true)]
          public string CodigoDoFornecedor { get; set; }
 
@@ -27,29 +48,14 @@ namespace CasaMendes
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public string Estado { get; set; }
 
-        //[OpcoesBase(UsarNoBancoDeDados = true)]
-        //public string Pais { get; set; }
-
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public DateTime DataCadastro { get; set; }
-
-        //[OpcoesBase(UsarNoBancoDeDados = true)]
-        //public string DataDeNascimento { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public string Celular { get; set; }
 
-        //[OpcoesBase(UsarNoBancoDeDados = true)]
-        //public string TelefoneContato { get; set; }
-
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public string Telefone { get; set; }
-
-        //[OpcoesBase(UsarNoBancoDeDados = true)]
-        //public string CelularContato { get; set; }
-
-        //[OpcoesBase(UsarNoBancoDeDados = true)]
-        //public string Foto { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public string Email { get; set; }
@@ -57,29 +63,11 @@ namespace CasaMendes
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public string SITE { get; set; }
 
-        //[OpcoesBase(UsarNoBancoDeDados = true)]
-        //public string Rg { get; set; }
-
-        //[OpcoesBase(UsarNoBancoDeDados = true)]
-        //public string Cpf { get; set; }
-
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public string Cnpj { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public string InscricaoEstadual { get; set; }
-
-        //[OpcoesBase(UsarNoBancoDeDados = true)]
-        //public string Nome { get; set; }
-
-        //[OpcoesBase(UsarNoBancoDeDados = true)]
-        //public string EstadoCivil { get; set; }
-
-        //[OpcoesBase(UsarNoBancoDeDados = true)]
-        //public string Observacao { get; set; }
-
-        //[OpcoesBase(UsarNoBancoDeDados = true)]
-        //public string Status { get; set; }
 
         public new List<tFornecedore> Todos()
         {
@@ -100,6 +88,29 @@ namespace CasaMendes
             }
             return Fornecedores;
         }
+
+        public void Dispose()
+        {
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
+
+        // Protected implementation of Dispose pattern.
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+
+            if (disposing)
+            {
+                this.Dispose();
+                // Free any other managed objects here.
+                //
+            }
+
+            disposed = true;
+        }
+
 
     }
 }

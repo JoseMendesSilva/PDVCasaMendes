@@ -6,41 +6,35 @@ namespace CasaMendes.Propriedades
     public class PreVenda : Base
     {
 
-        [OpcoesBase(UsarNoBancoDeDados = true, ChavePrimaria = true, AutoGenerantor = true, UsarParaBuscar = true)]
-        public decimal CodigoDaVenda { get; set; }
+        [OpcoesBase(UsarNoBancoDeDados = true, ChavePrimaria = true, UsarParaBuscar = true, AutoGenerantor = true)]
+        public int PreVendaId { get; set; }
+
+        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
+        public int ClienteId { get; set; }
+
+        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
+        public string CodigoDeBarras { get; set; }
+
+        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
+        public int NumeroDaVenda { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public decimal CodigoDoCliente { get; set; }
+        public int Quantidade { get; set; }
+
+        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
+        public string TipoDeVenda { get; set; } // pendura, pg, debito, crédito e pix.
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public decimal CodigoDeBarras { get; set; }
+        public double Valor { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public decimal NumeroDaVenda { get; set; }
+        public double Dinheiro { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public decimal Quantidade { get; set; }
+        public double Troco { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public decimal Valor { get; set; }
-
-        [OpcoesBase(UsarNoBancoDeDados = true)]
-        public string TipoDeVenda { get; set; }
-
-        [OpcoesBase(UsarNoBancoDeDados = true)]
-        public bool StatusDaVenda { get; set; }
-
-        [OpcoesBase(UsarNoBancoDeDados = true)]
-        public decimal Dinheiro { get; set; }
-
-        [OpcoesBase(UsarNoBancoDeDados = true)]
-        public decimal Troco { get; set; }
-
-        [OpcoesBase(UsarNoBancoDeDados = true)]
-        public decimal Parcela { get; set; }
-
-        [OpcoesBase(UsarNoBancoDeDados = true)]
-        public decimal Lucro { get; set; }
+        public double Parcela { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public DateTime created_at { get; set; } = DateTime.Now;

@@ -126,7 +126,7 @@
             this.EstoqueMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.EstoqueMenuItem.Size = new System.Drawing.Size(239, 22);
             this.EstoqueMenuItem.Text = "&Estoque";
-            this.EstoqueMenuItem.Click += new System.EventHandler(this.ShowNewForm);
+            this.EstoqueMenuItem.Click += new System.EventHandler(this.EstoqueMenuItem_Click);
             // 
             // FrenteDeCaixaMenuItem
             // 
@@ -259,6 +259,7 @@
             this.ProdutoMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
             this.ProdutoMenuItem.Size = new System.Drawing.Size(186, 22);
             this.ProdutoMenuItem.Text = "&Produto";
+            this.ProdutoMenuItem.Click += new System.EventHandler(this.ProdutoMenuItem_Click);
             // 
             // toolStripSeparator7
             // 
@@ -326,7 +327,6 @@
             this.newWindowToolStripMenuItem.Name = "newWindowToolStripMenuItem";
             this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.newWindowToolStripMenuItem.Text = "&Nova Janela";
-            this.newWindowToolStripMenuItem.Click += new System.EventHandler(this.ShowNewForm);
             // 
             // cascadeToolStripMenuItem
             // 
@@ -434,7 +434,6 @@
             this.newToolStripButton.Name = "newToolStripButton";
             this.newToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.newToolStripButton.Text = "Novo";
-            this.newToolStripButton.Click += new System.EventHandler(this.ShowNewForm);
             // 
             // openToolStripButton
             // 

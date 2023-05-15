@@ -308,15 +308,15 @@ namespace CasaMendes.Formularios
             }
             else if (e.KeyCode == Keys.F9)
             {
-                //Abre o formulário para a pesquisa de produos.
-                FrmBuscarParaVender ffc = new FrmBuscarParaVender
-                {
-                    Tag = 0
-                };
-                clsGlobal.TagForm = "";
-                ffc.ShowDialog();
-                this.BuscarProduto(ffc.cod);
-                ffc.Dispose();
+                ////Abre o formulário para a pesquisa de produos.
+                //FrmEstoque ffc = new FrmEstoque
+                //{
+                //    Tag = 0
+                //};
+                //clsGlobal.TagForm = "";
+                //ffc.ShowDialog();
+                //this.BuscarProduto(ffc.cod);
+                //ffc.Dispose();
             }
             else if (e.Control && e.KeyCode == Keys.Q)
             {

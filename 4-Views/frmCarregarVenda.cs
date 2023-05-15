@@ -4,7 +4,7 @@ using System;
 using System.Windows.Forms;
 using CasaMendes.Classes.Geral;
 
-namespace CasaMendes.Formularios
+namespace CasaMendes
 {
     public partial class frmCarregarVenda : Form
     {

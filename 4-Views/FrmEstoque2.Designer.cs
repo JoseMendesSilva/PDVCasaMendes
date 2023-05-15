@@ -1,6 +1,6 @@
-﻿namespace CasaMendes.Formularios
+﻿namespace CasaMendes
 {
-    partial class FrmEstoque
+    partial class FrmEstoque2
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEstoque));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEstoque2));
             this.dgv = new System.Windows.Forms.DataGridView();
             this.btnFechar = new System.Windows.Forms.Button();
             this.gbBusca = new System.Windows.Forms.GroupBox();
-            this.CbAtualizarLote = new System.Windows.Forms.CheckBox();
             this.txtCodigoDeBarras = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -54,9 +53,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv.Location = new System.Drawing.Point(0, 78);
+            this.dgv.Location = new System.Drawing.Point(12, 67);
             this.dgv.Name = "dgv";
-            this.dgv.Size = new System.Drawing.Size(1077, 413);
+            this.dgv.Size = new System.Drawing.Size(890, 413);
             this.dgv.TabIndex = 0;
             this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellEnter);
             // 
@@ -75,35 +74,22 @@
             // 
             this.gbBusca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbBusca.Controls.Add(this.CbAtualizarLote);
             this.gbBusca.Controls.Add(this.txtCodigoDeBarras);
             this.gbBusca.Controls.Add(this.label2);
             this.gbBusca.Controls.Add(this.label1);
             this.gbBusca.Controls.Add(this.txtBusca);
             this.gbBusca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbBusca.Location = new System.Drawing.Point(0, 2);
+            this.gbBusca.Location = new System.Drawing.Point(12, 3);
             this.gbBusca.Name = "gbBusca";
-            this.gbBusca.Size = new System.Drawing.Size(1077, 58);
+            this.gbBusca.Size = new System.Drawing.Size(890, 58);
             this.gbBusca.TabIndex = 3;
             this.gbBusca.TabStop = false;
             this.gbBusca.Text = "Buscar:";
             // 
-            // CbAtualizarLote
-            // 
-            this.CbAtualizarLote.AutoSize = true;
-            this.CbAtualizarLote.Location = new System.Drawing.Point(342, 22);
-            this.CbAtualizarLote.Name = "CbAtualizarLote";
-            this.CbAtualizarLote.Size = new System.Drawing.Size(120, 24);
-            this.CbAtualizarLote.TabIndex = 4;
-            this.CbAtualizarLote.Text = "Atualizar lote";
-            this.CbAtualizarLote.UseVisualStyleBackColor = true;
-            this.CbAtualizarLote.CheckedChanged += new System.EventHandler(this.CbAtualizarLote_CheckedChanged);
-            this.CbAtualizarLote.Click += new System.EventHandler(this.CbAtualizarLote_Click);
-            // 
             // txtCodigoDeBarras
             // 
             this.txtCodigoDeBarras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCodigoDeBarras.Location = new System.Drawing.Point(873, 19);
+            this.txtCodigoDeBarras.Location = new System.Drawing.Point(686, 19);
             this.txtCodigoDeBarras.Name = "txtCodigoDeBarras";
             this.txtCodigoDeBarras.Size = new System.Drawing.Size(199, 26);
             this.txtCodigoDeBarras.TabIndex = 2;
@@ -114,7 +100,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(741, 22);
+            this.label2.Location = new System.Drawing.Point(554, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(134, 20);
             this.label2.TabIndex = 3;
@@ -135,7 +121,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBusca.Location = new System.Drawing.Point(82, 19);
             this.txtBusca.Name = "txtBusca";
-            this.txtBusca.Size = new System.Drawing.Size(427, 26);
+            this.txtBusca.Size = new System.Drawing.Size(240, 26);
             this.txtBusca.TabIndex = 0;
             this.txtBusca.TextChanged += new System.EventHandler(this.txtBusca_TextChanged);
             this.txtBusca.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBusca_KeyDown);
@@ -263,6 +249,5 @@
         private System.Windows.Forms.Button BtnAtualizarLote;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox TxtValor;
-        private System.Windows.Forms.CheckBox CbAtualizarLote;
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace CasaMendes.Formularios
+﻿namespace CasaMendes
 {
     partial class frmCadastrarFornecedores
     {
@@ -380,6 +380,7 @@
             // btnFechar
             // 
             this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFechar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnFechar.Location = new System.Drawing.Point(347, 307);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(61, 46);
@@ -391,6 +392,7 @@
             // btnGravar
             // 
             this.btnGravar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnGravar.Location = new System.Drawing.Point(12, 307);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(65, 46);
@@ -419,7 +421,7 @@
             this.lblRazaoSocial.BackColor = System.Drawing.SystemColors.Control;
             this.lblRazaoSocial.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblRazaoSocial.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRazaoSocial.ForeColor = System.Drawing.Color.Blue;
+            this.lblRazaoSocial.ForeColor = System.Drawing.SystemColors.WindowText;
             this.lblRazaoSocial.Location = new System.Drawing.Point(80, 8);
             this.lblRazaoSocial.Name = "lblRazaoSocial";
             this.lblRazaoSocial.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -485,10 +487,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmFornecedores";
-            //this.Load += new System.EventHandler(this.frmCadastrarFornecedores_Load);
-            //this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmCadastrarFornecedores_Paint);
-            //this.Move += new System.EventHandler(this.frmCadastrarFornecedores_Move);
-            //this.Resize += new System.EventHandler(this.frmCadastrarFornecedores_Resize);
+            this.Load += new System.EventHandler(this.frmCadastrarFornecedores_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
