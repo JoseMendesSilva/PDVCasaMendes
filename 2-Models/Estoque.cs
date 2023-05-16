@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace CasaMendes
 {
-    public class Estoque : Base
+    public class Estoque : Base, IDisposable
     {
         [OpcoesBase(UsarNoBancoDeDados = true, ChavePrimaria = true, UsarParaBuscar = true)]
         public int EstoqueId { get; set; }
@@ -15,17 +15,20 @@ namespace CasaMendes
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
         public string CodigoDeBarras { get; set; }
 
+        [OpcoesBase(UsarNoBancoDeDados = false)]
+        public string Produto { get; set; }
+
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public int Quantidade { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public double PrecoDeVenda { get; set; }
+        public decimal PrecoDeVenda { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public double QuantidadeParaDesconto { get; set; }
+        public decimal QuantidadeParaDesconto { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public double ValorDesconto { get; set; }
+        public decimal ValorDesconto { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public DateTime created_at { get; set; } = DateTime.Now;
@@ -34,7 +37,7 @@ namespace CasaMendes
         public DateTime updated_at { get; set; } = DateTime.Now;
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public DateTime deleted_at { get; set; }// = null;
+        public DateTime? deleted_at { get; set; } = null;
 
         public new List<Estoque> Todos()
         {
@@ -55,6 +58,34 @@ namespace CasaMendes
             }
             return estoque;
         }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
+
+        //bool disposed = false;
+        //public void Dispose()
+        //{
+        //    Dispose(disposing: true);
+        //    GC.SuppressFinalize(this);
+        //}
+
+        //// Protected implementation of Dispose pattern.
+        //protected virtual void Dispose(bool disposing)
+        //{
+        //    if (disposed)
+        //        return;
+
+        //    if (disposing)
+        //    {
+        //        this.Dispose();
+        //        // Free any other managed objects here.
+        //        //
+        //    }
+
+        //    disposed = true;
+        //}
 
     }
 

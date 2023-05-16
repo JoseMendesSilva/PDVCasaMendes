@@ -1,6 +1,6 @@
-﻿namespace CasaMendes
+﻿namespace CasaMendes.c
 {
-    partial class FrmEstoque2
+    partial class FrmEstoque3
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEstoque2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEstoque3));
             this.dgv = new System.Windows.Forms.DataGridView();
             this.btnFechar = new System.Windows.Forms.Button();
             this.gbBusca = new System.Windows.Forms.GroupBox();

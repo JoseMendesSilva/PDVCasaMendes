@@ -1,6 +1,6 @@
-﻿namespace CasaMendes.Formularios
+﻿namespace CasaMendes
 {
-    partial class FrmPDV
+    partial class FrmFrenteDeCaixa
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPDV));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFrenteDeCaixa));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -40,16 +40,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTerminal = new System.Windows.Forms.Label();
-            this.IpiPercentualBC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IpiCst = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItenVlIcmsSubsTrib = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItenBasCalcIcmsSubsTrib = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItenPercentualIcmsSubstituicao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItenIVA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IbptAliquotaFederal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IbptAliquotaEstadual = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IbptAliquotaMunicipal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cfop = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelValores = new System.Windows.Forms.Panel();
             this.txtLancarValor = new System.Windows.Forms.TextBox();
             this.txtTotal = new System.Windows.Forms.TextBox();
@@ -72,27 +62,9 @@
             this.panelTopo = new System.Windows.Forms.Panel();
             this.lblCliente = new System.Windows.Forms.Label();
             this.lblOperador = new System.Windows.Forms.Label();
-            this.IcmsCst = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IcmsValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelGrid = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.grid = new System.Windows.Forms.DataGridView();
-            this.numeroItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProdutosId_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValorUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PisCst = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PisPercentual = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PisPercentualBC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PisValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CofinsCst = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CofinsPercentual = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CofinsPercentualBC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CofinsValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IcmsPercentual = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IcmsPercentualBC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelRodape = new System.Windows.Forms.Panel();
             this.btnFinalizarVenda = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
@@ -101,6 +73,17 @@
             this.btnCancelarVenda = new System.Windows.Forms.Button();
             this.btnExcluirItem = new System.Windows.Forms.Button();
             this.panelPrincipal = new System.Windows.Forms.Panel();
+            this.ClienteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NumeroDaVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoDeVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numeroItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosId_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValorUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PisValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CofinsCst = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelValores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogotipo)).BeginInit();
             this.panelDescricaoProduto.SuspendLayout();
@@ -121,76 +104,6 @@
             this.lblTerminal.Size = new System.Drawing.Size(79, 18);
             this.lblTerminal.TabIndex = 1;
             this.lblTerminal.Text = "Terminal:";
-            // 
-            // IpiPercentualBC
-            // 
-            this.IpiPercentualBC.HeaderText = "IpiPercentualBC";
-            this.IpiPercentualBC.Name = "IpiPercentualBC";
-            this.IpiPercentualBC.ReadOnly = true;
-            this.IpiPercentualBC.Visible = false;
-            // 
-            // IpiCst
-            // 
-            this.IpiCst.HeaderText = "IpiCst";
-            this.IpiCst.Name = "IpiCst";
-            this.IpiCst.ReadOnly = true;
-            this.IpiCst.Visible = false;
-            // 
-            // ItenVlIcmsSubsTrib
-            // 
-            this.ItenVlIcmsSubsTrib.HeaderText = "ItenVlIcmsSubsTrib";
-            this.ItenVlIcmsSubsTrib.Name = "ItenVlIcmsSubsTrib";
-            this.ItenVlIcmsSubsTrib.ReadOnly = true;
-            this.ItenVlIcmsSubsTrib.Visible = false;
-            // 
-            // ItenBasCalcIcmsSubsTrib
-            // 
-            this.ItenBasCalcIcmsSubsTrib.HeaderText = "ItenBasCalcIcmsSubsTrib";
-            this.ItenBasCalcIcmsSubsTrib.Name = "ItenBasCalcIcmsSubsTrib";
-            this.ItenBasCalcIcmsSubsTrib.ReadOnly = true;
-            this.ItenBasCalcIcmsSubsTrib.Visible = false;
-            // 
-            // ItenPercentualIcmsSubstituicao
-            // 
-            this.ItenPercentualIcmsSubstituicao.HeaderText = "ItenPercentualIcmsSubstituicao";
-            this.ItenPercentualIcmsSubstituicao.Name = "ItenPercentualIcmsSubstituicao";
-            this.ItenPercentualIcmsSubstituicao.ReadOnly = true;
-            this.ItenPercentualIcmsSubstituicao.Visible = false;
-            // 
-            // ItenIVA
-            // 
-            this.ItenIVA.HeaderText = "ItenIVA";
-            this.ItenIVA.Name = "ItenIVA";
-            this.ItenIVA.ReadOnly = true;
-            this.ItenIVA.Visible = false;
-            // 
-            // IbptAliquotaFederal
-            // 
-            this.IbptAliquotaFederal.HeaderText = "IbptAliquotaFederal";
-            this.IbptAliquotaFederal.Name = "IbptAliquotaFederal";
-            this.IbptAliquotaFederal.ReadOnly = true;
-            this.IbptAliquotaFederal.Visible = false;
-            // 
-            // IbptAliquotaEstadual
-            // 
-            this.IbptAliquotaEstadual.HeaderText = "IbptAliquotaEstadual";
-            this.IbptAliquotaEstadual.Name = "IbptAliquotaEstadual";
-            this.IbptAliquotaEstadual.ReadOnly = true;
-            this.IbptAliquotaEstadual.Visible = false;
-            // 
-            // IbptAliquotaMunicipal
-            // 
-            this.IbptAliquotaMunicipal.HeaderText = "IbptAliquotaMunicipal";
-            this.IbptAliquotaMunicipal.Name = "IbptAliquotaMunicipal";
-            this.IbptAliquotaMunicipal.ReadOnly = true;
-            this.IbptAliquotaMunicipal.Visible = false;
-            // 
-            // Cfop
-            // 
-            this.Cfop.HeaderText = "Cfop";
-            this.Cfop.Name = "Cfop";
-            this.Cfop.ReadOnly = true;
-            this.Cfop.Visible = false;
             // 
             // panelValores
             // 
@@ -439,24 +352,10 @@
             this.lblOperador.TabIndex = 0;
             this.lblOperador.Text = "Operador:";
             // 
-            // IcmsCst
-            // 
-            this.IcmsCst.HeaderText = "IcmsCst";
-            this.IcmsCst.Name = "IcmsCst";
-            this.IcmsCst.ReadOnly = true;
-            this.IcmsCst.Visible = false;
-            // 
-            // IcmsValor
-            // 
-            this.IcmsValor.HeaderText = "IcmsValor";
-            this.IcmsValor.Name = "IcmsValor";
-            this.IcmsValor.ReadOnly = true;
-            this.IcmsValor.Visible = false;
-            // 
             // panelGrid
             // 
-            this.panelGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelGrid.BackColor = System.Drawing.Color.White;
             this.panelGrid.Controls.Add(this.label2);
             this.panelGrid.Controls.Add(this.grid);
@@ -467,8 +366,8 @@
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.BackColor = System.Drawing.Color.Green;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Font = new System.Drawing.Font("Tahoma", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -489,8 +388,8 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.grid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.grid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grid.BackgroundColor = System.Drawing.SystemColors.Info;
             this.grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.grid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -504,34 +403,17 @@
             this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ClienteId,
+            this.NumeroDaVenda,
+            this.TipoDeVenda,
             this.numeroItem,
             this.ProdutosId_,
             this.Descricao,
             this.Quantidade,
             this.ValorUnitario,
             this.ValorTotal,
-            this.PisCst,
-            this.PisPercentual,
-            this.PisPercentualBC,
             this.PisValor,
-            this.CofinsCst,
-            this.CofinsPercentual,
-            this.CofinsPercentualBC,
-            this.CofinsValor,
-            this.IcmsPercentual,
-            this.IcmsPercentualBC,
-            this.IcmsValor,
-            this.IcmsCst,
-            this.IpiPercentualBC,
-            this.IpiCst,
-            this.ItenVlIcmsSubsTrib,
-            this.ItenBasCalcIcmsSubsTrib,
-            this.ItenPercentualIcmsSubstituicao,
-            this.ItenIVA,
-            this.IbptAliquotaFederal,
-            this.IbptAliquotaEstadual,
-            this.IbptAliquotaMunicipal,
-            this.Cfop});
+            this.CofinsCst});
             this.grid.EnableHeadersVisualStyles = false;
             this.grid.GridColor = System.Drawing.SystemColors.Info;
             this.grid.Location = new System.Drawing.Point(8, 56);
@@ -556,134 +438,6 @@
             this.grid.Size = new System.Drawing.Size(638, 505);
             this.grid.TabIndex = 199;
             this.grid.TabStop = false;
-            // 
-            // numeroItem
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Info;
-            this.numeroItem.DefaultCellStyle = dataGridViewCellStyle3;
-            this.numeroItem.HeaderText = "N°Item";
-            this.numeroItem.Name = "numeroItem";
-            this.numeroItem.ReadOnly = true;
-            this.numeroItem.Width = 60;
-            // 
-            // ProdutosId_
-            // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Info;
-            this.ProdutosId_.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ProdutosId_.HeaderText = "Código";
-            this.ProdutosId_.Name = "ProdutosId_";
-            this.ProdutosId_.ReadOnly = true;
-            this.ProdutosId_.Width = 90;
-            // 
-            // Descricao
-            // 
-            this.Descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Info;
-            this.Descricao.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Descricao.HeaderText = "Descrição";
-            this.Descricao.Name = "Descricao";
-            this.Descricao.ReadOnly = true;
-            // 
-            // Quantidade
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Info;
-            this.Quantidade.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Quantidade.HeaderText = "Qtd.";
-            this.Quantidade.Name = "Quantidade";
-            this.Quantidade.ReadOnly = true;
-            this.Quantidade.Width = 60;
-            // 
-            // ValorUnitario
-            // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Info;
-            this.ValorUnitario.DefaultCellStyle = dataGridViewCellStyle7;
-            this.ValorUnitario.HeaderText = "Unitário";
-            this.ValorUnitario.Name = "ValorUnitario";
-            this.ValorUnitario.ReadOnly = true;
-            this.ValorUnitario.Width = 80;
-            // 
-            // ValorTotal
-            // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Info;
-            this.ValorTotal.DefaultCellStyle = dataGridViewCellStyle8;
-            this.ValorTotal.HeaderText = "Subtotal";
-            this.ValorTotal.Name = "ValorTotal";
-            this.ValorTotal.ReadOnly = true;
-            this.ValorTotal.Width = 80;
-            // 
-            // PisCst
-            // 
-            this.PisCst.HeaderText = "PisCst";
-            this.PisCst.Name = "PisCst";
-            this.PisCst.ReadOnly = true;
-            this.PisCst.Visible = false;
-            // 
-            // PisPercentual
-            // 
-            this.PisPercentual.HeaderText = "PisPercentual";
-            this.PisPercentual.Name = "PisPercentual";
-            this.PisPercentual.ReadOnly = true;
-            this.PisPercentual.Visible = false;
-            // 
-            // PisPercentualBC
-            // 
-            this.PisPercentualBC.HeaderText = "PisPercentualBC";
-            this.PisPercentualBC.Name = "PisPercentualBC";
-            this.PisPercentualBC.ReadOnly = true;
-            this.PisPercentualBC.Visible = false;
-            // 
-            // PisValor
-            // 
-            this.PisValor.HeaderText = "PisValor";
-            this.PisValor.Name = "PisValor";
-            this.PisValor.ReadOnly = true;
-            this.PisValor.Visible = false;
-            // 
-            // CofinsCst
-            // 
-            this.CofinsCst.HeaderText = "CofinsCst";
-            this.CofinsCst.Name = "CofinsCst";
-            this.CofinsCst.ReadOnly = true;
-            this.CofinsCst.Visible = false;
-            // 
-            // CofinsPercentual
-            // 
-            this.CofinsPercentual.HeaderText = "CofinsPercentual";
-            this.CofinsPercentual.Name = "CofinsPercentual";
-            this.CofinsPercentual.ReadOnly = true;
-            this.CofinsPercentual.Visible = false;
-            // 
-            // CofinsPercentualBC
-            // 
-            this.CofinsPercentualBC.HeaderText = "CofinsPercentualBC";
-            this.CofinsPercentualBC.Name = "CofinsPercentualBC";
-            this.CofinsPercentualBC.ReadOnly = true;
-            this.CofinsPercentualBC.Visible = false;
-            // 
-            // CofinsValor
-            // 
-            this.CofinsValor.HeaderText = "CofinsValor";
-            this.CofinsValor.Name = "CofinsValor";
-            this.CofinsValor.ReadOnly = true;
-            this.CofinsValor.Visible = false;
-            // 
-            // IcmsPercentual
-            // 
-            this.IcmsPercentual.HeaderText = "IcmsPercentual";
-            this.IcmsPercentual.Name = "IcmsPercentual";
-            this.IcmsPercentual.ReadOnly = true;
-            this.IcmsPercentual.Visible = false;
-            // 
-            // IcmsPercentualBC
-            // 
-            this.IcmsPercentualBC.HeaderText = "IcmsPercentualBC";
-            this.IcmsPercentualBC.Name = "IcmsPercentualBC";
-            this.IcmsPercentualBC.ReadOnly = true;
-            this.IcmsPercentualBC.Visible = false;
             // 
             // panelRodape
             // 
@@ -784,7 +538,100 @@
             this.panelPrincipal.Size = new System.Drawing.Size(1173, 661);
             this.panelPrincipal.TabIndex = 43;
             // 
-            // FrmPDV
+            // ClienteId
+            // 
+            this.ClienteId.HeaderText = "ClienteId";
+            this.ClienteId.Name = "ClienteId";
+            this.ClienteId.ReadOnly = true;
+            this.ClienteId.Visible = false;
+            // 
+            // NumeroDaVenda
+            // 
+            this.NumeroDaVenda.HeaderText = "NumeroDaVenda";
+            this.NumeroDaVenda.Name = "NumeroDaVenda";
+            this.NumeroDaVenda.ReadOnly = true;
+            this.NumeroDaVenda.Visible = false;
+            // 
+            // TipoDeVenda
+            // 
+            this.TipoDeVenda.HeaderText = "TipoDeVenda";
+            this.TipoDeVenda.Name = "TipoDeVenda";
+            this.TipoDeVenda.ReadOnly = true;
+            this.TipoDeVenda.Visible = false;
+            // 
+            // numeroItem
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Info;
+            this.numeroItem.DefaultCellStyle = dataGridViewCellStyle3;
+            this.numeroItem.HeaderText = "N°Item";
+            this.numeroItem.Name = "numeroItem";
+            this.numeroItem.ReadOnly = true;
+            this.numeroItem.Width = 60;
+            // 
+            // ProdutosId_
+            // 
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Info;
+            this.ProdutosId_.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ProdutosId_.HeaderText = "Código";
+            this.ProdutosId_.Name = "ProdutosId_";
+            this.ProdutosId_.ReadOnly = true;
+            this.ProdutosId_.Width = 90;
+            // 
+            // Descricao
+            // 
+            this.Descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Info;
+            this.Descricao.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Descricao.HeaderText = "Descrição";
+            this.Descricao.Name = "Descricao";
+            this.Descricao.ReadOnly = true;
+            // 
+            // Quantidade
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Info;
+            this.Quantidade.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Quantidade.HeaderText = "Qtd.";
+            this.Quantidade.Name = "Quantidade";
+            this.Quantidade.ReadOnly = true;
+            this.Quantidade.Width = 60;
+            // 
+            // ValorUnitario
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Info;
+            this.ValorUnitario.DefaultCellStyle = dataGridViewCellStyle7;
+            this.ValorUnitario.HeaderText = "Unitário";
+            this.ValorUnitario.Name = "ValorUnitario";
+            this.ValorUnitario.ReadOnly = true;
+            this.ValorUnitario.Width = 80;
+            // 
+            // ValorTotal
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Info;
+            this.ValorTotal.DefaultCellStyle = dataGridViewCellStyle8;
+            this.ValorTotal.HeaderText = "Subtotal";
+            this.ValorTotal.Name = "ValorTotal";
+            this.ValorTotal.ReadOnly = true;
+            this.ValorTotal.Width = 80;
+            // 
+            // PisValor
+            // 
+            this.PisValor.HeaderText = "PisValor";
+            this.PisValor.Name = "PisValor";
+            this.PisValor.ReadOnly = true;
+            this.PisValor.Visible = false;
+            // 
+            // CofinsCst
+            // 
+            this.CofinsCst.HeaderText = "CofinsCst";
+            this.CofinsCst.Name = "CofinsCst";
+            this.CofinsCst.ReadOnly = true;
+            this.CofinsCst.Visible = false;
+            // 
+            // FrmFrenteDeCaixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -793,7 +640,7 @@
             this.Controls.Add(this.panelPrincipal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "FrmPDV";
+            this.Name = "FrmFrenteDeCaixa";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmPDV_FormClosed);
             this.Load += new System.EventHandler(this.FrmPDV_Load);
@@ -815,16 +662,6 @@
         #endregion
 
         private System.Windows.Forms.Label lblTerminal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IpiPercentualBC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IpiCst;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItenVlIcmsSubsTrib;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItenBasCalcIcmsSubsTrib;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItenPercentualIcmsSubstituicao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItenIVA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IbptAliquotaFederal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IbptAliquotaEstadual;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IbptAliquotaMunicipal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cfop;
         private System.Windows.Forms.Panel panelValores;
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label lblLancarValor;
@@ -839,27 +676,9 @@
         private System.Windows.Forms.Label lblDescricaoProduto;
         private System.Windows.Forms.Panel panelTopo;
         private System.Windows.Forms.Label lblOperador;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IcmsCst;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IcmsValor;
         private System.Windows.Forms.Panel panelGrid;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView grid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numeroItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProdutosId_;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ValorUnitario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ValorTotal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PisCst;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PisPercentual;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PisPercentualBC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PisValor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CofinsCst;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CofinsPercentual;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CofinsPercentualBC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CofinsValor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IcmsPercentual;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IcmsPercentualBC;
         private System.Windows.Forms.Panel panelRodape;
         private System.Windows.Forms.Button btnFinalizarVenda;
         private System.Windows.Forms.Button btnClientes;
@@ -876,5 +695,16 @@
         private System.Windows.Forms.Label lblTroco;
         private System.Windows.Forms.Label lblCliente;
         private System.Windows.Forms.TextBox InputNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClienteId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NumeroDaVenda;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipoDeVenda;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numeroItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProdutosId_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ValorUnitario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ValorTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PisValor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CofinsCst;
     }
 }

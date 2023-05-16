@@ -1,41 +1,34 @@
-﻿using CasaMendes.Classes;
-using CasaMendes.Classes.Geral;
-using CasaMendes.Classes.Estatica;
+﻿using CasaMendes.Classes.Estatica;
 using System;
-using System.Globalization;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
-namespace CasaMendes.Formularios
+namespace CasaMendes
 {
-    public partial class FrmPDV : Form
+    public partial class FrmFrenteDeCaixa : Form
     {
 
         #region Veriáveis
 
-        bool Buscando = false;
-        readonly string Funcionario = "José Mendes";//25
-        int count = 1;
+        private bool Buscando = false;
+        private readonly string Funcionario = "José Mendes";//25
+        private int count = 1;
+        private PreVenda oPreVenda;
+        private ClsPromocao Opromocao;
 
         #endregion
 
-        public FrmPDV()
+        public FrmFrenteDeCaixa()
         {
             InitializeComponent();
-            
+
             this.grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellClick);
             this.grid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grid_KeyDown);
             this.grid.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.grid_RowsRemoved);
-            
+
             Opromocao = new ClsPromocao();
 
         }
-
-        #region Instâncias
-
-        public static Cl_FrenteDeCaixa FrenteDeCaixa = new Cl_FrenteDeCaixa();
-        public ClsPromocao Opromocao;
-
-        #endregion
 
         #region Vendas
 
@@ -46,7 +39,6 @@ namespace CasaMendes.Formularios
                                    MessageBoxButtons.YesNo,
                                    MessageBoxIcon.Question));
             return (resposta == DialogResult.Yes ? true : false);
-
         }
 
         private void Limpar()
@@ -57,33 +49,71 @@ namespace CasaMendes.Formularios
             txtSubtotal.Text = "0,00";
             txtTotal.Text = "0,00";
             txtLancarValor.Text = "0,00";
+
             count = 1;
+
             lblStatusCaixa.Text = "CAIXA DISPONÍVEL";
             lblDescricaoProduto.Text = "CAIXA LIVRE";
-            FrenteDeCaixa.TipoDeVenda = "A VISTA";
-            lblCliente.Text = "Cliente: " + FrenteDeCaixa.TipoDeVenda;
+
+            oPreVenda.ClienteId = 0;
+            oPreVenda.Produto = string.Empty;
+            oPreVenda.Quantidade = 0;
+            oPreVenda.PrecoDeVenda = 0;
+            oPreVenda.NumeroDaVenda = 0;
+            oPreVenda.TipoDeVenda = "A VISTA";// pendura, pg, debito, crédito e pix.
+            oPreVenda.Valor = 0;
+            oPreVenda.Dinheiro = 0;
+            oPreVenda.Troco = 0;
+            oPreVenda.Parcela = 0;
+
+            lblCliente.Text = "Cliente: " + oPreVenda.TipoDeVenda;
+
             grid.Rows.Clear();
             lblOperador.Text = "Operador: " + this.Funcionario;
             lblTerminal.Text = "Terminal: " + 1;
+
+            //string[] row = { "", "", "", "", "", "", "", "", "" };
+            //this.grid.Rows.Add(row);
+
         }
 
-        private void BuscarProduto(string Filtro)
+        private void BuscarProduto()
         {
             try
             {
 
-                FrenteDeCaixa.Quantidade = decimal.Parse(this.txtQuantidade.Text);
-                FrenteDeCaixa.BuscarExibirItem(Filtro);
-                if (FrenteDeCaixa.Nome != "" && FrenteDeCaixa.Nome != null)
+                if (txtCodigo.Text.Length < 8) return;
+                if (oPreVenda.NumeroDaVenda == 0) { GerarNumero(); }
+                //Quantidade = decimal.Parse(this.txtQuantidade.Text);
+
+                var oEstoque = new Estoque();
+                var oProduto = new tProduto();
+
+                List<Estoque> ResEstoque = new List<Estoque>();
+                List<tProduto> ResProduto = new List<tProduto>();
+
+                oEstoque.CodigoDeBarras = txtCodigo.Text;
+
+                ResEstoque = oEstoque.Busca();
+                oProduto.idProduto = ResEstoque[0].ProdutoId;
+
+                ResProduto = oProduto.Busca();
+
+                ResEstoque[0].Produto = ResProduto[0].Nome;
+
+                oProduto = null;
+                ResProduto = null;
+
+                if (ResEstoque[0].Produto != "" && ResEstoque[0].Produto != null)
                 {
-                    string[] row = { count.ToString("G"), Filtro, FrenteDeCaixa.Nome, this.txtQuantidade.Text, FrenteDeCaixa.Valor.ToString("C2"), FrenteDeCaixa.SubTotal.ToString("C2") };
+                    string[] row = { oPreVenda.ClienteId.ToString(), oPreVenda.NumeroDaVenda.ToString(), oPreVenda.TipoDeVenda.ToString(), count.ToString("G"), ResEstoque[0].CodigoDeBarras, ResEstoque[0].Produto, this.txtQuantidade.Text, ResEstoque[0].PrecoDeVenda.ToString("N2"), (int.Parse(txtQuantidade.Text) * ResEstoque[0].PrecoDeVenda).ToString("N2") };
                     this.grid.Rows.Add(row);
 
-                    this.txtUnitario.Text = FrenteDeCaixa.Valor.ToString("C2");
-                    this.txtSubtotal.Text = FrenteDeCaixa.SubTotal.ToString("C2");
-                    this.lblDescricaoProduto.Text = FrenteDeCaixa.Produto.ToString();
+                    this.txtUnitario.Text = decimal.Parse(ResEstoque[0].PrecoDeVenda.ToString()).ToString();
+                    this.txtSubtotal.Text = (int.Parse(txtQuantidade.Text) * ResEstoque[0].PrecoDeVenda).ToString("C2");
+                    this.lblDescricaoProduto.Text = ResEstoque[0].Produto.ToString();
 
-                    if (this.grid.Rows.Count > 0) { this.txtTotal.Text = clsGlobal.Calcular(grid, 5).ToString("C2"); }
+                    if (this.grid.Rows.Count > 0) { this.txtTotal.Text = clsGlobal.Calcular(grid, 8).ToString("C2"); }
                     if (int.Parse(this.txtQuantidade.Text) > 1) { this.txtQuantidade.Text = "1"; }
                     this.Buscando = false;
 
@@ -96,15 +126,10 @@ namespace CasaMendes.Formularios
                     this.txtCodigo.Focus();
                     this.txtCodigo.SelectAll();
                 }
-                if (Filtro.Length < 14)
-                {
-                    this.txtCodigo.Focus();
-                }
-                else
-                {
-                    this.txtCodigo.Focus();
-                    this.txtCodigo.SelectAll();
-                }
+
+                oEstoque = null;
+                ResEstoque = null;
+
             }
             catch
             {
@@ -114,30 +139,30 @@ namespace CasaMendes.Formularios
         private decimal ProcessarDescontos(decimal CodigoDeBarras, Int32 i)
         {
             decimal descontar = 0;
-                            //verifica se o código de barras existe na lista e promoção
-                            if ((Opromocao.Dicionario_de_Promocao.ContainsKey(CodigoDeBarras.ToString().Trim())))
-                            {
-                                //le a quantidade e produto na grade cupom
-                                decimal quantidade = Opromocao.De_String_Para_decimal(grid.Rows[i].Cells[3].Value.ToString().Trim());
+            //verifica se o código de barras existe na lista e promoção
+            if ((Opromocao.Dicionario_de_Promocao.ContainsKey(CodigoDeBarras.ToString().Trim())))
+            {
+                //le a quantidade e produto na grade cupom
+                decimal quantidade = Opromocao.De_String_Para_decimal(grid.Rows[i].Cells[3].Value.ToString().Trim());
 
-                                //converte para decimal a porcentagem de desconto o dicionário promoção
-                                decimal quantidade_desconto = Opromocao.De_String_Para_decimal(Opromocao.Dicionario_de_Promocao[CodigoDeBarras.ToString().Trim()].QuantidadeMinimaParaDesconto.ToString());
+                //converte para decimal a porcentagem de desconto o dicionário promoção
+                decimal quantidade_desconto = Opromocao.De_String_Para_decimal(Opromocao.Dicionario_de_Promocao[CodigoDeBarras.ToString().Trim()].QuantidadeMinimaParaDesconto.ToString());
 
-                                //le a quantidade de itens vendidos na grade cupom
-                                decimal valor_desconto = Opromocao.De_String_Para_decimal(Opromocao.Dicionario_de_Promocao[CodigoDeBarras.ToString()].ValorDesconto.ToString());
-                                
-                                if (quantidade >= quantidade_desconto)
-                                {
-                                    descontar = (valor_desconto / quantidade_desconto) * quantidade;
-                                }
-                                else 
-                                {
-                                   descontar = 0;
-                                }
+                //le a quantidade de itens vendidos na grade cupom
+                decimal valor_desconto = Opromocao.De_String_Para_decimal(Opromocao.Dicionario_de_Promocao[CodigoDeBarras.ToString()].ValorDesconto.ToString());
 
-                            }
+                if (quantidade >= quantidade_desconto)
+                {
+                    descontar = (valor_desconto / quantidade_desconto) * quantidade;
+                }
+                else
+                {
+                    descontar = 0;
+                }
 
-                            return descontar;
+            }
+
+            return descontar;
         }
 
         private void FinalizarVenda()
@@ -151,87 +176,86 @@ namespace CasaMendes.Formularios
                 {
 
 
-                    if (FrenteDeCaixa.TipoDeVenda.Substring(0, 6) != "ANOTAR")
+                    if (oPreVenda.TipoDeVenda != "PENDURA")
                     {
-
-                        decimal totalAtual = Opromocao.De_String_Para_decimal(this.txtTotal.Text.Replace("R$ ", "").ToString());
-                        decimal novoTotal = 0;
-
-                        for (int i = 0; i <= counte - 1; i++)
-                        {
-                            //le o códido de barras na grade cupom
-                            decimal CodigoDeBarras = Convert.ToDecimal(grid.Rows[i].Cells[1].Value.ToString());
-                            novoTotal = totalAtual - ProcessarDescontos(CodigoDeBarras, i);
-                            totalAtual = novoTotal;
-                        }
-
-                        frmFinlizarVendas finlizarVenda = new frmFinlizarVendas();
-
-                        if (novoTotal > 0)
-                            finlizarVenda.txtTotalGeral.Text = novoTotal.ToString("C2");
-                        else
-                            finlizarVenda.txtTotalGeral.Text = totalAtual.ToString("C2");
-
-                        finlizarVenda.ShowDialog();
-                        FrenteDeCaixa.Dinheiro = Convert.ToDecimal(finlizarVenda.txtDinheiro.Text.Replace("R$ ", ""));
-                        FrenteDeCaixa.Troco = Convert.ToDecimal(finlizarVenda.txtTroco.Text.Replace("R$ ", ""));
-
-                        if (finlizarVenda.CancelarVenda != string.Empty)
+                        oPreVenda.Valor = decimal.Parse(this.txtTotal.Text.Replace("R$ ", "").ToString()); // Opromocao.De_String_Para_decimal(this.txtTotal.Text.Replace("R$ ", "").ToString());
+                        frmFinlizarVendas oFinlizarVenda = new frmFinlizarVendas();
+                        oFinlizarVenda.txtTotalGeral.Text = oPreVenda.Valor.ToString("N2");
+                        oFinlizarVenda.ShowDialog();
+                        oPreVenda.Dinheiro = Convert.ToDecimal(oFinlizarVenda.txtDinheiro.Text.Replace("R$ ", ""));
+                        oPreVenda.Troco = Convert.ToDecimal(oFinlizarVenda.txtTroco.Text.Replace("R$ ", ""));
+                        if (oFinlizarVenda.CancelarVenda != string.Empty)
                         {
                             this.txtCodigo.Focus();
                             this.txtCodigo.SelectAll();
-                            finlizarVenda.Dispose();
+                            oFinlizarVenda.Dispose();
                             return;
                         }
                         else
                         {
-                            finlizarVenda.Dispose();
+                            oFinlizarVenda.Dispose();
                         }
 
                     }
 
                     for (int i = 0; i <= counte - 1; i++)
                     {
-                        FrenteDeCaixa.CodigoDeBarras = Convert.ToDecimal(grid.Rows[i].Cells[1].Value.ToString());
-                        FrenteDeCaixa.Nome = Convert.ToString(grid.Rows[i].Cells[2].Value);
-                        FrenteDeCaixa.Quantidade = Convert.ToDecimal(grid.Rows[i].Cells[3].Value.ToString().Trim());
-                        FrenteDeCaixa.Valor = Convert.ToDecimal(grid.Rows[i].Cells[4].Value.ToString().Replace("R$ ", ""));
-                        FrenteDeCaixa.DescontoAplicado = ProcessarDescontos(FrenteDeCaixa.CodigoDeBarras, i);
-                        FrenteDeCaixa.Gravar(Enumeradores.eAcao.Cadastrar);
+                        oPreVenda.ClienteId = int.Parse(grid.Rows[i].Cells[0].Value.ToString());
+                        oPreVenda.NumeroDaVenda = int.Parse(grid.Rows[i].Cells[1].Value.ToString());
+                        oPreVenda.TipoDeVenda = grid.Rows[i].Cells[2].Value.ToString();
+                        oPreVenda.Produto = grid.Rows[i].Cells[5].Value.ToString();
+                        oPreVenda.Quantidade = int.Parse(grid.Rows[i].Cells[6].Value.ToString().Trim());
+                        oPreVenda.PrecoDeVenda = decimal.Parse(grid.Rows[i].Cells[7].Value.ToString().Replace("R$ ", ""));
+                        oPreVenda.Valor = decimal.Parse(grid.Rows[i].Cells[8].Value.ToString().Replace("R$ ", ""));
+                        oPreVenda.Salvar();
                     }
                     Limpar();
                 }
+
+
             }
             catch// (Exception ex)
             {
-               // MessageBox.Show(ex.Message);
+                // MessageBox.Show(ex.Message);
             }
 
         }
 
         private void SelecionarCliente()
         {
-            FrmBuscarCliente fc = new FrmBuscarCliente
-            {
-                Tag = "CaixaAberto"
-            };
+            FrmBuscarCliente fc = new FrmBuscarCliente();
 
-            FrenteDeCaixa.CodigoDoCliente = -1;
             fc.ShowDialog();
 
-            if (FrenteDeCaixa.CodigoDoCliente != -1) lblCliente.Text = "Cliente: " + FrenteDeCaixa.Nome;
-
-            if (FrenteDeCaixa.CodigoDoCliente != -1)
+            if (fc.DialogResult.Equals(DialogResult.OK))
             {
-                //Int32 conte = Convert.ToInt32(grid.Rows.Count);
-                FrenteDeCaixa.TipoDeVenda = "ANOTAR";
-                //E_ANOTAR = ", ID: " + FrenteDeCaixa.CodigoDoCliente + "." + Environment.NewLine + "Cliente: " + FrenteDeCaixa.Nome.ToString();
-                //if (conte == 0) { GerarNumero(); return; }
+                oPreVenda.ClienteId = fc.ClienteId;
+                this.Text = fc.Cliente;
+                lblCliente.Text = "Cliente: " + fc.Cliente;
+                oPreVenda.TipoDeVenda = "PENDURA";
+                Int32 conte = Convert.ToInt32(grid.Rows.Count);
+                //E_ANOTAR = ", ID: " + IdCliente + "." + Environment.NewLine + "Cliente: " + Cliente;
+                if (conte == 0 || oPreVenda.NumeroDaVenda == 0) { GerarNumero(); return; }
+
+                for (int i = 0; i< grid.Rows.Count; i++)
+                {
+                    grid.Rows[i].Cells[0].Value = oPreVenda.ClienteId;
+                    grid.Rows[i].Cells[1].Value = oPreVenda.NumeroDaVenda;
+                    grid.Rows[i].Cells[2].Value = oPreVenda.TipoDeVenda;
+                }
+
             }
-            else { FrenteDeCaixa.TipoDeVenda = "A VISTA"; }
+            else { oPreVenda.TipoDeVenda = "A VISTA"; }
             fc.Dispose();
             this.txtCodigo.Focus();
             this.txtCodigo.SelectAll();
+        }
+
+        private void GerarNumero()
+        {
+            var rnd = new Random();
+            int Numero = int.Parse(string.Concat( DateTime.Now.Day, DateTime.Now.Month,+ DateTime.Now.Year, rnd.Next(0, 9)).ToString());
+            oPreVenda.NumeroDaVenda = Numero;
         }
 
         #endregion
@@ -257,7 +281,7 @@ namespace CasaMendes.Formularios
                         this.txtCodigo.Focus();
                         this.txtCodigo.SelectAll();
                         e.Handled = false;
-                       return;
+                        return;
                     }
                 }
                 else { this.Close(); }
@@ -308,15 +332,19 @@ namespace CasaMendes.Formularios
             }
             else if (e.KeyCode == Keys.F9)
             {
-                ////Abre o formulário para a pesquisa de produos.
-                //FrmEstoque ffc = new FrmEstoque
-                //{
-                //    Tag = 0
-                //};
-                //clsGlobal.TagForm = "";
-                //ffc.ShowDialog();
-                //this.BuscarProduto(ffc.cod);
-                //ffc.Dispose();
+                //Abre o formulário para a pesquisa de produos.
+                FrmEstoque ffc = new FrmEstoque();
+                ffc.ShowDialog();
+                if (ffc.DialogResult.Equals(DialogResult.OK))
+                {
+                    txtCodigo.Text = ffc.CodigoProduto;
+                }
+                else
+                {
+                    txtCodigo.Focus();
+                    txtCodigo.SelectAll();
+                }
+                ffc.Dispose();
             }
             else if (e.Control && e.KeyCode == Keys.Q)
             {
@@ -363,11 +391,11 @@ namespace CasaMendes.Formularios
 
         private void grid_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
-            if (this.grid.Rows.Count > 0)
-            {
-                this.txtTotal.Text = clsGlobal.Calcular(grid, 5).ToString("C2");
-            }
-            else { Limpar(); }
+            //if (this.grid.Rows.Count > 0)
+            //{
+            //    this.txtTotal.Text = clsGlobal.Calcular(grid, 5).ToString("C2");
+            //}
+            //else { Limpar(); }
 
             txtCodigo.Focus();
             txtCodigo.SelectAll();
@@ -402,7 +430,7 @@ namespace CasaMendes.Formularios
                     { this.txtCodigo.Focus(); return; }
                 }
 
-                this.BuscarProduto(this.txtCodigo.Text);
+                this.BuscarProduto();
             }
             catch
             {
@@ -412,9 +440,11 @@ namespace CasaMendes.Formularios
 
         private void FrmPDV_Load(object sender, EventArgs e)
         {
+            if(oPreVenda==null) oPreVenda = new PreVenda();
+            //oPreVenda.CriarTabela();
             Limpar();
 
-            if(Opromocao.Equals(null)) Opromocao = new ClsPromocao();
+            if (Opromocao.Equals(null)) Opromocao = new ClsPromocao();
             if (Opromocao.LeituraXML() == "o arquivo nao existe")
             {
                 FrmPromocao fp = new FrmPromocao();
@@ -427,7 +457,7 @@ namespace CasaMendes.Formularios
             txtCodigo.Select();
             txtCodigo.Focus();
         }
-        
+
         private void FrmPDV_FormClosed(object sender, FormClosedEventArgs e)
         {
             try
@@ -442,12 +472,10 @@ namespace CasaMendes.Formularios
         {
             if (grid.Rows.Count > 0)
             {
-                lblDescricaoProduto.Text = grid.Rows[grid.CurrentRow.Index].Cells["Descricao"].Value.ToString().ToUpper();
                 txtCodigo.Text = grid.Rows[grid.CurrentRow.Index].Cells["ProdutosId_"].Value.ToString();
-                txtQuantidade.Text = grid.Rows[grid.CurrentRow.Index].Cells["Quantidade"].Value.ToString();
-                txtUnitario.Text = grid.Rows[grid.CurrentRow.Index].Cells["ValorUnitario"].Value.ToString();
-                txtSubtotal.Text = grid.Rows[grid.CurrentRow.Index].Cells["ValorTotal"].Value.ToString();
-                txtTotal.Text = grid.Rows[grid.CurrentRow.Index].Cells["ValorTotal"].Value.ToString();
+                BuscarProduto();
+                txtCodigo.Select();
+                txtCodigo.Focus();
             }
         }
 
@@ -470,7 +498,7 @@ namespace CasaMendes.Formularios
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao cálcular o total do produto!\n\nDetalhe técnico:" + ex.Message, "Aviso do Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao cálcular o total do produto! Detalhe técnico:" + ex.Message, "Aviso do Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -478,8 +506,14 @@ namespace CasaMendes.Formularios
     }
 }
 
-
-/*
- * Referência
- * https://docs.microsoft.com/pt-br/dotnet/api/system.xml.xmldocument?view=net-5.0#Find
- */
+// PreVendaId
+// ClienteId
+// Produto
+// Quantidade
+// PrecoDeVenda
+// NumeroDaVenda
+// TipoDeVenda // pendura, pg, debito, crédito e pix.
+// Valor
+// Dinheiro
+// Troco
+// Parcela

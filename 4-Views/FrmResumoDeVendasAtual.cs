@@ -3,8 +3,9 @@ using CasaMendes.Classes.Geral;
 using CasaMendes.Classes.Estatica;
 using System;
 using System.Windows.Forms;
+using CasaMendes.Propriedades;
 
-namespace CasaMendes.Formularios
+namespace CasaMendes
 {
     public partial class FrmResumoDeVendasAtual : Form
     {
@@ -74,8 +75,10 @@ namespace CasaMendes.Formularios
         {
             try
             {
-                Cl_PreVenda.CarregarResumoDeVendasAtual(this.dgv, Inicio, Intervalo);
+               PreVenda oPreVenda = new PreVenda();
 
+                dgv.DataSource = oPreVenda.Todos();
+ 
 
                 if (this.dgv.Rows.Count > 0)
                 {

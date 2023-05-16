@@ -37,7 +37,7 @@ namespace CasaMendes.Formularios
 
         private void btnFuncionario_Click(object sender, EventArgs e)
         {
-            frmCadastrarFuncionario f = new frmCadastrarFuncionario();
+            FrmCadFuncionario f = new FrmCadFuncionario();
             f.ShowDialog();
             if (f != null) { f.Dispose(); }
         }
@@ -65,14 +65,14 @@ namespace CasaMendes.Formularios
 
         private void btnPdv_Click(object sender, EventArgs e)
         {
-            FrmPDV f = new FrmPDV();
+            FrmFrenteDeCaixa f = new FrmFrenteDeCaixa();
             f.ShowDialog();
             if (f != null) { f.Dispose(); }
         }
 
         private void btnEstoque_Click(object sender, EventArgs e)
         {
-            FrmEstoque2 f = new FrmEstoque2();
+            FrmEstoque f = new FrmEstoque();
 
             clsGlobal.TagForm = "FrmCasaMendes";
             f.ShowDialog();

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace CasaMendes
 {
@@ -35,5 +36,30 @@ namespace CasaMendes
             }
             return subCategoriia;
         }
+
+        bool disposed = false;
+        public void Dispose()
+        {
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
+
+        // Protected implementation of Dispose pattern.
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+
+            if (disposing)
+            {
+                this.Dispose();
+                // Free any other managed objects here.
+                //
+            }
+
+            disposed = true;
+        }
+
+
     }
 }

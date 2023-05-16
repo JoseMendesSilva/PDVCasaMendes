@@ -140,32 +140,35 @@
     <EmbeddedResource Include="4-Views\FrmProdutos.resx">
       <DependentUpon>FrmProdutos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\FrmBuscarCliente.resx">
+    <EmbeddedResource Include="4-Views\FrmBuscarCliente.resx">
       <DependentUpon>FrmBuscarCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="4-Views\FrmEstoque.resx">
       <DependentUpon>FrmEstoque.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmCarregaCodigoDeNota.resx">
+    <EmbeddedResource Include="4-Views\frmCarregaCodigoDeNota.resx">
       <DependentUpon>frmCarregaCodigoDeNota.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\FrmResumoDeVendasAtual.resx">
-      <DependentUpon>FrmResumoDeVendasAtual.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\FrmEstoque2.resx">
+    <EmbeddedResource Include="Formularios\FrmEstoque2.resx">
       <DependentUpon>FrmEstoque2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\frmCadastrarClientes.resx">
-      <DependentUpon>frmCadastrarClientes.cs</DependentUpon>
+    <EmbeddedResource Include="4-Views\FrmResumoDeVendasAtual.resx">
+      <DependentUpon>FrmResumoDeVendasAtual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4-Views\FrmEstoque0.resx">
+      <DependentUpon>FrmEstoque0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4-Views\FrmCadClientes.resx">
+      <DependentUpon>FrmCadClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmCadastrarProdutos.resx">
       <DependentUpon>frmCadastrarProdutos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\frmCadastrarFuncionario.resx">
-      <DependentUpon>frmCadastrarFuncionario.cs</DependentUpon>
+    <EmbeddedResource Include="4-Views\FrmCadFuncionario.resx">
+      <DependentUpon>FrmCadFuncionario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\frmCadastrarFornecedores.resx">
-      <DependentUpon>frmCadastrarFornecedores.cs</DependentUpon>
+    <EmbeddedResource Include="4-Views\FrmCadFornecedores.resx">
+      <DependentUpon>FrmCadFornecedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="4-Views\frmCarregarVenda.resx">
       <DependentUpon>frmCarregarVenda.cs</DependentUpon>
@@ -173,7 +176,7 @@
     <EmbeddedResource Include="4-Views\frmClientes.resx">
       <DependentUpon>frmClientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmFinlizarVendas.resx">
+    <EmbeddedResource Include="4-Views\frmFinlizarVendas.resx">
       <DependentUpon>frmFinlizarVendas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="4-Views\frmFornecedores.resx">
@@ -182,10 +185,10 @@
     <EmbeddedResource Include="Formularios\FrmCasaMendes.resx">
       <DependentUpon>FrmCasaMendes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmPDV.resx">
-      <DependentUpon>frmPDV.cs</DependentUpon>
+    <EmbeddedResource Include="4-Views\FrmFrenteDeCaixa.resx">
+      <DependentUpon>FrmFrenteDeCaixa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\FrmPromocao.resx">
+    <EmbeddedResource Include="4-Views\FrmPromocao.resx">
       <DependentUpon>FrmPromocao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MCM\Form1Prototipo.resx">
@@ -217,12 +220,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="2-Models\Categoria.cs" />
+    <Compile Include="2-Models\FrenteDeCaixa.cs" />
     <Compile Include="2-Models\Estoque.cs" />
     <Compile Include="2-Models\Promocao.cs" />
     <Compile Include="2-Models\Cliente.cs" />
     <Compile Include="2-Models\tFuncionario.cs" />
     <Compile Include="2-Models\Inadimplente.cs" />
-    <Compile Include="2-Models\FrenteDeCaixa.cs" />
     <Compile Include="2-Models\PreVenda.cs" />
     <Compile Include="2-Models\Fornecedor .cs" />
     <Compile Include="2-Models\SubCategoriia.cs" />
@@ -239,7 +242,6 @@
     <Compile Include="1-DataBase\DadosBase.cs" />
     <Compile Include="0-Interfaces\IDados.cs" />
     <Compile Include="2-Models\tProduto.cs" />
-    <Compile Include="3-Controlls\ProdutoController.cs" />
     <Compile Include="4-Views\FrmCadProduto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,10 +263,10 @@
     <Compile Include="Classes\Estatica\clsGlobal.cs" />
     <Compile Include="Classes\Estatica\clsMensagens.cs" />
     <Compile Include="Enumeradores\Enumeradores.cs" />
-    <Compile Include="Formularios\FrmBuscarCliente.cs">
+    <Compile Include="4-Views\FrmBuscarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\FrmBuscarCliente.Designer.cs">
+    <Compile Include="4-Views\FrmBuscarCliente.Designer.cs">
       <DependentUpon>FrmBuscarCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="4-Views\FrmEstoque.cs">
@@ -273,29 +275,35 @@
     <Compile Include="4-Views\FrmEstoque.Designer.cs">
       <DependentUpon>FrmEstoque.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmCarregaCodigoDeNota.cs">
+    <Compile Include="4-Views\frmCarregaCodigoDeNota.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmCarregaCodigoDeNota.Designer.cs">
+    <Compile Include="4-Views\frmCarregaCodigoDeNota.Designer.cs">
       <DependentUpon>frmCarregaCodigoDeNota.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\FrmResumoDeVendasAtual.cs">
+    <Compile Include="Formularios\FrmEstoque2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\FrmResumoDeVendasAtual.Designer.cs">
-      <DependentUpon>FrmResumoDeVendasAtual.cs</DependentUpon>
-    </Compile>
-    <Compile Include="4-Views\FrmEstoque2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="4-Views\FrmEstoque2.Designer.cs">
+    <Compile Include="Formularios\FrmEstoque2.Designer.cs">
       <DependentUpon>FrmEstoque2.cs</DependentUpon>
     </Compile>
-    <Compile Include="4-Views\frmCadastrarClientes.cs">
+    <Compile Include="4-Views\FrmResumoDeVendasAtual.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="4-Views\frmCadastrarClientes.Designer.cs">
-      <DependentUpon>frmCadastrarClientes.cs</DependentUpon>
+    <Compile Include="4-Views\FrmResumoDeVendasAtual.Designer.cs">
+      <DependentUpon>FrmResumoDeVendasAtual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="4-Views\FrmEstoque0.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4-Views\FrmEstoque0.Designer.cs">
+      <DependentUpon>FrmEstoque0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="4-Views\FrmCadClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4-Views\FrmCadClientes.Designer.cs">
+      <DependentUpon>FrmCadClientes.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmCadastrarProdutos.cs">
       <SubType>Form</SubType>
@@ -303,17 +311,17 @@
     <Compile Include="Formularios\frmCadastrarProdutos.Designer.cs">
       <DependentUpon>frmCadastrarProdutos.cs</DependentUpon>
     </Compile>
-    <Compile Include="4-Views\frmCadastrarFuncionario.cs">
+    <Compile Include="4-Views\FrmCadFuncionario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="4-Views\frmCadastrarFuncionario.Designer.cs">
-      <DependentUpon>frmCadastrarFuncionario.cs</DependentUpon>
+    <Compile Include="4-Views\FrmCadFuncionario.Designer.cs">
+      <DependentUpon>FrmCadFuncionario.cs</DependentUpon>
     </Compile>
-    <Compile Include="4-Views\frmCadastrarFornecedores.cs">
+    <Compile Include="4-Views\FrmCadFornecedores.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="4-Views\frmCadastrarFornecedores.Designer.cs">
-      <DependentUpon>frmCadastrarFornecedores.cs</DependentUpon>
+    <Compile Include="4-Views\FrmCadFornecedores.Designer.cs">
+      <DependentUpon>FrmCadFornecedores.cs</DependentUpon>
     </Compile>
     <Compile Include="4-Views\frmCarregarVenda.cs">
       <SubType>Form</SubType>
@@ -327,10 +335,10 @@
     <Compile Include="4-Views\frmClientes.Designer.cs">
       <DependentUpon>frmClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmFinlizarVendas.cs">
+    <Compile Include="4-Views\frmFinlizarVendas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmFinlizarVendas.Designer.cs">
+    <Compile Include="4-Views\frmFinlizarVendas.Designer.cs">
       <DependentUpon>frmFinlizarVendas.cs</DependentUpon>
     </Compile>
     <Compile Include="4-Views\frmFornecedores.cs">
@@ -345,16 +353,16 @@
     <Compile Include="Formularios\FrmCasaMendes.Designer.cs">
       <DependentUpon>FrmCasaMendes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmPDV.cs">
+    <Compile Include="4-Views\FrmFrenteDeCaixa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmPDV.Designer.cs">
-      <DependentUpon>frmPDV.cs</DependentUpon>
+    <Compile Include="4-Views\FrmFrenteDeCaixa.Designer.cs">
+      <DependentUpon>FrmFrenteDeCaixa.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\FrmPromocao.cs">
+    <Compile Include="4-Views\FrmPromocao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\FrmPromocao.Designer.cs">
+    <Compile Include="4-Views\FrmPromocao.Designer.cs">
       <DependentUpon>FrmPromocao.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />

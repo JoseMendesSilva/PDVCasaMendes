@@ -1,5 +1,5 @@
 ﻿
-namespace CasaMendes.Formularios
+namespace CasaMendes
 {
     partial class FrmResumoDeVendasAtual
     {

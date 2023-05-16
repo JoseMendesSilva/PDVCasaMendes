@@ -6,9 +6,9 @@ using System.Collections;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace CasaMendes
+namespace CasaMendes.c
 {
-    public partial class FrmEstoque2 : Form
+    public partial class FrmEstoque3 : Form
     {
         //ArrayList arr = new ArrayList();
         //frmCadastrarProdutos fc;
@@ -18,7 +18,7 @@ namespace CasaMendes
         #region Construtor
 
         public string cod;
-        public FrmEstoque2()
+        public FrmEstoque3()
         {
             InitializeComponent();
 

@@ -1,6 +1,6 @@
 ﻿namespace CasaMendes
 {
-    partial class frmCadastrarFuncionario
+    partial class FrmCadFuncionario
     {
         /// <summary>
         /// Required designer variable.

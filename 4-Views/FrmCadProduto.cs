@@ -13,7 +13,7 @@ namespace CasaMendes
     public partial class FrmCadProduto : Form
     {
         public BindingSource BsProduto;
-        private tProduto oProduto;
+        public tProduto oProduto;
 
 
         public FrmCadProduto()
@@ -57,7 +57,7 @@ namespace CasaMendes
         private void FrmCadProduto_Load(object sender, EventArgs e)
         {
             VincularBindingSource();
-
+            BsProduto.DataSource = oProduto;
             cbFornecedores.DisplayMember = "RazaoSocial";
             cbFornecedores.DataSource = new tFornecedore().Todos();
         }

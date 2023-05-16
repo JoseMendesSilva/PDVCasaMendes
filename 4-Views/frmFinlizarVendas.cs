@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace CasaMendes.Formularios
+namespace CasaMendes
 {
     public partial class frmFinlizarVendas : Form
     {
-        decimal Dinheiro;
-        decimal TotalGeral;
-        decimal troco;
+        decimal Dinheiro { get; set; }
+        decimal TotalGeral { get; set; }
+        decimal troco { get; set; }
 
-        public string CancelarVenda = "CancelarVenda";
+        public string CancelarVenda { get; set; } = "CancelarVenda";
+
         public frmFinlizarVendas()
         {
             InitializeComponent();
@@ -31,7 +32,7 @@ namespace CasaMendes.Formularios
                 else
                 {
                     this.troco = (Dinheiro - TotalGeral);
-                    txtTroco.Text = troco.ToString("C2");
+                    txtTroco.Text = troco.ToString("N2");
                 }
             }
             catch {; }
@@ -41,9 +42,15 @@ namespace CasaMendes.Formularios
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (Dinheiro < TotalGeral) { txtDinheiro.Focus(); txtDinheiro.SelectAll(); return; }
+                if (Dinheiro < TotalGeral) { 
+                    txtDinheiro.Focus(); 
+                    txtDinheiro.SelectAll(); 
+                    return;
+                }
+
                 CancelarVenda = string.Empty;
                 this.Close();
+
             }
             else if (e.KeyCode == Keys.Escape)
             {

@@ -19,7 +19,7 @@ namespace CasaMendes
         BindingSource BsCliente;
         bool editar;
         int LinhaIndex;
-        private frmCadastrarClientes cadastrarClientes;
+        private FrmCadClientes cadastrarClientes;
 
         #endregion
 
@@ -100,7 +100,7 @@ namespace CasaMendes
 
         private void Novo()
         {
-            cadastrarClientes = new frmCadastrarClientes();
+            cadastrarClientes = new FrmCadClientes();
             cadastrarClientes.ShowDialog();
             this.BsCliente.DataSource = cadastrarClientes.oCliente;
             this.oCliente = cadastrarClientes.oCliente;
@@ -115,7 +115,7 @@ namespace CasaMendes
             {
                 oCliente = (Cliente)dgv.Rows[LinhaIndex].DataBoundItem;
 
-                cadastrarClientes = new frmCadastrarClientes();
+                cadastrarClientes = new FrmCadClientes();
                 cadastrarClientes.oCliente = oCliente;
                 cadastrarClientes.ShowDialog();
                 cadastrarClientes.Dispose();

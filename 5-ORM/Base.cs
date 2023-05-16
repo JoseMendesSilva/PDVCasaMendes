@@ -268,29 +268,40 @@ namespace CasaMendes
                 OpcoesBase pOpcoesBase = (OpcoesBase)pi.GetCustomAttribute(typeof(OpcoesBase));
                 if (pOpcoesBase != null && pOpcoesBase.UsarNoBancoDeDados)
                 {
-                    string s;
+                    string value;
+                    decimal number;
                     switch (pi.PropertyType.Name)
                     {
                         case "Int32":
-                            s = reader[pi.Name].ToString();
-                            if (s == "") { continue; }
+                            value = reader[pi.Name].ToString();
+                            if (value == "") { continue; }
                             pi.SetValue(obj, int.Parse(reader[pi.Name].ToString()));
                             break;
                         case "bigint":
                             pi.SetValue(obj, Int64.Parse(reader[pi.Name].ToString()));
                             break;
                         case "Double":
-                            pi.SetValue(obj, int.Parse(reader[pi.Name].ToString()));
+                            value = reader[pi.Name].ToString(); 
+                            if (value == "") { continue; }
+                            if (Decimal.TryParse(value, out number))
+                                pi.SetValue(obj, number);
+                            else
+                                pi.SetValue(obj, value);
+
                             break;
                         case "Decimal":
-                            s = reader[pi.Name].ToString();
-                            if (s == "") { continue; }
-                            pi.SetValue(obj, decimal.Parse(s));
+                           value = string.Format(reader[pi.Name].ToString(),"N2").Replace(".",",");
+                           // public static bool TryParse (string s, out decimal result);
+                            if (value == "") { continue; }
+                            if (Decimal.TryParse(value, out number))
+                                pi.SetValue(obj, number);
+                            else
+                                pi.SetValue(obj, value);
                             break;
                         case "DateTime":
-                            s = reader[pi.Name].ToString();
-                            if (s == "") { continue; }
-                            pi.SetValue(obj, DateTime.Parse(s));
+                            value = reader[pi.Name].ToString();
+                            if (value == "") { continue; }
+                            pi.SetValue(obj, DateTime.Parse(value));
                             break;
                         case "tinyint":
                             pi.SetValue(obj, bool.Parse(reader[pi.Name].ToString()));
@@ -298,8 +309,8 @@ namespace CasaMendes
                         case "DBNull":
                               continue; 
                         default:
-                            s = reader[pi.Name].ToString();
-                            if (s == null || s == "" || pi.Name.ToString().Equals("deleted_at")) { 
+                            value = reader[pi.Name].ToString();
+                            if (value == null || value == "" || pi.Name.ToString().Equals("deleted_at")) { 
                                 break;
                             }
                             pi.SetValue(obj, reader[pi.Name].ToString());

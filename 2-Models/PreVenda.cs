@@ -1,49 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CasaMendes.Propriedades
+namespace CasaMendes
 {
     public class PreVenda : Base
     {
 
-        [OpcoesBase(UsarNoBancoDeDados = true, ChavePrimaria = true, UsarParaBuscar = true, AutoGenerantor = true)]
+        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true, ChavePrimaria = true)]
         public int PreVendaId { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
         public int ClienteId { get; set; }
 
-        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
-        public string CodigoDeBarras { get; set; }
-
-        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
-        public int NumeroDaVenda { get; set; }
+        [OpcoesBase(UsarNoBancoDeDados = true)]
+        public string Produto { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public int Quantidade { get; set; }
+
+        [OpcoesBase(UsarNoBancoDeDados = true)]
+        public decimal PrecoDeVenda { get; set; }
+
+        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
+        public int NumeroDaVenda { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
         public string TipoDeVenda { get; set; } // pendura, pg, debito, crédito e pix.
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public double Valor { get; set; }
+        public decimal Valor { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public double Dinheiro { get; set; }
+        public decimal Dinheiro { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public double Troco { get; set; }
+        public decimal Troco { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public double Parcela { get; set; }
+        public decimal Parcela { get; set; }
+
+        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
+        public DateTime created_at { get; set; } = DateTime.Parse(DateTime.Now.ToShortDateString());
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public DateTime created_at { get; set; } = DateTime.Now;
-
-        [OpcoesBase(UsarNoBancoDeDados = true)]
-        public DateTime updated_at { get; set; } = DateTime.Now;
-
-        [OpcoesBase(UsarNoBancoDeDados = true)]
-        public DateTime? deleted_at { get; set; } = null;
+        public DateTime updated_at { get; set; } = DateTime.Parse(DateTime.Now.ToShortDateString());
 
         public new List<PreVenda> Todos()
         {
@@ -64,6 +64,30 @@ namespace CasaMendes.Propriedades
             }
             return PreVenda;
         }
+
+        bool disposed = false;
+        public void Dispose()
+        {
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
+
+        // Protected implementation of Dispose pattern.
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+
+            if (disposing)
+            {
+                this.Dispose();
+                // Free any other managed objects here.
+                //
+            }
+
+            disposed = true;
+        }
+
 
     }
 }

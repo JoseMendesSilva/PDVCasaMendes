@@ -4,7 +4,7 @@ using System;
 using System.Collections;
 using System.Windows.Forms;
 
-namespace CasaMendes.Formularios
+namespace CasaMendes
 {
     public partial class FrmBuscarCliente : Form
     {
@@ -12,28 +12,12 @@ namespace CasaMendes.Formularios
         bool _Fechar = false;
         ArrayList arrCliente = null;
 
+        public int ClienteId { get; set; }
+        public string Cliente { get; set; }
+
         public FrmBuscarCliente()
         {
             InitializeComponent();
-
-            //===================================================================================================
-            //this.Paint += new System.Windows.Forms.PaintEventHandler(this.FrmClientes_Paint);
-
-            this.BtnAceitar.Width = 70;//;
-            this.BtnAceitar.Height = 53;//;
-
-            _Fechar = true;
-            this.Text = clsGlobal.MontarTitulo("Buscar cliente");
-
-            Classes.Cliente.CarregarClienteParaAnotar(this.dgv);
-            clsGlobal.SetUpDataGridView(dgv);
-
-            //=============================================================================================
-            RedimencionarGrade();
-            _Fechar = false;
-
-            //==============================================================
-            this.dgv.Focus();
 
         }
 
@@ -103,11 +87,11 @@ namespace CasaMendes.Formularios
         {
             if (e.KeyCode == Keys.Enter)
             {
-                BtnAceitar_Click(sender, null);
+                BtnAceitar.PerformClick();
             }
             else if (e.KeyCode == Keys.Escape)
             {
-                BtnCancelar_Click(sender, e);
+                BtnCancelar.PerformClick();
             }
         }
 
@@ -116,20 +100,22 @@ namespace CasaMendes.Formularios
             try
             {
                 if (_Fechar == true) { return; }
-                if (this.Tag != null)
-                {
-                    FrmPDV.FrenteDeCaixa.CodigoDoCliente = -1;  //
-                    FrmPDV.FrenteDeCaixa.Nome = null;  //
-                    FrmPDV.FrenteDeCaixa.CodigoDoCliente = Convert.ToDecimal(dgv.Rows[e.RowIndex].Cells[0].Value);  //
-                    FrmPDV.FrenteDeCaixa.Nome = Convert.ToString(dgv.Rows[e.RowIndex].Cells[1].Value);  //
-                    this.Text = "ID: " + FrmPDV.FrenteDeCaixa.CodigoDoCliente + " - Cliente: " + FrmPDV.FrenteDeCaixa.Nome;
-                }
-                else
-                {
-                    arrCliente = new ArrayList();
-                    arrCliente.Add(dgv.Rows[e.RowIndex].Cells[0].Value);  //[Codigo
-                    arrCliente.Add(dgv.Rows[e.RowIndex].Cells[1].Value);  //[Nome
-                }
+                //if (this.Tag != null)
+                //{
+                    ClienteId = 0;  //
+                    Cliente = null;  //
+                    ClienteId = int.Parse(dgv.Rows[e.RowIndex].Cells[0].Value.ToString());  //
+                    Cliente = dgv.Rows[e.RowIndex].Cells[1].Value.ToString();  //
+                    this.Text = "ID: " + ClienteId + " - Cliente: " + Cliente;
+                //}
+                //else
+                //{
+                //    arrCliente = new ArrayList
+                //    {
+                //        dgv.Rows[e.RowIndex].Cells[0].Value,  //[Codigo
+                //        dgv.Rows[e.RowIndex].Cells[1].Value  //[Nome
+                //    };
+                //}
 
             }
             catch { }
@@ -139,17 +125,44 @@ namespace CasaMendes.Formularios
         {
             try
             {
-                if (this.Tag.ToString() == "CaixaAberto")
+                if (DialogResult.Equals(DialogResult.Cancel))
                 {
                     _Fechar = true;
-                    FrmPDV.FrenteDeCaixa.CodigoDoCliente = -1;  //Codigo
-                    FrmPDV.FrenteDeCaixa.Nome = null;  //Nome
+                    ClienteId = 0;  //Codigo
+                    Cliente = null;  //Nome
                 }
                 this.Close();
-                GC.Collect(2, GCCollectionMode.Optimized);
+                //GC.Collect(2, GCCollectionMode.Optimized);
             }
             catch {; }
         }
 
+        private void FrmBuscarCliente_Load(object sender, EventArgs e)
+        {
+            try
+            {
+
+                this.Text = clsGlobal.MontarTitulo("Buscar cliente");
+
+                clsGlobal.SetUpDataGridView(dgv);
+
+                var oCliente = new Cliente();
+                this.dgv.DataSource = oCliente.Todos();
+                if (dgv.Rows.Count > 0)
+                {
+                    for(int i = 0; i < dgv.Rows.Count; i++)
+                    {
+                        dgv.Columns[i].Visible=false;
+                    }
+                    dgv.Columns["Nome"].Visible = true;
+                    dgv.Columns["Nome"].Width = dgv.Width - 22;
+                    this.dgv.Focus();
+                }else {
+                    MessageBox.Show("Nemhum cliente cadastrado.");                        
+                        }
+
+            }
+            catch { }
+        }
     }
 }

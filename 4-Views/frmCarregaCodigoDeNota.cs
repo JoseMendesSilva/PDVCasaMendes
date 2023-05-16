@@ -3,7 +3,7 @@ using System;
 using CasaMendes.Classes.Estatica;
 using System.Windows.Forms;
 
-namespace CasaMendes.Formularios
+namespace CasaMendes
 {
     public partial class frmCarregaCodigoDeNota : Form
     {

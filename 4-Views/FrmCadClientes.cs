@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace CasaMendes
 {
-    public partial class frmCadastrarClientes : Form
+    public partial class FrmCadClientes : Form
     {
 
         #region Variáveis
@@ -24,7 +24,7 @@ namespace CasaMendes
 
         #region Construtor
 
-        public frmCadastrarClientes()
+        public FrmCadClientes()
         {
             InitializeComponent();
             this.Text = clsGlobal.MontarTitulo("Cadastrar Cliente");

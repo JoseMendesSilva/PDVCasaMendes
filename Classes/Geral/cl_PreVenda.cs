@@ -33,11 +33,11 @@ namespace CasaMendes.Classes.Geral
                 string sSql = "";
                 if (_Filtro != "")
                 {
-                    sSql = "SELECT tPreVendas.CodigoDaVenda, tPreVendas.DataDaVenda as Data, tProdutos.Produto as Produtos, tPreVendas.Quantidade as Quant, tProdutos.PrecoDeVenda as Unitário, tPreVendas.Parcela, tProdutos.Desconto, (tPreVendas.Quantidade * tProdutos.PrecoDeVenda) AS SubTotal FROM tPreVendas INNER JOIN tProdutos ON tPreVendas.CodigoDeBarras = tProdutos.CodigoDeBarras WHERE TipoDeVenda =  'ANOTAR' AND CodigoDoCliente = " + _Filtro + " ORDER BY tPreVendas.CodigoDaVenda";
+                    sSql = "SELECT tPreVendas.CodigoDaVenda, tPreVendas.DataDaVenda as Data, tProdutos.Nome as Produtos, tPreVendas.Quantidade as Quant, tProdutos.PrecoDeVenda as Unitário, tPreVendas.Parcela, tProdutos.Desconto, (tPreVendas.Quantidade * tProdutos.PrecoDeVenda) AS SubTotal FROM tPreVendas INNER JOIN tProdutos ON tPreVendas.CodigoDeBarras = tProdutos.CodigoDeBarras WHERE TipoDeVenda =  'ANOTAR' AND CodigoDoCliente = " + _Filtro + " ORDER BY tPreVendas.CodigoDaVenda";
                 }
                 else
                 {
-                    sSql = "SELECT tPreVendas.CodigoDaVenda, tPreVendas.DataDaVenda as Data, tProdutos.Produto as Produtos, tPreVendas.Quantidade as Quant, tProdutos.PrecoDeVenda as Unitário, tPreVendas.Parcela, tProdutos.Desconto, (tPreVendas.Quantidade * tProdutos.PrecoDeVenda) AS SubTotal FROM tPreVendas INNER JOIN tProdutos ON tPreVendas.CodigoDeBarras = tProdutos.CodigoDeBarras WHERE TipoDeVenda = 'ANOTAR' ORDER BY tPreVendas.CodigoDaVenda";
+                    sSql = "SELECT tPreVendas.CodigoDaVenda, tPreVendas.DataDaVenda as Data, tProdutos.Nome as Produtos, tPreVendas.Quantidade as Quant, tProdutos.PrecoDeVenda as Unitário, tPreVendas.Parcela, tProdutos.Desconto, (tPreVendas.Quantidade * tProdutos.PrecoDeVenda) AS SubTotal FROM tPreVendas INNER JOIN tProdutos ON tPreVendas.CodigoDeBarras = tProdutos.CodigoDeBarras WHERE TipoDeVenda = 'ANOTAR' ORDER BY tPreVendas.CodigoDaVenda";
                 }
                 dgvVendas.DataSource = oDados.PegarDados(sSql, false);
                 //dgvVendas.Refresh();
@@ -122,11 +122,11 @@ namespace CasaMendes.Classes.Geral
                 inicio = DateTime.Parse(inicio).ToString("yyyy-MM-dd");
                 intervalo = DateTime.Parse(intervalo).ToString("yyyy-MM-dd");
 
-                string sSql = "SELECT (tPreVendas.CodigoDaVenda) AS [Cod. Venda], tProdutos.Produto, tPreVendas.DataDaVenda as [Data venda], (tPreVendas.Quantidade) as Qtde, (((tPreVendas.Quantidade * tProdutos.PrecoDeVenda)) - (tPreVendas.DescontoAplicado)) as [Vendas] FROM [tPreVendas] inner join [tProdutos] on [tPreVendas].[CodigoDeBarras] = [tProdutos].[CodigoDeBarras] WHERE TipoDeVenda =  'A VISTA' ORDER BY tPreVendas.CodigoDaVenda";
+                string sSql = "SELECT (tPreVendas.CodigoDaVenda) AS [Cod. Venda], tProdutos.Nome, tPreVendas.DataDaVenda as [Data venda], (tPreVendas.Quantidade) as Qtde, (((tPreVendas.Quantidade * tProdutos.PrecoDeVenda)) - (tPreVendas.DescontoAplicado)) as [Vendas] FROM [tPreVendas] inner join [tProdutos] on [tPreVendas].[CodigoDeBarras] = [tProdutos].[CodigoDeBarras] WHERE TipoDeVenda =  'A VISTA' ORDER BY tPreVendas.CodigoDaVenda";
 
                 if (!inicio.Equals("") || !intervalo.Equals(""))
                 {
-                    sSql = "SELECT (tPreVendas.CodigoDaVenda) AS [Cod. Venda], tProdutos.Produto, tPreVendas.DataDaVenda as [Data venda], (tPreVendas.Quantidade) as Qtde, (((tPreVendas.Quantidade * tProdutos.PrecoDeVenda)) - (tPreVendas.DescontoAplicado)) as [Vendas], tPreVendas.Parcela FROM [tPreVendas] inner join [tProdutos] on [tPreVendas].[CodigoDeBarras] = [tProdutos].[CodigoDeBarras]  where (DataDaVenda >= '" + inicio + "') AND ( DataDaVenda <= '" + intervalo + "') AND ( TipoDeVenda =  'A VISTA') ORDER BY tPreVendas.CodigoDaVenda";
+                    sSql = "SELECT (tPreVendas.CodigoDaVenda) AS [Cod. Venda], tProdutos.Nome, tPreVendas.DataDaVenda as [Data venda], (tPreVendas.Quantidade) as Qtde, (((tPreVendas.Quantidade * tProdutos.PrecoDeVenda)) - (tPreVendas.DescontoAplicado)) as [Vendas], tPreVendas.Parcela FROM [tPreVendas] inner join [tProdutos] on [tPreVendas].[CodigoDeBarras] = [tProdutos].[CodigoDeBarras]  where (DataDaVenda >= '" + inicio + "') AND ( DataDaVenda <= '" + intervalo + "') AND ( TipoDeVenda =  'A VISTA') ORDER BY tPreVendas.CodigoDaVenda";
                 }
 
                 dgv.DataSource = oDados.PegarDados(sSql);

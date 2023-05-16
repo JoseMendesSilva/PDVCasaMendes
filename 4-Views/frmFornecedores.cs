@@ -17,7 +17,7 @@ namespace CasaMendes
         int LinhaIndex;
         bool editar;
         public string StatusLabel;
-        frmCadastrarFornecedores cadFornecedor;
+        FrmCadFornecedores cadFornecedor;
 
         #endregion
 
@@ -83,7 +83,7 @@ namespace CasaMendes
 
         private void Novo()
         {
-            cadFornecedor = new frmCadastrarClientes();
+            cadFornecedor = new FrmCadFornecedores();
             cadFornecedor.ShowDialog();
             if (cadFornecedor.DialogResult.Equals(DialogResult.OK)) Gravar();
             cadFornecedor.Dispose();
@@ -93,7 +93,7 @@ namespace CasaMendes
         {
             if (editar.Equals(true) && LinhaIndex != -1)
             {
-                cadFornecedor = new frmCadastrarFornecedores();
+                cadFornecedor = new FrmCadFornecedores();
                 cadFornecedor.oFornecedor = (tFornecedore)dgv.Rows[LinhaIndex].DataBoundItem;
                 cadFornecedor.ShowDialog();
                 if (cadFornecedor.DialogResult.Equals(DialogResult.OK)) Gravar();

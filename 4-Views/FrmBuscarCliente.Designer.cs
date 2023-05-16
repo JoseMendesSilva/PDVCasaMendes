@@ -1,5 +1,5 @@
 ﻿
-namespace CasaMendes.Formularios
+namespace CasaMendes
 {
     partial class FrmBuscarCliente
     {
@@ -40,11 +40,13 @@ namespace CasaMendes.Formularios
             // 
             // gbBusca
             // 
+            this.gbBusca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbBusca.Controls.Add(this.txtBusca);
             this.gbBusca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbBusca.Location = new System.Drawing.Point(2, 2);
+            this.gbBusca.Location = new System.Drawing.Point(8, 2);
             this.gbBusca.Name = "gbBusca";
-            this.gbBusca.Size = new System.Drawing.Size(368, 71);
+            this.gbBusca.Size = new System.Drawing.Size(576, 71);
             this.gbBusca.TabIndex = 313;
             this.gbBusca.TabStop = false;
             this.gbBusca.Text = "Busca:";
@@ -55,12 +57,14 @@ namespace CasaMendes.Formularios
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBusca.Location = new System.Drawing.Point(6, 25);
             this.txtBusca.Name = "txtBusca";
-            this.txtBusca.Size = new System.Drawing.Size(356, 26);
+            this.txtBusca.Size = new System.Drawing.Size(564, 26);
             this.txtBusca.TabIndex = 0;
             // 
             // BtnCancelar
             // 
-            this.BtnCancelar.Location = new System.Drawing.Point(295, 291);
+            this.BtnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.BtnCancelar.Location = new System.Drawing.Point(503, 377);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(75, 57);
             this.BtnCancelar.TabIndex = 308;
@@ -70,18 +74,23 @@ namespace CasaMendes.Formularios
             // 
             // dgv
             // 
+            this.dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv.Location = new System.Drawing.Point(2, 79);
+            this.dgv.Location = new System.Drawing.Point(8, 79);
             this.dgv.Name = "dgv";
-            this.dgv.Size = new System.Drawing.Size(368, 167);
+            this.dgv.Size = new System.Drawing.Size(570, 288);
             this.dgv.TabIndex = 307;
             this.dgv.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_RowEnter);
             this.dgv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgv_KeyDown);
             // 
             // BtnAceitar
             // 
+            this.BtnAceitar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BtnAceitar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.BtnAceitar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnAceitar.Location = new System.Drawing.Point(8, 293);
+            this.BtnAceitar.Location = new System.Drawing.Point(8, 381);
             this.BtnAceitar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnAceitar.Name = "BtnAceitar";
             this.BtnAceitar.Size = new System.Drawing.Size(70, 53);
@@ -94,7 +103,7 @@ namespace CasaMendes.Formularios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(603, 305);
+            this.ClientSize = new System.Drawing.Size(586, 442);
             this.Controls.Add(this.gbBusca);
             this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.dgv);
@@ -105,6 +114,7 @@ namespace CasaMendes.Formularios
             this.Name = "FrmBuscarCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Buscar cliente";
+            this.Load += new System.EventHandler(this.FrmBuscarCliente_Load);
             this.gbBusca.ResumeLayout(false);
             this.gbBusca.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();

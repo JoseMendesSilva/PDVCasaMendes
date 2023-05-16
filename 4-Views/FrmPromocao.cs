@@ -10,7 +10,7 @@ using CasaMendes.Classes.Geral;
 using CasaMendes.Classes.Estatica;
 using System.Globalization;
 
-namespace CasaMendes.Formularios
+namespace CasaMendes
 {
     public partial class FrmPromocao : Form
     {

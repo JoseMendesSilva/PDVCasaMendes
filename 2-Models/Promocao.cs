@@ -35,12 +35,6 @@ namespace CasaMendes
             Dicionario_de_Promocao = new Dictionary<string, ClsItensPromocao>();
         }
 
-        public decimal De_String_Para_decimal(string sValor)
-        {
-            valor_decimal = Convert.ToDecimal(sValor);
-            return valor_decimal; 
-        }
-
          public string LeituraXML()
         {
             try
@@ -71,8 +65,8 @@ namespace CasaMendes
                 {
                     obj = new ClsItensPromocao();
                     Scodigodebarras = elemCodigoDeBarras[i].InnerXml;
-                    obj.QuantidadeMinimaParaDesconto = De_String_Para_decimal(elemQuantidade_desconto[i].InnerXml);
-                    obj.ValorDesconto = De_String_Para_decimal(elemListValor_desconto[i].InnerXml);
+                    obj.QuantidadeMinimaParaDesconto = int.Parse(elemQuantidade_desconto[i].InnerXml);
+                    obj.ValorDesconto = decimal.Parse(elemListValor_desconto[i].InnerXml);
 
                     Dicionario_de_Promocao.Add(Scodigodebarras, obj);
                 }
@@ -233,6 +227,28 @@ namespace CasaMendes
                 Promocao.Add((Promocao)ibase);
             }
             return Promocao;
+        }
+        bool disposed = false;
+        public void Dispose()
+        {
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
+
+        // Protected implementation of Dispose pattern.
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+
+            if (disposing)
+            {
+                this.Dispose();
+                // Free any other managed objects here.
+                //
+            }
+
+            disposed = true;
         }
 
     }

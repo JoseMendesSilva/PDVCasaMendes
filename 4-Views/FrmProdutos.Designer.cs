@@ -54,7 +54,7 @@
             this.gbBusca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbBusca.Location = new System.Drawing.Point(12, 12);
             this.gbBusca.Name = "gbBusca";
-            this.gbBusca.Size = new System.Drawing.Size(797, 58);
+            this.gbBusca.Size = new System.Drawing.Size(1252, 58);
             this.gbBusca.TabIndex = 162;
             this.gbBusca.TabStop = false;
             this.gbBusca.Text = "Buscar:";
@@ -62,7 +62,7 @@
             // txtCodigoDeBarras
             // 
             this.txtCodigoDeBarras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCodigoDeBarras.Location = new System.Drawing.Point(593, 19);
+            this.txtCodigoDeBarras.Location = new System.Drawing.Point(1048, 19);
             this.txtCodigoDeBarras.Name = "txtCodigoDeBarras";
             this.txtCodigoDeBarras.Size = new System.Drawing.Size(199, 26);
             this.txtCodigoDeBarras.TabIndex = 2;
@@ -72,7 +72,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(461, 22);
+            this.label2.Location = new System.Drawing.Point(916, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(134, 20);
             this.label2.TabIndex = 3;
@@ -93,14 +93,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBusca.Location = new System.Drawing.Point(82, 19);
             this.txtBusca.Name = "txtBusca";
-            this.txtBusca.Size = new System.Drawing.Size(373, 26);
+            this.txtBusca.Size = new System.Drawing.Size(828, 26);
             this.txtBusca.TabIndex = 0;
             this.txtBusca.TextChanged += new System.EventHandler(this.txtBusca_TextChanged);
             // 
             // btnFechar
             // 
             this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFechar.Location = new System.Drawing.Point(745, 399);
+            this.btnFechar.Location = new System.Drawing.Point(1200, 416);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(75, 57);
             this.btnFechar.TabIndex = 161;
@@ -111,7 +111,7 @@
             // btnAbrirListaDeesconto
             // 
             this.btnAbrirListaDeesconto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAbrirListaDeesconto.Location = new System.Drawing.Point(301, 399);
+            this.btnAbrirListaDeesconto.Location = new System.Drawing.Point(301, 416);
             this.btnAbrirListaDeesconto.Name = "btnAbrirListaDeesconto";
             this.btnAbrirListaDeesconto.Size = new System.Drawing.Size(69, 54);
             this.btnAbrirListaDeesconto.TabIndex = 166;
@@ -121,7 +121,7 @@
             // btnExcluir
             // 
             this.btnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExcluir.Location = new System.Drawing.Point(202, 399);
+            this.btnExcluir.Location = new System.Drawing.Point(202, 416);
             this.btnExcluir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(69, 54);
@@ -134,7 +134,7 @@
             // 
             this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnEditar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnEditar.Location = new System.Drawing.Point(108, 399);
+            this.btnEditar.Location = new System.Drawing.Point(108, 416);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(69, 54);
@@ -147,7 +147,7 @@
             // 
             this.btnNovo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnNovo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnNovo.Location = new System.Drawing.Point(12, 399);
+            this.btnNovo.Location = new System.Drawing.Point(12, 416);
             this.btnNovo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(69, 54);
@@ -164,7 +164,7 @@
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Location = new System.Drawing.Point(12, 76);
             this.dgv.Name = "dgv";
-            this.dgv.Size = new System.Drawing.Size(808, 303);
+            this.dgv.Size = new System.Drawing.Size(1263, 320);
             this.dgv.TabIndex = 170;
             this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellEnter);
             // 
@@ -172,7 +172,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(831, 464);
+            this.ClientSize = new System.Drawing.Size(1286, 481);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.gbBusca);
             this.Controls.Add(this.btnFechar);

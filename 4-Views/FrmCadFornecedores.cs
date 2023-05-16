@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace CasaMendes
 {
-    public partial class frmCadastrarFornecedores : Form
+    public partial class FrmCadFornecedores : Form
     {
 
         #region Variáveis
@@ -27,7 +27,7 @@ namespace CasaMendes
 
         #region Construtor.
 
-        public frmCadastrarFornecedores()
+        public FrmCadFornecedores()
         {
             InitializeComponent();
             oFornecedor = new tFornecedore();
@@ -221,7 +221,7 @@ namespace CasaMendes
             }
         }
 
-        public static implicit operator frmCadastrarFornecedores(frmCadastrarClientes v)
+        public static implicit operator FrmCadFornecedores(FrmCadClientes v)
         {
             throw new NotImplementedException();
         }

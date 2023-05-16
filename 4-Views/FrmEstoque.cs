@@ -1,11 +1,6 @@
 ﻿
 using System;
-using System.Collections;
-using System.Drawing;
 using System.Windows.Forms;
-using CasaMendes.Classes;
-using CasaMendes.Classes.Geral;
-using CasaMendes.Classes.Estatica;
 
 namespace CasaMendes
 {
@@ -13,6 +8,7 @@ namespace CasaMendes
     {
 
         public string StatusLabel { get; set; }
+        public string CodigoProduto { get; set; }
 
         #region Construtor
 
@@ -22,70 +18,43 @@ namespace CasaMendes
 
         }
 
+
+
         #endregion
 
-        private void dgv_CellEnter(object sender, DataGridViewCellEventArgs e)
+        private void FrmEstoque_Load(object sender, EventArgs e)
         {
-  
-        }
-
-        private void dgv_KeyDown(object sender, KeyEventArgs e)
-        {
-            //if (e.KeyCode == Keys.Enter)
-            //{
-            //    BtnAceitar.PerformClick();
-            //}
-            //else if (e.KeyCode == Keys.Escape)
-            //{
-            //    CancelarProduto();
-            //}
-        }
-
-        private void txtBusca_KeyDown(object sender, KeyEventArgs e)
-        {
-            //if (e.KeyCode == Keys.Enter)
-            //{
-            //    this.Close();
-            //}
-            //else if (e.KeyCode == Keys.Escape)
-            //{
-            //    Filtro = "-1";
-            //    cod = "-1";
-            //    this.Close();
-            //}
-        }
-
-        private void txtCodigoDeBarras_TextChanged(object sender, EventArgs e)
-        {
- 
-        }
-
-        private void txtCodigoDeBarras_KeyDown(object sender, KeyEventArgs e)
-        {
-            //if (e.KeyCode == Keys.Enter)
-            //{
-            //    this.Close();
-            //}
-            //else if (e.KeyCode == Keys.Escape)
-            //{
-            //    Filtro = "-1";
-            //    cod = "-1";
-            //    this.Close();
-            //}
-        }
-
-        private void txtBusca_TextChanged(object sender, EventArgs e)
-        {
-            
+            try
+            {
+                using(var oEstoque = new Estoque())
+                {
+                    dgv.DataSource = oEstoque.Todos();
+                }
+            }catch { }
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
+            this.Close();
         }
 
-        private void BtnAceitar_Click(object sender, EventArgs e)
+        private void txtCodigoDeBarras_TextChanged(object sender, EventArgs e)
         {
+            try
+            {
+                var oEstoque = new Estoque();
+                oEstoque.CodigoDeBarras = txtCodigoDeBarras.Text;
+                dgv.DataSource = oEstoque.Busca();
+            }
+            catch { }
         }
 
+        private void dgv_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex > -1)
+            {
+                CodigoProduto = dgv.Rows[e.RowIndex].Cells["CodigoDeBarras"].Value.ToString();
+            }
+        }
     }
 }

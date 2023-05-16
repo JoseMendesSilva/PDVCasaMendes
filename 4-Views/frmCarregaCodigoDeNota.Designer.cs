@@ -1,4 +1,4 @@
-﻿namespace CasaMendes.Formularios
+﻿namespace CasaMendes
 {
     partial class frmCarregaCodigoDeNota
     {

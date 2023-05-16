@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace CasaMendes
 {
-    public partial class frmCadastrarFuncionario : Form, IDisposable
+    public partial class FrmCadFuncionario : Form, IDisposable
     {
 
         #region Propriedaddes
@@ -28,7 +28,7 @@ namespace CasaMendes
 
         #region construtor
 
-        public frmCadastrarFuncionario()
+        public FrmCadFuncionario()
         {
             InitializeComponent();
             frmLoad = true;
