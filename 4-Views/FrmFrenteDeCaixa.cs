@@ -84,7 +84,6 @@ namespace CasaMendes
 
                 if (txtCodigo.Text.Length < 8) return;
                 if (oPreVenda.NumeroDaVenda == 0) { GerarNumero(); }
-                //Quantidade = decimal.Parse(this.txtQuantidade.Text);
 
                 var oEstoque = new Estoque();
                 var oProduto = new tProduto();

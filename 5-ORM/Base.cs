@@ -12,7 +12,7 @@ namespace CasaMendes
 {
     public class Base : IBase
     {
-        private string connectionString = string.Concat(@ConfigurationManager.AppSettings["DbServer"], @ConfigurationManager.AppSettings["DbDiretorio"],@"\", ConfigurationManager.AppSettings["DbName"]);
+        private string connectionString = string.Concat(@ConfigurationManager.AppSettings["DbServer"], @ConfigurationManager.AppSettings["DbDiretorio"], @"\", ConfigurationManager.AppSettings["DbName"]);
 
         public virtual int Key
         {
@@ -103,7 +103,7 @@ namespace CasaMendes
                     OpcoesBase pOpcoesBase = (OpcoesBase)pi.GetCustomAttribute(typeof(OpcoesBase));
                     if (pOpcoesBase != null && pOpcoesBase.UsarNoBancoDeDados && !pOpcoesBase.AutoGenerantor)
                     {
-                        if(this.Key == 0)
+                        if (this.Key == 0)
                         {
                             if (!pOpcoesBase.ChavePrimaria)
                             {
@@ -113,7 +113,7 @@ namespace CasaMendes
                                 {
                                     valores.Add("'" + pi.GetValue(this).ToString().Replace(".", "").Replace(",", ".") + "'");
                                 }
-                                else if(pi.PropertyType.Name == "DateTime")
+                                else if (pi.PropertyType.Name == "DateTime")
                                 {
                                     DateTime s = DateTime.Parse(pi.GetValue(this).ToString());
                                     valores.Add("'" + s.ToString("yyyy-MM-dd") + "'");
@@ -170,7 +170,7 @@ namespace CasaMendes
 
         public virtual void Excluir()
         {
-            using (SqlConnection connection = new SqlConnection( connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string chavePrimaria = "";
 
@@ -186,7 +186,7 @@ namespace CasaMendes
                     }
                 }
 
-                string queryString = "delete from " + this.GetType().Name + "s where " + chavePrimaria  + " = " + this.Key + "; ";
+                string queryString = "delete from " + this.GetType().Name + "s where " + chavePrimaria + " = " + this.Key + "; ";
                 SqlCommand command = new SqlCommand(queryString, connection);
                 command.Connection.Open();
                 command.ExecuteNonQuery();
@@ -235,6 +235,12 @@ namespace CasaMendes
                             var valor = pi.GetValue(this);
                             if (valor != null && !valor.Equals(0) && !valor.Equals(""))
                             {
+                                if (pi.PropertyType.Name == "DateTime")
+                                {
+                                    DateTime s = DateTime.Parse(pi.GetValue(this).ToString());
+                                    valor = s.ToString("yyyy-MM-dd");
+                                }
+
                                 where.Add(pi.Name + " = '" + valor + "'");
                             }
                         }
@@ -281,7 +287,7 @@ namespace CasaMendes
                             pi.SetValue(obj, Int64.Parse(reader[pi.Name].ToString()));
                             break;
                         case "Double":
-                            value = reader[pi.Name].ToString(); 
+                            value = reader[pi.Name].ToString();
                             if (value == "") { continue; }
                             if (Decimal.TryParse(value, out number))
                                 pi.SetValue(obj, number);
@@ -290,8 +296,8 @@ namespace CasaMendes
 
                             break;
                         case "Decimal":
-                           value = string.Format(reader[pi.Name].ToString(),"N2").Replace(".",",");
-                           // public static bool TryParse (string s, out decimal result);
+                            value = string.Format(reader[pi.Name].ToString(), "N2").Replace(".", ",");
+                            // public static bool TryParse (string s, out decimal result);
                             if (value == "") { continue; }
                             if (Decimal.TryParse(value, out number))
                                 pi.SetValue(obj, number);
@@ -307,19 +313,20 @@ namespace CasaMendes
                             pi.SetValue(obj, bool.Parse(reader[pi.Name].ToString()));
                             break;
                         case "DBNull":
-                              continue; 
+                            continue;
                         default:
                             value = reader[pi.Name].ToString();
-                            if (value == null || value == "" || pi.Name.ToString().Equals("deleted_at")) { 
+                            if (value == null || value == "" || pi.Name.ToString().Equals("deleted_at"))
+                            {
                                 break;
                             }
                             pi.SetValue(obj, reader[pi.Name].ToString());
                             break;
                     }
-                    
+
                 }
             }
         }
- 
+
     }
 }

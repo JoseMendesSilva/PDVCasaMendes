@@ -50,9 +50,9 @@ namespace CasaMendes
                 clsGlobal.AlinharElementosNoGridView(dgv, 4, "right");
 
                 //--------------------------------
-                this.dgv.Columns[3].DefaultCellStyle.Format = "dd/MM/yyyy";
-                this.dgv.Columns[4].DefaultCellStyle.Format = "000000UN";
-                this.dgv.Columns[5].DefaultCellStyle.Format = "C2";
+                //this.dgv.Columns[3].DefaultCellStyle.Format = "dd/MM/yyyy";
+                //this.dgv.Columns[4].DefaultCellStyle.Format = "000000UN";
+                //this.dgv.Columns[5].DefaultCellStyle.Format = "C2";
 
                 this.dgv.Columns[6].Visible = false;
             }
@@ -77,7 +77,8 @@ namespace CasaMendes
             {
                PreVenda oPreVenda = new PreVenda();
 
-                dgv.DataSource = oPreVenda.Todos();
+                dgv.DataSource = oPreVenda.Busca();
+                //dgv.DataSource = oPreVenda.Todos();
  
 
                 if (this.dgv.Rows.Count > 0)
