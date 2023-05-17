@@ -32,10 +32,10 @@ namespace CasaMendes
             this.btnFechar = new System.Windows.Forms.Button();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.gbBusca = new System.Windows.Forms.GroupBox();
-            this.McIntervalo = new System.Windows.Forms.MonthCalendar();
-            this.label2 = new System.Windows.Forms.Label();
+            this.RbAVista = new System.Windows.Forms.RadioButton();
+            this.RbPendura = new System.Windows.Forms.RadioButton();
+            this.DtpDataCadastro = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.McInicio = new System.Windows.Forms.MonthCalendar();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -63,9 +63,9 @@ namespace CasaMendes
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv.Location = new System.Drawing.Point(12, 208);
+            this.dgv.Location = new System.Drawing.Point(12, 57);
             this.dgv.Name = "dgv";
-            this.dgv.Size = new System.Drawing.Size(644, 387);
+            this.dgv.Size = new System.Drawing.Size(644, 538);
             this.dgv.TabIndex = 307;
             this.dgv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgv_KeyDown);
             // 
@@ -73,50 +73,55 @@ namespace CasaMendes
             // 
             this.gbBusca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbBusca.Controls.Add(this.McIntervalo);
-            this.gbBusca.Controls.Add(this.label2);
+            this.gbBusca.Controls.Add(this.RbAVista);
+            this.gbBusca.Controls.Add(this.RbPendura);
+            this.gbBusca.Controls.Add(this.DtpDataCadastro);
             this.gbBusca.Controls.Add(this.label1);
-            this.gbBusca.Controls.Add(this.McInicio);
             this.gbBusca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbBusca.Location = new System.Drawing.Point(12, -2);
             this.gbBusca.Name = "gbBusca";
-            this.gbBusca.Size = new System.Drawing.Size(644, 203);
+            this.gbBusca.Size = new System.Drawing.Size(644, 53);
             this.gbBusca.TabIndex = 312;
             this.gbBusca.TabStop = false;
             // 
-            // McIntervalo
+            // RbAVista
             // 
-            this.McIntervalo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.McIntervalo.Location = new System.Drawing.Point(405, 36);
-            this.McIntervalo.Name = "McIntervalo";
-            this.McIntervalo.TabIndex = 3;
-            this.McIntervalo.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.McIntervalo_DateChanged);
+            this.RbAVista.AutoSize = true;
+            this.RbAVista.Location = new System.Drawing.Point(519, 19);
+            this.RbAVista.Name = "RbAVista";
+            this.RbAVista.Size = new System.Drawing.Size(78, 24);
+            this.RbAVista.TabIndex = 6;
+            this.RbAVista.TabStop = true;
+            this.RbAVista.Text = "A Vista";
+            this.RbAVista.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // RbPendura
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(521, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Data intervalo:";
+            this.RbPendura.AutoSize = true;
+            this.RbPendura.Location = new System.Drawing.Point(277, 19);
+            this.RbPendura.Name = "RbPendura";
+            this.RbPendura.Size = new System.Drawing.Size(106, 24);
+            this.RbPendura.TabIndex = 5;
+            this.RbPendura.TabStop = true;
+            this.RbPendura.Text = "PENDURA";
+            this.RbPendura.UseVisualStyleBackColor = true;
+            // 
+            // DtpDataCadastro
+            // 
+            this.DtpDataCadastro.Location = new System.Drawing.Point(62, 16);
+            this.DtpDataCadastro.Name = "DtpDataCadastro";
+            this.DtpDataCadastro.Size = new System.Drawing.Size(200, 26);
+            this.DtpDataCadastro.TabIndex = 4;
+            this.DtpDataCadastro.ValueChanged += new System.EventHandler(this.DtpDataCadastro_ValueChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(8, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 20);
+            this.label1.Size = new System.Drawing.Size(48, 20);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Data início:";
-            // 
-            // McInicio
-            // 
-            this.McInicio.Location = new System.Drawing.Point(12, 36);
-            this.McInicio.Name = "McInicio";
-            this.McInicio.TabIndex = 0;
-            this.McInicio.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.McInicio_DateSelected);
+            this.label1.Text = "Data:";
             // 
             // label3
             // 
@@ -218,15 +223,15 @@ namespace CasaMendes
         private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.GroupBox gbBusca;
-        private System.Windows.Forms.MonthCalendar McIntervalo;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MonthCalendar McInicio;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox TxtVendas;
         private System.Windows.Forms.TextBox TxtCusto;
         private System.Windows.Forms.TextBox TxtLucro;
+        private System.Windows.Forms.DateTimePicker DtpDataCadastro;
+        private System.Windows.Forms.RadioButton RbAVista;
+        private System.Windows.Forms.RadioButton RbPendura;
     }
 }

@@ -12,6 +12,7 @@ namespace CasaMendes
 
         string Intervalo = DateTime.Now.ToString();
         string Inicio = DateTime.Now.ToString();
+        PreVenda oPreVenda;
 
         public FrmResumoDeVendasAtual()
         {
@@ -34,26 +35,77 @@ namespace CasaMendes
             {
                 //=============================================================================================
 
-                //this.dgv.Columns[0].Visible = false;
-                //this.dgv.Columns[6].Visible = false;
+                this.dgv.Columns["PreVendaId"].Visible = false;
+                this.dgv.Columns["ClienteId"].Visible = false;
+                //this.dgv.Columns["Produto"].Visible = false;
+                //this.dgv.Columns["Quantidade"].Visible = false;
+                //this.dgv.Columns["PrecoDeVenda"].Visible = false;
+                //this.dgv.Columns["NumeroDaVenda"].Visible = false;
+                //this.dgv.Columns["TipoDeVenda"].Visible = false;
+                //this.dgv.Columns["Valor"].Visible = false;
+                //this.dgv.Columns["Dinheiro"].Visible = false;
+                //this.dgv.Columns["Parcela"].Visible = false;
+                //this.dgv.Columns["created_at"].Visible = false;
+                this.dgv.Columns["Key"].Visible = false;
+                this.dgv.Columns["updated_at"].Visible = false;
 
-                this.dgv.Columns[0].Width = clsGlobal.DimencionarColuna(13, this.Width);
-                this.dgv.Columns[1].Width = clsGlobal.DimencionarColuna(49, this.Width);
-                this.dgv.Columns[2].Width = clsGlobal.DimencionarColuna(13, this.Width);
-                this.dgv.Columns[3].Width = clsGlobal.DimencionarColuna(10, this.Width);
-                this.dgv.Columns[4].Width = clsGlobal.DimencionarColuna(10, this.Width);
+                //this.dgv.Columns[0].Width = clsGlobal.DimencionarColuna(13, this.Width);
+                //this.dgv.Columns[1].Width = clsGlobal.DimencionarColuna(49, this.Width);
+                //this.dgv.Columns[2].Width = clsGlobal.DimencionarColuna(13, this.Width);
+                //this.dgv.Columns[3].Width = clsGlobal.DimencionarColuna(10, this.Width);
+                //this.dgv.Columns[4].Width = clsGlobal.DimencionarColuna(10, this.Width);
 
-                clsGlobal.AlinharElementosNoGridView(dgv, 0, "left");
-                clsGlobal.AlinharElementosNoGridView(dgv, 1, "left");
-                clsGlobal.AlinharElementosNoGridView(dgv, 2, "center");
+                this.dgv.Columns["Produto"].Width = clsGlobal.DimencionarColuna(55, this.Width);
+                this.dgv.Columns["Quantidade"].Width = clsGlobal.DimencionarColuna(15, this.Width);
+                this.dgv.Columns["PrecoDeVenda"].Width = clsGlobal.DimencionarColuna(15, this.Width);
+                this.dgv.Columns["NumeroDaVenda"].Width = clsGlobal.DimencionarColuna(20, this.Width);
+                this.dgv.Columns["TipoDeVenda"].Width = clsGlobal.DimencionarColuna(15, this.Width);
+                this.dgv.Columns["Valor"].Width = clsGlobal.DimencionarColuna(20, this.Width);
+                this.dgv.Columns["Dinheiro"].Width = clsGlobal.DimencionarColuna(20, this.Width);
+                this.dgv.Columns["Parcela"].Width = clsGlobal.DimencionarColuna(15, this.Width);
+                this.dgv.Columns["created_at"].Width = clsGlobal.DimencionarColuna(20, this.Width);
+                //this.dgv.Columns["updated_at"].Width = clsGlobal.DimencionarColuna(15, this.Width);
+
+                clsGlobal.AlinharElementosNoGridView(dgv, 2, "left");
                 clsGlobal.AlinharElementosNoGridView(dgv, 3, "right");
                 clsGlobal.AlinharElementosNoGridView(dgv, 4, "right");
+                clsGlobal.AlinharElementosNoGridView(dgv, 5, "right");
+                clsGlobal.AlinharElementosNoGridView(dgv, 6, "right");
+                clsGlobal.AlinharElementosNoGridView(dgv, 7, "right");
+                clsGlobal.AlinharElementosNoGridView(dgv, 8, "right");
+                clsGlobal.AlinharElementosNoGridView(dgv, 9, "right");
+                clsGlobal.AlinharElementosNoGridView(dgv, 10, "right");
+                clsGlobal.AlinharElementosNoGridView(dgv, 11, "right");
+                //clsGlobal.AlinharElementosNoGridView(dgv, 12, "right");
+
+                // PreVendaId
+                // ClienteId
+                // Produto
+                // Quantidade
+                // PrecoDeVenda
+                // NumeroDaVenda
+                // TipoDeVenda // pendura, pg, debito, crédito e pix.
+                // Valor
+                // Dinheiro
+                // Troco
+                // Parcela
 
                 //--------------------------------
                 //this.dgv.Columns[3].DefaultCellStyle.Format = "dd/MM/yyyy";
                 //this.dgv.Columns[4].DefaultCellStyle.Format = "000000UN";
                 //this.dgv.Columns[5].DefaultCellStyle.Format = "C2";
 
+                // PreVendaId
+                // ClienteId
+                // Produto
+                // Quantidade
+                // PrecoDeVenda
+                // NumeroDaVenda
+                // TipoDeVenda // pendura, pg, debito, crédito e pix.
+                // Valor
+                // Dinheiro
+                // Troco
+                // Parcela
                 this.dgv.Columns[6].Visible = false;
             }
             catch
@@ -75,7 +127,7 @@ namespace CasaMendes
         {
             try
             {
-               PreVenda oPreVenda = new PreVenda();
+               //PreVenda oPreVenda = new PreVenda();
 
                 dgv.DataSource = oPreVenda.Busca();
                 //dgv.DataSource = oPreVenda.Todos();
@@ -107,16 +159,17 @@ namespace CasaMendes
 
                 clsGlobal.RedimencionarGrade(this, dgv);
 
+                oPreVenda = new PreVenda();
                 CarregarResumoDeVendas(Inicio, Intervalo);
 
                 this.RedimencionarGrade();
 
-                gbBusca.Width = dgv.Width;
-                gbBusca.Left = dgv.Left;
+                //gbBusca.Width = dgv.Width;
+                //gbBusca.Left = dgv.Left;
 
-                //=============================================================================================
-                dgv.Top = (gbBusca.Height + 10);
-                dgv.Height = btnFechar.Top - (dgv.Top + 10);
+                ////=============================================================================================
+                //dgv.Top = (gbBusca.Height + 10);
+                //dgv.Height = btnFechar.Top - (dgv.Top + 10);
 
                 decimal vendas = clsGlobal.Calcular(this.dgv, 4);
                 
@@ -142,31 +195,31 @@ namespace CasaMendes
 
         private void dgv_KeyDown(object sender, KeyEventArgs e)
         {
-            try
-            {
-                if (e.KeyCode == Keys.Delete)
-                {
-                    if (this.dgv.SelectedRows.Count > 0)
-                    {
-                        DialogResult retorno = (MessageBox.Show("Você confirma a exclusão da venda selecionada?",Application.ProductName, MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation));
-                        if (retorno.Equals(DialogResult.Yes))
-                        {
-                            Cl_PreVenda.ExcluirVendaRessumo(dgv.Rows[this.dgv.SelectedRows[0].Index].Cells[0].Value.ToString());
-                            dgv.Rows.RemoveAt(this.dgv.SelectedRows[0].Index);
-                            e.Handled = false;
-                        }
-                        else {
-                            e.Handled = true;
-                            return;
-                        }
-                    }
-                }
-            }
-            catch { }
-            finally
-            {
-                this.CarregarResumoDeVendas(Inicio, Intervalo);
-            }
+            //try
+            //{
+            //    if (e.KeyCode == Keys.Delete)
+            //    {
+            //        if (this.dgv.SelectedRows.Count > 0)
+            //        {
+            //            DialogResult retorno = (MessageBox.Show("Você confirma a exclusão da venda selecionada?",Application.ProductName, MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation));
+            //            if (retorno.Equals(DialogResult.Yes))
+            //            {
+            //                //oPreVenda.Excluir(dgv.Rows[this.dgv.SelectedRows[0].Index].Cells[0].Value.ToString());
+            //                //dgv.Rows.RemoveAt(this.dgv.SelectedRows[0].Index);
+            //                //e.Handled = false;
+            //            }
+            //            else {
+            //                e.Handled = true;
+            //                return;
+            //            }
+            //        }
+            //    }
+            //}
+            //catch { }
+            //finally
+            //{
+            //    this.CarregarResumoDeVendas(Inicio, Intervalo);
+            //}
         }
 
         private void FrmResumoDeVendasAtual_FormClosing(object sender, FormClosingEventArgs e)
@@ -178,6 +231,17 @@ namespace CasaMendes
             catch { }
         }
 
+        private void DtpDataCadastro_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                oPreVenda.created_at = DtpDataCadastro.Value;
+                CarregarResumoDeVendas("","");
+            }catch
+            { 
+                
+            }
+        }
     }
 }
 

@@ -108,6 +108,8 @@ namespace CasaMendes
                     string[] row = { oPreVenda.ClienteId.ToString(), oPreVenda.NumeroDaVenda.ToString(), oPreVenda.TipoDeVenda.ToString(), count.ToString("G"), ResEstoque[0].CodigoDeBarras, ResEstoque[0].Produto, this.txtQuantidade.Text, ResEstoque[0].PrecoDeVenda.ToString("N2"), (int.Parse(txtQuantidade.Text) * ResEstoque[0].PrecoDeVenda).ToString("N2") };
                     this.grid.Rows.Add(row);
 
+                    count++;
+
                     this.txtUnitario.Text = decimal.Parse(ResEstoque[0].PrecoDeVenda.ToString()).ToString();
                     this.txtSubtotal.Text = (int.Parse(txtQuantidade.Text) * ResEstoque[0].PrecoDeVenda).ToString("C2");
                     this.lblDescricaoProduto.Text = ResEstoque[0].Produto.ToString();
@@ -120,7 +122,6 @@ namespace CasaMendes
                     count++;
 
                     lblStatusCaixa.Text = "CAIXA OCUPADO";
-
 
                     this.txtCodigo.Focus();
                     this.txtCodigo.SelectAll();

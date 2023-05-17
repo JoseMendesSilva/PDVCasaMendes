@@ -297,7 +297,6 @@ namespace CasaMendes
                             break;
                         case "Decimal":
                             value = string.Format(reader[pi.Name].ToString(), "N2").Replace(".", ",");
-                            // public static bool TryParse (string s, out decimal result);
                             if (value == "") { continue; }
                             if (Decimal.TryParse(value, out number))
                                 pi.SetValue(obj, number);
