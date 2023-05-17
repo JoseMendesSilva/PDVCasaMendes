@@ -1,6 +1,6 @@
 ﻿namespace CasaMendes
 {
-    partial class frmCarregarVenda
+    partial class frmCarregarVendasCliente
     {
         /// <summary>
         /// Required designer variable.
@@ -313,6 +313,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vendas em aberto";
+            this.Load += new System.EventHandler(this.frmCarregarVenda_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).EndInit();
             this.gbDadosDaConta.ResumeLayout(false);

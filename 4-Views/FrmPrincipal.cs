@@ -145,7 +145,7 @@ namespace CasaMendes
 
         private void vendasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var ResumoDeVenda = new FrmResumoDeVendasAtual();
+            var ResumoDeVenda = new FrmCarregarVendas();
             // Set the Parent Form of the Child window.
             ResumoDeVenda.MdiParent = this;
             ResumoDeVenda.Text = "ResumoDeVendasAtual " + childFormNumber++;
@@ -159,7 +159,7 @@ namespace CasaMendes
 
         private void ReceberPenduraMenuItem_Click(object sender, EventArgs e)
         {
-            var CarregarVenda = new frmCarregarVenda();
+            var CarregarVenda = new frmCarregarVendasCliente();
             // Set the Parent Form of the Child window.
             CarregarVenda.MdiParent = this;
             CarregarVenda.Text = "ResumoDeVendasAtual " + childFormNumber++;

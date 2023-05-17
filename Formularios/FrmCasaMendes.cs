@@ -58,7 +58,7 @@ namespace CasaMendes.Formularios
 
         private void btnCarregarVendas_Click(object sender, EventArgs e)
         {
-            frmCarregarVenda fc = new frmCarregarVenda();
+            frmCarregarVendasCliente fc = new frmCarregarVendasCliente();
             fc.ShowDialog();
             if (fc != null) { fc.Dispose(); }
         }
@@ -81,7 +81,7 @@ namespace CasaMendes.Formularios
 
         private void BtnVendas_Click(object sender, EventArgs e)
         {
-            FrmResumoDeVendasAtual f = new FrmResumoDeVendasAtual();
+            FrmCarregarVendas f = new FrmCarregarVendas();
             f.ShowDialog();
             if (f != null) { f.Dispose(); }
         }

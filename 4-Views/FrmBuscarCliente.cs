@@ -9,8 +9,7 @@ namespace CasaMendes
     public partial class FrmBuscarCliente : Form
     {
         //===================================================================================================
-        bool _Fechar = false;
-        ArrayList arrCliente = null;
+        //bool _Fechar = false;
 
         public int ClienteId { get; set; }
         public string Cliente { get; set; }
@@ -18,7 +17,6 @@ namespace CasaMendes
         public FrmBuscarCliente()
         {
             InitializeComponent();
-
         }
 
         private void RedimencionarGrade()
@@ -79,7 +77,7 @@ namespace CasaMendes
 
         private void BtnAceitar_Click(object sender, EventArgs e)
         {
-            _Fechar = true;
+            //_Fechar = true;
             this.Close();
         }
 
@@ -99,24 +97,12 @@ namespace CasaMendes
         {
             try
             {
-                if (_Fechar == true) { return; }
-                //if (this.Tag != null)
-                //{
-                    ClienteId = 0;  //
-                    Cliente = null;  //
-                    ClienteId = int.Parse(dgv.Rows[e.RowIndex].Cells[0].Value.ToString());  //
-                    Cliente = dgv.Rows[e.RowIndex].Cells[1].Value.ToString();  //
-                    this.Text = "ID: " + ClienteId + " - Cliente: " + Cliente;
-                //}
-                //else
-                //{
-                //    arrCliente = new ArrayList
-                //    {
-                //        dgv.Rows[e.RowIndex].Cells[0].Value,  //[Codigo
-                //        dgv.Rows[e.RowIndex].Cells[1].Value  //[Nome
-                //    };
-                //}
-
+                if (dgv.Rows.Count < 1) { return; }
+                ClienteId = 0;
+                Cliente = null;
+                ClienteId = int.Parse(dgv.Rows[e.RowIndex].Cells[0].Value.ToString());
+                Cliente = dgv.Rows[e.RowIndex].Cells[1].Value.ToString();
+                this.Text = "ID: " + ClienteId + " - Cliente: " + Cliente;
             }
             catch { }
         }
@@ -127,12 +113,12 @@ namespace CasaMendes
             {
                 if (DialogResult.Equals(DialogResult.Cancel))
                 {
-                    _Fechar = true;
+                    //_Fechar = true;
                     ClienteId = 0;  //Codigo
                     Cliente = null;  //Nome
                 }
                 this.Close();
-                //GC.Collect(2, GCCollectionMode.Optimized);
+                GC.Collect(2, GCCollectionMode.Optimized);
             }
             catch {; }
         }
@@ -141,28 +127,27 @@ namespace CasaMendes
         {
             try
             {
-
                 this.Text = clsGlobal.MontarTitulo("Buscar cliente");
-
                 clsGlobal.SetUpDataGridView(dgv);
-
                 var oCliente = new Cliente();
                 this.dgv.DataSource = oCliente.Todos();
                 if (dgv.Rows.Count > 0)
                 {
-                    for(int i = 0; i < dgv.Rows.Count; i++)
+                    for (int i = 0; i < dgv.Rows.Count; i++)
                     {
-                        dgv.Columns[i].Visible=false;
+                        dgv.Columns[i].Visible = false;
                     }
                     dgv.Columns["Nome"].Visible = true;
                     dgv.Columns["Nome"].Width = dgv.Width - 22;
                     this.dgv.Focus();
-                }else {
-                    MessageBox.Show("Nemhum cliente cadastrado.");                        
-                        }
-
+                }
+                else
+                {
+                    MessageBox.Show("Nemhum cliente cadastrado.");
+                }
             }
             catch { }
         }
+
     }
 }

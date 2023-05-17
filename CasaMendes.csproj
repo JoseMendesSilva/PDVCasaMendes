@@ -152,8 +152,8 @@
     <EmbeddedResource Include="Formularios\FrmEstoque2.resx">
       <DependentUpon>FrmEstoque2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\FrmResumoDeVendasAtual.resx">
-      <DependentUpon>FrmResumoDeVendasAtual.cs</DependentUpon>
+    <EmbeddedResource Include="4-Views\FrmCarregarVendas.resx">
+      <DependentUpon>FrmCarregarVendas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="4-Views\FrmEstoque0.resx">
       <DependentUpon>FrmEstoque0.cs</DependentUpon>
@@ -170,8 +170,8 @@
     <EmbeddedResource Include="4-Views\FrmCadFornecedores.resx">
       <DependentUpon>FrmCadFornecedores.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\frmCarregarVenda.resx">
-      <DependentUpon>frmCarregarVenda.cs</DependentUpon>
+    <EmbeddedResource Include="4-Views\frmCarregarVendasCliente.resx">
+      <DependentUpon>frmCarregarVendasCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="4-Views\frmClientes.resx">
       <DependentUpon>frmClientes.cs</DependentUpon>
@@ -287,11 +287,11 @@
     <Compile Include="Formularios\FrmEstoque2.Designer.cs">
       <DependentUpon>FrmEstoque2.cs</DependentUpon>
     </Compile>
-    <Compile Include="4-Views\FrmResumoDeVendasAtual.cs">
+    <Compile Include="4-Views\FrmCarregarVendas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="4-Views\FrmResumoDeVendasAtual.Designer.cs">
-      <DependentUpon>FrmResumoDeVendasAtual.cs</DependentUpon>
+    <Compile Include="4-Views\FrmCarregarVendas.Designer.cs">
+      <DependentUpon>FrmCarregarVendas.cs</DependentUpon>
     </Compile>
     <Compile Include="4-Views\FrmEstoque0.cs">
       <SubType>Form</SubType>
@@ -323,11 +323,11 @@
     <Compile Include="4-Views\FrmCadFornecedores.Designer.cs">
       <DependentUpon>FrmCadFornecedores.cs</DependentUpon>
     </Compile>
-    <Compile Include="4-Views\frmCarregarVenda.cs">
+    <Compile Include="4-Views\frmCarregarVendasCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="4-Views\frmCarregarVenda.Designer.cs">
-      <DependentUpon>frmCarregarVenda.cs</DependentUpon>
+    <Compile Include="4-Views\frmCarregarVendasCliente.Designer.cs">
+      <DependentUpon>frmCarregarVendasCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="4-Views\frmClientes.cs">
       <SubType>Form</SubType>

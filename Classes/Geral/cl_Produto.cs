@@ -300,7 +300,7 @@ namespace CasaMendes.Classes.Geral
         #region dispose
 
         private bool _disposed;
-        public void Dispose()
+        public new void Dispose()
         {
             // Dispose of unmanaged resources.
             Dispose(true);
@@ -308,7 +308,7 @@ namespace CasaMendes.Classes.Geral
             GC.SuppressFinalize(this);
         }
 
-        protected virtual void Dispose(bool disposing)
+        protected virtual new void Dispose(bool disposing)
         {
             if (_disposed)
             {

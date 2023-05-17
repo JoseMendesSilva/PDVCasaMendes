@@ -6,7 +6,7 @@ using CasaMendes.Classes.Geral;
 
 namespace CasaMendes
 {
-    public partial class frmCarregarVenda : Form
+    public partial class frmCarregarVendasCliente : Form
     {
 
         #region Variáveis.
@@ -19,57 +19,9 @@ namespace CasaMendes
 
         #endregion
 
-        public frmCarregarVenda()
+        public frmCarregarVendasCliente()
         {
             InitializeComponent();
-            this.Rbt_Fixa.CheckedChanged += new System.EventHandler(this.Rbt_Fixa_CheckedChanged);
-            this.dgvVendas.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVendas_RowEnter);
-            this.dgvVendas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvVendas_KeyDown);
-            this.Rbt_Diaria.CheckedChanged += new System.EventHandler(this.Rbt_Diaria_CheckedChanged);
-
-            this.Text = clsGlobal.MontarTitulo("Tela principal", "Vendas em aberto");
-
-            try
-            {
-                clsGlobal.SetUpDataGridView(this.dgvVendas);
-                clsGlobal.SetUpDataGridView(this.dgvClientes);
-
-                Cl_PreVenda.CarregarGradeClente(this.dgvClientes);
-
-                //=============================================================================================
-                int Espaco = (this.dgvVendas.Width + 6);
-
-                ////=============================================================================================
-                dgvVendas.Top = gb.Top + gb.Height + 10;
-                int altura = dgvClientes.Height;
-
-                //=============================================================================================
-                dgvVendas.Left = dgvClientes.Width + 20;
-                dgvVendas.Width = Espaco - 6;
-                dgvVendas.Height = altura - (dgvVendas.Top - 12);
-
-                this.btnFechar.Left = this.gbDadosDaConta.Width - (this.btnFechar.Width + 5);
-
-                //=============================================================================================
-                this.txtDinheiro.Text = "R$ 0,00";
-                this.txtTotalGeral.Text = "R$ 0,00";
-
-                this.txtParcela.Text = "R$ 0,00";
-                this.txtParcela.ReadOnly = true;
-
-                this.txtTotalReceber.Text = "R$ 0,00";
-                this.txtTroco.Text = "R$ 0,00";
-
-                this.lblResumoDaConta.Text = Status();
-                this.btnReceber.Enabled = false;
-                this.btnGravarParcela.Enabled = false;
-
-                this.txtDinheiro.Focus();
-                this.txtDinheiro.SelectAll();
-            }
-            catch
-            {
-            }
         }
 
         private string Status()
@@ -118,7 +70,6 @@ namespace CasaMendes
                     TimeSpan tSpan = _Maximo - _Minimo;
 
                     //le a quantidade de itens vendidos na grade cupom
-
                     if ((tSpan.ToString() == "00:00:00") || (Rbt_Fixa.Checked == true))
                     {
                         valor += valor1 * (1 + valor_tacha);
@@ -366,5 +317,57 @@ namespace CasaMendes
 
         }
 
+        private void frmCarregarVenda_Load(object sender, EventArgs e)
+        {
+
+            this.Rbt_Fixa.CheckedChanged += new System.EventHandler(this.Rbt_Fixa_CheckedChanged);
+            this.dgvVendas.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVendas_RowEnter);
+            this.dgvVendas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvVendas_KeyDown);
+            this.Rbt_Diaria.CheckedChanged += new System.EventHandler(this.Rbt_Diaria_CheckedChanged);
+
+            this.Text = clsGlobal.MontarTitulo("Tela principal", "Vendas em aberto");
+
+            try
+            {
+                clsGlobal.SetUpDataGridView(this.dgvVendas);
+                clsGlobal.SetUpDataGridView(this.dgvClientes);
+
+                Cl_PreVenda.CarregarGradeClente(this.dgvClientes);
+
+                //=============================================================================================
+                int Espaco = (this.dgvVendas.Width + 6);
+
+                ////=============================================================================================
+                dgvVendas.Top = gb.Top + gb.Height + 10;
+                int altura = dgvClientes.Height;
+
+                //=============================================================================================
+                dgvVendas.Left = dgvClientes.Width + 20;
+                dgvVendas.Width = Espaco - 6;
+                dgvVendas.Height = altura - (dgvVendas.Top - 12);
+
+                this.btnFechar.Left = this.gbDadosDaConta.Width - (this.btnFechar.Width + 5);
+
+                //=============================================================================================
+                this.txtDinheiro.Text = "R$ 0,00";
+                this.txtTotalGeral.Text = "R$ 0,00";
+
+                this.txtParcela.Text = "R$ 0,00";
+                this.txtParcela.ReadOnly = true;
+
+                this.txtTotalReceber.Text = "R$ 0,00";
+                this.txtTroco.Text = "R$ 0,00";
+
+                this.lblResumoDaConta.Text = Status();
+                this.btnReceber.Enabled = false;
+                this.btnGravarParcela.Enabled = false;
+
+                this.txtDinheiro.Focus();
+                this.txtDinheiro.SelectAll();
+            }
+            catch
+            {
+            }
+        }
     }
 }
