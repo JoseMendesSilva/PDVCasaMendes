@@ -1,4 +1,5 @@
 ﻿using CasaMendes.Classes.Estatica;
+using DocumentFormat.OpenXml.Drawing.Charts;
 using System;
 using System.Windows.Forms;
 
@@ -6,16 +7,75 @@ namespace CasaMendes
 {
     public partial class FrmTabelaDeMargen : Form
     {
-        bool Loading, Loadining;
-        BindingSource BsTabelaDeMargem;
-        TabelaDeMargen oTabelaDeMargen;
+        #region variáveis
+
+        int LinhaIndex, LinhaIndexMargem;
+        private bool Loading;
+        private bool Loadining;
+        private BindingSource BsTabelaDeMargem;
+        private TabelaDeMargen oTabelaDeMargen;
+
+        #endregion
+
+        #region construtor
 
         public FrmTabelaDeMargen()
         {
             InitializeComponent();
         }
 
+        #endregion
+
         #region métodos auxiliares
+
+        private void OrganizarColunasSubcategoria()
+        {
+            if (DgvSubcategorias.Rows.Count > 0 && Loading)
+            {
+                DgvSubcategorias.RowHeadersVisible = false;
+                DgvSubcategorias.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+                DgvSubcategorias.Columns["Key"].Visible = false;
+                DgvSubcategorias.Columns["SubcategoriaId"].Visible = false;
+                DgvSubcategorias.Columns["CategoriaId"].Visible = false;
+                DgvSubcategorias.Columns["Descricao"].Visible = false;
+
+                DgvSubcategorias.Columns["Nome"].Width = clsGlobal.DimencionarColuna(100, this.DgvSubcategorias.Width);
+
+                Loading = false;
+            }
+        }
+
+        private void OrganizarColunasTabelaDeMargen()
+        {
+            if (DgvTabelaDeMargem.Rows.Count > 0 && Loadining)
+            {
+                DgvTabelaDeMargem.RowHeadersVisible = false;
+                DgvTabelaDeMargem.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+                DgvTabelaDeMargem.Columns["Key"].Visible = false;
+                DgvTabelaDeMargem.Columns["TabelaDeMargenId"].Visible = false;
+                DgvTabelaDeMargem.Columns["SubcategoriaId"].Visible = false;
+
+                DgvTabelaDeMargem.Columns["NumeroDeItensNaLoja"].Width = clsGlobal.DimencionarColuna(18, this.DgvTabelaDeMargem.Width);
+                DgvTabelaDeMargem.Columns["ValorDeBase"].Width = clsGlobal.DimencionarColuna(15, this.DgvTabelaDeMargem.Width);
+                DgvTabelaDeMargem.Columns["PorcentagemPessoPorItem"].Width = clsGlobal.DimencionarColuna(18, this.DgvTabelaDeMargem.Width);
+                DgvTabelaDeMargem.Columns["Despesa"].Width = clsGlobal.DimencionarColuna(10, this.DgvTabelaDeMargem.Width);
+                DgvTabelaDeMargem.Columns["Custo"].Width = clsGlobal.DimencionarColuna(10, this.DgvTabelaDeMargem.Width);
+                DgvTabelaDeMargem.Columns["Encargo"].Width = clsGlobal.DimencionarColuna(10, this.DgvTabelaDeMargem.Width);
+                DgvTabelaDeMargem.Columns["MargemDeLucro"].Width = clsGlobal.DimencionarColuna(18, this.DgvTabelaDeMargem.Width);
+
+                DgvTabelaDeMargem.Columns["NumeroDeItensNaLoja"].HeaderText = "Numero de itens";
+                DgvTabelaDeMargem.Columns["ValorDeBase"].HeaderText = "Valor base";
+                DgvTabelaDeMargem.Columns["PorcentagemPessoPorItem"].HeaderText = "Pesso aplicado";
+                DgvTabelaDeMargem.Columns["Despesa"].HeaderText = "Despesa";
+                DgvTabelaDeMargem.Columns["Custo"].HeaderText = "Custo";
+                DgvTabelaDeMargem.Columns["Encargo"].HeaderText = "Encargo";
+                DgvTabelaDeMargem.Columns["MargemDeLucro"].HeaderText = "Margem de lucro";
+
+                Loadining = false;
+            }
+        }
 
         private void VincularDados()
         {
@@ -89,79 +149,50 @@ namespace CasaMendes
 
         private void Gravar()
         {
+            oTabelaDeMargen.Salvar();
             Botoes(true);
+            LoadingTabelaDeMargen();
+            oTabelaDeMargen.Excluir(); MessageBox.Show("Cadastro realizado com sucesso.");
         }
 
         private void Excluir()
         {
+            oTabelaDeMargen = (TabelaDeMargen)DgvTabelaDeMargem.Rows[LinhaIndexMargem].DataBoundItem;
+            oTabelaDeMargen.Excluir();MessageBox.Show("O registro foi excluido com sucesso.");
+        }
 
+        private void LoadingTabelaDeMargen()
+        {
+            try
+            {
+                if (LinhaIndex.Equals(-1)) return;
+                int index = int.Parse(DgvSubcategorias.Rows[LinhaIndex].Cells[0].Value.ToString());
+                oTabelaDeMargen.SubCategoriaId = index;
+                DgvTabelaDeMargem.DataSource = oTabelaDeMargen.Busca();
+                OrganizarColunasTabelaDeMargen();
+                BsTabelaDeMargem.DataSource = oTabelaDeMargen;
+            }
+            catch { }
         }
 
         private void LoadingForm()
         {
             try
             {
+                LinhaIndexMargem = LinhaIndex = -1;
                 //oTabelaDeMargen.CriarTabela();
-                Loading = Loadining = true;
+                Loading = true;
+                Loadining = true;
                 VincularDados();
 
                 SubCategoria oSubCategoria = new SubCategoria();
                 DgvSubcategorias.DataSource = oSubCategoria.Todos();
                 OrganizarColunasSubcategoria();
                 if (TxtPorcentagemPessoPorItem.Text.Length > 0) { Calcular(); }
-                Loading = false;
             }
             catch { }
         }
-
-        private void OrganizarColunasSubcategoria()
-        {
-            if (DgvSubcategorias.Rows.Count > 0 && Loading)
-            {
-                DgvSubcategorias.RowHeadersVisible = false;
-                DgvSubcategorias.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
-                DgvSubcategorias.Columns["Key"].Visible = false;
-                DgvSubcategorias.Columns["SubcategoriaId"].Visible = false;
-                DgvSubcategorias.Columns["CategoriaId"].Visible = false;
-                DgvSubcategorias.Columns["Descricao"].Visible = false;
-
-                DgvSubcategorias.Columns["Nome"].Width = clsGlobal.DimencionarColuna(100, this.DgvSubcategorias.Width);
-
-                Loading = false;
-            }
-        }
-
-        private void OrganizarColunasTabelaDeMargen()
-        {
-            if (DgvTabelaDeMargem.Rows.Count > 0 && Loadining)
-            {
-                DgvTabelaDeMargem.RowHeadersVisible = false;
-                DgvTabelaDeMargem.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
-                DgvTabelaDeMargem.Columns["Key"].Visible = false;
-                DgvTabelaDeMargem.Columns["TabelaDeMargenId"].Visible = false;
-                DgvTabelaDeMargem.Columns["SubcategoriaId"].Visible = false;
-                DgvTabelaDeMargem.Columns["NumeroDeItensNaLoja"].Visible = false;
-                DgvTabelaDeMargem.Columns["ValorDeBase"].Visible = false;
-                DgvTabelaDeMargem.Columns["PorcentagemPessoPorItem"].Visible = false;
-                DgvTabelaDeMargem.Columns["Despesa"].Visible = false;
-                DgvTabelaDeMargem.Columns["Custo"].Visible = false;
-                DgvTabelaDeMargem.Columns["Encargo"].Visible = false;
-                DgvTabelaDeMargem.Columns["MargemDeLucro"].Visible = false;
-
-                DgvTabelaDeMargem.Columns["NumeroDeItensNaLoja"].Width = clsGlobal.DimencionarColuna(18, this.DgvTabelaDeMargem.Width);
-                DgvTabelaDeMargem.Columns["ValorDeBase"].Width = clsGlobal.DimencionarColuna(18, this.DgvTabelaDeMargem.Width);
-                DgvTabelaDeMargem.Columns["PorcentagemPessoPorItem"].Width = clsGlobal.DimencionarColuna(78, this.DgvTabelaDeMargem.Width);
-                DgvTabelaDeMargem.Columns["Despesa"].Width = clsGlobal.DimencionarColuna(18, this.DgvTabelaDeMargem.Width);
-                DgvTabelaDeMargem.Columns["Custo"].Width = clsGlobal.DimencionarColuna(18, this.DgvTabelaDeMargem.Width);
-                DgvTabelaDeMargem.Columns["Encargo"].Width = clsGlobal.DimencionarColuna(18, this.DgvTabelaDeMargem.Width);
-                DgvTabelaDeMargem.Columns["MargemDeLucro"].Width = clsGlobal.DimencionarColuna(18, this.DgvTabelaDeMargem.Width);
-
-                Loading = false;
-            }
-        }
-
+  
         #endregion
 
         #region Load
@@ -177,24 +208,11 @@ namespace CasaMendes
 
         private void DgvSubcategorias_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                if ((e.RowIndex > -1) && !Loading)
-                {
-                    int index = int.Parse(DgvSubcategorias.Rows[e.RowIndex].Cells[0].Value.ToString());
-                    oTabelaDeMargen.SubCategoriaId = index;
-                    DgvTabelaDeMargem.DataSource = oTabelaDeMargen.Busca();
-                    TxtSubCategoria.Text = DgvSubcategorias.Rows[e.RowIndex].Cells[2].Value.ToString();
-                    OrganizarColunasTabelaDeMargen();
-                    if (DgvTabelaDeMargem.Rows.Count > 0)
-                        Loadining = false;
-                    else
-                        Loadining = true;
-                }
-            }
-            catch { }
+            LinhaIndex = e.RowIndex;
+            LoadingTabelaDeMargen();
+            TxtSubCategoria.Text = DgvSubcategorias.Rows[LinhaIndex].Cells[2].Value.ToString();
         }
-  
+
         private void DgvTabelaDeMargem_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -215,26 +233,40 @@ namespace CasaMendes
 
         private void TxtCusto_TextChanged(object sender, EventArgs e)
         {
+            if (this.TxtCusto.Text.Equals("")) return;
             oTabelaDeMargen.Custo = double.Parse(this.TxtCusto.Text);
             if (oTabelaDeMargen.Custo > 0) Calcular();
         }
 
         private void TxtMargemDeLucro_TextChanged(object sender, EventArgs e)
         {
+            if (this.TxtMargemDeLucro.Text.Equals("")) return;
             oTabelaDeMargen.MargemDeLucro = double.Parse(this.TxtMargemDeLucro.Text);
             if (oTabelaDeMargen.MargemDeLucro > 0) Calcular();
         }
 
         private void TxtDespesa_TextChanged(object sender, EventArgs e)
         {
+            if (this.TxtDespesa.Text.Equals("")) return;
             oTabelaDeMargen.Despesa = double.Parse(this.TxtDespesa.Text);
             if (oTabelaDeMargen.Despesa > 0) Calcular();
         }
 
         private void TxtEncargo_TextChanged(object sender, EventArgs e)
         {
+            if (this.TxtEncargo.Text.Equals("")) return;
             oTabelaDeMargen.Encargo = double.Parse(this.TxtEncargo.Text);
             if (oTabelaDeMargen.Encargo > 0) Calcular();
+        }
+
+        private void TxtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                SubCategoria oSubCategoria = new SubCategoria();
+                oSubCategoria.Nome = this.TxtBuscar.Text;
+                DgvSubcategorias.DataSource = oSubCategoria.Busca();
+            }catch{ }
         }
 
         #endregion
@@ -266,10 +298,11 @@ namespace CasaMendes
 
         private void BtnRetornar_Click(object sender, EventArgs e)
         {
-
+            this.Close();
+            oTabelaDeMargen=null;
         }
- 
-        #endregion
 
+        #endregion
+  
     }
 }

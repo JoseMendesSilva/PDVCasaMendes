@@ -70,6 +70,7 @@
             this.TxtBuscar.Name = "TxtBuscar";
             this.TxtBuscar.Size = new System.Drawing.Size(258, 20);
             this.TxtBuscar.TabIndex = 49;
+            this.TxtBuscar.TextChanged += new System.EventHandler(this.TxtBuscar_TextChanged);
             // 
             // label5
             // 
@@ -340,7 +341,6 @@
             this.TxtTotal.Size = new System.Drawing.Size(118, 20);
             this.TxtTotal.TabIndex = 63;
             this.TxtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TxtTotal.TextChanged += new System.EventHandler(this.TxtTotal_TextChanged);
             // 
             // label11
             // 

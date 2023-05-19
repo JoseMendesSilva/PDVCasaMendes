@@ -287,10 +287,11 @@ namespace CasaMendes
                             pi.SetValue(obj, Int64.Parse(reader[pi.Name].ToString()));
                             break;
                         case "Double":
+                            double valor = 0;
                             value = reader[pi.Name].ToString();
                             if (value == "") { continue; }
-                            if (Decimal.TryParse(value, out number))
-                                pi.SetValue(obj, number);
+                            if (Double.TryParse(value, out valor))
+                                pi.SetValue(obj, valor);
                             else
                                 pi.SetValue(obj, value);
 
