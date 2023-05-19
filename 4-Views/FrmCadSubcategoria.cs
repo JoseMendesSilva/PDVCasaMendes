@@ -55,7 +55,7 @@ namespace CasaMendes
                 DgvSubcategorias.Columns["SubcategoriaId"].Visible = false;
                 DgvSubcategorias.Columns["CategoriaId"].Visible = false;
 
-                DgvSubcategorias.Columns["Nome"].Width = clsGlobal.DimencionarColuna(78, this.Width);
+                DgvSubcategorias.Columns["Nome"].Width = clsGlobal.DimencionarColuna(78, this.DgvSubcategorias.Width);
                 DgvSubcategorias.Columns["Descricao"].Width = clsGlobal.DimencionarColuna(180, this.DgvSubcategorias.Width);
                 
                 loading = false;

@@ -5,6 +5,19 @@ namespace CasaMendes
 {
     public class TabelaDeMargen : Base
     {
+
+        private double _PorcentagemPessoPorItem;
+
+        public TabelaDeMargen()
+        {
+            this.Porcentagem();
+        }
+
+        private double Porcentagem()
+        {
+            return _PorcentagemPessoPorItem = ValorDeBase / NumeroDeItensNaLoja;
+        }
+
         [OpcoesBase(UsarNoBancoDeDados = true, ChavePrimaria = true, UsarParaBuscar = true)]
         public int TabelaDeMargenId { get; set; }
 
@@ -12,22 +25,30 @@ namespace CasaMendes
         public int SubCategoriaId { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public int NumeroDeItensNaLoja { get; set; } = 800;
+        public int NumeroDeItensNaLoja { get; set; } = 28;
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public double PorcentagemPessoPorItem { get; set; }
+        public double ValorDeBase { get; set; } = 395.73;
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public double Despesa { get; set; } = 15.00;
+        public double PorcentagemPessoPorItem { 
+            get { 
+                return _PorcentagemPessoPorItem;
+            } 
+            set { _PorcentagemPessoPorItem = value;} 
+        }
+
+        [OpcoesBase(UsarNoBancoDeDados = true)]
+        public double Despesa { get; set; } = 10.00;
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public double Custo { get; set; } = 5.00;
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public double Encargo { get; set; } = 15.00;
+        public double Encargo { get; set; } = 5.00;
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public double MargemDeLucro { get; set; } = 20.00;
+        public double MargemDeLucro { get; set; } = 7.00;
 
         public new List<TabelaDeMargen> Todos()
         {
