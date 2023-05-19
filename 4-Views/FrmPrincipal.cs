@@ -12,9 +12,7 @@ namespace CasaMendes
             InitializeComponent();
         }
 
-        //private void ShowNewForm(object sender, EventArgs e)
-        //{
-        //}
+        #region ToolsStrip
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -58,6 +56,10 @@ namespace CasaMendes
                 childForm.Close();
             }
         }
+
+        #endregion
+
+        #region Formulários do sistema
 
         private void FuncionarioMenuItem_Click(object sender, EventArgs e)
         {
@@ -170,5 +172,49 @@ namespace CasaMendes
             CarregarVenda.WindowState = FormWindowState.Maximized;
             //this.StatusLabeTtoolStrip.Text = "Produtos em estoque: ( " + ResumoDeVenda.StatusLabel + " ) Itens.";
         }
+
+        private void CategoriaMenuItem_Click(object sender, EventArgs e)
+        {
+            var CadCategoria = new FrmCadCategoria();
+            // Set the Parent Form of the Child window.
+            CadCategoria.MdiParent = this;
+            CadCategoria.Text = "Categorias " + childFormNumber++;
+            // Display the new form.
+            CadCategoria.Show();
+            CadCategoria.WindowState = FormWindowState.Maximized;
+            CadCategoria.Width = this.Width - 20;
+            CadCategoria.Height = this.Height - 120;
+            //this.StatusLabeTtoolStrip.Text = "Produtos em estoque: ( " + ResumoDeVenda.StatusLabel + " ) Itens.";
+        }
+
+        private void SubCategoriaMenuItem_Click(object sender, EventArgs e)
+        {
+            var CadSubcategoria = new FrmCadSubcategoria();
+            // Set the Parent Form of the Child window.
+            CadSubcategoria.MdiParent = this;
+            CadSubcategoria.Text = "SubCategorias " + childFormNumber++;
+            // Display the new form.
+            CadSubcategoria.Show();
+            CadSubcategoria.Width = this.Width - 20;
+            CadSubcategoria.Height = this.Height - 120;
+            CadSubcategoria.WindowState = FormWindowState.Maximized;
+            //this.StatusLabeTtoolStrip.Text = "Produtos em estoque: ( " + ResumoDeVenda.StatusLabel + " ) Itens.";
+        }
+
+        private void PrecosMenuItem_Click(object sender, EventArgs e)
+        {
+            var oTabelaDeMargen = new FrmTabelaDeMargen();
+            // Set the Parent Form of the Child window.
+            oTabelaDeMargen.MdiParent = this;
+            oTabelaDeMargen.Text = "SubCategorias " + childFormNumber++;
+            // Display the new form.
+            oTabelaDeMargen.Show();
+            //oTabelaDeMargen.Width = this.Width - 20;
+            //oTabelaDeMargen.Height = this.Height - 120;
+            //oTabelaDeMargen.WindowState = FormWindowState.Maximized;
+            //this.StatusLabeTtoolStrip.Text = "Produtos em estoque: ( " + oTabelaDeMargen.StatusLabel + " ) Itens.";
+        }
+
+        #endregion
     }
 }

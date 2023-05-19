@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace CasaMendes
 {
-    public class SubCategoriia : Base
+    public class SubCategoria : Base
     {
         [OpcoesBase(UsarNoBancoDeDados = true, ChavePrimaria = true, UsarParaBuscar = true)]
-        public int SubCategoriiaId { get; set; }
+        public int SubCategoriaId { get; set; }
 
-        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
+        [OpcoesBase(UsarNoBancoDeDados = true)]
         public int CategoriaId { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
@@ -17,22 +17,22 @@ namespace CasaMendes
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public string Descricao { get; set; }
 
-        public new List<SubCategoriia> Todos()
+        public new List<SubCategoria> Todos()
         {
-            var subCategoriia = new List<SubCategoriia>();
+            var subCategoriia = new List<SubCategoria>();
             foreach (var ibase in base.Todos())
             {
-                subCategoriia.Add((SubCategoriia)ibase);
+                subCategoriia.Add((SubCategoria)ibase);
             }
             return subCategoriia;
         }
 
-        public new List<SubCategoriia> Busca()
+        public new List<SubCategoria> Busca()
         {
-            var subCategoriia = new List<SubCategoriia>();
+            var subCategoriia = new List<SubCategoria>();
             foreach (var ibase in base.Busca())
             {
-                subCategoriia.Add((SubCategoriia)ibase);
+                subCategoriia.Add((SubCategoria)ibase);
             }
             return subCategoriia;
         }

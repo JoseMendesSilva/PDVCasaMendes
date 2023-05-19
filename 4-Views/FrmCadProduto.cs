@@ -19,10 +19,6 @@ namespace CasaMendes
         public FrmCadProduto()
         {
             InitializeComponent();
-            Botoes(true);
-            oProduto = new tProduto();
-            BsProduto = new BindingSource { oProduto };
-            if (oProduto.idProduto.Equals(0)) BsProduto.Add(oProduto);
         }
 
         private void VincularBindingSource()
@@ -56,6 +52,10 @@ namespace CasaMendes
 
         private void FrmCadProduto_Load(object sender, EventArgs e)
         {
+            Botoes(true);
+            oProduto = new tProduto();
+            BsProduto = new BindingSource { oProduto };
+            if (oProduto.idProduto.Equals(0)) BsProduto.Add(oProduto);
             VincularBindingSource();
             BsProduto.DataSource = oProduto;
             cbFornecedores.DisplayMember = "RazaoSocial";

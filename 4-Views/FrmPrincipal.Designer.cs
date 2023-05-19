@@ -82,6 +82,8 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.StatusLabeTtoolStrip = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.GestaoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PrecosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -106,6 +108,7 @@
             // fileMenu
             // 
             this.fileMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.GestaoMenuItem,
             this.RwsumoMenuItem,
             this.FrenteDeCaixaMenuItem,
             this.ReceberPenduraMenuItem,
@@ -252,7 +255,7 @@
             this.CategoriaMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.CategoriaMenuItem.Size = new System.Drawing.Size(186, 22);
             this.CategoriaMenuItem.Text = "&Categoria";
-            this.CategoriaMenuItem.Visible = false;
+            this.CategoriaMenuItem.Click += new System.EventHandler(this.CategoriaMenuItem_Click);
             // 
             // SubCategoriaMenuItem
             // 
@@ -262,7 +265,7 @@
             this.SubCategoriaMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
             this.SubCategoriaMenuItem.Size = new System.Drawing.Size(186, 22);
             this.SubCategoriaMenuItem.Text = "&SubCategoria";
-            this.SubCategoriaMenuItem.Visible = false;
+            this.SubCategoriaMenuItem.Click += new System.EventHandler(this.SubCategoriaMenuItem_Click);
             // 
             // toolStripSeparator7
             // 
@@ -527,6 +530,21 @@
             this.StatusLabeTtoolStrip.Size = new System.Drawing.Size(49, 20);
             this.StatusLabeTtoolStrip.Text = "Status";
             // 
+            // GestaoMenuItem
+            // 
+            this.GestaoMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.PrecosMenuItem});
+            this.GestaoMenuItem.Name = "GestaoMenuItem";
+            this.GestaoMenuItem.Size = new System.Drawing.Size(239, 22);
+            this.GestaoMenuItem.Text = "Gestão";
+            // 
+            // PrecosMenuItem
+            // 
+            this.PrecosMenuItem.Name = "PrecosMenuItem";
+            this.PrecosMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.PrecosMenuItem.Text = "Preços";
+            this.PrecosMenuItem.Click += new System.EventHandler(this.PrecosMenuItem_Click);
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -606,6 +624,8 @@
         public System.Windows.Forms.ToolStripStatusLabel StatusLabeTtoolStrip;
         private System.Windows.Forms.ToolStripMenuItem EstoqueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem vendasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem GestaoMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem PrecosMenuItem;
     }
 }
 

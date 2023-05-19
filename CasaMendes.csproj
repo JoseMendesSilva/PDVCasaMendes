@@ -131,8 +131,14 @@
     <Content Include="Doc\Temporario.txt" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="4-Views\FrmCadCategoria.resx">
+      <DependentUpon>FrmCadCategoria.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="4-Views\FrmCadProduto.resx">
       <DependentUpon>FrmCadProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4-Views\FrmCadSubcategoria.resx">
+      <DependentUpon>FrmCadSubcategoria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="4-Views\FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
@@ -148,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="4-Views\frmCarregaCodigoDeNota.resx">
       <DependentUpon>frmCarregaCodigoDeNota.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4-Views\FrmTabelaDeMargen.resx">
+      <DependentUpon>FrmTabelaDeMargen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmEstoque2.resx">
       <DependentUpon>FrmEstoque2.cs</DependentUpon>
@@ -224,17 +233,36 @@
     <Compile Include="2-Models\Estoque.cs" />
     <Compile Include="2-Models\Promocao.cs" />
     <Compile Include="2-Models\Cliente.cs" />
+    <Compile Include="2-Models\TabelaDeMargen.cs" />
     <Compile Include="2-Models\tFuncionario.cs" />
     <Compile Include="2-Models\Inadimplente.cs" />
     <Compile Include="2-Models\PreVenda.cs" />
     <Compile Include="2-Models\Fornecedor .cs" />
-    <Compile Include="2-Models\SubCategoriia.cs" />
+    <Compile Include="2-Models\SubCategoria.cs" />
     <Compile Include="2-Models\tFornecedore.cs" />
+    <Compile Include="4-Views\FrmCadCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4-Views\FrmCadCategoria.Designer.cs">
+      <DependentUpon>FrmCadCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="4-Views\FrmCadSubcategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4-Views\FrmCadSubcategoria.Designer.cs">
+      <DependentUpon>FrmCadSubcategoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="4-Views\FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="4-Views\FrmPrincipal.Designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="4-Views\FrmTabelaDeMargen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4-Views\FrmTabelaDeMargen.Designer.cs">
+      <DependentUpon>FrmTabelaDeMargen.cs</DependentUpon>
     </Compile>
     <Compile Include="5-ORM\Base.cs" />
     <Compile Include="5-ORM\IBase.cs" />

@@ -91,7 +91,7 @@
             this.TxtCodigoDaNotaFiscal.Name = "TxtCodigoDaNotaFiscal";
             this.TxtCodigoDaNotaFiscal.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.TxtCodigoDaNotaFiscal.Size = new System.Drawing.Size(140, 26);
-            this.TxtCodigoDaNotaFiscal.TabIndex = 142;
+            this.TxtCodigoDaNotaFiscal.TabIndex = 0;
             this.TxtCodigoDaNotaFiscal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TxtValorDesconto
@@ -102,7 +102,7 @@
             this.TxtValorDesconto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TxtValorDesconto.Name = "TxtValorDesconto";
             this.TxtValorDesconto.Size = new System.Drawing.Size(117, 26);
-            this.TxtValorDesconto.TabIndex = 153;
+            this.TxtValorDesconto.TabIndex = 11;
             this.TxtValorDesconto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label1
@@ -135,7 +135,7 @@
             this.dtpDataDeValidade.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtpDataDeValidade.Name = "dtpDataDeValidade";
             this.dtpDataDeValidade.Size = new System.Drawing.Size(117, 26);
-            this.dtpDataDeValidade.TabIndex = 146;
+            this.dtpDataDeValidade.TabIndex = 4;
             // 
             // lblPrecoDeVenda
             // 
@@ -155,7 +155,7 @@
             this.txtPrecoDeVenda.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPrecoDeVenda.Name = "txtPrecoDeVenda";
             this.txtPrecoDeVenda.Size = new System.Drawing.Size(119, 26);
-            this.txtPrecoDeVenda.TabIndex = 151;
+            this.txtPrecoDeVenda.TabIndex = 7;
             this.txtPrecoDeVenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblDesconto
@@ -188,7 +188,7 @@
             this.txtDesconto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDesconto.Name = "txtDesconto";
             this.txtDesconto.Size = new System.Drawing.Size(119, 26);
-            this.txtDesconto.TabIndex = 152;
+            this.txtDesconto.TabIndex = 10;
             this.txtDesconto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtValorCompra
@@ -199,7 +199,7 @@
             this.txtValorCompra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtValorCompra.Name = "txtValorCompra";
             this.txtValorCompra.Size = new System.Drawing.Size(117, 26);
-            this.txtValorCompra.TabIndex = 147;
+            this.txtValorCompra.TabIndex = 5;
             this.txtValorCompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblValorCompra
@@ -222,7 +222,7 @@
             this.cbFornecedores.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbFornecedores.Name = "cbFornecedores";
             this.cbFornecedores.Size = new System.Drawing.Size(327, 28);
-            this.cbFornecedores.TabIndex = 145;
+            this.cbFornecedores.TabIndex = 3;
             this.cbFornecedores.SelectedIndexChanged += new System.EventHandler(this.cbFornecedores_SelectedIndexChanged);
             // 
             // txtQuantidade
@@ -233,7 +233,7 @@
             this.txtQuantidade.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.Size = new System.Drawing.Size(119, 26);
-            this.txtQuantidade.TabIndex = 148;
+            this.txtQuantidade.TabIndex = 8;
             this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblQuantidade
@@ -267,7 +267,7 @@
             this.txtNome.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(326, 26);
-            this.txtNome.TabIndex = 144;
+            this.txtNome.TabIndex = 2;
             // 
             // txtPrecoUnitario
             // 
@@ -277,7 +277,7 @@
             this.txtPrecoUnitario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPrecoUnitario.Name = "txtPrecoUnitario";
             this.txtPrecoUnitario.Size = new System.Drawing.Size(117, 26);
-            this.txtPrecoUnitario.TabIndex = 149;
+            this.txtPrecoUnitario.TabIndex = 9;
             this.txtPrecoUnitario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblEstoque
@@ -298,7 +298,7 @@
             this.txtEstoque.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtEstoque.Name = "txtEstoque";
             this.txtEstoque.Size = new System.Drawing.Size(119, 26);
-            this.txtEstoque.TabIndex = 150;
+            this.txtEstoque.TabIndex = 6;
             this.txtEstoque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnFechar
@@ -335,7 +335,7 @@
             this.btnExcluir.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(153, 47);
-            this.btnExcluir.TabIndex = 156;
+            this.btnExcluir.TabIndex = 13;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Visible = false;
@@ -378,7 +378,7 @@
             this.btnGravar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(153, 47);
-            this.btnGravar.TabIndex = 154;
+            this.btnGravar.TabIndex = 14;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.UseVisualStyleBackColor = true;
             this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
@@ -407,7 +407,7 @@
             this.txtCodigoDeBarras.Name = "txtCodigoDeBarras";
             this.txtCodigoDeBarras.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtCodigoDeBarras.Size = new System.Drawing.Size(150, 26);
-            this.txtCodigoDeBarras.TabIndex = 143;
+            this.txtCodigoDeBarras.TabIndex = 1;
             this.txtCodigoDeBarras.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtID_Produto
