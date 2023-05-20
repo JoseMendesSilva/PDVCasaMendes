@@ -112,6 +112,7 @@
             this.PicFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PicFoto.TabIndex = 159;
             this.PicFoto.TabStop = false;
+            this.PicFoto.Click += new System.EventHandler(this.PicFoto_Click);
             // 
             // dtpDataDeValidade
             // 
@@ -122,7 +123,6 @@
             this.dtpDataDeValidade.Name = "dtpDataDeValidade";
             this.dtpDataDeValidade.Size = new System.Drawing.Size(119, 26);
             this.dtpDataDeValidade.TabIndex = 4;
-            this.dtpDataDeValidade.ValueChanged += new System.EventHandler(this.dtpDataDeValidade_ValueChanged);
             // 
             // lblPrecoDeVenda
             // 
@@ -155,7 +155,6 @@
             this.lblDesconto.Size = new System.Drawing.Size(62, 15);
             this.lblDesconto.TabIndex = 168;
             this.lblDesconto.Text = "Desconto:";
-            this.lblDesconto.Click += new System.EventHandler(this.lblDesconto_Click);
             // 
             // lblPicFoto
             // 
@@ -326,7 +325,6 @@
             this.lblDataDeValidade.Size = new System.Drawing.Size(102, 15);
             this.lblDataDeValidade.TabIndex = 162;
             this.lblDataDeValidade.Text = "Data de validade:";
-            this.lblDataDeValidade.Click += new System.EventHandler(this.lblDataDeValidade_Click);
             // 
             // lblProduto
             // 
@@ -455,7 +453,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "FrmCadProduto";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmCadProduto";
             this.Load += new System.EventHandler(this.FrmCadProduto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PicFoto)).EndInit();

@@ -51,6 +51,34 @@ namespace CasaMendes.Classes.Estatica
         }
 
         //====================================================================================================
+        public static string Abririmagens()
+        {
+            var dir = string.Empty;
+            fDialogo = new OpenFileDialog();
+            fDialogo.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+            // Set the file dialog to filter for graphics files.
+            fDialogo.Filter = "imagens (*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF| All files (*.*)|*.*";
+            // Allow the user to select multiple imagens.
+            fDialogo.Multiselect = true;
+            fDialogo.Title = Application.ProductName;
+            DialogResult dialogResult = fDialogo.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+            {
+               dir = fDialogo.FileName;
+            }
+            else
+            {
+                dir = string.Empty;
+                //PicFoto.Image = Image.FromFile(clsGlobal.ValidarDiretorio(clsGlobal.sCaminho, @"\CasaMendes.jpg"));
+                //PicFoto.Image = Properties.Resources.CasaMendes1Jpg; //Image.FromFile(clsGlobal.ValidarDiretorio();
+            }
+
+            fDialogo.Dispose(); 
+            return dir;
+
+        }
+
+        //====================================================================================================
         public static void Abririmagens(PictureBox PicFoto)
         {
             fDialogo = new OpenFileDialog();

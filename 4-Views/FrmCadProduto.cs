@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CasaMendes.Classes.Estatica;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,16 +13,32 @@ namespace CasaMendes
 {
     public partial class FrmCadProduto : Form
     {
+
+        #region var
         public BindingSource BsProduto;
         public tProduto oProduto;
         private List<TabelaDeMargen> oListaDeMargen;
+        #endregion
+
+        #region FrmCadProduto
 
         public FrmCadProduto()
         {
             InitializeComponent();
         }
 
-        private void CaalcularPreco()
+        #endregion
+
+        #region métodos
+
+        private void BuscarFotoProduto()
+        {
+
+            PicFoto.Image = Image.FromFile(clsGlobal.Abririmagens());
+            //MessageBox.Show("OK BuscarFotoProduto()" + oListaDeMargen[0].Despesa);
+        }
+
+        private void CalcularPreco()
         {
             MessageBox.Show("OK" + oListaDeMargen[0].Despesa);
         }
@@ -48,20 +65,28 @@ namespace CasaMendes
             btnGravar.Enabled = b;
             btnFechar.Enabled = b;
         }
-     
+
+        #endregion
+
+        #region Click
+
         private void btnGravar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        #endregion
+
+        #region Load
+
         private void FrmCadProduto_Load(object sender, EventArgs e)
         {
             Botoes(true);
 
-            if(oProduto.Equals(null)) oProduto = new tProduto();
+            if (oProduto.Equals(null)) oProduto = new tProduto();
             if (BsProduto == null)
                 BsProduto = new BindingSource { oProduto };
-            if (oListaDeMargen == null) 
+            if (oListaDeMargen == null)
                 oListaDeMargen = new List<TabelaDeMargen>();
 
             if (oProduto.idProduto.Equals(0)) BsProduto.Add(oProduto);
@@ -75,7 +100,11 @@ namespace CasaMendes
             CbSubcategoria.DataSource = new SubCategoria().Todos();
         }
 
+        #endregion
+
         #region Evento
+
+        #region SelectedIndexChanged
 
         private void cbFornecedores_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -109,12 +138,16 @@ namespace CasaMendes
             catch { }
         }
 
+        #endregion
+
+        #region TextChanged
+
         private void txtEstoque_TextChanged(object sender, EventArgs e)
         {
             try
             {
                 if (txtEstoque.Text.Equals("") || txtQuantidade.Text.Equals("") || txtDesconto.Text.Equals("") || TxtValorDesconto.Text.Equals("") || txtPrecoUnitario.Text.Equals("") || txtValorCompra.Text.Equals("")) return;
-                CaalcularPreco();
+                CalcularPreco();
             }
             catch { }
         }
@@ -124,7 +157,7 @@ namespace CasaMendes
             try
             {
                 if (txtEstoque.Text.Equals("") || txtQuantidade.Text.Equals("") || txtDesconto.Text.Equals("") || TxtValorDesconto.Text.Equals("") || txtPrecoUnitario.Text.Equals("") || txtValorCompra.Text.Equals("")) return;
-                CaalcularPreco();
+                CalcularPreco();
             }
             catch { }
         }
@@ -134,7 +167,7 @@ namespace CasaMendes
             try
             {
                 if (txtEstoque.Text.Equals("") || txtQuantidade.Text.Equals("") || txtDesconto.Text.Equals("") || TxtValorDesconto.Text.Equals("") || txtPrecoUnitario.Text.Equals("") || txtValorCompra.Text.Equals("")) return;
-                CaalcularPreco();
+                CalcularPreco();
             }
             catch { }
         }
@@ -144,7 +177,7 @@ namespace CasaMendes
             try
             {
                 if (txtEstoque.Text.Equals("") || txtQuantidade.Text.Equals("") || txtDesconto.Text.Equals("") || TxtValorDesconto.Text.Equals("") || txtPrecoUnitario.Text.Equals("") || txtValorCompra.Text.Equals("")) return;
-                CaalcularPreco();
+                CalcularPreco();
             }
             catch { }
         }
@@ -154,7 +187,7 @@ namespace CasaMendes
             try
             {
                 if (txtEstoque.Text.Equals("") || txtQuantidade.Text.Equals("") || txtDesconto.Text.Equals("") || TxtValorDesconto.Text.Equals("") || txtPrecoUnitario.Text.Equals("") || txtValorCompra.Text.Equals("")) return;
-                CaalcularPreco();
+                CalcularPreco();
             }
             catch { }
         }
@@ -164,7 +197,7 @@ namespace CasaMendes
             try
             {
                 if (txtEstoque.Text.Equals("") || txtQuantidade.Text.Equals("") || txtDesconto.Text.Equals("") || TxtValorDesconto.Text.Equals("") || txtPrecoUnitario.Text.Equals("") || txtValorCompra.Text.Equals("")) return;
-                CaalcularPreco();
+                CalcularPreco();
             }
             catch { }
         }
@@ -174,50 +207,21 @@ namespace CasaMendes
             try
             {
                 if (txtEstoque.Text.Equals("") || txtQuantidade.Text.Equals("") || txtDesconto.Text.Equals("") || TxtValorDesconto.Text.Equals("") || txtPrecoUnitario.Text.Equals("") || txtValorCompra.Text.Equals("")) return;
-                CaalcularPreco();
+                CalcularPreco();
             }
             catch { }
         }
 
         #endregion
 
-        private void lblDesconto_Click(object sender, EventArgs e)
+        #endregion
+
+        private void PicFoto_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void lblEstoque_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void dtpDataDeValidade_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblDataDeValidade_Click(object sender, EventArgs e)
-        {
-
+            try
+            {
+                BuscarFotoProduto();
+            }catch { }
         }
     }
 }
-
-//Fornecedor fornecedor = new Fornecedor();
-
-// fornecedor.CriarTabela();
-
-//fornecedor.RazaoSocial = "hh";
-//fornecedor.Endereco = "hh";
-//fornecedor.Cep = "88888-000";
-//fornecedor.Cidade = "hh";
-//fornecedor.Bairro = "hh";
-//fornecedor.Estado = "hh";
-//fornecedor.DataCadastro=DateTime.Now;
-//fornecedor.Celular = "55555555555";
-//fornecedor.Telefone = "5555555555";
-//fornecedor.Email = "email";
-//fornecedor.SITE = "site";
-//fornecedor.Cnpj = "00.009.999/0001-88";
-//fornecedor.InscricaoEstadual = "00.009.998";
-//fornecedor.Salvar();
