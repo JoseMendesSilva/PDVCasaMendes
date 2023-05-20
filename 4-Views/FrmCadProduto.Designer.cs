@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
             this.TxtCodigoDaNotaFiscal = new System.Windows.Forms.TextBox();
             this.TxtValorDesconto = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,35 +46,21 @@
             this.lblPrecoUnitario = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txtPrecoUnitario = new System.Windows.Forms.TextBox();
-            this.lblEstoque = new System.Windows.Forms.Label();
             this.txtEstoque = new System.Windows.Forms.TextBox();
             this.btnFechar = new System.Windows.Forms.Button();
             this.lblCodigoDeBarras = new System.Windows.Forms.Label();
-            this.btnExcluir = new System.Windows.Forms.Button();
             this.lblFornecedor = new System.Windows.Forms.Label();
             this.lblDataDeValidade = new System.Windows.Forms.Label();
             this.lblProduto = new System.Windows.Forms.Label();
             this.btnGravar = new System.Windows.Forms.Button();
-            this.txtCodigoDoFornecedor = new System.Windows.Forms.TextBox();
             this.txtCodigoDeBarras = new System.Windows.Forms.TextBox();
             this.txtID_Produto = new System.Windows.Forms.TextBox();
+            this.CbSubcategoria = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.TxtSubCategoriaId = new System.Windows.Forms.TextBox();
+            this.txtCodigoDoFornecedor = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.PicFoto)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.SystemColors.Control;
-            this.label2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(2, 7);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label2.Size = new System.Drawing.Size(124, 15);
-            this.label2.TabIndex = 172;
-            this.label2.Text = "Codigo da nota fiscal:";
             // 
             // TxtCodigoDaNotaFiscal
             // 
@@ -85,30 +70,32 @@
             this.TxtCodigoDaNotaFiscal.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.TxtCodigoDaNotaFiscal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtCodigoDaNotaFiscal.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.TxtCodigoDaNotaFiscal.Location = new System.Drawing.Point(7, 24);
+            this.TxtCodigoDaNotaFiscal.Location = new System.Drawing.Point(276, 7);
             this.TxtCodigoDaNotaFiscal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TxtCodigoDaNotaFiscal.MaxLength = 50;
             this.TxtCodigoDaNotaFiscal.Name = "TxtCodigoDaNotaFiscal";
             this.TxtCodigoDaNotaFiscal.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TxtCodigoDaNotaFiscal.Size = new System.Drawing.Size(140, 26);
+            this.TxtCodigoDaNotaFiscal.Size = new System.Drawing.Size(110, 26);
             this.TxtCodigoDaNotaFiscal.TabIndex = 0;
             this.TxtCodigoDaNotaFiscal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtCodigoDaNotaFiscal.Visible = false;
             // 
             // TxtValorDesconto
             // 
             this.TxtValorDesconto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtValorDesconto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtValorDesconto.Location = new System.Drawing.Point(183, 430);
+            this.TxtValorDesconto.Location = new System.Drawing.Point(250, 295);
             this.TxtValorDesconto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TxtValorDesconto.Name = "TxtValorDesconto";
-            this.TxtValorDesconto.Size = new System.Drawing.Size(117, 26);
-            this.TxtValorDesconto.TabIndex = 11;
+            this.TxtValorDesconto.Size = new System.Drawing.Size(84, 26);
+            this.TxtValorDesconto.TabIndex = 10;
             this.TxtValorDesconto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtValorDesconto.TextChanged += new System.EventHandler(this.TxtValorDesconto_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(180, 412);
+            this.label1.Location = new System.Drawing.Point(177, 300);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 15);
@@ -117,12 +104,11 @@
             // 
             // PicFoto
             // 
-            this.PicFoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.PicFoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PicFoto.Location = new System.Drawing.Point(341, 24);
+            this.PicFoto.Location = new System.Drawing.Point(381, 37);
             this.PicFoto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PicFoto.Name = "PicFoto";
-            this.PicFoto.Size = new System.Drawing.Size(152, 166);
+            this.PicFoto.Size = new System.Drawing.Size(117, 137);
             this.PicFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PicFoto.TabIndex = 159;
             this.PicFoto.TabStop = false;
@@ -131,16 +117,17 @@
             // 
             this.dtpDataDeValidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDataDeValidade.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataDeValidade.Location = new System.Drawing.Point(7, 237);
+            this.dtpDataDeValidade.Location = new System.Drawing.Point(118, 193);
             this.dtpDataDeValidade.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtpDataDeValidade.Name = "dtpDataDeValidade";
-            this.dtpDataDeValidade.Size = new System.Drawing.Size(117, 26);
+            this.dtpDataDeValidade.Size = new System.Drawing.Size(119, 26);
             this.dtpDataDeValidade.TabIndex = 4;
+            this.dtpDataDeValidade.ValueChanged += new System.EventHandler(this.dtpDataDeValidade_ValueChanged);
             // 
             // lblPrecoDeVenda
             // 
             this.lblPrecoDeVenda.AutoSize = true;
-            this.lblPrecoDeVenda.Location = new System.Drawing.Point(180, 285);
+            this.lblPrecoDeVenda.Location = new System.Drawing.Point(177, 249);
             this.lblPrecoDeVenda.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrecoDeVenda.Name = "lblPrecoDeVenda";
             this.lblPrecoDeVenda.Size = new System.Drawing.Size(74, 15);
@@ -151,61 +138,64 @@
             // 
             this.txtPrecoDeVenda.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrecoDeVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrecoDeVenda.Location = new System.Drawing.Point(183, 305);
+            this.txtPrecoDeVenda.Location = new System.Drawing.Point(250, 244);
             this.txtPrecoDeVenda.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPrecoDeVenda.Name = "txtPrecoDeVenda";
-            this.txtPrecoDeVenda.Size = new System.Drawing.Size(119, 26);
+            this.txtPrecoDeVenda.Size = new System.Drawing.Size(84, 26);
             this.txtPrecoDeVenda.TabIndex = 7;
             this.txtPrecoDeVenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPrecoDeVenda.TextChanged += new System.EventHandler(this.txtPrecoDeVenda_TextChanged);
             // 
             // lblDesconto
             // 
             this.lblDesconto.AutoSize = true;
-            this.lblDesconto.Location = new System.Drawing.Point(6, 412);
+            this.lblDesconto.Location = new System.Drawing.Point(8, 300);
             this.lblDesconto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDesconto.Name = "lblDesconto";
             this.lblDesconto.Size = new System.Drawing.Size(62, 15);
             this.lblDesconto.TabIndex = 168;
             this.lblDesconto.Text = "Desconto:";
+            this.lblDesconto.Click += new System.EventHandler(this.lblDesconto_Click);
             // 
             // lblPicFoto
             // 
-            this.lblPicFoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPicFoto.AutoSize = true;
             this.lblPicFoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPicFoto.Location = new System.Drawing.Point(398, 4);
+            this.lblPicFoto.Location = new System.Drawing.Point(413, 12);
             this.lblPicFoto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPicFoto.Name = "lblPicFoto";
             this.lblPicFoto.Size = new System.Drawing.Size(46, 20);
-            this.lblPicFoto.TabIndex = 166;
+            this.lblPicFoto.TabIndex = 11;
             this.lblPicFoto.Text = "Foto:";
             // 
             // txtDesconto
             // 
             this.txtDesconto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDesconto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDesconto.Location = new System.Drawing.Point(7, 430);
+            this.txtDesconto.Location = new System.Drawing.Point(87, 295);
             this.txtDesconto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDesconto.Name = "txtDesconto";
-            this.txtDesconto.Size = new System.Drawing.Size(119, 26);
-            this.txtDesconto.TabIndex = 10;
+            this.txtDesconto.Size = new System.Drawing.Size(84, 26);
+            this.txtDesconto.TabIndex = 9;
             this.txtDesconto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDesconto.TextChanged += new System.EventHandler(this.txtDesconto_TextChanged);
             // 
             // txtValorCompra
             // 
             this.txtValorCompra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtValorCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorCompra.Location = new System.Drawing.Point(183, 237);
+            this.txtValorCompra.Location = new System.Drawing.Point(348, 196);
             this.txtValorCompra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtValorCompra.Name = "txtValorCompra";
-            this.txtValorCompra.Size = new System.Drawing.Size(117, 26);
+            this.txtValorCompra.Size = new System.Drawing.Size(150, 26);
             this.txtValorCompra.TabIndex = 5;
             this.txtValorCompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtValorCompra.TextChanged += new System.EventHandler(this.txtValorCompra_TextChanged);
             // 
             // lblValorCompra
             // 
             this.lblValorCompra.AutoSize = true;
-            this.lblValorCompra.Location = new System.Drawing.Point(180, 217);
+            this.lblValorCompra.Location = new System.Drawing.Point(264, 201);
             this.lblValorCompra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblValorCompra.Name = "lblValorCompra";
             this.lblValorCompra.Size = new System.Drawing.Size(83, 15);
@@ -214,32 +204,31 @@
             // 
             // cbFornecedores
             // 
-            this.cbFornecedores.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.cbFornecedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbFornecedores.FormattingEnabled = true;
-            this.cbFornecedores.Location = new System.Drawing.Point(5, 162);
+            this.cbFornecedores.Location = new System.Drawing.Point(118, 98);
             this.cbFornecedores.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbFornecedores.Name = "cbFornecedores";
-            this.cbFornecedores.Size = new System.Drawing.Size(327, 28);
-            this.cbFornecedores.TabIndex = 3;
+            this.cbFornecedores.Size = new System.Drawing.Size(250, 28);
+            this.cbFornecedores.TabIndex = 2;
             this.cbFornecedores.SelectedIndexChanged += new System.EventHandler(this.cbFornecedores_SelectedIndexChanged);
             // 
             // txtQuantidade
             // 
             this.txtQuantidade.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtQuantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuantidade.Location = new System.Drawing.Point(7, 369);
+            this.txtQuantidade.Location = new System.Drawing.Point(417, 244);
             this.txtQuantidade.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtQuantidade.Name = "txtQuantidade";
-            this.txtQuantidade.Size = new System.Drawing.Size(119, 26);
+            this.txtQuantidade.Size = new System.Drawing.Size(81, 26);
             this.txtQuantidade.TabIndex = 8;
             this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtQuantidade.TextChanged += new System.EventHandler(this.txtQuantidade_TextChanged);
             // 
             // lblQuantidade
             // 
             this.lblQuantidade.AutoSize = true;
-            this.lblQuantidade.Location = new System.Drawing.Point(4, 349);
+            this.lblQuantidade.Location = new System.Drawing.Point(345, 249);
             this.lblQuantidade.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblQuantidade.Name = "lblQuantidade";
             this.lblQuantidade.Size = new System.Drawing.Size(74, 15);
@@ -249,7 +238,7 @@
             // lblPrecoUnitario
             // 
             this.lblPrecoUnitario.AutoSize = true;
-            this.lblPrecoUnitario.Location = new System.Drawing.Point(180, 349);
+            this.lblPrecoUnitario.Location = new System.Drawing.Point(8, 249);
             this.lblPrecoUnitario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrecoUnitario.Name = "lblPrecoUnitario";
             this.lblPrecoUnitario.Size = new System.Drawing.Size(82, 15);
@@ -258,58 +247,48 @@
             // 
             // txtNome
             // 
-            this.txtNome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNome.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNome.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNome.Location = new System.Drawing.Point(6, 82);
+            this.txtNome.Location = new System.Drawing.Point(118, 52);
             this.txtNome.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(326, 26);
-            this.txtNome.TabIndex = 2;
+            this.txtNome.Size = new System.Drawing.Size(250, 26);
+            this.txtNome.TabIndex = 1;
             // 
             // txtPrecoUnitario
             // 
             this.txtPrecoUnitario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrecoUnitario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrecoUnitario.Location = new System.Drawing.Point(183, 369);
+            this.txtPrecoUnitario.Location = new System.Drawing.Point(90, 244);
             this.txtPrecoUnitario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPrecoUnitario.Name = "txtPrecoUnitario";
-            this.txtPrecoUnitario.Size = new System.Drawing.Size(117, 26);
-            this.txtPrecoUnitario.TabIndex = 9;
+            this.txtPrecoUnitario.Size = new System.Drawing.Size(81, 26);
+            this.txtPrecoUnitario.TabIndex = 6;
             this.txtPrecoUnitario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // lblEstoque
-            // 
-            this.lblEstoque.AutoSize = true;
-            this.lblEstoque.Location = new System.Drawing.Point(4, 285);
-            this.lblEstoque.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblEstoque.Name = "lblEstoque";
-            this.lblEstoque.Size = new System.Drawing.Size(55, 15);
-            this.lblEstoque.TabIndex = 165;
-            this.lblEstoque.Text = "Estoque:";
+            this.txtPrecoUnitario.TextChanged += new System.EventHandler(this.txtPrecoUnitario_TextChanged);
             // 
             // txtEstoque
             // 
             this.txtEstoque.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEstoque.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEstoque.Location = new System.Drawing.Point(7, 305);
+            this.txtEstoque.Location = new System.Drawing.Point(276, 6);
             this.txtEstoque.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtEstoque.Name = "txtEstoque";
-            this.txtEstoque.Size = new System.Drawing.Size(119, 26);
+            this.txtEstoque.Size = new System.Drawing.Size(100, 26);
             this.txtEstoque.TabIndex = 6;
             this.txtEstoque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtEstoque.Visible = false;
+            this.txtEstoque.TextChanged += new System.EventHandler(this.txtEstoque_TextChanged);
             // 
             // btnFechar
             // 
-            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFechar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnFechar.Location = new System.Drawing.Point(341, 409);
+            this.btnFechar.Location = new System.Drawing.Point(427, 279);
             this.btnFechar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(152, 47);
-            this.btnFechar.TabIndex = 155;
+            this.btnFechar.Size = new System.Drawing.Size(71, 42);
+            this.btnFechar.TabIndex = 13;
             this.btnFechar.Text = "Fechar";
             this.btnFechar.UseVisualStyleBackColor = true;
             // 
@@ -320,7 +299,7 @@
             this.lblCodigoDeBarras.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblCodigoDeBarras.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodigoDeBarras.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblCodigoDeBarras.Location = new System.Drawing.Point(178, 7);
+            this.lblCodigoDeBarras.Location = new System.Drawing.Point(6, 11);
             this.lblCodigoDeBarras.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCodigoDeBarras.Name = "lblCodigoDeBarras";
             this.lblCodigoDeBarras.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -328,22 +307,10 @@
             this.lblCodigoDeBarras.TabIndex = 157;
             this.lblCodigoDeBarras.Text = "Codigo de barras:";
             // 
-            // btnExcluir
-            // 
-            this.btnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExcluir.Location = new System.Drawing.Point(340, 61);
-            this.btnExcluir.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(153, 47);
-            this.btnExcluir.TabIndex = 13;
-            this.btnExcluir.Text = "Excluir";
-            this.btnExcluir.UseVisualStyleBackColor = true;
-            this.btnExcluir.Visible = false;
-            // 
             // lblFornecedor
             // 
             this.lblFornecedor.AutoSize = true;
-            this.lblFornecedor.Location = new System.Drawing.Point(2, 142);
+            this.lblFornecedor.Location = new System.Drawing.Point(9, 104);
             this.lblFornecedor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFornecedor.Name = "lblFornecedor";
             this.lblFornecedor.Size = new System.Drawing.Size(73, 15);
@@ -353,17 +320,18 @@
             // lblDataDeValidade
             // 
             this.lblDataDeValidade.AutoSize = true;
-            this.lblDataDeValidade.Location = new System.Drawing.Point(6, 217);
+            this.lblDataDeValidade.Location = new System.Drawing.Point(8, 201);
             this.lblDataDeValidade.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDataDeValidade.Name = "lblDataDeValidade";
             this.lblDataDeValidade.Size = new System.Drawing.Size(102, 15);
             this.lblDataDeValidade.TabIndex = 162;
             this.lblDataDeValidade.Text = "Data de validade:";
+            this.lblDataDeValidade.Click += new System.EventHandler(this.lblDataDeValidade_Click);
             // 
             // lblProduto
             // 
             this.lblProduto.AutoSize = true;
-            this.lblProduto.Location = new System.Drawing.Point(3, 64);
+            this.lblProduto.Location = new System.Drawing.Point(6, 57);
             this.lblProduto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProduto.Name = "lblProduto";
             this.lblProduto.Size = new System.Drawing.Size(53, 15);
@@ -372,51 +340,78 @@
             // 
             // btnGravar
             // 
-            this.btnGravar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnGravar.Location = new System.Drawing.Point(340, 226);
+            this.btnGravar.Location = new System.Drawing.Point(348, 280);
             this.btnGravar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnGravar.Name = "btnGravar";
-            this.btnGravar.Size = new System.Drawing.Size(153, 47);
-            this.btnGravar.TabIndex = 14;
+            this.btnGravar.Size = new System.Drawing.Size(71, 42);
+            this.btnGravar.TabIndex = 12;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.UseVisualStyleBackColor = true;
             this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
-            // txtCodigoDoFornecedor
-            // 
-            this.txtCodigoDoFornecedor.Location = new System.Drawing.Point(183, 118);
-            this.txtCodigoDoFornecedor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtCodigoDoFornecedor.Name = "txtCodigoDoFornecedor";
-            this.txtCodigoDoFornecedor.Size = new System.Drawing.Size(149, 21);
-            this.txtCodigoDoFornecedor.TabIndex = 158;
-            // 
             // txtCodigoDeBarras
             // 
             this.txtCodigoDeBarras.AcceptsReturn = true;
-            this.txtCodigoDeBarras.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCodigoDeBarras.BackColor = System.Drawing.SystemColors.Window;
             this.txtCodigoDeBarras.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCodigoDeBarras.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCodigoDeBarras.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigoDeBarras.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtCodigoDeBarras.Location = new System.Drawing.Point(183, 24);
+            this.txtCodigoDeBarras.Location = new System.Drawing.Point(118, 6);
             this.txtCodigoDeBarras.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCodigoDeBarras.MaxLength = 50;
             this.txtCodigoDeBarras.Name = "txtCodigoDeBarras";
             this.txtCodigoDeBarras.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtCodigoDeBarras.Size = new System.Drawing.Size(150, 26);
-            this.txtCodigoDeBarras.TabIndex = 1;
+            this.txtCodigoDeBarras.TabIndex = 0;
             this.txtCodigoDeBarras.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtID_Produto
             // 
-            this.txtID_Produto.Location = new System.Drawing.Point(17, 82);
+            this.txtID_Produto.Location = new System.Drawing.Point(276, 9);
             this.txtID_Produto.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtID_Produto.Name = "txtID_Produto";
-            this.txtID_Produto.Size = new System.Drawing.Size(116, 21);
+            this.txtID_Produto.Size = new System.Drawing.Size(110, 21);
             this.txtID_Produto.TabIndex = 170;
+            // 
+            // CbSubcategoria
+            // 
+            this.CbSubcategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CbSubcategoria.FormattingEnabled = true;
+            this.CbSubcategoria.Location = new System.Drawing.Point(118, 146);
+            this.CbSubcategoria.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.CbSubcategoria.Name = "CbSubcategoria";
+            this.CbSubcategoria.Size = new System.Drawing.Size(250, 28);
+            this.CbSubcategoria.TabIndex = 3;
+            this.CbSubcategoria.SelectedIndexChanged += new System.EventHandler(this.CbSubcategoria_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 152);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(85, 15);
+            this.label3.TabIndex = 174;
+            this.label3.Text = "SubCategoria:";
+            // 
+            // TxtSubCategoriaId
+            // 
+            this.TxtSubCategoriaId.Location = new System.Drawing.Point(276, 9);
+            this.TxtSubCategoriaId.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TxtSubCategoriaId.Name = "TxtSubCategoriaId";
+            this.TxtSubCategoriaId.Size = new System.Drawing.Size(110, 21);
+            this.TxtSubCategoriaId.TabIndex = 175;
+            this.TxtSubCategoriaId.Visible = false;
+            // 
+            // txtCodigoDoFornecedor
+            // 
+            this.txtCodigoDoFornecedor.Location = new System.Drawing.Point(276, 9);
+            this.txtCodigoDoFornecedor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtCodigoDoFornecedor.Name = "txtCodigoDoFornecedor";
+            this.txtCodigoDoFornecedor.Size = new System.Drawing.Size(110, 21);
+            this.txtCodigoDoFornecedor.TabIndex = 158;
             // 
             // FrmCadProduto
             // 
@@ -424,16 +419,19 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnFechar;
-            this.ClientSize = new System.Drawing.Size(501, 465);
+            this.ClientSize = new System.Drawing.Size(510, 330);
+            this.Controls.Add(this.txtEstoque);
+            this.Controls.Add(this.txtPrecoDeVenda);
+            this.Controls.Add(this.TxtSubCategoriaId);
+            this.Controls.Add(this.CbSubcategoria);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtCodigoDoFornecedor);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.TxtCodigoDaNotaFiscal);
             this.Controls.Add(this.TxtValorDesconto);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PicFoto);
             this.Controls.Add(this.dtpDataDeValidade);
             this.Controls.Add(this.lblPrecoDeVenda);
-            this.Controls.Add(this.txtPrecoDeVenda);
             this.Controls.Add(this.lblDesconto);
             this.Controls.Add(this.lblPicFoto);
             this.Controls.Add(this.txtDesconto);
@@ -445,11 +443,8 @@
             this.Controls.Add(this.lblPrecoUnitario);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.txtPrecoUnitario);
-            this.Controls.Add(this.lblEstoque);
-            this.Controls.Add(this.txtEstoque);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.lblCodigoDeBarras);
-            this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.lblFornecedor);
             this.Controls.Add(this.lblDataDeValidade);
             this.Controls.Add(this.lblProduto);
@@ -470,8 +465,6 @@
         }
 
         #endregion
-
-        public System.Windows.Forms.Label label2;
         protected internal System.Windows.Forms.TextBox TxtCodigoDaNotaFiscal;
         public System.Windows.Forms.TextBox TxtValorDesconto;
         internal System.Windows.Forms.Label label1;
@@ -490,17 +483,18 @@
         internal System.Windows.Forms.Label lblPrecoUnitario;
         internal System.Windows.Forms.TextBox txtNome;
         public System.Windows.Forms.TextBox txtPrecoUnitario;
-        internal System.Windows.Forms.Label lblEstoque;
         public System.Windows.Forms.TextBox txtEstoque;
         internal System.Windows.Forms.Button btnFechar;
         public System.Windows.Forms.Label lblCodigoDeBarras;
-        internal System.Windows.Forms.Button btnExcluir;
         internal System.Windows.Forms.Label lblFornecedor;
         internal System.Windows.Forms.Label lblDataDeValidade;
         internal System.Windows.Forms.Label lblProduto;
         internal System.Windows.Forms.Button btnGravar;
-        internal System.Windows.Forms.TextBox txtCodigoDoFornecedor;
         protected internal System.Windows.Forms.TextBox txtCodigoDeBarras;
         public System.Windows.Forms.TextBox txtID_Produto;
+        public System.Windows.Forms.ComboBox CbSubcategoria;
+        internal System.Windows.Forms.Label label3;
+        internal System.Windows.Forms.TextBox TxtSubCategoriaId;
+        internal System.Windows.Forms.TextBox txtCodigoDoFornecedor;
     }
 }

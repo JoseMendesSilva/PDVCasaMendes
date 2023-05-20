@@ -14,11 +14,16 @@ namespace CasaMendes
     {
         public BindingSource BsProduto;
         public tProduto oProduto;
-
+        private List<TabelaDeMargen> oListaDeMargen;
 
         public FrmCadProduto()
         {
             InitializeComponent();
+        }
+
+        private void CaalcularPreco()
+        {
+            MessageBox.Show("OK" + oListaDeMargen[0].Despesa);
         }
 
         private void VincularBindingSource()
@@ -42,9 +47,8 @@ namespace CasaMendes
         {
             btnGravar.Enabled = b;
             btnFechar.Enabled = b;
-            btnExcluir.Enabled = b;
         }
-
+     
         private void btnGravar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -53,20 +57,30 @@ namespace CasaMendes
         private void FrmCadProduto_Load(object sender, EventArgs e)
         {
             Botoes(true);
-            oProduto = new tProduto();
-            BsProduto = new BindingSource { oProduto };
+
+            if(oProduto.Equals(null)) oProduto = new tProduto();
+            if (BsProduto == null)
+                BsProduto = new BindingSource { oProduto };
+            if (oListaDeMargen == null) 
+                oListaDeMargen = new List<TabelaDeMargen>();
+
             if (oProduto.idProduto.Equals(0)) BsProduto.Add(oProduto);
             VincularBindingSource();
             BsProduto.DataSource = oProduto;
+
             cbFornecedores.DisplayMember = "RazaoSocial";
             cbFornecedores.DataSource = new tFornecedore().Todos();
+
+            CbSubcategoria.DisplayMember = "Nome";
+            CbSubcategoria.DataSource = new SubCategoria().Todos();
         }
+
+        #region Evento
 
         private void cbFornecedores_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-
                 tFornecedore oFornecedor = new tFornecedore();
                 oFornecedor.RazaoSocial = cbFornecedores.Text;
                 var codigo = oFornecedor.Busca();
@@ -76,6 +90,116 @@ namespace CasaMendes
             catch { }
         }
 
+        private void CbSubcategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                SubCategoria oSubCategoria = new SubCategoria();
+                oSubCategoria.Nome = CbSubcategoria.Text;
+
+                var lista = oSubCategoria.Busca();
+
+                TxtSubCategoriaId.Text = lista[0].SubCategoriaId.ToString();
+                oSubCategoria = null;
+
+                TabelaDeMargen oTabelaDeMargen = new TabelaDeMargen();
+                oTabelaDeMargen.SubCategoriaId = lista[0].SubCategoriaId;
+                oListaDeMargen = oTabelaDeMargen.Busca();
+            }
+            catch { }
+        }
+
+        private void txtEstoque_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtEstoque.Text.Equals("") || txtQuantidade.Text.Equals("") || txtDesconto.Text.Equals("") || TxtValorDesconto.Text.Equals("") || txtPrecoUnitario.Text.Equals("") || txtValorCompra.Text.Equals("")) return;
+                CaalcularPreco();
+            }
+            catch { }
+        }
+
+        private void txtQuantidade_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtEstoque.Text.Equals("") || txtQuantidade.Text.Equals("") || txtDesconto.Text.Equals("") || TxtValorDesconto.Text.Equals("") || txtPrecoUnitario.Text.Equals("") || txtValorCompra.Text.Equals("")) return;
+                CaalcularPreco();
+            }
+            catch { }
+        }
+
+        private void txtDesconto_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtEstoque.Text.Equals("") || txtQuantidade.Text.Equals("") || txtDesconto.Text.Equals("") || TxtValorDesconto.Text.Equals("") || txtPrecoUnitario.Text.Equals("") || txtValorCompra.Text.Equals("")) return;
+                CaalcularPreco();
+            }
+            catch { }
+        }
+
+        private void TxtValorDesconto_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtEstoque.Text.Equals("") || txtQuantidade.Text.Equals("") || txtDesconto.Text.Equals("") || TxtValorDesconto.Text.Equals("") || txtPrecoUnitario.Text.Equals("") || txtValorCompra.Text.Equals("")) return;
+                CaalcularPreco();
+            }
+            catch { }
+        }
+
+        private void txtPrecoUnitario_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtEstoque.Text.Equals("") || txtQuantidade.Text.Equals("") || txtDesconto.Text.Equals("") || TxtValorDesconto.Text.Equals("") || txtPrecoUnitario.Text.Equals("") || txtValorCompra.Text.Equals("")) return;
+                CaalcularPreco();
+            }
+            catch { }
+        }
+
+        private void txtPrecoDeVenda_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtEstoque.Text.Equals("") || txtQuantidade.Text.Equals("") || txtDesconto.Text.Equals("") || TxtValorDesconto.Text.Equals("") || txtPrecoUnitario.Text.Equals("") || txtValorCompra.Text.Equals("")) return;
+                CaalcularPreco();
+            }
+            catch { }
+        }
+
+        private void txtValorCompra_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtEstoque.Text.Equals("") || txtQuantidade.Text.Equals("") || txtDesconto.Text.Equals("") || TxtValorDesconto.Text.Equals("") || txtPrecoUnitario.Text.Equals("") || txtValorCompra.Text.Equals("")) return;
+                CaalcularPreco();
+            }
+            catch { }
+        }
+
+        #endregion
+
+        private void lblDesconto_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblEstoque_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void dtpDataDeValidade_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDataDeValidade_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

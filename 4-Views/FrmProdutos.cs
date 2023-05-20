@@ -9,10 +9,12 @@ namespace CasaMendes
 {
     public partial class FrmProdutos : Form
     {
+        #region variáveis
         int LinhaIndex;
         bool editar;
         tProduto oProduto;
         FrmCadProduto cadProduto;
+        #endregion
 
         #region Propriedades
 
@@ -20,13 +22,16 @@ namespace CasaMendes
 
         #endregion
 
+        #region construtor
         public FrmProdutos()
         {
             InitializeComponent();
             LinhaIndex = -1;
             editar = false;
         }
+        #endregion
 
+        #region Métodos auxiliares
         private void Botoes(bool b)
         {
             btnEditar.Enabled = !b;
@@ -42,8 +47,6 @@ namespace CasaMendes
             dgv.DataSource = oProduto.Todos();
             StatusLabel = (dgv.RowCount - 1).ToString();
         }
-
-        #region Métodos auxiliares
 
         private void RedimencionarGrade()
         {
@@ -154,37 +157,29 @@ namespace CasaMendes
             }
         }
 
-        private void Atualizar()
-        {
-            if (editar.Equals(true) && LinhaIndex != -1)
-            {
-                oProduto = (tProduto)dgv.Rows[LinhaIndex].DataBoundItem;
-
-                FrmCadProduto fProduto = new FrmCadProduto();
-                fProduto.BsProduto.Add(oProduto);
-                fProduto.ShowDialog();
-                if (fProduto.DialogResult.Equals(DialogResult.OK)) oProduto.Salvar();
-                Carregar();
-            }
-        }
-
         private void Excluir()
         {
             try
             {
                 if (editar.Equals(true) && LinhaIndex != -1)
                 {
-                    var oFornecedor = new tFornecedore();
-                    oFornecedor = (tFornecedore)dgv.Rows[LinhaIndex].DataBoundItem;
-                    oFornecedor.Excluir();
-                    oFornecedor.Dispose();
+                    oProduto = (tProduto)dgv.Rows[LinhaIndex].DataBoundItem;
+                    oProduto.Excluir();
                     Carregar();
                 }
             }
             catch {; }
         }
-
         #endregion
+
+        #region Eventos
+
+        private void FrmProdutos_Load(object sender, EventArgs e)
+        {
+            Botoes(true);
+            Carregar();
+            RedimencionarGrade();
+        }
 
         private void txtCodigoDeBarras_TextChanged(object sender, EventArgs e)
         {
@@ -228,16 +223,13 @@ namespace CasaMendes
             btnEditar.Enabled = editar;
         }
 
+        #endregion
+
+        #region Click
+
         private void btnEditar_Click(object sender, EventArgs e)
         {
             Editar();
-        }
-
-        private void FrmProdutos_Load(object sender, EventArgs e)
-        {
-            Botoes(true);
-            Carregar();
-            RedimencionarGrade();
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -247,21 +239,29 @@ namespace CasaMendes
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
-             cadProduto = new FrmCadProduto();
-            cadProduto.ShowDialog();
-            if (cadProduto.DialogResult.Equals(DialogResult.OK)) Gravar();
-            cadProduto.Dispose();
+            Novo();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            if (editar.Equals(true) && LinhaIndex != -1)
-            {
-                oProduto = (tProduto)dgv.Rows[LinhaIndex].DataBoundItem;
-                oProduto.Excluir();
-                Carregar();
-            }
+            Excluir();
         }
+
+        #endregion
 
     }
 }
+
+//private void Atualizar()
+//{
+//    if (editar.Equals(true) && LinhaIndex != -1)
+//    {
+//        oProduto = (tProduto)dgv.Rows[LinhaIndex].DataBoundItem;
+
+//        FrmCadProduto fProduto = new FrmCadProduto();
+//        fProduto.BsProduto.Add(oProduto);
+//        fProduto.ShowDialog();
+//        if (fProduto.DialogResult.Equals(DialogResult.OK)) oProduto.Salvar();
+//        Carregar();
+//    }
+//}

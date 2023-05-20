@@ -15,7 +15,7 @@ CALL stored_procedure_name(argument_list);
 
 namespace CasaMendes.Classes.Geral
 {
-    public class Cl_Produto : Cl_pProduto, IDisposable
+    public class Cl_Produto : Cl_pProduto
     {
 
         #region Variáveis
@@ -296,35 +296,34 @@ namespace CasaMendes.Classes.Geral
 
         #endregion
 
-
         #region dispose
 
-        private bool _disposed;
-        public new void Dispose()
-        {
-            // Dispose of unmanaged resources.
-            Dispose(true);
-            // Suppress finalization.
-            GC.SuppressFinalize(this);
-        }
+        //private bool _disposed;
+        //public new void Dispose()
+        //{
+        //    // Dispose of unmanaged resources.
+        //    Dispose(true);
+        //    // Suppress finalization.
+        //    GC.SuppressFinalize(this);
+        //}
 
-        protected virtual new void Dispose(bool disposing)
-        {
-            if (_disposed)
-            {
-                return;
-            }
+        //protected virtual new void Dispose(bool disposing)
+        //{
+        //    if (_disposed)
+        //    {
+        //        return;
+        //    }
 
-            if (disposing)
-            {
-                // TODO: dispose managed state (managed objects).
-            }
+        //    if (disposing)
+        //    {
+        //        // TODO: dispose managed state (managed objects).
+        //    }
 
-            // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
-            // TODO: set large fields to null.
+        //    // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+        //    // TODO: set large fields to null.
 
-            _disposed = true;
-        }
+        //    _disposed = true;
+        //}
 
         #endregion
 
