@@ -84,18 +84,18 @@
             // 
             this.TxtValorDesconto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtValorDesconto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtValorDesconto.Location = new System.Drawing.Point(250, 295);
+            this.TxtValorDesconto.Location = new System.Drawing.Point(250, 343);
             this.TxtValorDesconto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TxtValorDesconto.Name = "TxtValorDesconto";
-            this.TxtValorDesconto.Size = new System.Drawing.Size(84, 26);
+            this.TxtValorDesconto.Size = new System.Drawing.Size(71, 26);
             this.TxtValorDesconto.TabIndex = 10;
             this.TxtValorDesconto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TxtValorDesconto.TextChanged += new System.EventHandler(this.TxtValorDesconto_TextChanged);
+            //this.TxtValorDesconto.TextChanged += new System.EventHandler(this.TxtValorDesconto_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(177, 300);
+            this.label1.Location = new System.Drawing.Point(177, 348);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 15);
@@ -118,7 +118,7 @@
             // 
             this.dtpDataDeValidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDataDeValidade.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataDeValidade.Location = new System.Drawing.Point(118, 193);
+            this.dtpDataDeValidade.Location = new System.Drawing.Point(118, 206);
             this.dtpDataDeValidade.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtpDataDeValidade.Name = "dtpDataDeValidade";
             this.dtpDataDeValidade.Size = new System.Drawing.Size(119, 26);
@@ -127,7 +127,7 @@
             // lblPrecoDeVenda
             // 
             this.lblPrecoDeVenda.AutoSize = true;
-            this.lblPrecoDeVenda.Location = new System.Drawing.Point(177, 249);
+            this.lblPrecoDeVenda.Location = new System.Drawing.Point(330, 274);
             this.lblPrecoDeVenda.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrecoDeVenda.Name = "lblPrecoDeVenda";
             this.lblPrecoDeVenda.Size = new System.Drawing.Size(74, 15);
@@ -138,18 +138,18 @@
             // 
             this.txtPrecoDeVenda.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrecoDeVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrecoDeVenda.Location = new System.Drawing.Point(250, 244);
+            this.txtPrecoDeVenda.Location = new System.Drawing.Point(400, 270);
             this.txtPrecoDeVenda.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPrecoDeVenda.Name = "txtPrecoDeVenda";
-            this.txtPrecoDeVenda.Size = new System.Drawing.Size(84, 26);
+            this.txtPrecoDeVenda.Size = new System.Drawing.Size(97, 26);
             this.txtPrecoDeVenda.TabIndex = 7;
             this.txtPrecoDeVenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtPrecoDeVenda.TextChanged += new System.EventHandler(this.txtPrecoDeVenda_TextChanged);
+            //this.txtPrecoDeVenda.TextChanged += new System.EventHandler(this.txtPrecoDeVenda_TextChanged);
             // 
             // lblDesconto
             // 
             this.lblDesconto.AutoSize = true;
-            this.lblDesconto.Location = new System.Drawing.Point(8, 300);
+            this.lblDesconto.Location = new System.Drawing.Point(8, 348);
             this.lblDesconto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDesconto.Name = "lblDesconto";
             this.lblDesconto.Size = new System.Drawing.Size(62, 15);
@@ -171,30 +171,30 @@
             // 
             this.txtDesconto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDesconto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDesconto.Location = new System.Drawing.Point(87, 295);
+            this.txtDesconto.Location = new System.Drawing.Point(87, 343);
             this.txtDesconto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDesconto.Name = "txtDesconto";
-            this.txtDesconto.Size = new System.Drawing.Size(84, 26);
+            this.txtDesconto.Size = new System.Drawing.Size(71, 26);
             this.txtDesconto.TabIndex = 9;
             this.txtDesconto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtDesconto.TextChanged += new System.EventHandler(this.txtDesconto_TextChanged);
+            //this.txtDesconto.TextChanged += new System.EventHandler(this.txtDesconto_TextChanged);
             // 
             // txtValorCompra
             // 
             this.txtValorCompra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtValorCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorCompra.Location = new System.Drawing.Point(348, 196);
+            this.txtValorCompra.Location = new System.Drawing.Point(86, 269);
             this.txtValorCompra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtValorCompra.Name = "txtValorCompra";
-            this.txtValorCompra.Size = new System.Drawing.Size(150, 26);
+            this.txtValorCompra.Size = new System.Drawing.Size(71, 26);
             this.txtValorCompra.TabIndex = 5;
             this.txtValorCompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtValorCompra.TextChanged += new System.EventHandler(this.txtValorCompra_TextChanged);
+            //this.txtValorCompra.TextChanged += new System.EventHandler(this.txtValorCompra_TextChanged);
             // 
             // lblValorCompra
             // 
             this.lblValorCompra.AutoSize = true;
-            this.lblValorCompra.Location = new System.Drawing.Point(264, 201);
+            this.lblValorCompra.Location = new System.Drawing.Point(7, 274);
             this.lblValorCompra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblValorCompra.Name = "lblValorCompra";
             this.lblValorCompra.Size = new System.Drawing.Size(83, 15);
@@ -216,10 +216,10 @@
             // 
             this.txtQuantidade.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtQuantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuantidade.Location = new System.Drawing.Point(417, 244);
+            this.txtQuantidade.Location = new System.Drawing.Point(319, 209);
             this.txtQuantidade.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtQuantidade.Name = "txtQuantidade";
-            this.txtQuantidade.Size = new System.Drawing.Size(81, 26);
+            this.txtQuantidade.Size = new System.Drawing.Size(179, 26);
             this.txtQuantidade.TabIndex = 8;
             this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtQuantidade.TextChanged += new System.EventHandler(this.txtQuantidade_TextChanged);
@@ -227,7 +227,7 @@
             // lblQuantidade
             // 
             this.lblQuantidade.AutoSize = true;
-            this.lblQuantidade.Location = new System.Drawing.Point(345, 249);
+            this.lblQuantidade.Location = new System.Drawing.Point(247, 214);
             this.lblQuantidade.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblQuantidade.Name = "lblQuantidade";
             this.lblQuantidade.Size = new System.Drawing.Size(74, 15);
@@ -237,7 +237,7 @@
             // lblPrecoUnitario
             // 
             this.lblPrecoUnitario.AutoSize = true;
-            this.lblPrecoUnitario.Location = new System.Drawing.Point(8, 249);
+            this.lblPrecoUnitario.Location = new System.Drawing.Point(171, 274);
             this.lblPrecoUnitario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrecoUnitario.Name = "lblPrecoUnitario";
             this.lblPrecoUnitario.Size = new System.Drawing.Size(82, 15);
@@ -259,10 +259,11 @@
             // 
             this.txtPrecoUnitario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrecoUnitario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrecoUnitario.Location = new System.Drawing.Point(90, 244);
+            this.txtPrecoUnitario.Location = new System.Drawing.Point(249, 269);
             this.txtPrecoUnitario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPrecoUnitario.Name = "txtPrecoUnitario";
-            this.txtPrecoUnitario.Size = new System.Drawing.Size(81, 26);
+            this.txtPrecoUnitario.ReadOnly = true;
+            this.txtPrecoUnitario.Size = new System.Drawing.Size(71, 26);
             this.txtPrecoUnitario.TabIndex = 6;
             this.txtPrecoUnitario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPrecoUnitario.TextChanged += new System.EventHandler(this.txtPrecoUnitario_TextChanged);
@@ -278,12 +279,12 @@
             this.txtEstoque.TabIndex = 6;
             this.txtEstoque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtEstoque.Visible = false;
-            this.txtEstoque.TextChanged += new System.EventHandler(this.txtEstoque_TextChanged);
+            //this.txtEstoque.TextChanged += new System.EventHandler(this.txtEstoque_TextChanged);
             // 
             // btnFechar
             // 
             this.btnFechar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnFechar.Location = new System.Drawing.Point(427, 279);
+            this.btnFechar.Location = new System.Drawing.Point(427, 327);
             this.btnFechar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(71, 42);
@@ -319,7 +320,7 @@
             // lblDataDeValidade
             // 
             this.lblDataDeValidade.AutoSize = true;
-            this.lblDataDeValidade.Location = new System.Drawing.Point(8, 201);
+            this.lblDataDeValidade.Location = new System.Drawing.Point(9, 209);
             this.lblDataDeValidade.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDataDeValidade.Name = "lblDataDeValidade";
             this.lblDataDeValidade.Size = new System.Drawing.Size(102, 15);
@@ -339,7 +340,7 @@
             // btnGravar
             // 
             this.btnGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnGravar.Location = new System.Drawing.Point(348, 280);
+            this.btnGravar.Location = new System.Drawing.Point(334, 328);
             this.btnGravar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(71, 42);
@@ -417,7 +418,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnFechar;
-            this.ClientSize = new System.Drawing.Size(510, 330);
+            this.ClientSize = new System.Drawing.Size(510, 380);
+            this.Controls.Add(this.txtPrecoUnitario);
             this.Controls.Add(this.txtEstoque);
             this.Controls.Add(this.txtPrecoDeVenda);
             this.Controls.Add(this.TxtSubCategoriaId);
@@ -440,7 +442,6 @@
             this.Controls.Add(this.lblQuantidade);
             this.Controls.Add(this.lblPrecoUnitario);
             this.Controls.Add(this.txtNome);
-            this.Controls.Add(this.txtPrecoUnitario);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.lblCodigoDeBarras);
             this.Controls.Add(this.lblFornecedor);

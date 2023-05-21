@@ -2,9 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,17 +33,86 @@ namespace CasaMendes
         #endregion
 
         #region métodos
-
+        /*
+         * Carrega uma imagem selecionada e copia, se ela não, para a pasta dentro do diretório
+         * padrão do sistema.
+         */
         private void BuscarFotoProduto()
         {
+            string sourceDir = clsGlobal.Abririmagens();
+            string backupDir = @ConfigurationManager.AppSettings["DiretorioFotos"];
+            // Remove path from the file name.
+            string fName = "", t, tm = "";
 
-            PicFoto.Image = Image.FromFile(clsGlobal.Abririmagens());
-            //MessageBox.Show("OK BuscarFotoProduto()" + oListaDeMargen[0].Despesa);
+            //separa o nome da imagem com sua extenção com ordem invertida.
+            for (int i = sourceDir.Length - 1; i > 0; i--)
+            {
+                t = sourceDir.Substring(i, 1);
+                if (@t == @"\")
+                    break;
+                fName += t;
+
+                tm = fName;
+            }
+
+            tm = fName;
+            fName = "";
+
+            //re ordena o nome da imagem.
+            for (int i = tm.Length; i > 0; i--)
+            {
+                t = tm.Substring(i - 1, 1);
+                fName += t;
+            }
+
+            //remove o nome da imagem do diretório.
+            sourceDir = sourceDir.Substring(0, sourceDir.Length + 2 - fName.Length - 2);
+
+            try
+            {
+                //verifica se o diretório existe, se não, cria
+                if (!Directory.Exists(backupDir))
+                {
+                    Directory.CreateDirectory(backupDir);
+                }
+
+                //verifica se a imagem existe no diretório, se não existir, copia para o diretório.
+                if (!File.Exists(Path.Combine(backupDir, fName)))
+                {
+                    File.Copy(Path.Combine(sourceDir, fName), Path.Combine(backupDir, fName), true);
+                }
+
+                //carrega a imagem na tela.
+                PicFoto.Image = Image.FromFile(sourceDir + fName);
+            }
+
+            // Catch exception if the file was already copied.
+            catch //(IOException copyError)
+            {
+                //MessageBox.Show(copyError.Message);
+            }
+
         }
 
+        //calcula o preço de venda de acordo com os dados informado no formulário.
         private void CalcularPreco()
         {
-            MessageBox.Show("OK" + oListaDeMargen[0].Despesa);
+            double temp;
+            if (!txtQuantidade.Text.Equals("") && !txtValorCompra.Text.Equals(""))
+            {
+                temp = double.Parse(txtValorCompra.Text) / double.Parse(txtQuantidade.Text);
+                txtPrecoUnitario.Text=temp.ToString("N2");
+            }
+            if (!txtPrecoUnitario.Text.Equals(""))
+            {
+                temp = (oListaDeMargen[0].Despesa + oListaDeMargen[0].MargemDeLucro + oListaDeMargen[0].Custo + oListaDeMargen[0].Encargo + oListaDeMargen[0].PorcentagemPessoPorItem);
+                temp = temp/100;
+                temp = 1 - temp;
+                temp = double.Parse(txtPrecoUnitario.Text) / temp;
+                txtPrecoDeVenda.Text = temp.ToString("N2");
+            }
+
+            //MessageBox.Show("OK" + oListaDeMargen[0].Despesa);
         }
 
         private void VincularBindingSource()
@@ -75,6 +147,15 @@ namespace CasaMendes
             this.Close();
         }
 
+        private void PicFoto_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                BuscarFotoProduto();
+            }
+            catch { }
+        }
+
         #endregion
 
         #region Load
@@ -83,7 +164,8 @@ namespace CasaMendes
         {
             Botoes(true);
 
-            if (oProduto.Equals(null)) oProduto = new tProduto();
+            if (oProduto.Equals(null))
+                oProduto = new tProduto();
             if (BsProduto == null)
                 BsProduto = new BindingSource { oProduto };
             if (oListaDeMargen == null)
@@ -98,6 +180,12 @@ namespace CasaMendes
 
             CbSubcategoria.DisplayMember = "Nome";
             CbSubcategoria.DataSource = new SubCategoria().Todos();
+            
+            if (oProduto.Foto != null)
+               PicFoto.Image=Image.FromFile(oProduto.Foto);
+            else
+                PicFoto.Image = Properties.Resources.CasaMendes1Jpg;
+
         }
 
         #endregion
@@ -134,6 +222,7 @@ namespace CasaMendes
                 TabelaDeMargen oTabelaDeMargen = new TabelaDeMargen();
                 oTabelaDeMargen.SubCategoriaId = lista[0].SubCategoriaId;
                 oListaDeMargen = oTabelaDeMargen.Busca();
+                CalcularPreco();
             }
             catch { }
         }
@@ -142,41 +231,11 @@ namespace CasaMendes
 
         #region TextChanged
 
-        private void txtEstoque_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (txtEstoque.Text.Equals("") || txtQuantidade.Text.Equals("") || txtDesconto.Text.Equals("") || TxtValorDesconto.Text.Equals("") || txtPrecoUnitario.Text.Equals("") || txtValorCompra.Text.Equals("")) return;
-                CalcularPreco();
-            }
-            catch { }
-        }
-
         private void txtQuantidade_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                if (txtEstoque.Text.Equals("") || txtQuantidade.Text.Equals("") || txtDesconto.Text.Equals("") || TxtValorDesconto.Text.Equals("") || txtPrecoUnitario.Text.Equals("") || txtValorCompra.Text.Equals("")) return;
-                CalcularPreco();
-            }
-            catch { }
-        }
-
-        private void txtDesconto_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (txtEstoque.Text.Equals("") || txtQuantidade.Text.Equals("") || txtDesconto.Text.Equals("") || TxtValorDesconto.Text.Equals("") || txtPrecoUnitario.Text.Equals("") || txtValorCompra.Text.Equals("")) return;
-                CalcularPreco();
-            }
-            catch { }
-        }
-
-        private void TxtValorDesconto_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (txtEstoque.Text.Equals("") || txtQuantidade.Text.Equals("") || txtDesconto.Text.Equals("") || TxtValorDesconto.Text.Equals("") || txtPrecoUnitario.Text.Equals("") || txtValorCompra.Text.Equals("")) return;
+                //if (txtEstoque.Text.Equals("") || txtQuantidade.Text.Equals("") || txtDesconto.Text.Equals("") || TxtValorDesconto.Text.Equals("") || txtPrecoUnitario.Text.Equals("") || txtValorCompra.Text.Equals("")) return;
                 CalcularPreco();
             }
             catch { }
@@ -186,27 +245,7 @@ namespace CasaMendes
         {
             try
             {
-                if (txtEstoque.Text.Equals("") || txtQuantidade.Text.Equals("") || txtDesconto.Text.Equals("") || TxtValorDesconto.Text.Equals("") || txtPrecoUnitario.Text.Equals("") || txtValorCompra.Text.Equals("")) return;
-                CalcularPreco();
-            }
-            catch { }
-        }
-
-        private void txtPrecoDeVenda_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (txtEstoque.Text.Equals("") || txtQuantidade.Text.Equals("") || txtDesconto.Text.Equals("") || TxtValorDesconto.Text.Equals("") || txtPrecoUnitario.Text.Equals("") || txtValorCompra.Text.Equals("")) return;
-                CalcularPreco();
-            }
-            catch { }
-        }
-
-        private void txtValorCompra_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (txtEstoque.Text.Equals("") || txtQuantidade.Text.Equals("") || txtDesconto.Text.Equals("") || TxtValorDesconto.Text.Equals("") || txtPrecoUnitario.Text.Equals("") || txtValorCompra.Text.Equals("")) return;
+                //if (txtEstoque.Text.Equals("") || txtQuantidade.Text.Equals("") || txtDesconto.Text.Equals("") || TxtValorDesconto.Text.Equals("") || txtPrecoUnitario.Text.Equals("") || txtValorCompra.Text.Equals("")) return;
                 CalcularPreco();
             }
             catch { }
@@ -216,12 +255,5 @@ namespace CasaMendes
 
         #endregion
 
-        private void PicFoto_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                BuscarFotoProduto();
-            }catch { }
-        }
     }
 }

@@ -39,16 +39,16 @@ namespace CasaMendes
         }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public double Despesa { get; set; } = 10.00;
+        public double Despesa { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public double Custo { get; set; } = 5.00;
+        public double Custo { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public double Encargo { get; set; } = 5.00;
+        public double Encargo { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public double MargemDeLucro { get; set; } = 7.00;
+        public double MargemDeLucro { get; set; }
 
         public new List<TabelaDeMargen> Todos()
         {

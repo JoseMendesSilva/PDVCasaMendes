@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CasaMendes.Classes;
+using System;
 using System.Windows.Forms;
 
 namespace CasaMendes
@@ -69,9 +70,11 @@ namespace CasaMendes
             funcionario.Text = "Funcionarios " + childFormNumber++;
             // Display the new form.
             funcionario.Show();
-            funcionario.Width = this.Width - 20;
-            funcionario.Height = this.Height - 120;
-            funcionario.WindowState = FormWindowState.Maximized;
+            //funcionario.Width = this.Width - 20;
+            //funcionario.Height = this.Height - 120;
+            funcionario.Top = this.Top + 8;
+            funcionario.Left = this.Left + 8;
+            //funcionario.WindowState = FormWindowState.Maximized;
             this.StatusLabeTtoolStrip.Text = "Funcionários cadastrados atualmente: ( " + funcionario.StatusLabel + " ) funcionários.";
         }
 
@@ -83,9 +86,11 @@ namespace CasaMendes
             cliente.Text = "Clientes " + childFormNumber++;
             // Display the new form.
             cliente.Show();
-            cliente.Width = this.Width - 20;
-            cliente.Height = this.Height - 120;
-            cliente.WindowState = FormWindowState.Maximized;
+            //cliente.Width = this.Width - 20;
+            //cliente.Height = this.Height - 120;
+            cliente.Top = this.Top + 8;
+            cliente.Left = this.Left + 8;
+            //cliente.WindowState = FormWindowState.Maximized;
             this.StatusLabeTtoolStrip.Text = "Cliente cadastrados atualmente: ( " + cliente.StatusLabel + " ) clientes.";
         }
 
@@ -97,9 +102,11 @@ namespace CasaMendes
             fornecedores.Text = "Fornecedores " + childFormNumber++;
             // Display the new form.
             fornecedores.Show();
-            fornecedores.Width = this.Width - 20;
-            fornecedores.Height = this.Height - 120;
-            fornecedores.WindowState = FormWindowState.Maximized;
+            //fornecedores.Width = this.Width - 20;
+            //fornecedores.Height = this.Height - 120;
+            fornecedores.Top = this.Top + 8;
+            fornecedores.Left = this.Left + 8;
+            //fornecedores.WindowState = FormWindowState.Maximized;
             this.StatusLabeTtoolStrip.Text = "Cliente cadastrados atualmente: ( " + fornecedores.StatusLabel + " ) clientes.";
         }
 
@@ -114,6 +121,8 @@ namespace CasaMendes
 
             produtos.Width = this.Width - 20;
             produtos.Height = this.Height - 120;
+            produtos.Top = this.Top + 8;
+            produtos.Left = this.Left + 8;
 
             //produtos.WindowState = FormWindowState.Maximized;
             this.StatusLabeTtoolStrip.Text = "Produtos cadastrados: ( " + produtos.StatusLabel + " ) Itens.";
@@ -127,7 +136,9 @@ namespace CasaMendes
             frenteDeCaixa.Text = "FrenteDeCaixa " + childFormNumber++;
             // Display the new form.
             frenteDeCaixa.ShowDialog();
-            frenteDeCaixa.WindowState = FormWindowState.Maximized;
+            //frenteDeCaixa.Top = this.Top + 8;
+            //frenteDeCaixa.Left = this.Left + 8;
+            //frenteDeCaixa.WindowState = FormWindowState.Maximized;
             //this.StatusLabeTtoolStrip.Text = "Produtos em estoque: ( " + frenteDeCaixa.StatusLabel + " ) Itens.";
         }
 
@@ -139,9 +150,11 @@ namespace CasaMendes
             estoque.Text = "Estoque " + childFormNumber++;
             // Display the new form.
             estoque.Show();
-            estoque.Width = this.Width - 20;
-            estoque.Height = this.Height - 120;
-            estoque.WindowState = FormWindowState.Maximized;
+            //estoque.Width = this.Width - 20;
+            //estoque.Height = this.Height - 120;
+            estoque.Top = this.Top + 8;
+            estoque.Left = this.Left + 8;
+            //estoque.WindowState = FormWindowState.Maximized;
             this.StatusLabeTtoolStrip.Text = "Produtos em estoque: ( " + estoque.StatusLabel + " ) Itens.";
         }
 
@@ -153,9 +166,11 @@ namespace CasaMendes
             ResumoDeVenda.Text = "ResumoDeVendasAtual " + childFormNumber++;
             // Display the new form.
             ResumoDeVenda.Show();
-            ResumoDeVenda.Width = this.Width - 20;
-            ResumoDeVenda.Height = this.Height - 120;
-            ResumoDeVenda.WindowState = FormWindowState.Maximized;
+            //ResumoDeVenda.Width = this.Width - 20;
+            //ResumoDeVenda.Height = this.Height - 120;
+            ResumoDeVenda.Top = this.Top + 8;
+            ResumoDeVenda.Left = this.Left + 8;
+            //ResumoDeVenda.WindowState = FormWindowState.Maximized;
             //this.StatusLabeTtoolStrip.Text = "Produtos em estoque: ( " + ResumoDeVenda.StatusLabel + " ) Itens.";
         }
 
@@ -167,9 +182,11 @@ namespace CasaMendes
             CarregarVenda.Text = "ResumoDeVendasAtual " + childFormNumber++;
             // Display the new form.
             CarregarVenda.Show();
-            CarregarVenda.Width = this.Width - 20;
-            CarregarVenda.Height = this.Height - 120;
-            CarregarVenda.WindowState = FormWindowState.Maximized;
+            //CarregarVenda.Width = this.Width - 20;
+            //CarregarVenda.Height = this.Height - 120;
+            CarregarVenda.Top = this.Top + 8;
+            CarregarVenda.Left = this.Left + 8;
+            //CarregarVenda.WindowState = FormWindowState.Maximized;
             //this.StatusLabeTtoolStrip.Text = "Produtos em estoque: ( " + ResumoDeVenda.StatusLabel + " ) Itens.";
         }
 
@@ -181,9 +198,11 @@ namespace CasaMendes
             CadCategoria.Text = "Categorias " + childFormNumber++;
             // Display the new form.
             CadCategoria.Show();
-            CadCategoria.WindowState = FormWindowState.Maximized;
-            CadCategoria.Width = this.Width - 20;
-            CadCategoria.Height = this.Height - 120;
+            //CadCategoria.WindowState = FormWindowState.Maximized;
+            //CadCategoria.Width = this.Width - 20;
+            //CadCategoria.Height = this.Height - 120;
+            CadCategoria.Top = this.Top + 8;
+            CadCategoria.Left = this.Left + 8;
             //this.StatusLabeTtoolStrip.Text = "Produtos em estoque: ( " + ResumoDeVenda.StatusLabel + " ) Itens.";
         }
 
@@ -195,9 +214,12 @@ namespace CasaMendes
             CadSubcategoria.Text = "SubCategorias " + childFormNumber++;
             // Display the new form.
             CadSubcategoria.Show();
-            CadSubcategoria.Width = this.Width - 20;
-            CadSubcategoria.Height = this.Height - 120;
-            CadSubcategoria.WindowState = FormWindowState.Maximized;
+            //CadSubcategoria.Width = this.Width - 20;
+            //CadSubcategoria.Height = this.Height - 120;
+            CadSubcategoria.Top = this.Top + 8;
+            CadSubcategoria.Left = this.Left + 8;
+
+            //CadSubcategoria.WindowState = FormWindowState.Maximized;
             //this.StatusLabeTtoolStrip.Text = "Produtos em estoque: ( " + ResumoDeVenda.StatusLabel + " ) Itens.";
         }
 
@@ -209,6 +231,8 @@ namespace CasaMendes
             oTabelaDeMargen.Text = "SubCategorias " + childFormNumber++;
             // Display the new form.
             oTabelaDeMargen.Show();
+            oTabelaDeMargen.Top = this.Top + 8;
+            oTabelaDeMargen.Left = this.Left + 8;
             //oTabelaDeMargen.Width = this.Width - 20;
             //oTabelaDeMargen.Height = this.Height - 120;
             //oTabelaDeMargen.WindowState = FormWindowState.Maximized;

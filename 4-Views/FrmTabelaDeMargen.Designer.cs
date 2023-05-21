@@ -64,18 +64,16 @@
             // 
             // TxtBuscar
             // 
-            this.TxtBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtBuscar.Location = new System.Drawing.Point(51, 8);
+            this.TxtBuscar.Location = new System.Drawing.Point(10, 22);
             this.TxtBuscar.Name = "TxtBuscar";
-            this.TxtBuscar.Size = new System.Drawing.Size(258, 20);
+            this.TxtBuscar.Size = new System.Drawing.Size(299, 20);
             this.TxtBuscar.TabIndex = 49;
             this.TxtBuscar.TextChanged += new System.EventHandler(this.TxtBuscar_TextChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 11);
+            this.label5.Location = new System.Drawing.Point(7, 6);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 13);
             this.label5.TabIndex = 48;
@@ -83,8 +81,8 @@
             // 
             // BtnExcluir
             // 
-            this.BtnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnExcluir.Location = new System.Drawing.Point(610, 119);
+            this.BtnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnExcluir.Location = new System.Drawing.Point(610, 133);
             this.BtnExcluir.Name = "BtnExcluir";
             this.BtnExcluir.Size = new System.Drawing.Size(75, 29);
             this.BtnExcluir.TabIndex = 9;
@@ -94,8 +92,8 @@
             // 
             // BtnRetornar
             // 
-            this.BtnRetornar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnRetornar.Location = new System.Drawing.Point(610, 171);
+            this.BtnRetornar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnRetornar.Location = new System.Drawing.Point(610, 185);
             this.BtnRetornar.Name = "BtnRetornar";
             this.BtnRetornar.Size = new System.Drawing.Size(75, 38);
             this.BtnRetornar.TabIndex = 10;
@@ -105,8 +103,8 @@
             // 
             // BtnGravar
             // 
-            this.BtnGravar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnGravar.Location = new System.Drawing.Point(610, 84);
+            this.BtnGravar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnGravar.Location = new System.Drawing.Point(610, 98);
             this.BtnGravar.Name = "BtnGravar";
             this.BtnGravar.Size = new System.Drawing.Size(75, 29);
             this.BtnGravar.TabIndex = 7;
@@ -116,8 +114,8 @@
             // 
             // BtnNovo
             // 
-            this.BtnNovo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnNovo.Location = new System.Drawing.Point(610, 49);
+            this.BtnNovo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnNovo.Location = new System.Drawing.Point(610, 63);
             this.BtnNovo.Name = "BtnNovo";
             this.BtnNovo.Size = new System.Drawing.Size(75, 29);
             this.BtnNovo.TabIndex = 8;
@@ -127,8 +125,8 @@
             // 
             // TxtNumeroDeItensNaLoja
             // 
-            this.TxtNumeroDeItensNaLoja.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TxtNumeroDeItensNaLoja.Location = new System.Drawing.Point(332, 54);
+            this.TxtNumeroDeItensNaLoja.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtNumeroDeItensNaLoja.Location = new System.Drawing.Point(332, 68);
             this.TxtNumeroDeItensNaLoja.MaxLength = 40;
             this.TxtNumeroDeItensNaLoja.Name = "TxtNumeroDeItensNaLoja";
             this.TxtNumeroDeItensNaLoja.Size = new System.Drawing.Size(118, 20);
@@ -137,7 +135,6 @@
             // 
             // TxtSubCategoriaId
             // 
-            this.TxtSubCategoriaId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.TxtSubCategoriaId.Location = new System.Drawing.Point(257, 269);
             this.TxtSubCategoriaId.Name = "TxtSubCategoriaId";
             this.TxtSubCategoriaId.ReadOnly = true;
@@ -146,9 +143,8 @@
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 38);
+            this.label4.Location = new System.Drawing.Point(7, 52);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 13);
             this.label4.TabIndex = 38;
@@ -156,9 +152,9 @@
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(329, 38);
+            this.label2.Location = new System.Drawing.Point(329, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(87, 13);
             this.label2.TabIndex = 35;
@@ -169,15 +165,14 @@
             this.DgvTabelaDeMargem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DgvTabelaDeMargem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvTabelaDeMargem.Location = new System.Drawing.Point(10, 241);
+            this.DgvTabelaDeMargem.Location = new System.Drawing.Point(10, 258);
             this.DgvTabelaDeMargem.Name = "DgvTabelaDeMargem";
-            this.DgvTabelaDeMargem.Size = new System.Drawing.Size(675, 299);
+            this.DgvTabelaDeMargem.Size = new System.Drawing.Size(673, 271);
             this.DgvTabelaDeMargem.TabIndex = 33;
             this.DgvTabelaDeMargem.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvTabelaDeMargem_CellEnter);
             // 
             // TxtTabelaDeMargenId
             // 
-            this.TxtTabelaDeMargenId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.TxtTabelaDeMargenId.Location = new System.Drawing.Point(217, 282);
             this.TxtTabelaDeMargenId.Name = "TxtTabelaDeMargenId";
             this.TxtTabelaDeMargenId.ReadOnly = true;
@@ -187,8 +182,8 @@
             // 
             // TxtPorcentagemPessoPorItem
             // 
-            this.TxtPorcentagemPessoPorItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TxtPorcentagemPessoPorItem.Location = new System.Drawing.Point(473, 54);
+            this.TxtPorcentagemPessoPorItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtPorcentagemPessoPorItem.Location = new System.Drawing.Point(473, 68);
             this.TxtPorcentagemPessoPorItem.MaxLength = 40;
             this.TxtPorcentagemPessoPorItem.Name = "TxtPorcentagemPessoPorItem";
             this.TxtPorcentagemPessoPorItem.ReadOnly = true;
@@ -198,9 +193,9 @@
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(470, 38);
+            this.label1.Location = new System.Drawing.Point(470, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(99, 13);
             this.label1.TabIndex = 50;
@@ -208,8 +203,8 @@
             // 
             // TxtDespesa
             // 
-            this.TxtDespesa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TxtDespesa.Location = new System.Drawing.Point(473, 99);
+            this.TxtDespesa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtDespesa.Location = new System.Drawing.Point(473, 113);
             this.TxtDespesa.MaxLength = 40;
             this.TxtDespesa.Name = "TxtDespesa";
             this.TxtDespesa.Size = new System.Drawing.Size(118, 20);
@@ -219,9 +214,9 @@
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(470, 85);
+            this.label3.Location = new System.Drawing.Point(470, 99);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 13);
             this.label3.TabIndex = 52;
@@ -229,8 +224,8 @@
             // 
             // TxtMargemDeLucro
             // 
-            this.TxtMargemDeLucro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TxtMargemDeLucro.Location = new System.Drawing.Point(332, 189);
+            this.TxtMargemDeLucro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtMargemDeLucro.Location = new System.Drawing.Point(332, 203);
             this.TxtMargemDeLucro.MaxLength = 40;
             this.TxtMargemDeLucro.Name = "TxtMargemDeLucro";
             this.TxtMargemDeLucro.Size = new System.Drawing.Size(118, 20);
@@ -240,9 +235,9 @@
             // 
             // label6
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(329, 174);
+            this.label6.Location = new System.Drawing.Point(329, 188);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(83, 13);
             this.label6.TabIndex = 58;
@@ -250,8 +245,8 @@
             // 
             // TxtEncargo
             // 
-            this.TxtEncargo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TxtEncargo.Location = new System.Drawing.Point(473, 144);
+            this.TxtEncargo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtEncargo.Location = new System.Drawing.Point(473, 158);
             this.TxtEncargo.MaxLength = 40;
             this.TxtEncargo.Name = "TxtEncargo";
             this.TxtEncargo.Size = new System.Drawing.Size(118, 20);
@@ -261,9 +256,9 @@
             // 
             // label7
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(470, 131);
+            this.label7.Location = new System.Drawing.Point(470, 145);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(50, 13);
             this.label7.TabIndex = 56;
@@ -271,8 +266,8 @@
             // 
             // TxtCusto
             // 
-            this.TxtCusto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TxtCusto.Location = new System.Drawing.Point(332, 144);
+            this.TxtCusto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtCusto.Location = new System.Drawing.Point(332, 158);
             this.TxtCusto.MaxLength = 40;
             this.TxtCusto.Name = "TxtCusto";
             this.TxtCusto.Size = new System.Drawing.Size(118, 20);
@@ -282,9 +277,9 @@
             // 
             // label8
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(329, 131);
+            this.label8.Location = new System.Drawing.Point(329, 145);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(37, 13);
             this.label8.TabIndex = 54;
@@ -292,11 +287,8 @@
             // 
             // DgvSubcategorias
             // 
-            this.DgvSubcategorias.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.DgvSubcategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvSubcategorias.Location = new System.Drawing.Point(10, 54);
+            this.DgvSubcategorias.Location = new System.Drawing.Point(10, 68);
             this.DgvSubcategorias.Name = "DgvSubcategorias";
             this.DgvSubcategorias.Size = new System.Drawing.Size(299, 156);
             this.DgvSubcategorias.TabIndex = 60;
@@ -304,9 +296,8 @@
             // 
             // label9
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(7, 225);
+            this.label9.Location = new System.Drawing.Point(5, 242);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(44, 13);
             this.label9.TabIndex = 61;
@@ -314,8 +305,8 @@
             // 
             // TxtValorDeBase
             // 
-            this.TxtValorDeBase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TxtValorDeBase.Location = new System.Drawing.Point(332, 99);
+            this.TxtValorDeBase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtValorDeBase.Location = new System.Drawing.Point(332, 113);
             this.TxtValorDeBase.MaxLength = 40;
             this.TxtValorDeBase.Name = "TxtValorDeBase";
             this.TxtValorDeBase.Size = new System.Drawing.Size(118, 20);
@@ -324,9 +315,9 @@
             // 
             // label10
             // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(329, 84);
+            this.label10.Location = new System.Drawing.Point(329, 98);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(60, 13);
             this.label10.TabIndex = 62;
@@ -334,8 +325,8 @@
             // 
             // TxtTotal
             // 
-            this.TxtTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TxtTotal.Location = new System.Drawing.Point(473, 190);
+            this.TxtTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtTotal.Location = new System.Drawing.Point(473, 204);
             this.TxtTotal.MaxLength = 40;
             this.TxtTotal.Name = "TxtTotal";
             this.TxtTotal.Size = new System.Drawing.Size(118, 20);
@@ -344,9 +335,9 @@
             // 
             // label11
             // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(470, 175);
+            this.label11.Location = new System.Drawing.Point(470, 189);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(34, 13);
             this.label11.TabIndex = 64;
@@ -354,8 +345,9 @@
             // 
             // label12
             // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(329, 11);
+            this.label12.Location = new System.Drawing.Point(329, 6);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(74, 13);
             this.label12.TabIndex = 65;
@@ -363,16 +355,17 @@
             // 
             // TxtSubCategoria
             // 
-            this.TxtSubCategoria.Location = new System.Drawing.Point(415, 8);
+            this.TxtSubCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtSubCategoria.Location = new System.Drawing.Point(332, 22);
             this.TxtSubCategoria.Name = "TxtSubCategoria";
-            this.TxtSubCategoria.Size = new System.Drawing.Size(176, 20);
+            this.TxtSubCategoria.Size = new System.Drawing.Size(351, 20);
             this.TxtSubCategoria.TabIndex = 66;
             // 
             // FrmTabelaDeMargen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(695, 552);
+            this.ClientSize = new System.Drawing.Size(695, 537);
             this.Controls.Add(this.TxtSubCategoria);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.TxtTotal);

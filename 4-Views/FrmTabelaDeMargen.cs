@@ -12,6 +12,7 @@ namespace CasaMendes
         int LinhaIndex, LinhaIndexMargem;
         private bool Loading;
         private bool Loadining;
+        private bool editar;
         private BindingSource BsTabelaDeMargem;
         private TabelaDeMargen oTabelaDeMargen;
 
@@ -43,6 +44,7 @@ namespace CasaMendes
                 DgvSubcategorias.Columns["Nome"].Width = clsGlobal.DimencionarColuna(100, this.DgvSubcategorias.Width);
 
                 Loading = false;
+                editar = true;
             }
         }
 
@@ -140,37 +142,50 @@ namespace CasaMendes
         private void Novo()
         {
             Botoes(false);
+            TxtTabelaDeMargenId.Text = "0";
+            oTabelaDeMargen.TabelaDeMargenId = 0;
+            editar = false;
         }
 
         private void Cancelar()
         {
             Botoes(true);
+            editar = true;
         }
 
         private void Gravar()
         {
+            if (!editar)
+            {
+                TxtTabelaDeMargenId.Text = "0";
+                oTabelaDeMargen.TabelaDeMargenId = 0;
+            }
             oTabelaDeMargen.Salvar();
-            Botoes(true);
             LoadingTabelaDeMargen();
-            oTabelaDeMargen.Excluir(); MessageBox.Show("Cadastro realizado com sucesso.");
+            MessageBox.Show("Cadastro realizado com sucesso.");
+            Botoes(true);
+            editar = true;
         }
 
         private void Excluir()
         {
             oTabelaDeMargen = (TabelaDeMargen)DgvTabelaDeMargem.Rows[LinhaIndexMargem].DataBoundItem;
-            oTabelaDeMargen.Excluir();MessageBox.Show("O registro foi excluido com sucesso.");
+            oTabelaDeMargen.Excluir();
+            MessageBox.Show("O registro foi excluido com sucesso.");
+            LoadingTabelaDeMargen();
         }
 
         private void LoadingTabelaDeMargen()
         {
             try
             {
-                if (LinhaIndex.Equals(-1)) return;
+                if (LinhaIndex.Equals(-1) && !Loading) return;
                 int index = int.Parse(DgvSubcategorias.Rows[LinhaIndex].Cells[0].Value.ToString());
                 oTabelaDeMargen.SubCategoriaId = index;
-                DgvTabelaDeMargem.DataSource = oTabelaDeMargen.Busca();
-                OrganizarColunasTabelaDeMargen();
+                oTabelaDeMargen.TabelaDeMargenId = 0;
+                 DgvTabelaDeMargem.DataSource = oTabelaDeMargen.Busca();
                 BsTabelaDeMargem.DataSource = oTabelaDeMargen;
+                OrganizarColunasTabelaDeMargen();
             }
             catch { }
         }
@@ -217,9 +232,10 @@ namespace CasaMendes
         {
             try
             {
-                if (e.RowIndex > -1)
+                LinhaIndexMargem = e.RowIndex;
+                if (LinhaIndexMargem > -1 && !Loading)
                 {
-                    oTabelaDeMargen = (TabelaDeMargen)DgvTabelaDeMargem.Rows[e.RowIndex].DataBoundItem;
+                    oTabelaDeMargen = (TabelaDeMargen)DgvTabelaDeMargem.Rows[LinhaIndexMargem].DataBoundItem;
                     BsTabelaDeMargem.DataSource = oTabelaDeMargen;
                     Calcular();
                 }
@@ -233,30 +249,45 @@ namespace CasaMendes
 
         private void TxtCusto_TextChanged(object sender, EventArgs e)
         {
-            if (this.TxtCusto.Text.Equals("")) return;
-            oTabelaDeMargen.Custo = double.Parse(this.TxtCusto.Text);
-            if (oTabelaDeMargen.Custo > 0) Calcular();
+            try
+            {
+                if (this.TxtCusto.Text.Equals("")) return;
+                oTabelaDeMargen.Custo = double.Parse(this.TxtCusto.Text);
+                if (oTabelaDeMargen.Custo > 0) Calcular();
+            }catch { }
         }
 
         private void TxtMargemDeLucro_TextChanged(object sender, EventArgs e)
         {
-            if (this.TxtMargemDeLucro.Text.Equals("")) return;
-            oTabelaDeMargen.MargemDeLucro = double.Parse(this.TxtMargemDeLucro.Text);
-            if (oTabelaDeMargen.MargemDeLucro > 0) Calcular();
+            try
+            {
+                if (this.TxtMargemDeLucro.Text.Equals("")) return;
+                oTabelaDeMargen.MargemDeLucro = double.Parse(this.TxtMargemDeLucro.Text);
+                if (oTabelaDeMargen.MargemDeLucro > 0) Calcular();
+            }
+            catch { }
         }
 
         private void TxtDespesa_TextChanged(object sender, EventArgs e)
         {
-            if (this.TxtDespesa.Text.Equals("")) return;
-            oTabelaDeMargen.Despesa = double.Parse(this.TxtDespesa.Text);
-            if (oTabelaDeMargen.Despesa > 0) Calcular();
+            try
+            {
+                if (this.TxtDespesa.Text.Equals("")) return;
+                oTabelaDeMargen.Despesa = double.Parse(this.TxtDespesa.Text);
+                if (oTabelaDeMargen.Despesa > 0) Calcular();
+            }
+            catch { }
         }
 
         private void TxtEncargo_TextChanged(object sender, EventArgs e)
         {
-            if (this.TxtEncargo.Text.Equals("")) return;
-            oTabelaDeMargen.Encargo = double.Parse(this.TxtEncargo.Text);
-            if (oTabelaDeMargen.Encargo > 0) Calcular();
+            try
+            {
+                if (this.TxtEncargo.Text.Equals("")) return;
+                oTabelaDeMargen.Encargo = double.Parse(this.TxtEncargo.Text);
+                if (oTabelaDeMargen.Encargo > 0) Calcular();
+            }
+            catch { }
         }
 
         private void TxtBuscar_TextChanged(object sender, EventArgs e)
