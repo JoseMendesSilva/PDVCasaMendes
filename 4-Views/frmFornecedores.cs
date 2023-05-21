@@ -1,7 +1,4 @@
-﻿using CasaMendes.Classes;
-using CasaMendes.Formularios;
-using DocumentFormat.OpenXml.Bibliography;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 

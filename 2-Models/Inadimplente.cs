@@ -8,8 +8,8 @@ namespace CasaMendes
     public class Inadimplente : Base
     {
 
-        public string CodigotInadimplente { get; set; }
-        public string CodigoCliente { get; set; }
+        public string InadimplenteId { get; set; }
+        public string ClienteId { get; set; }
         public string Status { get; set; }
         public string Data { get; set; }
         public string DividaAtiva { get; set; }
@@ -34,29 +34,6 @@ namespace CasaMendes
                 inadimplente.Add((Inadimplente)ibase);
             }
             return inadimplente;
-        }
-
-        bool disposed = false;
-        public void Dispose()
-        {
-            Dispose(disposing: true);
-            GC.SuppressFinalize(this);
-        }
-
-        // Protected implementation of Dispose pattern.
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposed)
-                return;
-
-            if (disposing)
-            {
-                this.Dispose();
-                // Free any other managed objects here.
-                //
-            }
-
-            disposed = true;
         }
 
 

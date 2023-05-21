@@ -454,16 +454,16 @@ namespace CasaMendes
             //oPreVenda.CriarTabela();
             Limpar();
 
-            if (Opromocao.Equals(null)) Opromocao = new ClsPromocao();
-            if (Opromocao.LeituraXML() == "o arquivo nao existe")
-            {
-                FrmPromocao fp = new FrmPromocao();
-                fp.Show();
-                fp.Visible = false;
-                fp.GerarDescontos();
-                fp.Close();
-                string s = Opromocao.LeituraXML();
-            }
+            //if (Opromocao.Equals(null)) Opromocao = new ClsPromocao();
+            //if (Opromocao.LeituraXML() == "o arquivo nao existe")
+            //{
+            //    FrmPromocao fp = new FrmPromocao();
+            //    fp.Show();
+            //    fp.Visible = false;
+            //    fp.GerarDescontos();
+            //    fp.Close();
+            //    string s = Opromocao.LeituraXML();
+            //}
             txtCodigo.Select();
             txtCodigo.Focus();
         }
@@ -472,7 +472,7 @@ namespace CasaMendes
         {
             try
             {
-                if (!Opromocao.Equals(null)) Opromocao = null;
+                //if (!Opromocao.Equals(null)) Opromocao = null;
                 GC.Collect();
             }
             catch { }

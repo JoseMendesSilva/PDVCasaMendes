@@ -45,7 +45,7 @@ namespace CasaMendes
         {
             oProduto = new tProduto();
             dgv.DataSource = oProduto.Todos();
-            StatusLabel = (dgv.RowCount - 1).ToString();
+            StatusLabel = (dgv.RowCount - 1).ToString("N2");
         }
 
         private void RedimencionarGrade()
