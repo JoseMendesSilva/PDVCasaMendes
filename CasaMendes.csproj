@@ -216,12 +216,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="2-Models\Estoque\Categoria.cs" />
-    <Compile Include="2-Models\RH\Contato.cs" />
-    <Compile Include="2-Models\RH\Destinatario.cs" />
     <Compile Include="2-Models\Vendas\FrenteDeCaixa.cs" />
     <Compile Include="2-Models\Estoque\Estoque.cs" />
-    <Compile Include="2-Models\RH\PessoaFisica.cs" />
-    <Compile Include="2-Models\RH\PessoaJuridica.cs" />
     <Compile Include="2-Models\Vendas\Promocao.cs" />
     <Compile Include="2-Models\Vendas\Cliente.cs" />
     <Compile Include="2-Models\Contabilidade\Financeiro\TabelaDeMargen.cs" />

@@ -19,34 +19,28 @@ namespace CasaMendes
         public string RazaoSocial { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public Destinatario Enderecos { get; set; }
-
-        //[OpcoesBase(UsarNoBancoDeDados = true)]
-        //public string Cep { get; set; }
-
-        //[OpcoesBase(UsarNoBancoDeDados = true)]
-        //public string Cidade { get; set; }
-
-        //[OpcoesBase(UsarNoBancoDeDados = true)]
-        //public string Bairro { get; set; }
-
-        //[OpcoesBase(UsarNoBancoDeDados = true)]
-        //public string Estado { get; set; }
-
-        //[OpcoesBase(UsarNoBancoDeDados = true)]
-        //public string Celular { get; set; }
-
-        //[OpcoesBase(UsarNoBancoDeDados = true)]
-        //public string Telefone { get; set; }
-
-        //[OpcoesBase(UsarNoBancoDeDados = true)]
-        //public string Email { get; set; }
-
-        //[OpcoesBase(UsarNoBancoDeDados = true)]
-        //public string SITE { get; set; }
+        public string Cep { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public Contato Contatos { get; set; }
+        public string Cidade { get; set; }
+
+        [OpcoesBase(UsarNoBancoDeDados = true)]
+        public string Bairro { get; set; }
+
+        [OpcoesBase(UsarNoBancoDeDados = true)]
+        public string Estado { get; set; }
+
+        [OpcoesBase(UsarNoBancoDeDados = true)]
+        public string Celular { get; set; }
+
+        [OpcoesBase(UsarNoBancoDeDados = true)]
+        public string Telefone { get; set; }
+
+        [OpcoesBase(UsarNoBancoDeDados = true)]
+        public string Email { get; set; }
+
+        [OpcoesBase(UsarNoBancoDeDados = true)]
+        public string SITE { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public string Cnpj { get; set; }
