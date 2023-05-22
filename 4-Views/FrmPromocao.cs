@@ -1,14 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using CasaMendes.Classes.Geral;
-using CasaMendes.Classes.Estatica;
-using System.Globalization;
 
 namespace CasaMendes
 {
@@ -33,24 +24,24 @@ namespace CasaMendes
         {
             try
             {
-                ClsPromocao oP = new ClsPromocao();
+                //ClsPromocao oP = new ClsPromocao();
 
-                clsGlobal.SetUpDataGridView(this.dgv);
-                oP.lerPromocao(this.dgv);
-                clsGlobal.RedimencionarGrade(this, this.dgv);
+                //clsGlobal.SetUpDataGridView(this.dgv);
+                //oP.lerPromocao(this.dgv);
+                //clsGlobal.RedimencionarGrade(this, this.dgv);
 
-                this.dgv.Columns[0].Width = clsGlobal.DimencionarColuna(17, this.dgv.Width);
-                this.dgv.Columns[1].Width = clsGlobal.DimencionarColuna(51, this.dgv.Width);
-                this.dgv.Columns[2].Width = clsGlobal.DimencionarColuna(16, this.dgv.Width);
-                this.dgv.Columns[3].Width = clsGlobal.DimencionarColuna(16, this.dgv.Width);
+                //this.dgv.Columns[0].Width = clsGlobal.DimencionarColuna(17, this.dgv.Width);
+                //this.dgv.Columns[1].Width = clsGlobal.DimencionarColuna(51, this.dgv.Width);
+                //this.dgv.Columns[2].Width = clsGlobal.DimencionarColuna(16, this.dgv.Width);
+                //this.dgv.Columns[3].Width = clsGlobal.DimencionarColuna(16, this.dgv.Width);
 
-                clsGlobal.AlinharElementosNoGridView(dgv, 0, "center");
-                clsGlobal.AlinharElementosNoGridView(dgv, 1, "left");
-                clsGlobal.AlinharElementosNoGridView(dgv, 2, "center");
-                clsGlobal.AlinharElementosNoGridView(dgv, 3, "center");
+                //clsGlobal.AlinharElementosNoGridView(dgv, 0, "center");
+                //clsGlobal.AlinharElementosNoGridView(dgv, 1, "left");
+                //clsGlobal.AlinharElementosNoGridView(dgv, 2, "center");
+                //clsGlobal.AlinharElementosNoGridView(dgv, 3, "center");
 
 
-                oP = null;
+                //oP = null;
                 GC.Collect();
             }
             catch
@@ -67,11 +58,11 @@ namespace CasaMendes
         {
             if (this.dgv.RowCount > 0)
             {
-                ClsPromocao op = new ClsPromocao();
-                decimal JurosSobreVendasFiado = op.De_String_Para_decimal(this.TxtJuros.Text);
+                //ClsPromocao op = new ClsPromocao();
+                //decimal JurosSobreVendasFiado = op.De_String_Para_decimal(this.TxtJuros.Text);
 
-                if (!op.escreverXml(this.dgv, JurosSobreVendasFiado)) { MessageBox.Show("Ocorreu um erro ao gerar a lista de desconto.", Application.ProductName); }
-                else { MessageBox.Show("Arquivo gerado com sucesso.", Application.ProductName); }
+                //if (!op.escreverXml(this.dgv, JurosSobreVendasFiado)) { MessageBox.Show("Ocorreu um erro ao gerar a lista de desconto.", Application.ProductName); }
+                //else { MessageBox.Show("Arquivo gerado com sucesso.", Application.ProductName); }
             }
 
         }

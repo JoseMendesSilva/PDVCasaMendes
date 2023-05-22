@@ -32,10 +32,10 @@ namespace CasaMendes
             this.gbBusca = new System.Windows.Forms.GroupBox();
             this.txtBusca = new System.Windows.Forms.TextBox();
             this.BtnCancelar = new System.Windows.Forms.Button();
-            this.dgv = new System.Windows.Forms.DataGridView();
+            this.Dgv = new System.Windows.Forms.DataGridView();
             this.BtnAceitar = new System.Windows.Forms.Button();
             this.gbBusca.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv)).BeginInit();
             this.SuspendLayout();
             // 
             // gbBusca
@@ -72,18 +72,18 @@ namespace CasaMendes
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
-            // dgv
+            // Dgv
             // 
-            this.dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.Dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv.Location = new System.Drawing.Point(8, 79);
-            this.dgv.Name = "dgv";
-            this.dgv.Size = new System.Drawing.Size(570, 288);
-            this.dgv.TabIndex = 307;
-            this.dgv.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_RowEnter);
-            this.dgv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgv_KeyDown);
+            this.Dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv.Location = new System.Drawing.Point(8, 79);
+            this.Dgv.Name = "Dgv";
+            this.Dgv.Size = new System.Drawing.Size(570, 288);
+            this.Dgv.TabIndex = 307;
+            this.Dgv.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_RowEnter);
+            //this.Dgv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Dgv_KeyDown);
             // 
             // BtnAceitar
             // 
@@ -106,7 +106,7 @@ namespace CasaMendes
             this.ClientSize = new System.Drawing.Size(586, 442);
             this.Controls.Add(this.gbBusca);
             this.Controls.Add(this.BtnCancelar);
-            this.Controls.Add(this.dgv);
+            this.Controls.Add(this.Dgv);
             this.Controls.Add(this.BtnAceitar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MaximizeBox = false;
@@ -117,7 +117,7 @@ namespace CasaMendes
             this.Load += new System.EventHandler(this.FrmBuscarCliente_Load);
             this.gbBusca.ResumeLayout(false);
             this.gbBusca.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -127,7 +127,7 @@ namespace CasaMendes
         private System.Windows.Forms.GroupBox gbBusca;
         private System.Windows.Forms.TextBox txtBusca;
         private System.Windows.Forms.Button BtnCancelar;
-        private System.Windows.Forms.DataGridView dgv;
+        private System.Windows.Forms.DataGridView Dgv;
         public System.Windows.Forms.Button BtnAceitar;
     }
 }

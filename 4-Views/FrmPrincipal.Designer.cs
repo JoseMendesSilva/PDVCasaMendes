@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.GestaoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PrecosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RwsumoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FrenteDeCaixaMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,8 +84,6 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.StatusLabeTtoolStrip = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.GestaoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.PrecosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -101,7 +101,7 @@
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.MdiWindowListItem = this.windowsMenu;
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(632, 24);
+            this.menuStrip.Size = new System.Drawing.Size(1084, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -122,6 +122,21 @@
             this.fileMenu.Name = "fileMenu";
             this.fileMenu.Size = new System.Drawing.Size(89, 20);
             this.fileMenu.Text = "Casa Mendes";
+            // 
+            // GestaoMenuItem
+            // 
+            this.GestaoMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.PrecosMenuItem});
+            this.GestaoMenuItem.Name = "GestaoMenuItem";
+            this.GestaoMenuItem.Size = new System.Drawing.Size(239, 22);
+            this.GestaoMenuItem.Text = "Gestão";
+            // 
+            // PrecosMenuItem
+            // 
+            this.PrecosMenuItem.Name = "PrecosMenuItem";
+            this.PrecosMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.PrecosMenuItem.Text = "Preços";
+            this.PrecosMenuItem.Click += new System.EventHandler(this.PrecosMenuItem_Click);
             // 
             // RwsumoMenuItem
             // 
@@ -445,7 +460,7 @@
             this.helpToolStripButton});
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(632, 25);
+            this.toolStrip.Size = new System.Drawing.Size(1084, 25);
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "ToolStrip";
             // 
@@ -517,9 +532,9 @@
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StatusLabeTtoolStrip});
-            this.statusStrip.Location = new System.Drawing.Point(0, 428);
+            this.statusStrip.Location = new System.Drawing.Point(0, 636);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(632, 25);
+            this.statusStrip.Size = new System.Drawing.Size(1084, 25);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
             // 
@@ -530,26 +545,11 @@
             this.StatusLabeTtoolStrip.Size = new System.Drawing.Size(49, 20);
             this.StatusLabeTtoolStrip.Text = "Status";
             // 
-            // GestaoMenuItem
-            // 
-            this.GestaoMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.PrecosMenuItem});
-            this.GestaoMenuItem.Name = "GestaoMenuItem";
-            this.GestaoMenuItem.Size = new System.Drawing.Size(239, 22);
-            this.GestaoMenuItem.Text = "Gestão";
-            // 
-            // PrecosMenuItem
-            // 
-            this.PrecosMenuItem.Name = "PrecosMenuItem";
-            this.PrecosMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.PrecosMenuItem.Text = "Preços";
-            this.PrecosMenuItem.Click += new System.EventHandler(this.PrecosMenuItem_Click);
-            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 453);
+            this.ClientSize = new System.Drawing.Size(1084, 661);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);

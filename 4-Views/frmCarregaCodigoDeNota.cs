@@ -1,6 +1,4 @@
-﻿using CasaMendes.Classes.Geral;
-using System;
-using CasaMendes.Classes.Estatica;
+﻿using System;
 using System.Windows.Forms;
 
 namespace CasaMendes
@@ -29,7 +27,7 @@ namespace CasaMendes
             try
             {
                 if (this.TxtBuscar.Text.Length < 6) { return; }
-                Cl_Produto.CarregarProdutoPorCodigoDaNota(dgv, this.TxtBuscar.Text);
+                //Cl_Produto.CarregarProdutoPorCodigoDaNota(dgv, this.TxtBuscar.Text);
 
                 RedimencionarGradeProdutos();
                 if (this.dgv.Rows.Count > 0)

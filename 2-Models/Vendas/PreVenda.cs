@@ -3,8 +3,28 @@ using System.Collections.Generic;
 
 namespace CasaMendes
 {
-    public class PreVenda : Base
+    public class PreVenda : Base, IDisposable
     {
+        private bool disposedValue;
+
+        public PreVenda() { }
+
+        public PreVenda(int preVendaId, int clienteId, string produto, int quantidade, decimal precoDeVenda, int numeroDaVenda, string tipoDeVenda, decimal valor, decimal dinheiro, decimal troco, decimal parcela, DateTime created_at, DateTime updated_at)
+        {
+            PreVendaId = preVendaId;
+            ClienteId = clienteId;
+            Produto = produto ?? throw new ArgumentNullException(nameof(produto));
+            Quantidade = quantidade;
+            PrecoDeVenda = precoDeVenda;
+            NumeroDaVenda = numeroDaVenda;
+            TipoDeVenda = tipoDeVenda ?? throw new ArgumentNullException(nameof(tipoDeVenda));
+            Valor = valor;
+            Dinheiro = dinheiro;
+            Troco = troco;
+            Parcela = parcela;
+            this.created_at = created_at;
+            this.updated_at = updated_at;
+        }
 
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true, ChavePrimaria = true)]
         public int PreVendaId { get; set; }
@@ -65,29 +85,34 @@ namespace CasaMendes
             return PreVenda;
         }
 
-        bool disposed = false;
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // TODO: dispose managed state (managed objects)
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override finalizer
+                // TODO: set large fields to null
+                disposedValue = true;
+            }
+        }
+
+        // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+        ~PreVenda()
+        {
+            // Não altere este código. Coloque o código de limpeza no método 'Dispose(bool disposing)'
+            Dispose(disposing: false);
+        }
+
         public void Dispose()
         {
+            // Não altere este código. Coloque o código de limpeza no método 'Dispose(bool disposing)'
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
-
-        // Protected implementation of Dispose pattern.
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposed)
-                return;
-
-            if (disposing)
-            {
-                this.Dispose();
-                // Free any other managed objects here.
-                //
-            }
-
-            disposed = true;
-        }
-
 
     }
 }

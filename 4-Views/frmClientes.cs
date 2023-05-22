@@ -1,11 +1,5 @@
-﻿
-using CasaMendes.Classes;
-using CasaMendes.Classes.Estatica;
-using DocumentFormat.OpenXml.Bibliography;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace CasaMendes

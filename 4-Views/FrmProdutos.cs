@@ -1,8 +1,5 @@
-﻿using CasaMendes.Classes.Estatica;
-using CasaMendes.Classes.Geral;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace CasaMendes
@@ -12,7 +9,7 @@ namespace CasaMendes
         #region variáveis
         int LinhaIndex;
         bool editar;
-        tProduto oProduto;
+        Produto oProduto;
         FrmCadProduto cadProduto;
         #endregion
 
@@ -43,7 +40,7 @@ namespace CasaMendes
 
         private void Carregar()
         {
-            oProduto = new tProduto();
+            oProduto = new Produto();
             dgv.DataSource = oProduto.Todos();
             StatusLabel = (dgv.RowCount - 1).ToString("N2");
         }
@@ -150,7 +147,7 @@ namespace CasaMendes
             if (editar.Equals(true) && LinhaIndex != -1)
             {
                 cadProduto = new FrmCadProduto();
-                cadProduto.oProduto = (tProduto)dgv.Rows[LinhaIndex].DataBoundItem;
+                cadProduto.oProduto = (Produto)dgv.Rows[LinhaIndex].DataBoundItem;
                 cadProduto.ShowDialog();
                 if (cadProduto.DialogResult.Equals(DialogResult.OK)) Gravar();
                 cadProduto.Dispose();
@@ -163,7 +160,7 @@ namespace CasaMendes
             {
                 if (editar.Equals(true) && LinhaIndex != -1)
                 {
-                    oProduto = (tProduto)dgv.Rows[LinhaIndex].DataBoundItem;
+                    oProduto = (Produto)dgv.Rows[LinhaIndex].DataBoundItem;
                     oProduto.Excluir();
                     Carregar();
                 }

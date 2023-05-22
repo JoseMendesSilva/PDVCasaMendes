@@ -3,14 +3,28 @@ using System.Collections.Generic;
 
 namespace CasaMendes
 {
-    public class TabelaDeMargen : Base
+    public class TabelaDeMargen : Base, IDisposable
     {
 
         private double _PorcentagemPessoPorItem;
+        private bool disposedValue;
 
         public TabelaDeMargen()
         {
             this.Porcentagem();
+        }
+
+        public TabelaDeMargen(int tabelaDeMargenId, int subCategoriaId, int numeroDeItensNaLoja, double valorDeBase, double porcentagemPesoPorItem, double despesa, double custo, double encargo, double margemDeLucro)
+        {
+            TabelaDeMargenId = tabelaDeMargenId;
+            SubCategoriaId = subCategoriaId;
+            NumeroDeItensNaLoja = numeroDeItensNaLoja;
+            ValorDeBase = valorDeBase;
+            PorcentagemPesoPorItem = porcentagemPesoPorItem;
+            Despesa = despesa;
+            Custo = custo;
+            Encargo = encargo;
+            MargemDeLucro = margemDeLucro;
         }
 
         private double Porcentagem()
@@ -31,7 +45,7 @@ namespace CasaMendes
         public double ValorDeBase { get; set; } = 395.73;
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public double PorcentagemPessoPorItem { 
+        public double PorcentagemPesoPorItem { 
             get { 
                 return _PorcentagemPessoPorItem;
             } 
@@ -70,6 +84,35 @@ namespace CasaMendes
             return oTabelaDeMargen;
         }
 
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // TODO: dispose managed state (managed objects)
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override finalizer
+                // TODO: set large fields to null
+                disposedValue = true;
+            }
+        }
+
+         // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+         ~TabelaDeMargen()
+         {
+             // Não altere este código. Coloque o código de limpeza no método 'Dispose(bool disposing)'
+             Dispose(disposing: false);
+         }
+
+        public void Dispose()
+        {
+            // Não altere este código. Coloque o código de limpeza no método 'Dispose(bool disposing)'
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
+
         //bool disposed = false;
         //public void Dispose()
         //{
@@ -92,6 +135,6 @@ namespace CasaMendes
 
         //    disposed = true;
         //}
-   
+
     }
 }

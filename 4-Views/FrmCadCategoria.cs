@@ -1,5 +1,4 @@
-﻿using CasaMendes.Classes.Estatica;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace CasaMendes
@@ -143,8 +142,10 @@ namespace CasaMendes
         {
             try
             {
-                var oCat = new Categoria();
-                oCat.Nome = this.TxtBuscar.Text;
+                var oCat = new Categoria
+                {
+                    Nome = this.TxtBuscar.Text,
+                };
                 DgvCategorias.DataSource = oCat.Busca();
                 OrganizarColunas();
             }

@@ -1,8 +1,5 @@
-﻿
-using CasaMendes.Classes.Estatica;
-using System;
+﻿using System;
 using System.Windows.Forms;
-using CasaMendes.Classes.Geral;
 
 namespace CasaMendes
 {
@@ -22,6 +19,7 @@ namespace CasaMendes
         public frmCarregarVendasCliente()
         {
             InitializeComponent();
+            valor_tacha = 0;
         }
 
         private string Status()
@@ -30,7 +28,7 @@ namespace CasaMendes
             sts = "ID     : " + _Codigo.ToString() + Environment.NewLine;
             sts += "Cliente: " + _Cliente + ", Estatus: Aberto" + Environment.NewLine;
             sts += "Valor Liquido: " + this.lblLiquido.Text + ", Juros: " + (valor_tacha * 100).ToString() + "%" + Environment.NewLine;
-            sts += "Total geral: " + this.txtTotalGeral.Text + ", Parcela: " + Cl_PreVenda._Parcela.ToString("C2") + ", Valor a receber: " + this.txtTotalReceber.Text;// + Environment.NewLine;
+            //sts += "Total geral: " + this.txtTotalGeral.Text + ", Parcela: " + Cl_PreVenda._Parcela.ToString("C2") + ", Valor a receber: " + this.txtTotalReceber.Text;// + Environment.NewLine;
 
             this.dgvClientes.Columns[0].Visible = false;
 
@@ -39,87 +37,87 @@ namespace CasaMendes
 
         private void BuscarAnotado()
         {
-            try
-            {
+            //try
+            //{
 
-                Cl_PreVenda.CarregarGradeAnotado(this.dgvVendas, _Codigo.ToString());
+                //Cl_PreVenda.CarregarGradeAnotado(this.dgvVendas, _Codigo.ToString());
 
-                if (dgvVendas.Rows.Count > 0)
-                {
+            //    if (dgvVendas.Rows.Count > 0)
+            //    {
 
-                    decimal valor = 0;
-                    decimal valor1 = clsGlobal.Calcular(dgvVendas, 7);
-                    decimal valor2 = 0;
-                    int dias = 0;
-                    string sPorcentagem = "";
-                    decimal dPercent = 0;
+            //        decimal valor = 0;
+            //        decimal valor1 = clsGlobal.Calcular(dgvVendas, 7);
+            //        decimal valor2 = 0;
+            //        int dias = 0;
+            //        string sPorcentagem = "";
+            //        decimal dPercent = 0;
 
-                    ClsPromocao Opromocao = new ClsPromocao();
+            //        //ClsPromocao Opromocao = new ClsPromocao();
 
-                    Opromocao.LeituraXML();
+            //        Opromocao.LeituraXML();
 
-                    //le o códido de barras na grade cupom
-                    string codigoDeBarras = "tachaX";
+            //        //le o códido de barras na grade cupom
+            //        string codigoDeBarras = "tachaX";
 
-                    valor_tacha = Opromocao.De_String_Para_decimal(Opromocao.Dicionario_de_Promocao[codigoDeBarras.ToString()].ValorDesconto.ToString());
+            //        valor_tacha = Opromocao.De_String_Para_decimal(Opromocao.Dicionario_de_Promocao[codigoDeBarras.ToString()].ValorDesconto.ToString());
 
-                    lblLiquido.Text = valor1.ToString("C");
+            //        lblLiquido.Text = valor1.ToString("C");
 
-                    DateTime _Minimo = DateTime.Parse(dgvVendas.Rows[0].Cells[1].Value.ToString());
-                    DateTime _Maximo = DateTime.Parse(dgvVendas.Rows[dgvVendas.Rows.Count - 1].Cells[1].Value.ToString());
-                    TimeSpan tSpan = _Maximo - _Minimo;
+            //        DateTime _Minimo = DateTime.Parse(dgvVendas.Rows[0].Cells[1].Value.ToString());
+            //        DateTime _Maximo = DateTime.Parse(dgvVendas.Rows[dgvVendas.Rows.Count - 1].Cells[1].Value.ToString());
+            //        TimeSpan tSpan = _Maximo - _Minimo;
 
-                    //le a quantidade de itens vendidos na grade cupom
-                    if ((tSpan.ToString() == "00:00:00") || (Rbt_Fixa.Checked == true))
-                    {
-                        valor += valor1 * (1 + valor_tacha);
-                    }
-                    else
-                    {
-                        dias = int.Parse(tSpan.ToString().Replace(".00:00:00", "")) + 1;
+            //        //le a quantidade de itens vendidos na grade cupom
+            //        if ((tSpan.ToString() == "00:00:00") || (Rbt_Fixa.Checked == true))
+            //        {
+            //            valor += valor1 * (1 + valor_tacha);
+            //        }
+            //        else
+            //        {
+            //            dias = int.Parse(tSpan.ToString().Replace(".00:00:00", "")) + 1;
 
-                        sPorcentagem = (valor_tacha / 30).ToString();
-                        dPercent = decimal.Parse(sPorcentagem);
+            //            sPorcentagem = (valor_tacha / 30).ToString();
+            //            dPercent = decimal.Parse(sPorcentagem);
 
-                        dPercent = (dPercent / 100);
-                        for (int i = 0; i <= dias; i++)
-                        {
-                            valor2 = (valor1 * dPercent);
-                            valor += valor2;
-                        }
-                        valor += valor1;
-                    }
+            //            dPercent = (dPercent / 100);
+            //            for (int i = 0; i <= dias; i++)
+            //            {
+            //                valor2 = (valor1 * dPercent);
+            //                valor += valor2;
+            //            }
+            //            valor += valor1;
+            //        }
 
-                    this.txtTotalGeral.Text = valor.ToString("C2");
+            //        this.txtTotalGeral.Text = valor.ToString("C2");
 
-                    this.txtParcela.Text = Cl_PreVenda._Parcela.ToString("C2");
+            //        this.txtParcela.Text = Cl_PreVenda._Parcela.ToString("C2");
 
-                    if (this.txtParcela.Text != "R$ 0,00")
-                    {
-                        this.txtTotalReceber.Text = (Convert.ToDecimal(this.txtTotalGeral.Text.Replace("R$ ", "")) - Convert.ToDecimal(this.txtParcela.Text.Replace("R$ ", ""))).ToString("C2");
-                    }
-                    else
-                    {
-                        this.txtTotalReceber.Text = this.txtTotalGeral.Text;
-                    }
+            //        if (this.txtParcela.Text != "R$ 0,00")
+            //        {
+            //            this.txtTotalReceber.Text = (Convert.ToDecimal(this.txtTotalGeral.Text.Replace("R$ ", "")) - Convert.ToDecimal(this.txtParcela.Text.Replace("R$ ", ""))).ToString("C2");
+            //        }
+            //        else
+            //        {
+            //            this.txtTotalReceber.Text = this.txtTotalGeral.Text;
+            //        }
 
 
-                }
-                else
-                {
-                    this.txtTotalReceber.Text = "R$ 0.00";
-                    this.txtTotalGeral.Text = "R$ 0.00";
-                }
+            //    }
+            //    else
+            //    {
+            //        this.txtTotalReceber.Text = "R$ 0.00";
+            //        this.txtTotalGeral.Text = "R$ 0.00";
+            //    }
 
-                this.lblResumoDaConta.Text = Status();
+            //    this.lblResumoDaConta.Text = Status();
 
-                this.txtDinheiro.Focus();
-                this.txtDinheiro.SelectAll();
-            }
-            catch (Exception ex)/**/
-            {
-                MessageBox.Show(ex.Message, Application.ProductName);
-            }
+            //    this.txtDinheiro.Focus();
+            //    this.txtDinheiro.SelectAll();
+            //}
+            //catch (Exception ex)/**/
+            //{
+            //    MessageBox.Show(ex.Message, Application.ProductName);
+            //}
         }
 
         private void txtTotalGeral_TextChanged(object sender, EventArgs e)
@@ -150,9 +148,9 @@ namespace CasaMendes
 
         private void btnGravarParcela_Click(object sender, EventArgs e)
         {
-            if (txtDinheiro.Text != "R$ 0.00") { Cl_PreVenda.GravarParcela(this.txtDinheiro.Text, _Codigo.ToString()); }
-            else { txtDinheiro.Text = "R$ 0.00"; this.txtDinheiro.Focus(); this.txtDinheiro.SelectAll(); }
-            BuscarAnotado();
+            //if (txtDinheiro.Text != "R$ 0.00") { Cl_PreVenda.GravarParcela(this.txtDinheiro.Text, _Codigo.ToString()); }
+            //else { txtDinheiro.Text = "R$ 0.00"; this.txtDinheiro.Focus(); this.txtDinheiro.SelectAll(); }
+            //BuscarAnotado();
         }
 
         private void btnReceber_Click(object sender, EventArgs e)
@@ -165,7 +163,7 @@ namespace CasaMendes
                 int iCount = 0;
                 do
                 {
-                    Cl_PreVenda.Receber(_Codigo.ToString(), this.dgvVendas.Rows[iCount].Cells[0].Value.ToString(), clsGlobal.DeStringParadecimal(txtDinheiro.Text.Replace("R$ ", "")), troco);
+                    //Cl_PreVenda.Receber(_Codigo.ToString(), this.dgvVendas.Rows[iCount].Cells[0].Value.ToString(), clsGlobal.DeStringParadecimal(txtDinheiro.Text.Replace("R$ ", "")), troco);
                     iCount++;
                 } while (iCount < this.dgvVendas.Rows.Count - 1);
             }
@@ -227,7 +225,7 @@ namespace CasaMendes
                     this._Codigo = Convert.ToDecimal(dgvClientes.Rows[e.RowIndex].Cells[0].Value.ToString());
                     this._Cliente = dgvClientes.Rows[e.RowIndex].Cells[1].Value.ToString();
                     BuscarAnotado();
-                    this.txtParcela.Text = Cl_PreVenda._Parcela.ToString("C2");
+                    //this.txtParcela.Text = Cl_PreVenda._Parcela.ToString("C2");
 
                     if (dgvVendas.Rows.Count == 0 || Rbt_Fixa.Checked == true)
                     {
@@ -270,7 +268,7 @@ namespace CasaMendes
                     {
                         if ((_Codigo > 0) && (clsGlobal.CodigoVenda > 0))
                         {
-                            Cl_PreVenda.Extorno(_Codigo.ToString(), clsGlobal.CodigoVenda.ToString());
+                            //Cl_PreVenda.Extorno(_Codigo.ToString(), clsGlobal.CodigoVenda.ToString());
                             MessageBox.Show("A venda Código: " + clsGlobal.CodigoVenda + " foi excluida!", Application.ProductName);
                             BuscarAnotado();
                         }
@@ -332,7 +330,7 @@ namespace CasaMendes
                 clsGlobal.SetUpDataGridView(this.dgvVendas);
                 clsGlobal.SetUpDataGridView(this.dgvClientes);
 
-                Cl_PreVenda.CarregarGradeClente(this.dgvClientes);
+                //Cl_PreVenda.CarregarGradeClente(this.dgvClientes);
 
                 //=============================================================================================
                 int Espaco = (this.dgvVendas.Width + 6);

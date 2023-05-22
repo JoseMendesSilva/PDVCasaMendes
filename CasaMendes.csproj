@@ -200,6 +200,7 @@
     <Folder Include=".vs\GCProSharp\v15\" />
     <Folder Include=".vs\GCPro\DesignTimeBuild\" />
     <Folder Include=".vs\GCPro\v15\Server\sqlite3\" />
+    <Folder Include="1-DataBase\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -214,18 +215,22 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="2-Models\Categoria.cs" />
-    <Compile Include="2-Models\FrenteDeCaixa.cs" />
-    <Compile Include="2-Models\Estoque.cs" />
-    <Compile Include="2-Models\Promocao.cs" />
-    <Compile Include="2-Models\Cliente.cs" />
-    <Compile Include="2-Models\TabelaDeMargen.cs" />
-    <Compile Include="2-Models\tFuncionario.cs" />
-    <Compile Include="2-Models\Inadimplente.cs" />
-    <Compile Include="2-Models\PreVenda.cs" />
-    <Compile Include="2-Models\Fornecedor .cs" />
-    <Compile Include="2-Models\SubCategoria.cs" />
-    <Compile Include="2-Models\tFornecedore.cs" />
+    <Compile Include="2-Models\Estoque\Categoria.cs" />
+    <Compile Include="2-Models\RH\Contato.cs" />
+    <Compile Include="2-Models\RH\Destinatario.cs" />
+    <Compile Include="2-Models\Vendas\FrenteDeCaixa.cs" />
+    <Compile Include="2-Models\Estoque\Estoque.cs" />
+    <Compile Include="2-Models\RH\PessoaFisica.cs" />
+    <Compile Include="2-Models\RH\PessoaJuridica.cs" />
+    <Compile Include="2-Models\Vendas\Promocao.cs" />
+    <Compile Include="2-Models\Vendas\Cliente.cs" />
+    <Compile Include="2-Models\Contabilidade\Financeiro\TabelaDeMargen.cs" />
+    <Compile Include="2-Models\RH\Funcionario.cs" />
+    <Compile Include="2-Models\Vendas\Inadimplente.cs" />
+    <Compile Include="2-Models\Vendas\PreVenda.cs" />
+    <Compile Include="2-Models\Estoque\Fornecedor .cs" />
+    <Compile Include="2-Models\Estoque\SubCategoria.cs" />
+    <Compile Include="2-Models\Estoque\Fornecedore.cs" />
     <Compile Include="4-Views\FrmCadCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -252,10 +257,8 @@
     </Compile>
     <Compile Include="5-ORM\Base.cs" />
     <Compile Include="5-ORM\IBase.cs" />
-    <Compile Include="1-DataBase\Dados.cs" />
-    <Compile Include="1-DataBase\DadosBase.cs" />
     <Compile Include="0-Interfaces\IDados.cs" />
-    <Compile Include="2-Models\tProduto.cs" />
+    <Compile Include="2-Models\Estoque\Produto.cs" />
     <Compile Include="4-Views\FrmCadProduto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,20 +266,6 @@
       <DependentUpon>FrmCadProduto.cs</DependentUpon>
     </Compile>
     <Compile Include="5-ORM\OpcoesBase.cs" />
-    <Compile Include="Classes\ADL\Cl_Dados.cs" />
-    <Compile Include="Classes\Estatica\ClsItensPromocao.cs" />
-    <Compile Include="Classes\Estatica\ClsPermiao.cs" />
-    <Compile Include="Classes\Geral\ClsPromocao.cs" />
-    <Compile Include="Classes\Geral\cl_Cliente.cs" />
-    <Compile Include="Classes\Geral\cl_Fornecedores.cs" />
-    <Compile Include="Classes\Geral\cl_FrenteDeCaixa.cs" />
-    <Compile Include="Classes\Geral\cl_Funcionarios.cs" />
-    <Compile Include="Classes\Geral\cl_Inadimplente.cs" />
-    <Compile Include="Classes\Geral\cl_PreVenda.cs" />
-    <Compile Include="Classes\Geral\cl_Produto.cs" />
-    <Compile Include="Classes\Estatica\clsGlobal.cs" />
-    <Compile Include="Classes\Estatica\clsMensagens.cs" />
-    <Compile Include="Enumeradores\Enumeradores.cs" />
     <Compile Include="4-Views\FrmBuscarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -361,6 +350,8 @@
     <Compile Include="4-Views\FrmPromocao.Designer.cs">
       <DependentUpon>FrmPromocao.cs</DependentUpon>
     </Compile>
+    <Compile Include="Global.cs" />
+    <Compile Include="Mensagens.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -374,11 +365,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Propriedades\cl_pBase.cs" />
-    <Compile Include="Propriedades\cl_pFornecedores.cs" />
-    <Compile Include="Propriedades\cl_pFrenteDeCaixa.cs" />
-    <Compile Include="Propriedades\cl_pPreVenda.cs" />
-    <Compile Include="Propriedades\cl_pProduto.cs" />
     <Compile Include="4-Views\FrmProdutos.cs">
       <SubType>Form</SubType>
     </Compile>

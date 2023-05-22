@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace CasaMendes.Propriedades
 {
-    public class Cl_pProduto : tProduto
+    public class Cl_pProduto : Produto
     {
         public string RazaoSocial { get; set; }
     }

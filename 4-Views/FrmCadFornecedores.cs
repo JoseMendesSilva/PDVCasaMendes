@@ -1,5 +1,4 @@
-﻿using CasaMendes.Classes;
-using CasaMendes.Classes.Estatica;
+﻿
 using System;
 using System.Collections;
 using System.Windows.Forms;
@@ -11,7 +10,7 @@ namespace CasaMendes
 
         #region Variáveis
 
-        public tFornecedore oFornecedor;
+        public Fornecedore oFornecedor;
         BindingSource BsFornecedor;
 
         //int LinhaIndex;
@@ -30,7 +29,7 @@ namespace CasaMendes
         public FrmCadFornecedores()
         {
             InitializeComponent();
-            oFornecedor = new tFornecedore();
+            oFornecedor = new Fornecedore();
             BsFornecedor = new BindingSource { oFornecedor };
             this.Text = clsGlobal.MontarTitulo("Cadastrar fornecedores");
         }
@@ -59,7 +58,7 @@ namespace CasaMendes
         private void AtribuirValores()
         {
             //BsCliente.DataSource = oCliente;
-            cbEstado.Text = oFornecedor.Estado;
+            cbEstado.Text = oFornecedor.Enderecos.Estado;
             //cbPais.Text = oFornecedor.Pais;
         }
 
@@ -73,7 +72,7 @@ namespace CasaMendes
             oFornecedor.Cnpj = c;
             string i = oFornecedor.InscricaoEstadual.Replace(",", "");
             oFornecedor.Cnpj = c;
-            this.oFornecedor.Estado = cbEstado.Text;
+            this.oFornecedor.Enderecos.Estado = cbEstado.Text;
             this.Close();
         }
 
@@ -134,7 +133,7 @@ namespace CasaMendes
         {
             if ((e.KeyCode == Keys.Enter) || (this.txtBairro.Text.Length >= 29))
             {
-                Classes.cl_Fornecedores.CarregarComboBox(this.cbEstado);
+                //Classes.cl_Fornecedores.CarregarComboBox(this.cbEstado);
                 cbEstado.SelectedIndex = 0;
                 this.cbEstado.Enabled = true;
                 this.cbEstado.Focus();

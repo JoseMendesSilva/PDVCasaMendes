@@ -1,5 +1,4 @@
-﻿using CasaMendes.Classes.Estatica;
-using System;
+﻿using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
@@ -14,7 +13,7 @@ namespace CasaMendes
         private readonly string Funcionario = "José Mendes";//25
         private int count = 1;
         private PreVenda oPreVenda;
-        private ClsPromocao Opromocao;
+        //private ClsPromocao Opromocao;
 
         #endregion
 
@@ -82,10 +81,10 @@ namespace CasaMendes
                 if (oPreVenda.NumeroDaVenda == 0) { GerarNumero(); }
 
                 var oEstoque = new Estoque();
-                var oProduto = new tProduto();
+                var oProduto = new Produto();
 
                 List<Estoque> ResEstoque = new List<Estoque>();
-                List<tProduto> ResProduto = new List<tProduto>();
+                List<Produto> ResProduto = new List<Produto>();
 
                 oEstoque.CodigoDeBarras = txtCodigo.Text;
 

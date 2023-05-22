@@ -1,5 +1,4 @@
-﻿using CasaMendes.Classes;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace CasaMendes
@@ -231,8 +230,16 @@ namespace CasaMendes
             oTabelaDeMargen.Text = "SubCategorias " + childFormNumber++;
             // Display the new form.
             oTabelaDeMargen.Show();
-            oTabelaDeMargen.Top = this.Top + 8;
-            oTabelaDeMargen.Left = this.Left + 8;
+            if (!this.WindowState.Equals(FormWindowState.Maximized))
+            {
+                oTabelaDeMargen.Top = this.Top;
+                oTabelaDeMargen.Left = this.Left;
+            }
+            else
+            {
+                oTabelaDeMargen.Top = this.Top + 8;
+                oTabelaDeMargen.Left = this.Left + 8;
+            }
             //oTabelaDeMargen.Width = this.Width - 20;
             //oTabelaDeMargen.Height = this.Height - 120;
             //oTabelaDeMargen.WindowState = FormWindowState.Maximized;
@@ -240,5 +247,6 @@ namespace CasaMendes
         }
 
         #endregion
+  
     }
 }

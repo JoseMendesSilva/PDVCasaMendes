@@ -1,15 +1,8 @@
-﻿using CasaMendes.Classes.Estatica;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CasaMendes
@@ -19,7 +12,7 @@ namespace CasaMendes
 
         #region var
         public BindingSource BsProduto;
-        public tProduto oProduto;
+        public Produto oProduto;
         private List<TabelaDeMargen> oListaDeMargen;
         #endregion
 
@@ -42,7 +35,7 @@ namespace CasaMendes
             string sourceDir = clsGlobal.Abririmagens();
             string backupDir = @ConfigurationManager.AppSettings["DiretorioFotos"];
             // Remove path from the file name.
-            string fName = "", t, tm = "";
+            string fName = "", t, tm;
 
             //separa o nome da imagem com sua extenção com ordem invertida.
             for (int i = sourceDir.Length - 1; i > 0; i--)
@@ -51,8 +44,6 @@ namespace CasaMendes
                 if (@t == @"\")
                     break;
                 fName += t;
-
-                tm = fName;
             }
 
             tm = fName;
@@ -87,9 +78,8 @@ namespace CasaMendes
             }
 
             // Catch exception if the file was already copied.
-            catch //(IOException copyError)
+            catch 
             {
-                //MessageBox.Show(copyError.Message);
             }
 
         }
@@ -105,14 +95,12 @@ namespace CasaMendes
             }
             if (!txtPrecoUnitario.Text.Equals(""))
             {
-                temp = (oListaDeMargen[0].Despesa + oListaDeMargen[0].MargemDeLucro + oListaDeMargen[0].Custo + oListaDeMargen[0].Encargo + oListaDeMargen[0].PorcentagemPessoPorItem);
-                temp = temp/100;
+                temp = (oListaDeMargen[0].Despesa + oListaDeMargen[0].MargemDeLucro + oListaDeMargen[0].Custo + oListaDeMargen[0].Encargo + oListaDeMargen[0].PorcentagemPesoPorItem);
+                temp /= 100;
                 temp = 1 - temp;
                 temp = double.Parse(txtPrecoUnitario.Text) / temp;
                 txtPrecoDeVenda.Text = temp.ToString("N2");
             }
-
-            //MessageBox.Show("OK" + oListaDeMargen[0].Despesa);
         }
 
         private void VincularBindingSource()
@@ -165,7 +153,7 @@ namespace CasaMendes
             Botoes(true);
 
             if (oProduto.Equals(null))
-                oProduto = new tProduto();
+                oProduto = new Produto();
             if (BsProduto == null)
                 BsProduto = new BindingSource { oProduto };
             if (oListaDeMargen == null)
@@ -176,7 +164,7 @@ namespace CasaMendes
             BsProduto.DataSource = oProduto;
 
             cbFornecedores.DisplayMember = "RazaoSocial";
-            cbFornecedores.DataSource = new tFornecedore().Todos();
+            cbFornecedores.DataSource = new Fornecedore().Todos();
 
             CbSubcategoria.DisplayMember = "Nome";
             CbSubcategoria.DataSource = new SubCategoria().Todos();
@@ -198,10 +186,12 @@ namespace CasaMendes
         {
             try
             {
-                tFornecedore oFornecedor = new tFornecedore();
-                oFornecedor.RazaoSocial = cbFornecedores.Text;
+                Fornecedore oFornecedor = new Fornecedore
+                {
+                    RazaoSocial = cbFornecedores.Text
+                };
                 var codigo = oFornecedor.Busca();
-                txtCodigoDoFornecedor.Text = codigo[0].CodigoDoFornecedor.ToString();
+                txtCodigoDoFornecedor.Text = codigo[0].FornecedorId.ToString();
                 oFornecedor = null;
             }
             catch { }
@@ -211,18 +201,22 @@ namespace CasaMendes
         {
             try
             {
-                SubCategoria oSubCategoria = new SubCategoria();
-                oSubCategoria.Nome = CbSubcategoria.Text;
+                SubCategoria oSubCategoria = new SubCategoria
+                {
+                    Nome = CbSubcategoria.Text
+                };
 
                 var lista = oSubCategoria.Busca();
 
                 TxtSubCategoriaId.Text = lista[0].SubCategoriaId.ToString();
                 oSubCategoria = null;
 
-                TabelaDeMargen oTabelaDeMargen = new TabelaDeMargen();
-                oTabelaDeMargen.SubCategoriaId = lista[0].SubCategoriaId;
-                oListaDeMargen = oTabelaDeMargen.Busca();
-                CalcularPreco();
+                using (var oTabelaDeMargen = new TabelaDeMargen())
+                {
+                    oTabelaDeMargen.SubCategoriaId = lista[0].SubCategoriaId;
+                    oListaDeMargen = oTabelaDeMargen.Busca();
+                    CalcularPreco();
+                }
             }
             catch { }
         }

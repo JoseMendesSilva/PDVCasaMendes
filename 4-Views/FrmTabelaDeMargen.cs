@@ -1,6 +1,4 @@
-﻿using CasaMendes.Classes.Estatica;
-using DocumentFormat.OpenXml.Drawing.Charts;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace CasaMendes

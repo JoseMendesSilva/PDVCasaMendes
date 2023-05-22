@@ -1,9 +1,4 @@
-﻿using CasaMendes.Classes;
-using CasaMendes.Classes.Geral;
-using CasaMendes.Classes.Estatica;
-using System;
-using System.Collections;
-using System.Drawing;
+﻿using System;
 using System.Windows.Forms;
 
 namespace CasaMendes
@@ -29,7 +24,7 @@ namespace CasaMendes
             //=============================================================================================
             try
             {
-                Cl_Produto.CarregarDoEstoque(this.dgv, "");
+                //Cl_Produto.CarregarDoEstoque(this.dgv, "");
            
             clsGlobal.SetUpDataGridView(this.dgv);
 

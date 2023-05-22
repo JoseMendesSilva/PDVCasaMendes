@@ -1,5 +1,4 @@
-﻿using CasaMendes.Classes.Estatica;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace CasaMendes

@@ -6,6 +6,27 @@ namespace CasaMendes
 {
     public class Estoque : Base, IDisposable
     {
+        private bool disposedValue;
+
+        public Estoque()
+        {
+        }
+
+        public Estoque(int estoqueId, int produtoId, string codigoDeBarras, string produto, int quantidade, decimal precoDeVenda, decimal quantidadeParaDesconto, decimal valorDesconto, DateTime created_at, DateTime updated_at, DateTime? deleted_at)
+        {
+            EstoqueId = estoqueId;
+            ProdutoId = produtoId;
+            CodigoDeBarras = codigoDeBarras ?? throw new ArgumentNullException(nameof(codigoDeBarras));
+            Produto = produto ?? throw new ArgumentNullException(nameof(produto));
+            Quantidade = quantidade;
+            PrecoDeVenda = precoDeVenda;
+            QuantidadeParaDesconto = quantidadeParaDesconto;
+            ValorDesconto = valorDesconto;
+            this.created_at = created_at;
+            this.updated_at = updated_at;
+            this.deleted_at = deleted_at;
+        }
+
         [OpcoesBase(UsarNoBancoDeDados = true, ChavePrimaria = true, UsarParaBuscar = true)]
         public int EstoqueId { get; set; }
 
@@ -59,34 +80,34 @@ namespace CasaMendes
             return estoque;
         }
 
-        public void Dispose()
+        protected virtual void Dispose(bool disposing)
         {
-            throw new NotImplementedException();
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // TODO: dispose managed state (managed objects)
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override finalizer
+                // TODO: set large fields to null
+                disposedValue = true;
+            }
         }
 
-        //bool disposed = false;
-        //public void Dispose()
-        //{
-        //    Dispose(disposing: true);
-        //    GC.SuppressFinalize(this);
-        //}
+        // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+        ~Estoque()
+        {
+            // Não altere este código. Coloque o código de limpeza no método 'Dispose(bool disposing)'
+            Dispose(disposing: false);
+        }
 
-        //// Protected implementation of Dispose pattern.
-        //protected virtual void Dispose(bool disposing)
-        //{
-        //    if (disposed)
-        //        return;
-
-        //    if (disposing)
-        //    {
-        //        this.Dispose();
-        //        // Free any other managed objects here.
-        //        //
-        //    }
-
-        //    disposed = true;
-        //}
-
+        public void Dispose()
+        {
+            // Não altere este código. Coloque o código de limpeza no método 'Dispose(bool disposing)'
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
     }
 
 }

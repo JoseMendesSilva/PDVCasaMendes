@@ -1,5 +1,4 @@
-﻿using CasaMendes.Classes.Estatica;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -17,9 +16,9 @@ namespace CasaMendes
         #region Variáveis
 
         public BindingSource BsFuncionario;
-        private tFuncionario oFuncionario;
+        private Funcionario oFuncionario;
 
-        string TestoDoBtnNovo = clsMensagens.M00039;  // "Valor: Novo";
+        string TestoDoBtnNovo = Mensagens.M00039;  // "Valor: Novo";
         private int LinhaIndex;
         string valor = "";
         bool frmLoad;
@@ -33,10 +32,10 @@ namespace CasaMendes
             InitializeComponent();
             frmLoad = true;
             LinhaIndex = -1;
-            this.Text = clsGlobal.MontarTitulo(clsMensagens.M00041);
+            this.Text = clsGlobal.MontarTitulo(Mensagens.M00041);
 
             BsFuncionario = new BindingSource();
-            oFuncionario = new tFuncionario();
+            oFuncionario = new Funcionario();
             if (oFuncionario.FuncionarioId.Equals(0)) BsFuncionario.Add(oFuncionario);
 
             this.btnCancelar.Visible = false;
@@ -66,7 +65,7 @@ namespace CasaMendes
 
         private void AtribuirValores()
         {
-            oFuncionario = (tFuncionario)dgvNomes.Rows[LinhaIndex].DataBoundItem;
+            oFuncionario = (Funcionario)dgvNomes.Rows[LinhaIndex].DataBoundItem;
             BsFuncionario.DataSource = (oFuncionario);
 
             cbPais.Text = oFuncionario.Pais;
@@ -144,7 +143,7 @@ namespace CasaMendes
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            TestoDoBtnNovo = clsMensagens.M00026;// "Novo";
+            TestoDoBtnNovo = Mensagens.M00026;// "Novo";
             this.btnNovo.Text = TestoDoBtnNovo;
             clsGlobal.LimparControles((ControlCollection)this.Controls);
             this.Botoes(true);

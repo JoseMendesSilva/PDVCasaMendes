@@ -53,7 +53,7 @@ namespace CasaMendes
 
         private void Carregar()
         {
-            using (tFornecedore oFornecedor = new tFornecedore())
+            using (Fornecedore oFornecedor = new Fornecedore())
             {
                 dgv.DataSource = oFornecedor.Todos();
                 StatusLabel = (dgv.RowCount - 1).ToString();
@@ -63,11 +63,11 @@ namespace CasaMendes
         private void Gravar()
         {
             //Verificando se o nome já existe.
-            if (cadFornecedor.oFornecedor.CodigoDoFornecedor == "0")
+            if (cadFornecedor.oFornecedor.FornecedorId == 0)
             {
-                var forn = new tFornecedore();
+                var forn = new Fornecedore();
                 forn.RazaoSocial = cadFornecedor.oFornecedor.RazaoSocial;
-                List<tFornecedore> fornecedor = forn.Busca();
+                List<Fornecedore> fornecedor = forn.Busca();
                 if (fornecedor.Count > 0)
                 {
                     MessageBox.Show("O cadastro já existe!");
@@ -91,7 +91,7 @@ namespace CasaMendes
             if (editar.Equals(true) && LinhaIndex != -1)
             {
                 cadFornecedor = new FrmCadFornecedores();
-                cadFornecedor.oFornecedor = (tFornecedore)dgv.Rows[LinhaIndex].DataBoundItem;
+                cadFornecedor.oFornecedor = (Fornecedore)dgv.Rows[LinhaIndex].DataBoundItem;
                 cadFornecedor.ShowDialog();
                 if (cadFornecedor.DialogResult.Equals(DialogResult.OK)) Gravar();
                 cadFornecedor.Dispose();
@@ -104,8 +104,8 @@ namespace CasaMendes
             {
                 if (editar.Equals(true) && LinhaIndex != -1)
                 {
-                    var oFornecedor = new tFornecedore();
-                    oFornecedor = (tFornecedore)dgv.Rows[LinhaIndex].DataBoundItem;
+                    var oFornecedor = new Fornecedore();
+                    oFornecedor = (Fornecedore)dgv.Rows[LinhaIndex].DataBoundItem;
                     oFornecedor.Excluir();
                     oFornecedor.Dispose();
                     Carregar();
@@ -126,8 +126,9 @@ namespace CasaMendes
 
         private void frmFornecedores_Load(object sender, EventArgs e)
         {
-            using (tFornecedore oFornecedor = new tFornecedore())
+            using (Fornecedore oFornecedor = new Fornecedore())
             {
+                //oFornecedor.CriarTabela();
                 dgv.DataSource = oFornecedor.Todos();
                 StatusLabel = (dgv.RowCount - 1).ToString();
 

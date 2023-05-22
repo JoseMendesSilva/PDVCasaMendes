@@ -1,7 +1,4 @@
-﻿
-using CasaMendes.Classes.Estatica;
-
-namespace CasaMendes
+﻿namespace CasaMendes
 {
     internal sealed class Dados : DadosBase
     {

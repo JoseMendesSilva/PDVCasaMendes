@@ -12,7 +12,7 @@ namespace CasaMendes
 {
     public class Base : IBase
     {
-        private string connectionString = string.Concat(@ConfigurationManager.AppSettings["DbServer"], @ConfigurationManager.AppSettings["DbDiretorio"], @"\", ConfigurationManager.AppSettings["DbName"]);
+        private readonly string connectionString = string.Concat(@ConfigurationManager.AppSettings["DbServer"], @ConfigurationManager.AppSettings["DbDiretorio"], @"\", ConfigurationManager.AppSettings["DbName"]);
 
         public virtual int Key
         {
@@ -30,7 +30,7 @@ namespace CasaMendes
             }
         }
 
-        private string tipoPropriedade(PropertyInfo pi)
+        private string TipoPropriedade(PropertyInfo pi)
         {
             switch (pi.PropertyType.Name)
             {
@@ -70,7 +70,7 @@ namespace CasaMendes
                         }
                         else
                         {
-                            campos.Add(pi.Name + " " + tipoPropriedade(pi) + " ");
+                            campos.Add(pi.Name + " " + TipoPropriedade(pi) + " ");
                         }
                     }
                 }
@@ -152,7 +152,7 @@ namespace CasaMendes
                     }
                 }
 
-                string queryString = string.Empty;
+                string queryString;// = "";
 
                 if (this.Key == 0)
                 {
@@ -206,7 +206,7 @@ namespace CasaMendes
                 while (reader.Read())
                 {
                     var obj = (IBase)Activator.CreateInstance(this.GetType());
-                    setProperty(ref obj, reader);
+                    SetProperty(ref obj, reader);
                     list.Add(obj);
                 }
             }
@@ -260,14 +260,14 @@ namespace CasaMendes
                 while (reader.Read())
                 {
                     var obj = (IBase)Activator.CreateInstance(this.GetType());
-                    setProperty(ref obj, reader);
+                    SetProperty(ref obj, reader);
                     list.Add(obj);
                 }
             }
             return list;
         }
 
-        private void setProperty(ref IBase obj, SqlDataReader reader)
+        private void SetProperty(ref IBase obj, SqlDataReader reader)
         {
             foreach (PropertyInfo pi in obj.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance))
             {
@@ -275,7 +275,6 @@ namespace CasaMendes
                 if (pOpcoesBase != null && pOpcoesBase.UsarNoBancoDeDados)
                 {
                     string value;
-                    decimal number;
                     switch (pi.PropertyType.Name)
                     {
                         case "Int32":
@@ -287,7 +286,7 @@ namespace CasaMendes
                             pi.SetValue(obj, Int64.Parse(reader[pi.Name].ToString()));
                             break;
                         case "Double":
-                            double valor = 0;
+                            double valor;// = 0;
                             value = reader[pi.Name].ToString();
                             if (value == "") { continue; }
                             if (Double.TryParse(value, out valor))
@@ -297,6 +296,7 @@ namespace CasaMendes
 
                             break;
                         case "Decimal":
+                            decimal number;
                             value = string.Format(reader[pi.Name].ToString(), "N2").Replace(".", ",");
                             if (value == "") { continue; }
                             if (Decimal.TryParse(value, out number))
