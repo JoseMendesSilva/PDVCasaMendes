@@ -1,6 +1,6 @@
 ﻿namespace CasaMendes
 {
-    partial class frmClientes
+    partial class FrmClientes
     {
         /// <summary>
         /// Required designer variable.
@@ -28,139 +28,121 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnFechar = new System.Windows.Forms.Button();
-            this.dgv = new System.Windows.Forms.DataGridView();
-            this.btnExcluir = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnNovo = new System.Windows.Forms.Button();
-            this.gbBusca = new System.Windows.Forms.GroupBox();
-            this.txtBusca = new System.Windows.Forms.TextBox();
-            this.btnInadimplentes = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
-            this.gbBusca.SuspendLayout();
+            this.BtnFechar = new System.Windows.Forms.Button();
+            this.DgvClientes = new System.Windows.Forms.DataGridView();
+            this.BtnExcluir = new System.Windows.Forms.Button();
+            this.BtnEditar = new System.Windows.Forms.Button();
+            this.BtnNovo = new System.Windows.Forms.Button();
+            this.GbBusca = new System.Windows.Forms.GroupBox();
+            this.TxtBusca = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvClientes)).BeginInit();
+            this.GbBusca.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnFechar
+            // BtnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(525, 380);
-            this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(75, 53);
-            this.btnFechar.TabIndex = 157;
-            this.btnFechar.Text = "Fechar";
-            this.btnFechar.UseVisualStyleBackColor = true;
-            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
+            this.BtnFechar.Location = new System.Drawing.Point(525, 380);
+            this.BtnFechar.Name = "BtnFechar";
+            this.BtnFechar.Size = new System.Drawing.Size(75, 53);
+            this.BtnFechar.TabIndex = 157;
+            this.BtnFechar.Text = "Fechar";
+            this.BtnFechar.UseVisualStyleBackColor = true;
+            this.BtnFechar.Click += new System.EventHandler(this.BtnFechar_Click);
             // 
-            // dgv
+            // DgvClientes
             // 
-            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv.Location = new System.Drawing.Point(12, 80);
-            this.dgv.Name = "dgv";
-            this.dgv.Size = new System.Drawing.Size(588, 237);
-            this.dgv.TabIndex = 156;
-            this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellEnter);
-            this.dgv.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_RowEnter);
+            this.DgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvClientes.Location = new System.Drawing.Point(12, 80);
+            this.DgvClientes.Name = "DgvClientes";
+            this.DgvClientes.Size = new System.Drawing.Size(588, 237);
+            this.DgvClientes.TabIndex = 156;
+            this.DgvClientes.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_CellEnter);
             // 
-            // btnExcluir
+            // BtnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(197, 380);
-            this.btnExcluir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(70, 53);
-            this.btnExcluir.TabIndex = 161;
-            this.btnExcluir.Text = "Excluir";
-            this.btnExcluir.UseVisualStyleBackColor = true;
-            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            this.BtnExcluir.Location = new System.Drawing.Point(197, 380);
+            this.BtnExcluir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.BtnExcluir.Name = "BtnExcluir";
+            this.BtnExcluir.Size = new System.Drawing.Size(70, 53);
+            this.BtnExcluir.TabIndex = 161;
+            this.BtnExcluir.Text = "Excluir";
+            this.BtnExcluir.UseVisualStyleBackColor = true;
+            this.BtnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
             // 
-            // btnEditar
+            // BtnEditar
             // 
-            this.btnEditar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnEditar.Location = new System.Drawing.Point(106, 380);
-            this.btnEditar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(70, 53);
-            this.btnEditar.TabIndex = 160;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            this.BtnEditar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.BtnEditar.Location = new System.Drawing.Point(106, 380);
+            this.BtnEditar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.BtnEditar.Name = "BtnEditar";
+            this.BtnEditar.Size = new System.Drawing.Size(70, 53);
+            this.BtnEditar.TabIndex = 160;
+            this.BtnEditar.Text = "Editar";
+            this.BtnEditar.UseVisualStyleBackColor = true;
+            this.BtnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
             // 
-            // btnNovo
+            // BtnNovo
             // 
-            this.btnNovo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnNovo.Location = new System.Drawing.Point(18, 380);
-            this.btnNovo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(70, 53);
-            this.btnNovo.TabIndex = 159;
-            this.btnNovo.Text = "Novo";
-            this.btnNovo.UseVisualStyleBackColor = true;
-            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            this.BtnNovo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.BtnNovo.Location = new System.Drawing.Point(18, 380);
+            this.BtnNovo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.BtnNovo.Name = "BtnNovo";
+            this.BtnNovo.Size = new System.Drawing.Size(70, 53);
+            this.BtnNovo.TabIndex = 159;
+            this.BtnNovo.Text = "Novo";
+            this.BtnNovo.UseVisualStyleBackColor = true;
+            this.BtnNovo.Click += new System.EventHandler(this.BtnNovo_Click);
             // 
-            // gbBusca
+            // GbBusca
             // 
-            this.gbBusca.Controls.Add(this.txtBusca);
-            this.gbBusca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbBusca.Location = new System.Drawing.Point(12, 3);
-            this.gbBusca.Name = "gbBusca";
-            this.gbBusca.Size = new System.Drawing.Size(588, 71);
-            this.gbBusca.TabIndex = 163;
-            this.gbBusca.TabStop = false;
-            this.gbBusca.Text = "Busca:";
+            this.GbBusca.Controls.Add(this.TxtBusca);
+            this.GbBusca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GbBusca.Location = new System.Drawing.Point(12, 3);
+            this.GbBusca.Name = "GbBusca";
+            this.GbBusca.Size = new System.Drawing.Size(588, 71);
+            this.GbBusca.TabIndex = 163;
+            this.GbBusca.TabStop = false;
+            this.GbBusca.Text = "Busca:";
             // 
-            // txtBusca
+            // TxtBusca
             // 
-            this.txtBusca.Location = new System.Drawing.Point(6, 25);
-            this.txtBusca.Name = "txtBusca";
-            this.txtBusca.Size = new System.Drawing.Size(576, 26);
-            this.txtBusca.TabIndex = 0;
-            this.txtBusca.TextChanged += new System.EventHandler(this.txtBusca_TextChanged);
+            this.TxtBusca.Location = new System.Drawing.Point(6, 25);
+            this.TxtBusca.Name = "TxtBusca";
+            this.TxtBusca.Size = new System.Drawing.Size(576, 26);
+            this.TxtBusca.TabIndex = 0;
+            this.TxtBusca.TextChanged += new System.EventHandler(this.TxtBusca_TextChanged);
             // 
-            // btnInadimplentes
-            // 
-            this.btnInadimplentes.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.btnInadimplentes.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnInadimplentes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnInadimplentes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnInadimplentes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInadimplentes.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnInadimplentes.Location = new System.Drawing.Point(431, 380);
-            this.btnInadimplentes.Name = "btnInadimplentes";
-            this.btnInadimplentes.Size = new System.Drawing.Size(75, 53);
-            this.btnInadimplentes.TabIndex = 306;
-            this.btnInadimplentes.Text = "Restrições";
-            this.btnInadimplentes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnInadimplentes.UseVisualStyleBackColor = true;
-            this.btnInadimplentes.Visible = false;
-            // 
-            // frmClientes
+            // FrmClientes
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(611, 448);
-            this.Controls.Add(this.btnInadimplentes);
-            this.Controls.Add(this.gbBusca);
-            this.Controls.Add(this.btnFechar);
-            this.Controls.Add(this.dgv);
-            this.Controls.Add(this.btnExcluir);
-            this.Controls.Add(this.btnEditar);
-            this.Controls.Add(this.btnNovo);
-            this.Name = "frmClientes";
+            this.Controls.Add(this.GbBusca);
+            this.Controls.Add(this.BtnFechar);
+            this.Controls.Add(this.DgvClientes);
+            this.Controls.Add(this.BtnExcluir);
+            this.Controls.Add(this.BtnEditar);
+            this.Controls.Add(this.BtnNovo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "FrmClientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
-            this.Load += new System.EventHandler(this.frmClientes_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
-            this.gbBusca.ResumeLayout(false);
-            this.gbBusca.PerformLayout();
+            this.Load += new System.EventHandler(this.FrmClientes_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.DgvClientes)).EndInit();
+            this.GbBusca.ResumeLayout(false);
+            this.GbBusca.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Button btnFechar;
-        private System.Windows.Forms.DataGridView dgv;
-        public System.Windows.Forms.Button btnExcluir;
-        public System.Windows.Forms.Button btnEditar;
-        public System.Windows.Forms.Button btnNovo;
-        private System.Windows.Forms.GroupBox gbBusca;
-        private System.Windows.Forms.TextBox txtBusca;
-        private System.Windows.Forms.Button btnInadimplentes;
+        private System.Windows.Forms.Button BtnFechar;
+        private System.Windows.Forms.DataGridView DgvClientes;
+        public System.Windows.Forms.Button BtnExcluir;
+        public System.Windows.Forms.Button BtnEditar;
+        public System.Windows.Forms.Button BtnNovo;
+        private System.Windows.Forms.GroupBox GbBusca;
+        private System.Windows.Forms.TextBox TxtBusca;
     }
 }

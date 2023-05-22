@@ -129,64 +129,61 @@
     <Content Include="CasaMendes.ico" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="4-Views\FrmCadCategoria.resx">
+    <EmbeddedResource Include="4-Views\Estoque\FrmCadCategoria.resx">
       <DependentUpon>FrmCadCategoria.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\FrmCadProduto.resx">
+    <EmbeddedResource Include="4-Views\Estoque\FrmCadProduto.resx">
       <DependentUpon>FrmCadProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\FrmCadSubcategoria.resx">
+    <EmbeddedResource Include="4-Views\Estoque\FrmCadSubcategoria.resx">
       <DependentUpon>FrmCadSubcategoria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="4-Views\FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\FrmProdutos.resx">
+    <EmbeddedResource Include="4-Views\Estoque\FrmProdutos.resx">
       <DependentUpon>FrmProdutos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\FrmBuscarCliente.resx">
+    <EmbeddedResource Include="4-Views\Vendas\FrmBuscarCliente.resx">
       <DependentUpon>FrmBuscarCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\FrmEstoque.resx">
+    <EmbeddedResource Include="4-Views\Estoque\FrmEstoque.resx">
       <DependentUpon>FrmEstoque.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="4-Views\frmCarregaCodigoDeNota.resx">
       <DependentUpon>frmCarregaCodigoDeNota.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\FrmTabelaDeMargen.resx">
+    <EmbeddedResource Include="4-Views\Contabilidade\Financeiro\FrmTabelaDeMargen.resx">
       <DependentUpon>FrmTabelaDeMargen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\FrmCarregarVendas.resx">
+    <EmbeddedResource Include="4-Views\Vendas\FrmCarregarVendas.resx">
       <DependentUpon>FrmCarregarVendas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\FrmEstoque0.resx">
-      <DependentUpon>FrmEstoque0.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\FrmCadClientes.resx">
+    <EmbeddedResource Include="4-Views\Vendas\FrmCadClientes.resx">
       <DependentUpon>FrmCadClientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\FrmCadFuncionario.resx">
+    <EmbeddedResource Include="4-Views\RH\FrmCadFuncionario.resx">
       <DependentUpon>FrmCadFuncionario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\FrmCadFornecedores.resx">
+    <EmbeddedResource Include="4-Views\Estoque\FrmCadFornecedores.resx">
       <DependentUpon>FrmCadFornecedores.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\frmCarregarVendasCliente.resx">
-      <DependentUpon>frmCarregarVendasCliente.cs</DependentUpon>
+    <EmbeddedResource Include="4-Views\Vendas\FrmReceberPendura.resx">
+      <DependentUpon>FrmReceberPendura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="4-Views\frmClientes.resx">
       <DependentUpon>frmClientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\frmFinlizarVendas.resx">
+    <EmbeddedResource Include="4-Views\Vendas\frmFinlizarVendas.resx">
       <DependentUpon>frmFinlizarVendas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\frmFornecedores.resx">
+    <EmbeddedResource Include="4-Views\Estoque\frmFornecedores.resx">
       <DependentUpon>frmFornecedores.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\FrmFrenteDeCaixa.resx">
+    <EmbeddedResource Include="4-Views\Vendas\FrmFrenteDeCaixa.resx">
       <DependentUpon>FrmFrenteDeCaixa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\FrmPromocao.resx">
+    <EmbeddedResource Include="4-Views\Contabilidade\Financeiro\FrmPromocao.resx">
       <DependentUpon>FrmPromocao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -214,6 +211,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="1-DataBase\CriarTabelasDoSistema.cs" />
     <Compile Include="2-Models\Estoque\Categoria.cs" />
     <Compile Include="2-Models\Vendas\FrenteDeCaixa.cs" />
     <Compile Include="2-Models\Estoque\Estoque.cs" />
@@ -222,19 +220,18 @@
     <Compile Include="2-Models\RH\Funcionario.cs" />
     <Compile Include="2-Models\Vendas\Inadimplente.cs" />
     <Compile Include="2-Models\Vendas\PreVenda.cs" />
-    <Compile Include="2-Models\Estoque\Fornecedor .cs" />
     <Compile Include="2-Models\Estoque\SubCategoria.cs" />
     <Compile Include="2-Models\Estoque\Fornecedore.cs" />
-    <Compile Include="4-Views\FrmCadCategoria.cs">
+    <Compile Include="4-Views\Estoque\FrmCadCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="4-Views\FrmCadCategoria.Designer.cs">
+    <Compile Include="4-Views\Estoque\FrmCadCategoria.Designer.cs">
       <DependentUpon>FrmCadCategoria.cs</DependentUpon>
     </Compile>
-    <Compile Include="4-Views\FrmCadSubcategoria.cs">
+    <Compile Include="4-Views\Estoque\FrmCadSubcategoria.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="4-Views\FrmCadSubcategoria.Designer.cs">
+    <Compile Include="4-Views\Estoque\FrmCadSubcategoria.Designer.cs">
       <DependentUpon>FrmCadSubcategoria.cs</DependentUpon>
     </Compile>
     <Compile Include="4-Views\FrmPrincipal.cs">
@@ -243,33 +240,33 @@
     <Compile Include="4-Views\FrmPrincipal.Designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="4-Views\FrmTabelaDeMargen.cs">
+    <Compile Include="4-Views\Contabilidade\Financeiro\FrmTabelaDeMargen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="4-Views\FrmTabelaDeMargen.Designer.cs">
+    <Compile Include="4-Views\Contabilidade\Financeiro\FrmTabelaDeMargen.Designer.cs">
       <DependentUpon>FrmTabelaDeMargen.cs</DependentUpon>
     </Compile>
     <Compile Include="1-DataBase\ORM\Base.cs" />
     <Compile Include="1-DataBase\ORM\IBase.cs" />
     <Compile Include="1-DataBase\Interfaces\IDados.cs" />
     <Compile Include="2-Models\Estoque\Produto.cs" />
-    <Compile Include="4-Views\FrmCadProduto.cs">
+    <Compile Include="4-Views\Estoque\FrmCadProduto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="4-Views\FrmCadProduto.Designer.cs">
+    <Compile Include="4-Views\Estoque\FrmCadProduto.Designer.cs">
       <DependentUpon>FrmCadProduto.cs</DependentUpon>
     </Compile>
     <Compile Include="1-DataBase\ORM\OpcoesBase.cs" />
-    <Compile Include="4-Views\FrmBuscarCliente.cs">
+    <Compile Include="4-Views\Vendas\FrmBuscarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="4-Views\FrmBuscarCliente.Designer.cs">
+    <Compile Include="4-Views\Vendas\FrmBuscarCliente.Designer.cs">
       <DependentUpon>FrmBuscarCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="4-Views\FrmEstoque.cs">
+    <Compile Include="4-Views\Estoque\FrmEstoque.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="4-Views\FrmEstoque.Designer.cs">
+    <Compile Include="4-Views\Estoque\FrmEstoque.Designer.cs">
       <DependentUpon>FrmEstoque.cs</DependentUpon>
     </Compile>
     <Compile Include="4-Views\frmCarregaCodigoDeNota.cs">
@@ -278,41 +275,35 @@
     <Compile Include="4-Views\frmCarregaCodigoDeNota.Designer.cs">
       <DependentUpon>frmCarregaCodigoDeNota.cs</DependentUpon>
     </Compile>
-    <Compile Include="4-Views\FrmCarregarVendas.cs">
+    <Compile Include="4-Views\Vendas\FrmCarregarVendas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="4-Views\FrmCarregarVendas.Designer.cs">
+    <Compile Include="4-Views\Vendas\FrmCarregarVendas.Designer.cs">
       <DependentUpon>FrmCarregarVendas.cs</DependentUpon>
     </Compile>
-    <Compile Include="4-Views\FrmEstoque0.cs">
+    <Compile Include="4-Views\Vendas\FrmCadClientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="4-Views\FrmEstoque0.Designer.cs">
-      <DependentUpon>FrmEstoque0.cs</DependentUpon>
-    </Compile>
-    <Compile Include="4-Views\FrmCadClientes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="4-Views\FrmCadClientes.Designer.cs">
+    <Compile Include="4-Views\Vendas\FrmCadClientes.Designer.cs">
       <DependentUpon>FrmCadClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="4-Views\FrmCadFuncionario.cs">
+    <Compile Include="4-Views\RH\FrmCadFuncionario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="4-Views\FrmCadFuncionario.Designer.cs">
+    <Compile Include="4-Views\RH\FrmCadFuncionario.Designer.cs">
       <DependentUpon>FrmCadFuncionario.cs</DependentUpon>
     </Compile>
-    <Compile Include="4-Views\FrmCadFornecedores.cs">
+    <Compile Include="4-Views\Estoque\FrmCadFornecedores.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="4-Views\FrmCadFornecedores.Designer.cs">
+    <Compile Include="4-Views\Estoque\FrmCadFornecedores.Designer.cs">
       <DependentUpon>FrmCadFornecedores.cs</DependentUpon>
     </Compile>
-    <Compile Include="4-Views\frmCarregarVendasCliente.cs">
+    <Compile Include="4-Views\Vendas\FrmReceberPendura.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="4-Views\frmCarregarVendasCliente.Designer.cs">
-      <DependentUpon>frmCarregarVendasCliente.cs</DependentUpon>
+    <Compile Include="4-Views\Vendas\FrmReceberPendura.Designer.cs">
+      <DependentUpon>FrmReceberPendura.cs</DependentUpon>
     </Compile>
     <Compile Include="4-Views\frmClientes.cs">
       <SubType>Form</SubType>
@@ -320,28 +311,28 @@
     <Compile Include="4-Views\frmClientes.Designer.cs">
       <DependentUpon>frmClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="4-Views\frmFinlizarVendas.cs">
+    <Compile Include="4-Views\Vendas\frmFinlizarVendas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="4-Views\frmFinlizarVendas.Designer.cs">
+    <Compile Include="4-Views\Vendas\frmFinlizarVendas.Designer.cs">
       <DependentUpon>frmFinlizarVendas.cs</DependentUpon>
     </Compile>
-    <Compile Include="4-Views\frmFornecedores.cs">
+    <Compile Include="4-Views\Estoque\frmFornecedores.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="4-Views\frmFornecedores.Designer.cs">
+    <Compile Include="4-Views\Estoque\frmFornecedores.Designer.cs">
       <DependentUpon>frmFornecedores.cs</DependentUpon>
     </Compile>
-    <Compile Include="4-Views\FrmFrenteDeCaixa.cs">
+    <Compile Include="4-Views\Vendas\FrmFrenteDeCaixa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="4-Views\FrmFrenteDeCaixa.Designer.cs">
+    <Compile Include="4-Views\Vendas\FrmFrenteDeCaixa.Designer.cs">
       <DependentUpon>FrmFrenteDeCaixa.cs</DependentUpon>
     </Compile>
-    <Compile Include="4-Views\FrmPromocao.cs">
+    <Compile Include="4-Views\Contabilidade\Financeiro\FrmPromocao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="4-Views\FrmPromocao.Designer.cs">
+    <Compile Include="4-Views\Contabilidade\Financeiro\FrmPromocao.Designer.cs">
       <DependentUpon>FrmPromocao.cs</DependentUpon>
     </Compile>
     <Compile Include="Global.cs" />
@@ -359,10 +350,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="4-Views\FrmProdutos.cs">
+    <Compile Include="4-Views\Estoque\FrmProdutos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="4-Views\FrmProdutos.Designer.cs">
+    <Compile Include="4-Views\Estoque\FrmProdutos.Designer.cs">
       <DependentUpon>FrmProdutos.cs</DependentUpon>
     </Compile>
   </ItemGroup>
