@@ -200,7 +200,6 @@
     <Folder Include=".vs\GCProSharp\v15\" />
     <Folder Include=".vs\GCPro\DesignTimeBuild\" />
     <Folder Include=".vs\GCPro\v15\Server\sqlite3\" />
-    <Folder Include="1-DataBase\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -218,7 +217,6 @@
     <Compile Include="2-Models\Estoque\Categoria.cs" />
     <Compile Include="2-Models\Vendas\FrenteDeCaixa.cs" />
     <Compile Include="2-Models\Estoque\Estoque.cs" />
-    <Compile Include="2-Models\Vendas\Promocao.cs" />
     <Compile Include="2-Models\Vendas\Cliente.cs" />
     <Compile Include="2-Models\Contabilidade\Financeiro\TabelaDeMargen.cs" />
     <Compile Include="2-Models\RH\Funcionario.cs" />
@@ -251,9 +249,9 @@
     <Compile Include="4-Views\FrmTabelaDeMargen.Designer.cs">
       <DependentUpon>FrmTabelaDeMargen.cs</DependentUpon>
     </Compile>
-    <Compile Include="5-ORM\Base.cs" />
-    <Compile Include="5-ORM\IBase.cs" />
-    <Compile Include="0-Interfaces\IDados.cs" />
+    <Compile Include="1-DataBase\ORM\Base.cs" />
+    <Compile Include="1-DataBase\ORM\IBase.cs" />
+    <Compile Include="1-DataBase\Interfaces\IDados.cs" />
     <Compile Include="2-Models\Estoque\Produto.cs" />
     <Compile Include="4-Views\FrmCadProduto.cs">
       <SubType>Form</SubType>
@@ -261,7 +259,7 @@
     <Compile Include="4-Views\FrmCadProduto.Designer.cs">
       <DependentUpon>FrmCadProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="5-ORM\OpcoesBase.cs" />
+    <Compile Include="1-DataBase\ORM\OpcoesBase.cs" />
     <Compile Include="4-Views\FrmBuscarCliente.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -58,7 +58,7 @@ namespace CasaMendes
         private void AtribuirValores()
         {
             //BsCliente.DataSource = oCliente;
-            cbEstado.Text = oFornecedor.Enderecos.Estado;
+            cbEstado.Text = oFornecedor.Estado;
             //cbPais.Text = oFornecedor.Pais;
         }
 
@@ -72,7 +72,7 @@ namespace CasaMendes
             oFornecedor.Cnpj = c;
             string i = oFornecedor.InscricaoEstadual.Replace(",", "");
             oFornecedor.Cnpj = c;
-            this.oFornecedor.Enderecos.Estado = cbEstado.Text;
+            this.oFornecedor.Estado = cbEstado.Text;
             this.Close();
         }
 
