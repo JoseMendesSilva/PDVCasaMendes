@@ -12,30 +12,6 @@ namespace CasaMendes
         {
         }
 
-        public Cliente(int clienteId, string nome, string endereco, string cep, string cidade, string bairro, string estado, string pais, DateTime dataNascimento, string rg, string cpf, string inscricaoEstadual, string cnpj, string telefone, string celular, string email, string sITE, DateTime created_at, DateTime updated_at, DateTime? deleted_at)
-        {
-            ClienteId = clienteId;
-            Nome = nome ?? throw new ArgumentNullException(nameof(nome));
-            Endereco = endereco ?? throw new ArgumentNullException(nameof(endereco));
-            Cep = cep ?? throw new ArgumentNullException(nameof(cep));
-            Cidade = cidade ?? throw new ArgumentNullException(nameof(cidade));
-            Bairro = bairro ?? throw new ArgumentNullException(nameof(bairro));
-            Estado = estado ?? throw new ArgumentNullException(nameof(estado));
-            Pais = pais ?? throw new ArgumentNullException(nameof(pais));
-            DataNascimento = dataNascimento;
-            Rg = rg ?? throw new ArgumentNullException(nameof(rg));
-            Cpf = cpf ?? throw new ArgumentNullException(nameof(cpf));
-            InscricaoEstadual = inscricaoEstadual ?? throw new ArgumentNullException(nameof(inscricaoEstadual));
-            Cnpj = cnpj ?? throw new ArgumentNullException(nameof(cnpj));
-            Telefone = telefone ?? throw new ArgumentNullException(nameof(telefone));
-            Celular = celular ?? throw new ArgumentNullException(nameof(celular));
-            Email = email ?? throw new ArgumentNullException(nameof(email));
-            SITE = sITE ?? throw new ArgumentNullException(nameof(sITE));
-            this.created_at = created_at;
-            this.updated_at = updated_at;
-            this.deleted_at = deleted_at;
-        }
-
         [OpcoesBase(UsarNoBancoDeDados = true, ChavePrimaria = true, UsarParaBuscar = true)]
         public int ClienteId { get; set; }
 

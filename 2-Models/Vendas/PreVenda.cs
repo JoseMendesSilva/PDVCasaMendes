@@ -9,23 +9,6 @@ namespace CasaMendes
 
         public PreVenda() { }
 
-        public PreVenda(int preVendaId, int clienteId, string produto, int quantidade, decimal precoDeVenda, int numeroDaVenda, string tipoDeVenda, decimal valor, decimal dinheiro, decimal troco, decimal parcela, DateTime created_at, DateTime updated_at)
-        {
-            PreVendaId = preVendaId;
-            ClienteId = clienteId;
-            Produto = produto ?? throw new ArgumentNullException(nameof(produto));
-            Quantidade = quantidade;
-            PrecoDeVenda = precoDeVenda;
-            NumeroDaVenda = numeroDaVenda;
-            TipoDeVenda = tipoDeVenda ?? throw new ArgumentNullException(nameof(tipoDeVenda));
-            Valor = valor;
-            Dinheiro = dinheiro;
-            Troco = troco;
-            Parcela = parcela;
-            this.created_at = created_at;
-            this.updated_at = updated_at;
-        }
-
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true, ChavePrimaria = true)]
         public int PreVendaId { get; set; }
 

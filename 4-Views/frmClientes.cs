@@ -10,7 +10,7 @@ namespace CasaMendes
         #region Variáveis
 
         Cliente oCliente;
-       private readonly BindingSource BsCliente;
+        private readonly BindingSource BsCliente;
         bool editar;
         int LinhaIndex;
         private FrmCadClientes cadastrarClientes;
@@ -79,9 +79,10 @@ namespace CasaMendes
             //Verificando se o nome já existe.
             if (oCliente.ClienteId == 0)
             {
-                var cli = new Cliente { 
-                Nome = oCliente.Nome
-                    };
+                var cli = new Cliente
+                {
+                    Nome = oCliente.Nome
+                };
                 List<Cliente> cliente = cli.Busca();
                 if (cliente.Count > 0)
                 {
@@ -183,6 +184,10 @@ namespace CasaMendes
             Excluir();
         }
 
+        #endregion
+
+        #region Load
+
         private void FrmClientes_Load(object sender, EventArgs e)
         {
             try
@@ -218,7 +223,7 @@ namespace CasaMendes
 
         private void TxtBusca_TextChanged(object sender, EventArgs e)
         {
-            oCliente.Nome=TxtBusca.Text;
+            oCliente.Nome = TxtBusca.Text;
             DgvClientes.DataSource = oCliente.Busca();
         }
 

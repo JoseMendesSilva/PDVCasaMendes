@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 
 delegate void Salvar();
@@ -25,6 +26,7 @@ namespace CasaMendes
         private int LinhaIndex;
         private string valor;
         private bool frmLoading;
+        private bool frmLoaded;
 
         #endregion
 
@@ -41,69 +43,79 @@ namespace CasaMendes
 
         private void Limpar()
         {
-            txtCodigo.Clear();
-            txtNome.Clear();
-            txtEndereco.Clear();
-            mkbCep.Clear();
-            txtCidade.Clear();
-            txtBairro.Clear();
-            mkbRg.Clear();
-            mkbCpf.Clear();
-            dtpDataDeNascimento.Value = DateTime.Now;
-            mkbCelular.Clear();
-            mkbTelefone.Clear();
-            txtObservacao.Clear();
+            TxtCodigo.Clear();
+            TxtNome.Clear();
+            TxtEndereco.Clear();
+            MkbCep.Clear();
+            TxtCidade.Clear();
+            TxtBairro.Clear();
+            MkbRg.Clear();
+            MkbCpf.Clear();
+            DtpDataDeNascimento.Value = DateTime.Now;
+            MkbCelular.Clear();
+            MkbTelefone.Clear();
+            TxtObservacao.Clear();
+            oFuncionario.Foto = null;
         }
 
         private void VincularBindingSource()
         {
             if (frmLoading)
             {
-                txtCodigo.DataBindings.Add(new Binding("Text", BsFuncionario, "FuncionarioId"));
-                txtNome.DataBindings.Add(new Binding("Text", BsFuncionario, "Nome"));
-                txtEndereco.DataBindings.Add(new Binding("Text", BsFuncionario, "Endereco"));
-                mkbCep.DataBindings.Add(new Binding("Text", BsFuncionario, "Cep"));
-                txtCidade.DataBindings.Add(new Binding("Text", BsFuncionario, "Cidade"));
-                txtBairro.DataBindings.Add(new Binding("Text", BsFuncionario, "Bairro"));
-                mkbRg.DataBindings.Add(new Binding("Text", BsFuncionario, "Rg"));
-                mkbCpf.DataBindings.Add(new Binding("Text", BsFuncionario, "Cpf"));
-                dtpDataDeNascimento.DataBindings.Add(new Binding("Value", BsFuncionario, "DataDeNascimento"));
-                mkbCelular.DataBindings.Add(new Binding("Text", BsFuncionario, "Celular"));
-                mkbTelefone.DataBindings.Add(new Binding("Text", BsFuncionario, "Telefone"));
-                txtObservacao.DataBindings.Add(new Binding("Text", BsFuncionario, "Observacao"));
+                TxtCodigo.DataBindings.Add(new Binding("Text", BsFuncionario, "FuncionarioId"));
+                TxtNome.DataBindings.Add(new Binding("Text", BsFuncionario, "Nome"));
+                TxtEndereco.DataBindings.Add(new Binding("Text", BsFuncionario, "Endereco"));
+                MkbCep.DataBindings.Add(new Binding("Text", BsFuncionario, "Cep"));
+                TxtCidade.DataBindings.Add(new Binding("Text", BsFuncionario, "Cidade"));
+                TxtBairro.DataBindings.Add(new Binding("Text", BsFuncionario, "Bairro"));
+                MkbRg.DataBindings.Add(new Binding("Text", BsFuncionario, "Rg"));
+                MkbCpf.DataBindings.Add(new Binding("Text", BsFuncionario, "Cpf"));
+                DtpDataDeNascimento.DataBindings.Add(new Binding("Value", BsFuncionario, "DataDeNascimento"));
+                MkbCelular.DataBindings.Add(new Binding("Text", BsFuncionario, "Celular"));
+                MkbTelefone.DataBindings.Add(new Binding("Text", BsFuncionario, "Telefone"));
+                TxtObservacao.DataBindings.Add(new Binding("Text", BsFuncionario, "Observacao"));
             }
         }
 
         private void AtribuirValores()
         {
-            oFuncionario = (Funcionario)DgvNomes.Rows[LinhaIndex].DataBoundItem;
+            oFuncionario = (Funcionario)DgvFuncionarios.Rows[LinhaIndex].DataBoundItem;
             BsFuncionario.DataSource = (oFuncionario);
 
-            cbPais.Text = oFuncionario.Pais;
-            cbEstado.Text = oFuncionario.Estado;
-            cbEstadoCivil.Text = oFuncionario.EstadoCivil;
+            CbPais.Text = oFuncionario.Pais;
+            CbEstado.Text = oFuncionario.Estado;
+            CbEstadoCivil.Text = oFuncionario.EstadoCivil;
+
+            if (oFuncionario.Foto != null)
+            {
+                PicFoto.Image = Image.FromFile(clsGlobal.AbrirImagem(oFuncionario.Foto));
+            }
+            else
+            {
+               PicFoto.Image = Properties.Resources.CasaMendes1Jpg;
+            }
 
         }
 
         private void Carregar()
         {
             //se a flag DataLoding for true, então carrega os dados no grid, se não retorna
-            if (!frmLoading) 
-                DgvNomes.DataSource = oFuncionario.Todos();
-            else 
-                return;
+            if (frmLoading) return;
+
+                DgvFuncionarios.DataSource = null;
+            DgvFuncionarios.DataSource = oFuncionario.Todos();
 
             // se está carregando os dados e o grid ainda não estiver sedo carregado antes
             // enão formata as colunas
-            if (DgvNomes.Rows.Count > 0)
+            if (DgvFuncionarios.Rows.Count > 0)
             {
-                DgvNomes.RowHeadersVisible = false;
-                DgvNomes.BackgroundColor = Color.White;
-                for (int i = 0; i < DgvNomes.Columns.Count; i++)
+                DgvFuncionarios.RowHeadersVisible = false;
+
+                for (int i = 0; i < DgvFuncionarios.Columns.Count; i++)
                 {
-                    if (!DgvNomes.Columns[i].Equals(DgvNomes.Columns["Nome"])) DgvNomes.Columns[i].Visible = false;
+                    if (!DgvFuncionarios.Columns[i].Equals(DgvFuncionarios.Columns["Nome"])) DgvFuncionarios.Columns[i].Visible = false;
                 }
-                DgvNomes.Columns["Nome"].Width = clsGlobal.DimencionarColuna(100, this.DgvNomes.Width);
+                DgvFuncionarios.Columns["Nome"].Width = clsGlobal.DimencionarColuna(100, this.DgvFuncionarios.Width);
             }
         }
 
@@ -118,10 +130,10 @@ namespace CasaMendes
 
         private void CarregarCombo()
         {
-            cbEstado.DisplayMember = "Estado";
-            cbPais.DisplayMember = "Pais";
-            clsGlobal.CarregarPaises(this.cbPais);
-            clsGlobal.CarregarEstados(this.cbEstado);
+            CbEstado.DisplayMember = "Estado";
+            CbPais.DisplayMember = "Pais";
+            clsGlobal.CarregarPaises(this.CbPais);
+            clsGlobal.CarregarEstados(this.CbEstado);
         }
 
         #endregion
@@ -135,16 +147,18 @@ namespace CasaMendes
                 LinhaIndex = -1;
                 this.Text = clsGlobal.MontarTitulo(Mensagens.M00041);
                 frmLoading = true;
+                frmLoaded = false;
                 BsFuncionario = new BindingSource();
                 oFuncionario = new Funcionario();
                 if (oFuncionario.FuncionarioId.Equals(0)) BsFuncionario.Add(oFuncionario);
                 Limpar();
                 Botoes(true);
-                VincularBindingSource();
                 CarregarCombo();
+                VincularBindingSource();
                 frmLoading = false;
                 Carregar();
-                this.txtNome.Focus();
+                frmLoaded = true;
+                this.TxtNome.Focus();
             }
             catch
             {
@@ -159,14 +173,15 @@ namespace CasaMendes
         {
             this.Botoes(false);
             Limpar();
-            this.txtCodigo.Text = "0";
-            this.txtNome.Focus();
+            this.TxtCodigo.Text = "0";
+            this.TxtNome.Focus();
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             Limpar();
             this.Botoes(true);
+            Carregar();
         }
 
         private void BtnFechar_Click(object sender, EventArgs e)
@@ -176,38 +191,56 @@ namespace CasaMendes
 
         private void BtnGravar_Click(object sender, EventArgs e)
         {
-            oFuncionario.Pais = cbPais.Text;
-            oFuncionario.Estado = cbEstado.Text;
-            oFuncionario.EstadoCivil = cbEstadoCivil.Text;
-            oFuncionario.Salvar();
-            Carregar();
-            AtribuirValores();
+            try
+            {
+                oFuncionario.Pais = CbPais.Text;
+                oFuncionario.Estado = CbEstado.Text;
+                oFuncionario.EstadoCivil = CbEstadoCivil.Text;
+                oFuncionario.Salvar();
+                Carregar();
+                AtribuirValores();
+                Botoes(true);
+                MessageBox.Show($"O funcionário: ' {oFuncionario.Nome} ', foi cadastrado com sucesso.");
+            }
+            catch
+            {
+                MessageBox.Show($"O funcionário: ' {oFuncionario.Nome} ', não foi cadastrado.");
+            }
         }
 
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
-            if (this.txtCodigo.Text != null && this.txtCodigo.Text != "0")
+            if (this.TxtCodigo.Text != null && this.TxtCodigo.Text != "0")
             {
-                oFuncionario.Excluir();
+                oFuncionario.Excluir(); 
                 Carregar();
-                AtribuirValores();
+                if (DgvFuncionarios.Rows.Count>0)
+                    AtribuirValores();
+                MessageBox.Show($"O funcionário ' {oFuncionario.Nome} ' foi excluido com sucesso.");
             }
+            else
+                MessageBox.Show($"O funcionário ' {oFuncionario.Nome} ' naõ foi excluido.");
         }
 
         private void LblPicFoto_Click(object sender, EventArgs e)
         {
-            this.PicFoto.Image = Image.FromFile(clsGlobal.Abririmagens());
+            try
+            {
+                oFuncionario.Foto = clsGlobal.BuscarFotoProduto();
+                PicFoto.Image = Image.FromFile(clsGlobal.AbrirImagem(oFuncionario.Foto));
+            }
+            catch { }
         }
 
         #endregion
 
         #region Grid view
 
-        private void DgvNomes_CellEnter(object sender, DataGridViewCellEventArgs e)
+        private void DgvFuncionarios_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                if (DgvNomes.Rows.Count > 0 && !frmLoading)
+                if (DgvFuncionarios.Rows.Count > 0 && !frmLoading && frmLoaded)
                 {
                     LinhaIndex = e.RowIndex;
                     AtribuirValores();
@@ -223,19 +256,18 @@ namespace CasaMendes
 
         #endregion
 
-
         #region TextChanged
 
         private void MkbCep_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                if (frmLoading.Equals(true) || mkbCep.Text.Equals(0) || mkbCep.Text.Length.Equals(0)) return;
-                valor = mkbCep.Text.Replace("-", "").ToString();
-                mkbCep.Text = valor;
+                if (frmLoading.Equals(true) || MkbCep.Text.Equals(0) || MkbCep.Text.Length.Equals(0)) return;
+                valor = MkbCep.Text.Replace("-", "").ToString();
+                MkbCep.Text = valor;
                 int i = int.Parse(valor.Replace("(", "").Replace(")", "").Replace("-", "").ToString());
                 oFuncionario.Cep = valor;
-                mkbCep.Update();
+                MkbCep.Update();
             }
             catch { }
         }
@@ -244,13 +276,13 @@ namespace CasaMendes
         {
             try
             {
-                if (frmLoading.Equals(true) || mkbCpf.Text.Equals(0) || mkbCpf.Text.Length.Equals(0)) return;
-                valor = mkbCpf.Text.Replace(",", "").Replace(",", "").Replace("-", "").ToString();
-                mkbCpf.Text = valor;
+                if (frmLoading.Equals(true) || MkbCpf.Text.Equals(0) || MkbCpf.Text.Length.Equals(0)) return;
+                valor = MkbCpf.Text.Replace(",", "").Replace(",", "").Replace("-", "").ToString();
+                MkbCpf.Text = valor;
                 int i = int.Parse(valor.Replace("(", "").Replace(")", "").Replace("-", "").ToString());
                 oFuncionario.Cpf = valor;
 
-                mkbCpf.Update();
+                MkbCpf.Update();
             }
             catch { }
         }
@@ -259,12 +291,12 @@ namespace CasaMendes
         {
             try
             {
-                if (frmLoading.Equals(true) || mkbRg.Text.Equals(0) || mkbRg.Text.Length.Equals(0)) return;
-                valor = mkbRg.Text.Replace(",", "").Replace(",", "").Replace("-", "").ToString();
-                mkbRg.Text = valor;
+                if (frmLoading.Equals(true) || MkbRg.Text.Equals(0) || MkbRg.Text.Length.Equals(0)) return;
+                valor = MkbRg.Text.Replace(",", "").Replace(",", "").Replace("-", "").ToString();
+                MkbRg.Text = valor;
                 int i = int.Parse(valor.Replace("(", "").Replace(")", "").Replace("-", "").ToString());
                 oFuncionario.Rg = valor;
-                mkbRg.Update();
+                MkbRg.Update();
             }
             catch { }
         }
@@ -273,12 +305,12 @@ namespace CasaMendes
         {
             try
             {
-                if (frmLoading.Equals(true) || mkbCelular.Text.Equals(0) || mkbCelular.Text.Length.Equals(0)) return;
-                valor = mkbCelular.Text.Replace("(", "").Replace(")", "").Replace("-", "").ToString();
-                mkbCelular.Text = valor;
+                if (frmLoading.Equals(true) || MkbCelular.Text.Equals(0) || MkbCelular.Text.Length.Equals(0)) return;
+                valor = MkbCelular.Text.Replace("(", "").Replace(")", "").Replace("-", "").ToString();
+                MkbCelular.Text = valor;
                 int i = int.Parse(valor.Replace("(", "").Replace(")", "").Replace("-", "").ToString());
                 oFuncionario.Celular = valor;
-                mkbCelular.Update();
+                MkbCelular.Update();
             }
             catch { }
         }
@@ -287,12 +319,12 @@ namespace CasaMendes
         {
             try
             {
-                if (frmLoading.Equals(true) || mkbTelefone.Text.Equals(0) || mkbTelefone.Text.Length.Equals(0)) return;
-                valor = mkbTelefone.Text.Replace("-", "").ToString();
-                mkbCep.Text = valor;
+                if (frmLoading.Equals(true) || MkbTelefone.Text.Equals(0) || MkbTelefone.Text.Length.Equals(0)) return;
+                valor = MkbTelefone.Text.Replace("-", "").ToString();
+                MkbCep.Text = valor;
                 int i = int.Parse(valor.Replace("(", "").Replace(")", "").Replace("-", "").ToString());
                 oFuncionario.Telefone = valor;
-                mkbCep.Update();
+                MkbCep.Update();
             }
             catch { }
         }

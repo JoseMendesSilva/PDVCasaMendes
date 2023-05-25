@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace CasaMendes
@@ -6,20 +7,23 @@ namespace CasaMendes
     public partial class FrmCadCategoria : Form
     {
 
-        #region
+        #region FrmCadCategoria
+  
         public FrmCadCategoria()
         {
             InitializeComponent();
         }
+ 
         #endregion
 
         #region variaveis
 
-        BindingSource source;
-        Categoria categoria;
+        BindingSource oBsCategoria;
+        Categoria oCategoria;
         int LinhaIndex;
         bool loading;
-
+        private FrmProcessando oProcessamento;
+   
         #endregion
 
         #region propriedade
@@ -30,35 +34,33 @@ namespace CasaMendes
 
         private void AssociarDataBinding()
         {
-            categoria = new Categoria();
-            source = new BindingSource{
-                categoria
+            oCategoria = new Categoria();
+            oBsCategoria = new BindingSource{
+                oCategoria
             };
-            TxtCategoriaId.DataBindings.Add("Text", source, "CategoriaId");
-            TxtNome.DataBindings.Add("Text", source, "Nome");
-            TxtDescricao.DataBindings.Add("Text", source, "Descricao");
+            TxtCategoriaId.DataBindings.Add("Text", oBsCategoria, "CategoriaId");
+            TxtNome.DataBindings.Add("Text", oBsCategoria, "Nome");
+            TxtDescricao.DataBindings.Add("Text", oBsCategoria, "Descricao");
         }
 
         private void OrganizarColunas()
         {
-            if (DgvCategorias.Rows.Count > 0 && loading)
-            {
-                DgvCategorias.RowHeadersVisible = false;
-                DgvCategorias.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DgvCategorias.RowHeadersVisible = false;
+            DgvCategorias.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-                DgvCategorias.Columns["Key"].Visible = false;
-                DgvCategorias.Columns["CategoriaId"].Visible = false;
+            DgvCategorias.Columns["Key"].Visible = false;
+            DgvCategorias.Columns["CategoriaId"].Visible = false;
 
-                DgvCategorias.Columns["Nome"].Width = clsGlobal.DimencionarColuna(78, this.Width);
-                DgvCategorias.Columns["Descricao"].Width = clsGlobal.DimencionarColuna(180, this.DgvCategorias.Width);
-                loading = false;
-            }
+            DgvCategorias.Columns["Nome"].Width = clsGlobal.DimencionarColuna(50, this.Width);
+            DgvCategorias.Columns["Descricao"].Width = clsGlobal.DimencionarColuna(45, this.DgvCategorias.Width);
+            loading = false;
         }
 
         private void Carregar()
         {
-            categoria = (Categoria)DgvCategorias.Rows[LinhaIndex].DataBoundItem;
-            source.DataSource = categoria;
+            if (loading || DgvCategorias.Rows.Count <= 0) return;
+            oCategoria = (Categoria)DgvCategorias.Rows[LinhaIndex].DataBoundItem;
+            oBsCategoria.DataSource = oCategoria;
         }
 
         private void DgvCellEnter(DataGridViewCellEventArgs e)
@@ -67,11 +69,12 @@ namespace CasaMendes
             {
                 LinhaIndex = e.RowIndex;
                 Carregar();
+                BtnGravar.Visible = true;
+
             }
             else
             {
                 BtnGravar.Enabled = false;
-                BtnNovo.Enabled = true;
             }
         }
 
@@ -96,57 +99,72 @@ namespace CasaMendes
             BtnGravar.Enabled = true;
             BtnNovo.Enabled = true;
             BtnRetornar.Enabled = true;
-            categoria.Salvar();
+            oCategoria.Salvar();
             Carregar();
             MessageBox.Show("Cadastro realizado com sucesso!");
-            source.DataSource = categoria;
+            oBsCategoria.DataSource = oCategoria;
             DgvCategorias.Focus();
         }
 
         private void Excluir()
         {
-
-            BtnGravar.Enabled = true;
-            BtnNovo.Enabled = false;
-            BtnRetornar.Enabled = false;
+            if (TxtCategoriaId.Text == "0" || TxtCategoriaId.Text.Length == 0 || TxtCategoriaId.Text == string.Empty) { return; }
+            oCategoria.CategoriaId=int.Parse(TxtCategoriaId.Text);
+            oCategoria.Excluir();
+            MessageBox.Show($"A categoria ' {oCategoria.Nome} ' foi excluido com sucesso.");
 
         }
 
         #endregion
 
         #region Load
+ 
         private void FrmLoad()
         {
-            loading = true;
-            AssociarDataBinding();
-            //categoria.CriarTabela();
-            DgvCategorias.DataSource = categoria.Todos();
-            Carregar();
-            if (DgvCategorias.Rows.Count > 0)
+            try
             {
+                oProcessamento = new FrmProcessando();
+                oProcessamento.Show();
+                oProcessamento.TopMost = true;
+                oProcessamento.Processo(16, "Formulário.", "iniciando a carga do formulário.");
+                loading = true;
+
+                oProcessamento.Processo(32, "Formulário.", "iniciando a carga do formulário.");
+                AssociarDataBinding();
+
+                oProcessamento.Processo(48, "Formulário.", "carregondo dados.");
+                DgvCategorias.DataSource = oCategoria.Todos();
+
+                oProcessamento.Processo(66, "Formulário.", "organisando a tabela");
                 OrganizarColunas();
-                DgvCategorias.Focus();
+
+                oProcessamento.Processo(82, "Formulário.", "exibindo a primeira linha de dados nos controles.");
+                Carregar();
+
+                oProcessamento.Processo(100, "Formulário.", "finalisando a carga do formulário.");
+                loading = false;
             }
-            else
+            catch { }
+            finally
             {
-                BtnGravar.Enabled = false;
-                BtnNovo.Enabled = true;
+                oProcessamento.Close();
+                oProcessamento.Dispose();
             }
         }
 
         #endregion
 
-        #region TextChanged
+        #region TextoChanged
 
-        private void TextChange()
+        private void TextoChanged()
         {
             try
             {
-                var oCat = new Categoria
+                var oCategory = new Categoria
                 {
                     Nome = this.TxtBuscar.Text,
                 };
-                DgvCategorias.DataSource = oCat.Busca();
+                DgvCategorias.DataSource = oCategory.Busca();
                 OrganizarColunas();
             }
             catch { }
@@ -172,11 +190,11 @@ namespace CasaMendes
 
         #endregion
 
-        #region TextChanged
+        #region TextoChanged
 
         private void TxtBuscar_TextChanged(object sender, EventArgs e)
         {
-            TextChange();
+            TextoChanged();
         }
 
         #endregion
@@ -201,7 +219,7 @@ namespace CasaMendes
         private void BtnRetornar_Click(object sender, EventArgs e)
         {
             this.Close();
-            this.source.Dispose();
+            this.oBsCategoria.Dispose();
             this.Dispose();
         }
 

@@ -14,19 +14,6 @@ namespace CasaMendes
             this.Porcentagem();
         }
 
-        public TabelaDeMargen(int tabelaDeMargenId, int subCategoriaId, int numeroDeItensNaLoja, double valorDeBase, double porcentagemPesoPorItem, double despesa, double custo, double encargo, double margemDeLucro)
-        {
-            TabelaDeMargenId = tabelaDeMargenId;
-            SubCategoriaId = subCategoriaId;
-            NumeroDeItensNaLoja = numeroDeItensNaLoja;
-            ValorDeBase = valorDeBase;
-            PorcentagemPesoPorItem = porcentagemPesoPorItem;
-            Despesa = despesa;
-            Custo = custo;
-            Encargo = encargo;
-            MargemDeLucro = margemDeLucro;
-        }
-
         private double Porcentagem()
         {
             return _PorcentagemPessoPorItem = ValorDeBase / NumeroDeItensNaLoja;

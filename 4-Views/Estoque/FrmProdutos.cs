@@ -32,67 +32,60 @@ namespace CasaMendes
  
         private void Botoes(bool b)
         {
-            btnEditar.Enabled = !b;
-            btnFechar.Enabled = b;
-            btnExcluir.Enabled = !b;
-            btnNovo.Enabled = b;
-            btnAbrirListaDeesconto.Enabled = b;
+            BtnEditar.Enabled = !b;
+            BtnFechar.Enabled = b;
+            BtnExcluir.Enabled = !b;
+            BtnNovo.Enabled = b;
+            BtnAbrirListaDeesconto.Enabled = b;
         }
 
         private void Carregar()
         {
             oProduto = new Produto();
-            dgv.DataSource = oProduto.Todos();
-            StatusLabel = (dgv.RowCount - 1).ToString("N2");
+            DgvProdutos.DataSource = oProduto.Todos();
+            StatusLabel = (DgvProdutos.RowCount - 1).ToString("N2");
         }
 
         private void RedimencionarGrade()
         {
             try
             {
+                    DgvProdutos.RowHeadersVisible = false;
 
-                if (dgv.Rows.Count > 0)
-                {
-                    for (int i = 0; i < dgv.Columns.Count; i++)
+                    for (int i = 0; i < DgvProdutos.Columns.Count; i++)
                     {
-                        if ((dgv.Columns[i] == dgv.Columns["idProduto"]) || (dgv.Columns[i] == dgv.Columns["ValorCompra"]) || (dgv.Columns[i] == dgv.Columns["Quantidade"]) || (dgv.Columns[i] == dgv.Columns["CodigoDoFornecedor"]) || (dgv.Columns[i] == dgv.Columns["Foto"]) || (dgv.Columns[i] == dgv.Columns["CodigoDaNotaFiscal"]) || (dgv.Columns[i] == dgv.Columns["Key"]))
+                        if ((DgvProdutos.Columns[i] == DgvProdutos.Columns["ProdutoId"]) || (DgvProdutos.Columns[i] == DgvProdutos.Columns["ValorCompra"]) || (DgvProdutos.Columns[i] == DgvProdutos.Columns["Quantidade"]) || (DgvProdutos.Columns[i] == DgvProdutos.Columns["FornecedorId"]) || (DgvProdutos.Columns[i] == DgvProdutos.Columns["Foto"]) || (DgvProdutos.Columns[i] == DgvProdutos.Columns["Key"]))
                         {
-                            dgv.Columns[i].Visible = false;
+                            DgvProdutos.Columns[i].Visible = false;
                         }
                     }
 
-                    dgv.RowHeadersVisible = false;
+                    DgvProdutos.Columns["CodigoDeBarras"].HeaderText = "Cód Barras";
+                    DgvProdutos.Columns["Nome"].HeaderText = "Produto";
+                    DgvProdutos.Columns["DataDeValidade"].HeaderText = "D. Validade";
+                    //DgvProdutos.Columns["ValorCompra"].HeaderText = "V. Compra";
+                    //DgvProdutos.Columns["Estoque"].HeaderText = "Estoques";
+                    DgvProdutos.Columns["PrecoUnitario"].HeaderText = "Valor unitário";
+                    DgvProdutos.Columns["PrecoDeVenda"].HeaderText = "Valor venda";
+                    //DgvProdutos.Columns["Desconto"].HeaderText = "Qtd. Desc";
+                    //DgvProdutos.Columns["ValorDesconto"].HeaderText = "Valor desc";
+                    DgvProdutos.Columns["created_at"].HeaderText = "Data cadastro";
+                    DgvProdutos.Columns["updated_at"].HeaderText = "Atualizado";
+                    DgvProdutos.Columns["deleted_at"].HeaderText = "Inativo";
 
-                    int amanhoDgv = dgv.Width - 22;
+                    DgvProdutos.Columns["CodigoDeBarras"].Width = clsGlobal.DimencionarColuna(10, this.Width);
+                    DgvProdutos.Columns["Nome"].Width = clsGlobal.DimencionarColuna(21, this.Width);
+                    DgvProdutos.Columns["DataDeValidade"].Width = clsGlobal.DimencionarColuna(10, this.Width);
+                    //DgvProdutos.Columns["ValorCompra"].Width = clsGlobal.DimencionarColuna(6, this.Width);
+                    //DgvProdutos.Columns["Estoque"].Width = clsGlobal.DimencionarColuna(6, this.Width);
+                    DgvProdutos.Columns["PrecoUnitario"].Width = clsGlobal.DimencionarColuna(8, this.Width);
+                    DgvProdutos.Columns["PrecoDeVenda"].Width = clsGlobal.DimencionarColuna(9, this.Width);
+                    //DgvProdutos.Columns["Desconto"].Width = clsGlobal.DimencionarColuna(6, this.Width);
+                    //DgvProdutos.Columns["ValorDesconto"].Width = clsGlobal.DimencionarColuna(6, this.Width);
+                    DgvProdutos.Columns["created_at"].Width = clsGlobal.DimencionarColuna(6, this.Width);
+                    DgvProdutos.Columns["updated_at"].Width = clsGlobal.DimencionarColuna(6, this.Width);
+                    DgvProdutos.Columns["deleted_at"].Width = clsGlobal.DimencionarColuna(6, this.Width);
 
-                    dgv.Columns["CodigoDeBarras"].HeaderText = "Cód Barras";
-                    dgv.Columns["Nome"].HeaderText = "Produto";
-                    dgv.Columns["DataDeValidade"].HeaderText = "D. Validade";
-                    dgv.Columns["ValorCompra"].HeaderText = "V. Compra";
-                    dgv.Columns["Estoque"].HeaderText = "Estoques";
-                    dgv.Columns["PrecoUnitario"].HeaderText = "Valor unitário";
-                    dgv.Columns["PrecoDeVenda"].HeaderText = "Valor venda";
-                    dgv.Columns["Desconto"].HeaderText = "Qtd. Desc";
-                    dgv.Columns["ValorDesconto"].HeaderText = "Valor desc";
-                    dgv.Columns["created_at"].HeaderText = "Data cadastro";
-                    dgv.Columns["updated_at"].HeaderText = "Atualizado";
-                    dgv.Columns["deleted_at"].HeaderText = "Inativo";
-
-
-                    dgv.Columns["CodigoDeBarras"].Width = clsGlobal.DimencionarColuna(8, this.Width);
-                    dgv.Columns["Nome"].Width = clsGlobal.DimencionarColuna(21, this.Width);
-                    dgv.Columns["DataDeValidade"].Width = clsGlobal.DimencionarColuna(10, this.Width);
-                    dgv.Columns["ValorCompra"].Width = clsGlobal.DimencionarColuna(6, this.Width);
-                    dgv.Columns["Estoque"].Width = clsGlobal.DimencionarColuna(6, this.Width);
-                    dgv.Columns["PrecoUnitario"].Width = clsGlobal.DimencionarColuna(8, this.Width);
-                    dgv.Columns["PrecoDeVenda"].Width = clsGlobal.DimencionarColuna(9, this.Width);
-                    dgv.Columns["Desconto"].Width = clsGlobal.DimencionarColuna(6, this.Width);
-                    dgv.Columns["ValorDesconto"].Width = clsGlobal.DimencionarColuna(6, this.Width);
-                    dgv.Columns["created_at"].Width = clsGlobal.DimencionarColuna(6, this.Width);
-                    dgv.Columns["updated_at"].Width = clsGlobal.DimencionarColuna(6, this.Width);
-                    dgv.Columns["deleted_at"].Width = clsGlobal.DimencionarColuna(6, this.Width);
-
-                }
             }
             catch
             {
@@ -104,25 +97,27 @@ namespace CasaMendes
         {
             try
             {
-                cadProduto = new FrmCadProduto;
+                cadProduto = new FrmCadProduto();
 
                 if (editar.Equals(true) && LinhaIndex != -1)
                 {
-                   cadProduto.oProduto = (Produto)dgv.Rows[LinhaIndex].DataBoundItem;
+                   cadProduto.oProduto = (Produto)DgvProdutos.Rows[LinhaIndex].DataBoundItem;
                 }
 
                 cadProduto.ShowDialog();
 
                 if (cadProduto.DialogResult.Equals(DialogResult.OK))
                 {
-                    var oEstoque = new Estoque();
-                    oEstoque.EstoqueId = 0;
-                    oEstoque.ProdutoId = cadProduto.oProduto.idProduto;
-                    oEstoque.CodigoDeBarras = cadProduto.oProduto.CodigoDeBarras;
-                    oEstoque.Quantidade = cadProduto.oProduto.Quantidade;
-                    oEstoque.PrecoDeVenda = decimal.Parse(cadProduto.oProduto.PrecoDeVenda.ToString("N2"));
-                    oEstoque.QuantidadeParaDesconto = cadProduto.oProduto.Desconto;
-                    oEstoque.ValorDesconto = cadProduto.oProduto.ValorDesconto;
+                    var oEstoque = new Estoque
+                    {
+                        EstoqueId = 0,
+                        ProdutoId = cadProduto.oProduto.ProdutoId,
+                        CodigoDeBarras = cadProduto.oProduto.CodigoDeBarras,
+                        Quantidade = cadProduto.oProduto.Quantidade,
+                        PrecoDeVenda = decimal.Parse(cadProduto.oProduto.PrecoDeVenda.ToString("N2")),
+                        QuantidadeItemDesconto = int.Parse(cadProduto.TxtQuantidadeItemDesconto.Text),
+                        ValorDesconto = decimal.Parse(cadProduto.TxtValorDesconto.Text),
+                    };
                     //Verificando se o nome já existe no estoque e resgata o EstoqueId.
                     var e = new Estoque
                     {
@@ -144,7 +139,7 @@ namespace CasaMendes
                 {
                     string msg = "O cadastro";
                     if (editar) { msg = "A edição"; }
-                    MessageBox.Show($"{msg} não foi cancelado(a).");
+                    MessageBox.Show($"{msg} foi cancelado(a).");
                 }
             }
             catch 
@@ -166,7 +161,7 @@ namespace CasaMendes
             {
                 if (LinhaIndex != -1)
                 {
-                    oProduto = (Produto)dgv.Rows[LinhaIndex].DataBoundItem;
+                    oProduto = (Produto)DgvProdutos.Rows[LinhaIndex].DataBoundItem;
                     oProduto.Excluir();
                     Carregar();
                     MessageBox.Show($"O produro {oProduto.Nome} foi excluido com sucesso.");
@@ -190,68 +185,68 @@ namespace CasaMendes
             RedimencionarGrade();
         }
 
-        private void txtCodigoDeBarras_TextChanged(object sender, EventArgs e)
+        private void TxtCodigoDeBarras_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                if (this.txtBusca.Text.Length > 0)
+                if (this.TxtBusca.Text.Length > 0)
                 {
-                    this.txtBusca.Clear();
+                    this.TxtBusca.Clear();
                 }
-                if (this.txtCodigoDeBarras.Text != "0") oProduto.CodigoDeBarras = txtCodigoDeBarras.Text;
-                dgv.DataSource = oProduto.Busca();
+                if (this.TxtCodigoDeBarras.Text != "0") oProduto.CodigoDeBarras = TxtCodigoDeBarras.Text;
+                DgvProdutos.DataSource = oProduto.Busca();
             }
             catch { }
         }
 
-        private void txtBusca_TextChanged(object sender, EventArgs e)
+        private void TxtBusca_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                if (this.txtCodigoDeBarras.Text.Length > 0)
+                if (this.TxtCodigoDeBarras.Text.Length > 0)
                 {
-                    this.txtCodigoDeBarras.Clear();
+                    this.TxtCodigoDeBarras.Clear();
                 }
-                if (this.txtBusca.Text != "0") oProduto.Nome= txtBusca.Text;
-                dgv.DataSource = oProduto.Busca();
+                if (this.TxtBusca.Text != "0") oProduto.Nome= TxtBusca.Text;
+                DgvProdutos.DataSource = oProduto.Busca();
             }
             catch { }
         }
 
-        private void dgv_CellEnter(object sender, DataGridViewCellEventArgs e)
+        private void Dgv_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgv.Rows.Count > 0)
+            if (DgvProdutos.Rows.Count > 0)
             {
                 LinhaIndex = e.RowIndex;
                 editar = true;
-                btnEditar.Enabled = editar;
-                btnExcluir.Enabled = editar;
+                BtnEditar.Enabled = editar;
+                BtnExcluir.Enabled = editar;
                 return;
             }
             editar = false;
-            btnEditar.Enabled = editar;
+            BtnEditar.Enabled = editar;
         }
 
         #endregion
 
         #region Click
 
-        private void btnEditar_Click(object sender, EventArgs e)
+        private void BtnEditar_Click(object sender, EventArgs e)
         {
             Gravar();
         }
 
-        private void btnFechar_Click(object sender, EventArgs e)
+        private void BtnFechar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void btnNovo_Click(object sender, EventArgs e)
+        private void BtnNovo_Click(object sender, EventArgs e)
         {
             Novo();
         }
 
-        private void btnExcluir_Click(object sender, EventArgs e)
+        private void BtnExcluir_Click(object sender, EventArgs e)
         {
             Excluir();
         }

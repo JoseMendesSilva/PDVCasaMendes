@@ -11,93 +11,54 @@ namespace CasaMendes
         {
         }
 
-        public Funcionario(bool disposedValue, int funcionarioId, string nome, string endereco, string cep, string cidade, string bairro, string estado, string pais, string rg, string cpf, string estadoCivil, DateTime dataCadastro, DateTime dataDeNascimento, string celular, string telefone, string observacao, string foto)
-        {
-            this.disposedValue = disposedValue;
-            FuncionarioId = funcionarioId;
-            Nome = nome ?? throw new ArgumentNullException(nameof(nome));
-            Endereco = endereco ?? throw new ArgumentNullException(nameof(endereco));
-            Cep = cep ?? throw new ArgumentNullException(nameof(cep));
-            Cidade = cidade ?? throw new ArgumentNullException(nameof(cidade));
-            Bairro = bairro ?? throw new ArgumentNullException(nameof(bairro));
-            Estado = estado ?? throw new ArgumentNullException(nameof(estado));
-            Pais = pais ?? throw new ArgumentNullException(nameof(pais));
-            Rg = rg ?? throw new ArgumentNullException(nameof(rg));
-            Cpf = cpf ?? throw new ArgumentNullException(nameof(cpf));
-            EstadoCivil = estadoCivil ?? throw new ArgumentNullException(nameof(estadoCivil));
-            DataCadastro = dataCadastro;
-            DataDeNascimento = dataDeNascimento;
-            Celular = celular ?? throw new ArgumentNullException(nameof(celular));
-            Telefone = telefone ?? throw new ArgumentNullException(nameof(telefone));
-            Observacao = observacao ?? throw new ArgumentNullException(nameof(observacao));
-            Foto = foto ?? throw new ArgumentNullException(nameof(foto));
-        }
-
-        //[Codigo]
         [OpcoesBase(UsarNoBancoDeDados = true, ChavePrimaria = true, UsarParaBuscar = true)]
         public int FuncionarioId { get; set; }
 
-        //,[Nome]
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
         public string Nome { get; set; }
 
-        //,[Endereco]
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public string Endereco { get; set; }
 
-        //,[Cep]
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public string Cep { get; set; }
 
-        //,[Cidade]
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public string Cidade { get; set; }
 
-        //,[Bairro]
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public string Bairro { get; set; }
 
-        //,[Estado]
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public string Estado { get; set; }
 
-        //,[Pais]
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public string Pais { get; set; }
 
-        //,[RG]
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public string Rg { get; set; }
 
-        //,[CPF]
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public string Cpf { get; set; }
 
-        //,[EstadoCivil]
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public string EstadoCivil { get; set; }
 
-        //,[DataCadastro]
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public DateTime DataCadastro { get; set; } = DateTime.Now;
 
-        //,[DataDeNascimento]
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public DateTime DataDeNascimento { get; set; } = DateTime.Now;
 
-        //,[Celular]
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public string Celular { get; set; }
 
-        //,[Telefone]
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public string Telefone { get; set; }
 
-        //,[Observacao]
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public string Observacao { get; set; }
 
-        //,[Foto]
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public string Foto { get; set; }
 

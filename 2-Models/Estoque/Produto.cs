@@ -12,36 +12,14 @@ namespace CasaMendes
         {
         }
 
-        public Produto(bool disposedValue, int idProduto, string codigoDeBarras, int codigoDoFornecedor, string nome, DateTime dataDeValidade, decimal valorCompra, int quantidade, int estoque, decimal precoUnitario, decimal precoDeVenda, int desconto, string foto, decimal valorDesconto, int codigoDaNotaFiscal, DateTime created_at, DateTime updated_at, DateTime? deleted_at)
-        {
-            this.disposedValue = disposedValue;
-            this.idProduto = idProduto;
-            CodigoDeBarras = codigoDeBarras ?? throw new ArgumentNullException(nameof(codigoDeBarras));
-            CodigoDoFornecedor = codigoDoFornecedor;
-            Nome = nome ?? throw new ArgumentNullException(nameof(nome));
-            DataDeValidade = dataDeValidade;
-            ValorCompra = valorCompra;
-            Quantidade = quantidade;
-            Estoque = estoque;
-            PrecoUnitario = precoUnitario;
-            PrecoDeVenda = precoDeVenda;
-            Desconto = desconto;
-            Foto = foto ?? throw new ArgumentNullException(nameof(foto));
-            ValorDesconto = valorDesconto;
-            CodigoDaNotaFiscal = codigoDaNotaFiscal;
-            this.created_at = created_at;
-            this.updated_at = updated_at;
-            this.deleted_at = deleted_at;
-        }
-
         [OpcoesBase(UsarNoBancoDeDados = true, ChavePrimaria = true, UsarParaBuscar = true)]
-        public int idProduto { get; set; }
+        public int ProdutoId { get; set; }
+
+        [OpcoesBase(UsarNoBancoDeDados = true)]
+        public int FornecedorId { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
         public string CodigoDeBarras { get; set; }
-
-        [OpcoesBase(UsarNoBancoDeDados = true)]
-        public int CodigoDoFornecedor { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
         public string Nome { get; set; }
@@ -50,13 +28,10 @@ namespace CasaMendes
         public DateTime DataDeValidade { get; set; } = DateTime.Now;
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public decimal ValorCompra { get; set; }
-
-        [OpcoesBase(UsarNoBancoDeDados = true)]
         public int Quantidade { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public int Estoque { get; set; }
+        public decimal ValorCompra { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public decimal PrecoUnitario { get; set; }
@@ -64,17 +39,8 @@ namespace CasaMendes
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public decimal PrecoDeVenda { get; set; }
 
-        [OpcoesBase(UsarNoBancoDeDados = true)]
-        public int Desconto { get; set; }
-
         [OpcoesBase(UsarNoBancoDeDados = false)]
         public string Foto { get; set; }
-
-        [OpcoesBase(UsarNoBancoDeDados = true)]
-        public decimal ValorDesconto { get; set; }
-
-        [OpcoesBase(UsarNoBancoDeDados = true)]
-        public int CodigoDaNotaFiscal { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public DateTime created_at { get; set; } = DateTime.Now;

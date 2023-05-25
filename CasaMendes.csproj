@@ -186,6 +186,12 @@
     <EmbeddedResource Include="4-Views\Contabilidade\Financeiro\FrmPromocao.resx">
       <DependentUpon>FrmPromocao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="5-Util\FrmProcessando.resx">
+      <DependentUpon>FrmProcessando.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MensagemBox.resx">
+      <DependentUpon>MensagemBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -222,6 +228,39 @@
     <Compile Include="2-Models\Vendas\PreVenda.cs" />
     <Compile Include="2-Models\Estoque\SubCategoria.cs" />
     <Compile Include="2-Models\Estoque\Fornecedore.cs" />
+    <Compile Include="3-JMS Comp\Barra.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="3-JMS Comp\Botao2 .cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="3-JMS Comp\Botao.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="3-JMS Comp\Campo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="3-JMS Comp\ControlesObrigatorios.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="3-JMS Comp\ControlesObrigatorios.Designer.cs">
+      <DependentUpon>ControlesObrigatorios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="3-JMS Comp\GradientPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="3-JMS Comp\GradientPanelMuda.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="3-JMS Comp\JmsDecimalTextboxAC.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="3-JMS Comp\PainelRedondo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="3-JMS Comp\Tabela.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="4-Views\Estoque\FrmCadCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -257,6 +296,9 @@
       <DependentUpon>FrmCadProduto.cs</DependentUpon>
     </Compile>
     <Compile Include="1-DataBase\ORM\OpcoesBase.cs" />
+    <Compile Include="3-JMS Comp\Numero.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="4-Views\Vendas\FrmBuscarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -335,7 +377,22 @@
     <Compile Include="4-Views\Contabilidade\Financeiro\FrmPromocao.Designer.cs">
       <DependentUpon>FrmPromocao.cs</DependentUpon>
     </Compile>
+    <Compile Include="3-JMS Comp\JmsDecimalTextboxAR.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="5-Util\FrmProcessando.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="5-Util\FrmProcessando.Designer.cs">
+      <DependentUpon>FrmProcessando.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global.cs" />
+    <Compile Include="MensagemBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MensagemBox.Designer.cs">
+      <DependentUpon>MensagemBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mensagens.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Program.cs" />

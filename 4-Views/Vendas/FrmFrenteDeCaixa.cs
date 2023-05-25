@@ -89,7 +89,7 @@ namespace CasaMendes
                 oEstoque.CodigoDeBarras = txtCodigo.Text;
 
                 ResEstoque = oEstoque.Busca();
-                oProduto.idProduto = ResEstoque[0].ProdutoId;
+                oProduto.ProdutoId = ResEstoque[0].ProdutoId;
 
                 ResProduto = oProduto.Busca();
 

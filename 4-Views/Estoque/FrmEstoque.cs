@@ -18,7 +18,46 @@ namespace CasaMendes
 
         }
 
+        private void RedimencionarGrade()
+        {
+            try
+            {
+                DgvEstoque.RowHeadersVisible = false;
 
+                for (int i = 0; i < DgvEstoque.Columns.Count; i++)
+                {
+                    if ((DgvEstoque.Columns[i] == DgvEstoque.Columns["EstoqueId"]) || (DgvEstoque.Columns[i] == DgvEstoque.Columns["ProdutoId"]) || (DgvEstoque.Columns[i] == DgvEstoque.Columns["Key"]))
+                    {
+                        DgvEstoque.Columns[i].Visible = false;
+                    }
+                }
+
+               DgvEstoque.Columns["CodigoDeBarras"].HeaderText = "Cód Barras".ToUpper();
+                DgvEstoque.Columns["QuantidadeItemDesconto"].HeaderText = "Dsc. Q. Itens".ToUpper();
+                DgvEstoque.Columns["ValorDesconto"].HeaderText = "Desc. aplicado".ToUpper();
+                DgvEstoque.Columns["Produto"].HeaderText = "Produto".ToUpper();
+                DgvEstoque.Columns["Quantidade"].HeaderText = "Estoque".ToUpper();
+                DgvEstoque.Columns["PrecoDeVenda"].HeaderText = "Valor venda".ToUpper();
+               DgvEstoque.Columns["created_at"].HeaderText = "D. cadastro".ToUpper();
+               DgvEstoque.Columns["updated_at"].HeaderText = "Atualizado".ToUpper();
+               DgvEstoque.Columns["deleted_at"].HeaderText = "Inativo".ToUpper();
+
+               DgvEstoque.Columns["CodigoDeBarras"].Width = clsGlobal.DimencionarColuna(10, this.Width);
+                DgvEstoque.Columns["QuantidadeItemDesconto"].Width = clsGlobal.DimencionarColuna(10, this.Width);
+                DgvEstoque.Columns["ValorDesconto"].Width = clsGlobal.DimencionarColuna(11, this.Width);
+                DgvEstoque.Columns["Produto"].Width = clsGlobal.DimencionarColuna(20, this.Width);
+                DgvEstoque.Columns["Quantidade"].Width = clsGlobal.DimencionarColuna(8, this.Width);
+                DgvEstoque.Columns["PrecoDeVenda"].Width = clsGlobal.DimencionarColuna(10, this.Width);
+               DgvEstoque.Columns["created_at"].Width = clsGlobal.DimencionarColuna(9, this.Width);
+               DgvEstoque.Columns["updated_at"].Width = clsGlobal.DimencionarColuna(9, this.Width);
+                DgvEstoque.Columns["deleted_at"].Width = clsGlobal.DimencionarColuna(9, this.Width);
+
+            }
+            catch
+            {
+
+            }
+        }
 
         #endregion
 
@@ -28,7 +67,8 @@ namespace CasaMendes
             {
                 using(var oEstoque = new Estoque())
                 {
-                    dgv.DataSource = oEstoque.Todos();
+                    DgvEstoque.DataSource = oEstoque.Todos(); 
+                    RedimencionarGrade();
                 }
             }catch { }
         }
@@ -38,23 +78,27 @@ namespace CasaMendes
             this.Close();
         }
 
-        private void txtCodigoDeBarras_TextChanged(object sender, EventArgs e)
+        private void TxtCodigoDeBarras_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                var oEstoque = new Estoque();
+                var oEstoque = new Estoque
+                {
+                    CodigoDeBarras = txtCodigoDeBarras.Text
+                };
                 oEstoque.CodigoDeBarras = txtCodigoDeBarras.Text;
-                dgv.DataSource = oEstoque.Busca();
+                DgvEstoque.DataSource = oEstoque.Busca();
             }
             catch { }
         }
 
-        private void dgv_CellEnter(object sender, DataGridViewCellEventArgs e)
+        private void Dgv_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             if(e.RowIndex > -1)
             {
-                CodigoProduto = dgv.Rows[e.RowIndex].Cells["CodigoDeBarras"].Value.ToString();
+                CodigoProduto = DgvEstoque.Rows[e.RowIndex].Cells["CodigoDeBarras"].Value.ToString();
             }
         }
+ 
     }
 }

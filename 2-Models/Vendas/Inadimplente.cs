@@ -13,18 +13,6 @@ namespace CasaMendes
         {
         }
 
-        public Inadimplente(bool disposedValue, string inadimplenteId, string clienteId, string status, string data, string dividaAtiva, string encargos, string observacao)
-        {
-            this.disposedValue = disposedValue;
-            InadimplenteId = inadimplenteId ?? throw new ArgumentNullException(nameof(inadimplenteId));
-            ClienteId = clienteId ?? throw new ArgumentNullException(nameof(clienteId));
-            Status = status ?? throw new ArgumentNullException(nameof(status));
-            Data = data ?? throw new ArgumentNullException(nameof(data));
-            DividaAtiva = dividaAtiva ?? throw new ArgumentNullException(nameof(dividaAtiva));
-            Encargos = encargos ?? throw new ArgumentNullException(nameof(encargos));
-            Observacao = observacao ?? throw new ArgumentNullException(nameof(observacao));
-        }
-
         public string InadimplenteId { get; set; }
         public string ClienteId { get; set; }
         public string Status { get; set; }

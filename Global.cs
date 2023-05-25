@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -43,21 +44,94 @@ namespace CasaMendes
             cb.EndUpdate();
         }
 
-        //====================================================================================================
+
+        #region métodos
+        /*
+         * Carrega uma imagem selecionada e copia, se ela não, para a pasta dentro do diretório
+         * padrão do sistema.
+         */
+        //private static string BuscarFotoProduto(PictureBox PicFoto)
+        public static string BuscarFotoProduto()
+        {
+            string sourceDir = Abririmagens();
+            string backupDir = @ConfigurationManager.AppSettings["DiretorioFotos"];
+            // Remove path from the file name.
+            string fName = "", t, tm;
+
+            //separa o nome da imagem com sua extenção com ordem invertida.
+            for (int i = sourceDir.Length - 1; i > 0; i--)
+            {
+                t = sourceDir.Substring(i, 1);
+                if (@t == @"\")
+                    break;
+                fName += t;
+            }
+
+            tm = fName;
+            fName = "";
+
+            //re ordena o nome da imagem.
+            for (int i = tm.Length; i > 0; i--)
+            {
+                t = tm.Substring(i - 1, 1);
+                fName += t;
+            }
+
+            //remove o nome da imagem do diretório.
+            sourceDir = sourceDir.Substring(0, sourceDir.Length + 2 - fName.Length - 2);
+
+            try
+            {
+                //verifica se o diretório existe, se não, cria
+                if (!Directory.Exists(backupDir))
+                {
+                    Directory.CreateDirectory(backupDir);
+                }
+
+                //verifica se a imagem existe no diretório, se não existir, copia para o diretório.
+                if (!File.Exists(Path.Combine(backupDir, fName)))
+                {
+                    File.Copy(Path.Combine(sourceDir, fName), Path.Combine(backupDir, fName), true);
+                }
+                //var result = ValidarDiretorio(backupDir, fName);
+                //carrega a imagem na tela.
+                //PicFoto.Image = Image.FromFile($"{ sourceDir } + { fName }");
+                return fName;
+            }
+
+            // Catch exception if the file was already copied.
+            catch
+            {
+                return null;
+            }
+
+        }
+
+        public static string AbrirImagem(string PicName)
+        {
+            string AppDir = @ConfigurationManager.AppSettings["DiretorioFotos"];
+            var result = ValidarDiretorio(AppDir, PicName);
+            //carrega a imagem na tela.
+            //PicFoto.Image = Image.FromFile($"{ sourceDir } + { fName }");
+            return result; ;
+
+
+        }
+
         public static string Abririmagens()
         {
             var dir = string.Empty;
             fDialogo = new OpenFileDialog();
             fDialogo.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
             // Set the file dialog to filter for graphics files.
-            fDialogo.Filter = "imagens (*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF| All files (*.*)|*.*";
+            fDialogo.Filter = "imagens (*.BMP;*.JPG;*.GIF)|*.BMP;*.PNG;*.JPG;*.GIF| All files (*.*)|*.*";
             // Allow the user to select multiple imagens.
-            fDialogo.Multiselect = true;
+            fDialogo.Multiselect = false;
             fDialogo.Title = Application.ProductName;
             DialogResult dialogResult = fDialogo.ShowDialog();
             if (dialogResult == DialogResult.OK)
             {
-               dir = fDialogo.FileName;
+                dir = fDialogo.FileName;
             }
             else
             {
@@ -66,7 +140,7 @@ namespace CasaMendes
                 //PicFoto.Image = Properties.Resources.CasaMendes1Jpg; //Image.FromFile(clsGlobal.ValidarDiretorio();
             }
 
-            fDialogo.Dispose(); 
+            fDialogo.Dispose();
             return dir;
 
         }
@@ -94,6 +168,8 @@ namespace CasaMendes
 
             fDialogo.Dispose();
         }
+
+        #endregion
 
         /*
          * ====================================================================================================

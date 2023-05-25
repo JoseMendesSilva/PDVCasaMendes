@@ -7,9 +7,13 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace CasaMendes
 {
+    [Serializable]
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ComVisible(true)]
     public class Base : IBase
     {
         private readonly string connectionString = string.Concat(@ConfigurationManager.AppSettings["DbServer"], @ConfigurationManager.AppSettings["DbDiretorio"], @"\", ConfigurationManager.AppSettings["DbName"]);

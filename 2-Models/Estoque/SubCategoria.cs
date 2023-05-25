@@ -9,14 +9,6 @@ namespace CasaMendes
 
         public SubCategoria() { }
 
-        public SubCategoria(int subCategoriaId, int categoriaId, string nome, string descricao)
-        {
-            SubCategoriaId = subCategoriaId;
-            CategoriaId = categoriaId;
-            Nome = nome ?? throw new ArgumentNullException(nameof(nome));
-            Descricao = descricao ?? throw new ArgumentNullException(nameof(descricao));
-        }
-
         [OpcoesBase(UsarNoBancoDeDados = true, ChavePrimaria = true, UsarParaBuscar = true)]
         public int SubCategoriaId { get; set; }
 

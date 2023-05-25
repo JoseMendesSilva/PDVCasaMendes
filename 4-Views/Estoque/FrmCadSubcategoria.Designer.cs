@@ -45,6 +45,7 @@
             this.TxtCategoriaId = new System.Windows.Forms.TextBox();
             this.TxtBuscar = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.BtnCancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvSubcategorias)).BeginInit();
             this.SuspendLayout();
             // 
@@ -218,11 +219,23 @@
             this.label5.TabIndex = 31;
             this.label5.Text = "Busca:";
             // 
+            // BtnCancelar
+            // 
+            this.BtnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnCancelar.Location = new System.Drawing.Point(435, 217);
+            this.BtnCancelar.Name = "BtnCancelar";
+            this.BtnCancelar.Size = new System.Drawing.Size(75, 38);
+            this.BtnCancelar.TabIndex = 33;
+            this.BtnCancelar.Text = "Novo";
+            this.BtnCancelar.UseVisualStyleBackColor = true;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
+            // 
             // FrmCadSubcategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(522, 421);
+            this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.TxtBuscar);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.BtnExcluir);
@@ -269,5 +282,6 @@
         private System.Windows.Forms.TextBox TxtCategoriaId;
         private System.Windows.Forms.TextBox TxtBuscar;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button BtnCancelar;
     }
 }

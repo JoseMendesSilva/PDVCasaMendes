@@ -42,12 +42,7 @@
             this.lblTerminal = new System.Windows.Forms.Label();
             this.panelValores = new System.Windows.Forms.Panel();
             this.txtLancarValor = new System.Windows.Forms.TextBox();
-            this.txtTotal = new System.Windows.Forms.TextBox();
-            this.txtSubtotal = new System.Windows.Forms.TextBox();
-            this.txtUnitario = new System.Windows.Forms.TextBox();
-            this.txtQuantidade = new System.Windows.Forms.TextBox();
             this.lblTroco = new System.Windows.Forms.Label();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
             this.lblLancarValor = new System.Windows.Forms.Label();
             this.pbLogotipo = new System.Windows.Forms.PictureBox();
             this.lblStatusCaixa = new System.Windows.Forms.Label();
@@ -84,6 +79,11 @@
             this.btnCancelarVenda = new System.Windows.Forms.Button();
             this.btnExcluirItem = new System.Windows.Forms.Button();
             this.panelPrincipal = new System.Windows.Forms.Panel();
+            this.txtTotal = new CasaMendes.JmsDecimalTextboxAR();
+            this.txtQuantidade = new CasaMendes.Numero();
+            this.txtSubtotal = new CasaMendes.JmsDecimalTextboxAC();
+            this.txtUnitario = new CasaMendes.JmsDecimalTextboxAC();
+            this.txtCodigo = new CasaMendes.Numero();
             this.panelValores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogotipo)).BeginInit();
             this.panelDescricaoProduto.SuspendLayout();
@@ -107,13 +107,13 @@
             // 
             // panelValores
             // 
-            this.panelValores.Controls.Add(this.txtLancarValor);
+            this.panelValores.Controls.Add(this.txtCodigo);
             this.panelValores.Controls.Add(this.txtTotal);
+            this.panelValores.Controls.Add(this.txtQuantidade);
             this.panelValores.Controls.Add(this.txtSubtotal);
             this.panelValores.Controls.Add(this.txtUnitario);
-            this.panelValores.Controls.Add(this.txtQuantidade);
+            this.panelValores.Controls.Add(this.txtLancarValor);
             this.panelValores.Controls.Add(this.lblTroco);
-            this.panelValores.Controls.Add(this.txtCodigo);
             this.panelValores.Controls.Add(this.lblLancarValor);
             this.panelValores.Controls.Add(this.pbLogotipo);
             this.panelValores.Controls.Add(this.lblStatusCaixa);
@@ -138,45 +138,6 @@
             this.txtLancarValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtLancarValor.Visible = false;
             // 
-            // txtTotal
-            // 
-            this.txtTotal.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.Location = new System.Drawing.Point(3, 415);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(229, 46);
-            this.txtTotal.TabIndex = 17;
-            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtSubtotal
-            // 
-            this.txtSubtotal.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSubtotal.Location = new System.Drawing.Point(3, 319);
-            this.txtSubtotal.Name = "txtSubtotal";
-            this.txtSubtotal.Size = new System.Drawing.Size(229, 46);
-            this.txtSubtotal.TabIndex = 16;
-            this.txtSubtotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtUnitario
-            // 
-            this.txtUnitario.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUnitario.Location = new System.Drawing.Point(3, 223);
-            this.txtUnitario.Name = "txtUnitario";
-            this.txtUnitario.Size = new System.Drawing.Size(229, 46);
-            this.txtUnitario.TabIndex = 15;
-            this.txtUnitario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtQuantidade
-            // 
-            this.txtQuantidade.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuantidade.Location = new System.Drawing.Point(3, 127);
-            this.txtQuantidade.Name = "txtQuantidade";
-            this.txtQuantidade.Size = new System.Drawing.Size(229, 46);
-            this.txtQuantidade.TabIndex = 14;
-            this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtQuantidade.Enter += new System.EventHandler(this.TxtQuantidade_Enter);
-            this.txtQuantidade.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQuantidade_KeyDown);
-            this.txtQuantidade.Leave += new System.EventHandler(this.TxtQuantidade_Leave);
-            // 
             // lblTroco
             // 
             this.lblTroco.AutoSize = true;
@@ -187,18 +148,6 @@
             this.lblTroco.TabIndex = 13;
             this.lblTroco.Text = "Troco";
             this.lblTroco.Visible = false;
-            // 
-            // txtCodigo
-            // 
-            this.txtCodigo.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.Location = new System.Drawing.Point(3, 31);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(229, 46);
-            this.txtCodigo.TabIndex = 0;
-            this.txtCodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtCodigo.TextChanged += new System.EventHandler(this.TxtCodigo_TextChanged);
-            this.txtCodigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCodigo_KeyDown);
-            this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress);
             // 
             // lblLancarValor
             // 
@@ -631,6 +580,77 @@
             this.panelPrincipal.Size = new System.Drawing.Size(1173, 661);
             this.panelPrincipal.TabIndex = 43;
             // 
+            // txtTotal
+            // 
+            this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.Location = new System.Drawing.Point(3, 415);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(229, 44);
+            this.txtTotal.TabIndex = 23;
+            this.txtTotal.Text = "0,00";
+            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTotal.ValorDecimal = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            // 
+            // txtQuantidade
+            // 
+            this.txtQuantidade.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtQuantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuantidade.Location = new System.Drawing.Point(3, 127);
+            this.txtQuantidade.Name = "txtQuantidade";
+            this.txtQuantidade.Size = new System.Drawing.Size(229, 44);
+            this.txtQuantidade.TabIndex = 21;
+            this.txtQuantidade.Text = "0";
+            this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtQuantidade.ValorInteiro = 0;
+            // 
+            // txtSubtotal
+            // 
+            this.txtSubtotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSubtotal.Location = new System.Drawing.Point(3, 319);
+            this.txtSubtotal.Name = "txtSubtotal";
+            this.txtSubtotal.Size = new System.Drawing.Size(229, 44);
+            this.txtSubtotal.TabIndex = 20;
+            this.txtSubtotal.Text = "0,00";
+            this.txtSubtotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSubtotal.ValorDecimal = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            // 
+            // txtUnitario
+            // 
+            this.txtUnitario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUnitario.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUnitario.Location = new System.Drawing.Point(3, 223);
+            this.txtUnitario.Name = "txtUnitario";
+            this.txtUnitario.Size = new System.Drawing.Size(229, 44);
+            this.txtUnitario.TabIndex = 19;
+            this.txtUnitario.Text = "0,00";
+            this.txtUnitario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtUnitario.ValorDecimal = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigo.Location = new System.Drawing.Point(3, 33);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(229, 44);
+            this.txtCodigo.TabIndex = 24;
+            this.txtCodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCodigo.ValorInteiro = 0;
+            // 
             // FrmFrenteDeCaixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -665,7 +685,6 @@
 
         private System.Windows.Forms.Label lblTerminal;
         private System.Windows.Forms.Panel panelValores;
-        private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label lblLancarValor;
         private System.Windows.Forms.PictureBox pbLogotipo;
         private System.Windows.Forms.Label lblStatusCaixa;
@@ -688,10 +707,6 @@
         private System.Windows.Forms.Button btnReceberAtrazado;
         private System.Windows.Forms.Button btnCancelarVenda;
         private System.Windows.Forms.Panel panelPrincipal;
-        private System.Windows.Forms.TextBox txtTotal;
-        private System.Windows.Forms.TextBox txtSubtotal;
-        private System.Windows.Forms.TextBox txtUnitario;
-        private System.Windows.Forms.TextBox txtQuantidade;
         private System.Windows.Forms.TextBox txtLancarValor;
         private System.Windows.Forms.Button btnExcluirItem;
         private System.Windows.Forms.Label lblTroco;
@@ -708,5 +723,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ValorTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn PisValor;
         private System.Windows.Forms.DataGridViewTextBoxColumn CofinsCst;
+        private JmsDecimalTextboxAC txtUnitario;
+        private JmsDecimalTextboxAC txtSubtotal;
+        private Numero txtQuantidade;
+        private JmsDecimalTextboxAR txtTotal;
+        private Numero txtCodigo;
     }
 }

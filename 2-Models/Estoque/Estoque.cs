@@ -12,21 +12,6 @@ namespace CasaMendes
         {
         }
 
-        public Estoque(int estoqueId, int produtoId, string codigoDeBarras, string produto, int quantidade, decimal precoDeVenda, decimal quantidadeParaDesconto, decimal valorDesconto, DateTime created_at, DateTime updated_at, DateTime? deleted_at)
-        {
-            EstoqueId = estoqueId;
-            ProdutoId = produtoId;
-            CodigoDeBarras = codigoDeBarras ?? throw new ArgumentNullException(nameof(codigoDeBarras));
-            Produto = produto ?? throw new ArgumentNullException(nameof(produto));
-            Quantidade = quantidade;
-            PrecoDeVenda = precoDeVenda;
-            QuantidadeParaDesconto = quantidadeParaDesconto;
-            ValorDesconto = valorDesconto;
-            this.created_at = created_at;
-            this.updated_at = updated_at;
-            this.deleted_at = deleted_at;
-        }
-
         [OpcoesBase(UsarNoBancoDeDados = true, ChavePrimaria = true, UsarParaBuscar = true)]
         public int EstoqueId { get; set; }
 
@@ -46,7 +31,7 @@ namespace CasaMendes
         public decimal PrecoDeVenda { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public decimal QuantidadeParaDesconto { get; set; }
+        public decimal QuantidadeItemDesconto { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public decimal ValorDesconto { get; set; }

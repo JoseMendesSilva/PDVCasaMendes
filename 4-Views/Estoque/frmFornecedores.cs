@@ -74,8 +74,10 @@ namespace CasaMendes
             //Verificando se o nome já existe.
             if (cadFornecedor.oFornecedor.FornecedorId == 0)
             {
-                var forn = new Fornecedore();
-                forn.RazaoSocial = cadFornecedor.oFornecedor.RazaoSocial;
+                var forn = new Fornecedore
+                {
+                    RazaoSocial = cadFornecedor.oFornecedor.RazaoSocial
+                };
                 List<Fornecedore> fornecedor = forn.Busca();
                 if (fornecedor.Count > 0)
                 {
@@ -133,7 +135,7 @@ namespace CasaMendes
 
         #endregion
 
-        private void frmFornecedores_Load(object sender, EventArgs e)
+        private void FrmFornecedores_Load(object sender, EventArgs e)
         {
             using (Fornecedore oFornecedor = new Fornecedore())
             {
@@ -145,28 +147,28 @@ namespace CasaMendes
             }
         }
 
-        private void btnFechar_Click(object sender, EventArgs e)
+        private void BtnFechar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void btnNovo_Click(object sender, EventArgs e)
+        private void BtnNovo_Click(object sender, EventArgs e)
         {
             Novo();
         }
 
-        private void btnEditar_Click(object sender, EventArgs e)
+        private void BtnEditar_Click(object sender, EventArgs e)
         {
             Botoes(false);
             Gravar();
         }
 
-        private void btnExcluir_Click(object sender, EventArgs e)
+        private void BtnExcluir_Click(object sender, EventArgs e)
         {
             Excluir();
         }
 
-        private void dgv_CellEnter(object sender, DataGridViewCellEventArgs e)
+        private void Dgv_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (dgv.Rows.Count > 0)
             {

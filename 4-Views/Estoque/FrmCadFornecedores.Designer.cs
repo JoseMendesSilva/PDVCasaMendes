@@ -28,457 +28,457 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cbEstado = new System.Windows.Forms.ComboBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.lblCelular = new System.Windows.Forms.Label();
-            this.lblTelefone = new System.Windows.Forms.Label();
-            this.mkbCelular = new System.Windows.Forms.MaskedTextBox();
-            this.mkbTelefone = new System.Windows.Forms.MaskedTextBox();
-            this.txtSite = new System.Windows.Forms.TextBox();
-            this.lblSite = new System.Windows.Forms.Label();
-            this.lblInscricaoEstadual = new System.Windows.Forms.Label();
-            this.lblBairro = new System.Windows.Forms.Label();
-            this.txtBairro = new System.Windows.Forms.TextBox();
-            this.dtpDataDoCadastro = new System.Windows.Forms.DateTimePicker();
-            this.lblEstado = new System.Windows.Forms.Label();
-            this.lblDataDoCadastro = new System.Windows.Forms.Label();
-            this.mkbInscricaoEstadual = new System.Windows.Forms.MaskedTextBox();
-            this.lblCnpj = new System.Windows.Forms.Label();
-            this.lblCidade = new System.Windows.Forms.Label();
-            this.txtCidade = new System.Windows.Forms.TextBox();
-            this.lblCep = new System.Windows.Forms.Label();
-            this.mkbCNPJ = new System.Windows.Forms.MaskedTextBox();
-            this.mkbCep = new System.Windows.Forms.MaskedTextBox();
-            this.lblEndereco = new System.Windows.Forms.Label();
-            this.txtEndereco = new System.Windows.Forms.TextBox();
-            this.lbltxtCodigoDoFornecedor = new System.Windows.Forms.Label();
-            this.btnFechar = new System.Windows.Forms.Button();
-            this.btnGravar = new System.Windows.Forms.Button();
-            this.txtCodigoDoFornecedor = new System.Windows.Forms.TextBox();
-            this.lblRazaoSocial = new System.Windows.Forms.Label();
-            this.txtRazaoSocial = new System.Windows.Forms.TextBox();
+            this.CbEstado = new System.Windows.Forms.ComboBox();
+            this.TxtEmail = new System.Windows.Forms.TextBox();
+            this.LblEmail = new System.Windows.Forms.Label();
+            this.LblCelular = new System.Windows.Forms.Label();
+            this.LblTelefone = new System.Windows.Forms.Label();
+            this.MkbCelular = new System.Windows.Forms.MaskedTextBox();
+            this.MkbTelefone = new System.Windows.Forms.MaskedTextBox();
+            this.TxtSite = new System.Windows.Forms.TextBox();
+            this.LblSite = new System.Windows.Forms.Label();
+            this.LblInscricaoEstadual = new System.Windows.Forms.Label();
+            this.LblBairro = new System.Windows.Forms.Label();
+            this.TxtBairro = new System.Windows.Forms.TextBox();
+            this.DtpDataDoCadastro = new System.Windows.Forms.DateTimePicker();
+            this.LblEstado = new System.Windows.Forms.Label();
+            this.LblDataDoCadastro = new System.Windows.Forms.Label();
+            this.MkbInscricaoEstadual = new System.Windows.Forms.MaskedTextBox();
+            this.LblCnpj = new System.Windows.Forms.Label();
+            this.LblCidade = new System.Windows.Forms.Label();
+            this.TxtCidade = new System.Windows.Forms.TextBox();
+            this.LblCep = new System.Windows.Forms.Label();
+            this.MkbCNPJ = new System.Windows.Forms.MaskedTextBox();
+            this.MkbCep = new System.Windows.Forms.MaskedTextBox();
+            this.LblEndereco = new System.Windows.Forms.Label();
+            this.TxtEndereco = new System.Windows.Forms.TextBox();
+            this.LbltxtCodigoDoFornecedor = new System.Windows.Forms.Label();
+            this.BtnFechar = new System.Windows.Forms.Button();
+            this.BtnGravar = new System.Windows.Forms.Button();
+            this.TxtCodigoDoFornecedor = new System.Windows.Forms.TextBox();
+            this.LblRazaoSocial = new System.Windows.Forms.Label();
+            this.TxtRazaoSocial = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // cbEstado
+            // CbEstado
             // 
-            this.cbEstado.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbEstado.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbEstado.BackColor = System.Drawing.SystemColors.Window;
-            this.cbEstado.Cursor = System.Windows.Forms.Cursors.Default;
-            this.cbEstado.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.cbEstado.Location = new System.Drawing.Point(12, 143);
-            this.cbEstado.Name = "cbEstado";
-            this.cbEstado.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cbEstado.Size = new System.Drawing.Size(57, 21);
-            this.cbEstado.TabIndex = 163;
-            this.cbEstado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbEstado_KeyDown);
+            this.CbEstado.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.CbEstado.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.CbEstado.BackColor = System.Drawing.SystemColors.Window;
+            this.CbEstado.Cursor = System.Windows.Forms.Cursors.Default;
+            this.CbEstado.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.CbEstado.Location = new System.Drawing.Point(12, 143);
+            this.CbEstado.Name = "CbEstado";
+            this.CbEstado.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.CbEstado.Size = new System.Drawing.Size(57, 21);
+            this.CbEstado.TabIndex = 163;
+            this.CbEstado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CbEstado_KeyDown);
             // 
-            // txtEmail
+            // TxtEmail
             // 
-            this.txtEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtEmail.Location = new System.Drawing.Point(200, 208);
-            this.txtEmail.MaxLength = 80;
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(208, 20);
-            this.txtEmail.TabIndex = 161;
-            this.txtEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEmail_KeyDown);
+            this.TxtEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtEmail.Location = new System.Drawing.Point(200, 208);
+            this.TxtEmail.MaxLength = 80;
+            this.TxtEmail.Name = "TxtEmail";
+            this.TxtEmail.Size = new System.Drawing.Size(208, 20);
+            this.TxtEmail.TabIndex = 161;
+            this.TxtEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtEmail_KeyDown);
             // 
-            // lblEmail
+            // LblEmail
             // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.BackColor = System.Drawing.SystemColors.Control;
-            this.lblEmail.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.ForeColor = System.Drawing.Color.Blue;
-            this.lblEmail.Location = new System.Drawing.Point(200, 190);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblEmail.Size = new System.Drawing.Size(42, 15);
-            this.lblEmail.TabIndex = 160;
-            this.lblEmail.Text = "Email:";
+            this.LblEmail.AutoSize = true;
+            this.LblEmail.BackColor = System.Drawing.SystemColors.Control;
+            this.LblEmail.Cursor = System.Windows.Forms.Cursors.Default;
+            this.LblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblEmail.ForeColor = System.Drawing.Color.Blue;
+            this.LblEmail.Location = new System.Drawing.Point(200, 190);
+            this.LblEmail.Name = "LblEmail";
+            this.LblEmail.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LblEmail.Size = new System.Drawing.Size(42, 15);
+            this.LblEmail.TabIndex = 160;
+            this.LblEmail.Text = "Email:";
             // 
-            // lblCelular
+            // LblCelular
             // 
-            this.lblCelular.AutoSize = true;
-            this.lblCelular.BackColor = System.Drawing.SystemColors.Control;
-            this.lblCelular.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblCelular.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCelular.ForeColor = System.Drawing.Color.Blue;
-            this.lblCelular.Location = new System.Drawing.Point(101, 190);
-            this.lblCelular.Name = "lblCelular";
-            this.lblCelular.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblCelular.Size = new System.Drawing.Size(56, 15);
-            this.lblCelular.TabIndex = 159;
-            this.lblCelular.Text = "Celeular:";
+            this.LblCelular.AutoSize = true;
+            this.LblCelular.BackColor = System.Drawing.SystemColors.Control;
+            this.LblCelular.Cursor = System.Windows.Forms.Cursors.Default;
+            this.LblCelular.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblCelular.ForeColor = System.Drawing.Color.Blue;
+            this.LblCelular.Location = new System.Drawing.Point(101, 190);
+            this.LblCelular.Name = "LblCelular";
+            this.LblCelular.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LblCelular.Size = new System.Drawing.Size(56, 15);
+            this.LblCelular.TabIndex = 159;
+            this.LblCelular.Text = "Celeular:";
             // 
-            // lblTelefone
+            // LblTelefone
             // 
-            this.lblTelefone.AutoSize = true;
-            this.lblTelefone.BackColor = System.Drawing.SystemColors.Control;
-            this.lblTelefone.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblTelefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefone.ForeColor = System.Drawing.Color.Blue;
-            this.lblTelefone.Location = new System.Drawing.Point(9, 190);
-            this.lblTelefone.Name = "lblTelefone";
-            this.lblTelefone.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblTelefone.Size = new System.Drawing.Size(58, 15);
-            this.lblTelefone.TabIndex = 157;
-            this.lblTelefone.Text = "Telefone:";
+            this.LblTelefone.AutoSize = true;
+            this.LblTelefone.BackColor = System.Drawing.SystemColors.Control;
+            this.LblTelefone.Cursor = System.Windows.Forms.Cursors.Default;
+            this.LblTelefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTelefone.ForeColor = System.Drawing.Color.Blue;
+            this.LblTelefone.Location = new System.Drawing.Point(9, 190);
+            this.LblTelefone.Name = "LblTelefone";
+            this.LblTelefone.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LblTelefone.Size = new System.Drawing.Size(58, 15);
+            this.LblTelefone.TabIndex = 157;
+            this.LblTelefone.Text = "Telefone:";
             // 
-            // mkbCelular
+            // MkbCelular
             // 
-            this.mkbCelular.Location = new System.Drawing.Point(104, 208);
-            this.mkbCelular.Mask = "(##) #####-####";
-            this.mkbCelular.Name = "mkbCelular";
-            this.mkbCelular.Size = new System.Drawing.Size(80, 20);
-            this.mkbCelular.TabIndex = 156;
-            this.mkbCelular.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
-            this.mkbCelular.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mkbCelular_KeyDown);
+            this.MkbCelular.Location = new System.Drawing.Point(104, 208);
+            this.MkbCelular.Mask = "(##) #####-####";
+            this.MkbCelular.Name = "MkbCelular";
+            this.MkbCelular.Size = new System.Drawing.Size(80, 20);
+            this.MkbCelular.TabIndex = 156;
+            this.MkbCelular.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            this.MkbCelular.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MkbCelular_KeyDown);
             // 
-            // mkbTelefone
+            // MkbTelefone
             // 
-            this.mkbTelefone.Location = new System.Drawing.Point(12, 208);
-            this.mkbTelefone.Mask = "(##) ####-####";
-            this.mkbTelefone.Name = "mkbTelefone";
-            this.mkbTelefone.Size = new System.Drawing.Size(80, 20);
-            this.mkbTelefone.TabIndex = 154;
-            this.mkbTelefone.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
-            this.mkbTelefone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mkbTelefone_KeyDown);
+            this.MkbTelefone.Location = new System.Drawing.Point(12, 208);
+            this.MkbTelefone.Mask = "(##) ####-####";
+            this.MkbTelefone.Name = "MkbTelefone";
+            this.MkbTelefone.Size = new System.Drawing.Size(80, 20);
+            this.MkbTelefone.TabIndex = 154;
+            this.MkbTelefone.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            this.MkbTelefone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MkbTelefone_KeyDown);
             // 
-            // txtSite
+            // TxtSite
             // 
-            this.txtSite.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSite.Location = new System.Drawing.Point(12, 273);
-            this.txtSite.MaxLength = 80;
-            this.txtSite.Name = "txtSite";
-            this.txtSite.Size = new System.Drawing.Size(396, 20);
-            this.txtSite.TabIndex = 144;
-            this.txtSite.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSite_KeyDown);
+            this.TxtSite.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtSite.Location = new System.Drawing.Point(12, 273);
+            this.TxtSite.MaxLength = 80;
+            this.TxtSite.Name = "TxtSite";
+            this.TxtSite.Size = new System.Drawing.Size(396, 20);
+            this.TxtSite.TabIndex = 144;
+            this.TxtSite.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtSite_KeyDown);
             // 
-            // lblSite
+            // LblSite
             // 
-            this.lblSite.AutoSize = true;
-            this.lblSite.BackColor = System.Drawing.SystemColors.Control;
-            this.lblSite.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblSite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSite.ForeColor = System.Drawing.Color.Blue;
-            this.lblSite.Location = new System.Drawing.Point(12, 255);
-            this.lblSite.Name = "lblSite";
-            this.lblSite.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblSite.Size = new System.Drawing.Size(31, 15);
-            this.lblSite.TabIndex = 142;
-            this.lblSite.Text = "Site:";
+            this.LblSite.AutoSize = true;
+            this.LblSite.BackColor = System.Drawing.SystemColors.Control;
+            this.LblSite.Cursor = System.Windows.Forms.Cursors.Default;
+            this.LblSite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblSite.ForeColor = System.Drawing.Color.Blue;
+            this.LblSite.Location = new System.Drawing.Point(12, 255);
+            this.LblSite.Name = "LblSite";
+            this.LblSite.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LblSite.Size = new System.Drawing.Size(31, 15);
+            this.LblSite.TabIndex = 142;
+            this.LblSite.Text = "Site:";
             // 
-            // lblInscricaoEstadual
+            // LblInscricaoEstadual
             // 
-            this.lblInscricaoEstadual.AutoSize = true;
-            this.lblInscricaoEstadual.BackColor = System.Drawing.SystemColors.Control;
-            this.lblInscricaoEstadual.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblInscricaoEstadual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInscricaoEstadual.ForeColor = System.Drawing.Color.Blue;
-            this.lblInscricaoEstadual.Location = new System.Drawing.Point(197, 126);
-            this.lblInscricaoEstadual.Name = "lblInscricaoEstadual";
-            this.lblInscricaoEstadual.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblInscricaoEstadual.Size = new System.Drawing.Size(83, 15);
-            this.lblInscricaoEstadual.TabIndex = 153;
-            this.lblInscricaoEstadual.Text = "Insc Estadual:";
+            this.LblInscricaoEstadual.AutoSize = true;
+            this.LblInscricaoEstadual.BackColor = System.Drawing.SystemColors.Control;
+            this.LblInscricaoEstadual.Cursor = System.Windows.Forms.Cursors.Default;
+            this.LblInscricaoEstadual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblInscricaoEstadual.ForeColor = System.Drawing.Color.Blue;
+            this.LblInscricaoEstadual.Location = new System.Drawing.Point(197, 126);
+            this.LblInscricaoEstadual.Name = "LblInscricaoEstadual";
+            this.LblInscricaoEstadual.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LblInscricaoEstadual.Size = new System.Drawing.Size(83, 15);
+            this.LblInscricaoEstadual.TabIndex = 153;
+            this.LblInscricaoEstadual.Text = "Insc Estadual:";
             // 
-            // lblBairro
+            // LblBairro
             // 
-            this.lblBairro.AutoSize = true;
-            this.lblBairro.BackColor = System.Drawing.SystemColors.Control;
-            this.lblBairro.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblBairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBairro.ForeColor = System.Drawing.Color.Blue;
-            this.lblBairro.Location = new System.Drawing.Point(269, 69);
-            this.lblBairro.Name = "lblBairro";
-            this.lblBairro.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblBairro.Size = new System.Drawing.Size(43, 15);
-            this.lblBairro.TabIndex = 152;
-            this.lblBairro.Text = "Bairro:";
+            this.LblBairro.AutoSize = true;
+            this.LblBairro.BackColor = System.Drawing.SystemColors.Control;
+            this.LblBairro.Cursor = System.Windows.Forms.Cursors.Default;
+            this.LblBairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblBairro.ForeColor = System.Drawing.Color.Blue;
+            this.LblBairro.Location = new System.Drawing.Point(269, 69);
+            this.LblBairro.Name = "LblBairro";
+            this.LblBairro.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LblBairro.Size = new System.Drawing.Size(43, 15);
+            this.LblBairro.TabIndex = 152;
+            this.LblBairro.Text = "Bairro:";
             // 
-            // txtBairro
+            // TxtBairro
             // 
-            this.txtBairro.AcceptsReturn = true;
-            this.txtBairro.BackColor = System.Drawing.SystemColors.Window;
-            this.txtBairro.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtBairro.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtBairro.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtBairro.Location = new System.Drawing.Point(272, 87);
-            this.txtBairro.MaxLength = 35;
-            this.txtBairro.Name = "txtBairro";
-            this.txtBairro.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtBairro.Size = new System.Drawing.Size(136, 20);
-            this.txtBairro.TabIndex = 151;
-            this.txtBairro.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBairro_KeyDown);
+            this.TxtBairro.AcceptsReturn = true;
+            this.TxtBairro.BackColor = System.Drawing.SystemColors.Window;
+            this.TxtBairro.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtBairro.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TxtBairro.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.TxtBairro.Location = new System.Drawing.Point(272, 87);
+            this.TxtBairro.MaxLength = 35;
+            this.TxtBairro.Name = "TxtBairro";
+            this.TxtBairro.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TxtBairro.Size = new System.Drawing.Size(136, 20);
+            this.TxtBairro.TabIndex = 151;
+            this.TxtBairro.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtBairro_KeyDown);
             // 
-            // dtpDataDoCadastro
+            // DtpDataDoCadastro
             // 
-            this.dtpDataDoCadastro.CustomFormat = "##/##/####";
-            this.dtpDataDoCadastro.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
-            this.dtpDataDoCadastro.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataDoCadastro.Location = new System.Drawing.Point(323, 144);
-            this.dtpDataDoCadastro.Name = "dtpDataDoCadastro";
-            this.dtpDataDoCadastro.Size = new System.Drawing.Size(85, 20);
-            this.dtpDataDoCadastro.TabIndex = 130;
-            this.dtpDataDoCadastro.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtpDataDoCadastro_KeyDown);
+            this.DtpDataDoCadastro.CustomFormat = "##/##/####";
+            this.DtpDataDoCadastro.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
+            this.DtpDataDoCadastro.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DtpDataDoCadastro.Location = new System.Drawing.Point(323, 144);
+            this.DtpDataDoCadastro.Name = "DtpDataDoCadastro";
+            this.DtpDataDoCadastro.Size = new System.Drawing.Size(85, 20);
+            this.DtpDataDoCadastro.TabIndex = 130;
+            this.DtpDataDoCadastro.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DtpDataDoCadastro_KeyDown);
             // 
-            // lblEstado
+            // LblEstado
             // 
-            this.lblEstado.AutoSize = true;
-            this.lblEstado.BackColor = System.Drawing.SystemColors.Control;
-            this.lblEstado.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstado.ForeColor = System.Drawing.Color.Blue;
-            this.lblEstado.Location = new System.Drawing.Point(9, 125);
-            this.lblEstado.Name = "lblEstado";
-            this.lblEstado.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblEstado.Size = new System.Drawing.Size(48, 15);
-            this.lblEstado.TabIndex = 150;
-            this.lblEstado.Text = "Estado:";
+            this.LblEstado.AutoSize = true;
+            this.LblEstado.BackColor = System.Drawing.SystemColors.Control;
+            this.LblEstado.Cursor = System.Windows.Forms.Cursors.Default;
+            this.LblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblEstado.ForeColor = System.Drawing.Color.Blue;
+            this.LblEstado.Location = new System.Drawing.Point(9, 125);
+            this.LblEstado.Name = "LblEstado";
+            this.LblEstado.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LblEstado.Size = new System.Drawing.Size(48, 15);
+            this.LblEstado.TabIndex = 150;
+            this.LblEstado.Text = "Estado:";
             // 
-            // lblDataDoCadastro
+            // LblDataDoCadastro
             // 
-            this.lblDataDoCadastro.AutoSize = true;
-            this.lblDataDoCadastro.BackColor = System.Drawing.SystemColors.Control;
-            this.lblDataDoCadastro.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblDataDoCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataDoCadastro.ForeColor = System.Drawing.Color.Blue;
-            this.lblDataDoCadastro.Location = new System.Drawing.Point(320, 126);
-            this.lblDataDoCadastro.Name = "lblDataDoCadastro";
-            this.lblDataDoCadastro.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblDataDoCadastro.Size = new System.Drawing.Size(88, 15);
-            this.lblDataDoCadastro.TabIndex = 141;
-            this.lblDataDoCadastro.Text = "Data Cadastro:";
+            this.LblDataDoCadastro.AutoSize = true;
+            this.LblDataDoCadastro.BackColor = System.Drawing.SystemColors.Control;
+            this.LblDataDoCadastro.Cursor = System.Windows.Forms.Cursors.Default;
+            this.LblDataDoCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblDataDoCadastro.ForeColor = System.Drawing.Color.Blue;
+            this.LblDataDoCadastro.Location = new System.Drawing.Point(320, 126);
+            this.LblDataDoCadastro.Name = "LblDataDoCadastro";
+            this.LblDataDoCadastro.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LblDataDoCadastro.Size = new System.Drawing.Size(88, 15);
+            this.LblDataDoCadastro.TabIndex = 141;
+            this.LblDataDoCadastro.Text = "Data Cadastro:";
             // 
-            // mkbInscricaoEstadual
+            // MkbInscricaoEstadual
             // 
-            this.mkbInscricaoEstadual.AllowPromptAsInput = false;
-            this.mkbInscricaoEstadual.Location = new System.Drawing.Point(200, 144);
-            this.mkbInscricaoEstadual.Mask = "000,000,000,000";
-            this.mkbInscricaoEstadual.Name = "mkbInscricaoEstadual";
-            this.mkbInscricaoEstadual.Size = new System.Drawing.Size(91, 20);
-            this.mkbInscricaoEstadual.TabIndex = 129;
-            this.mkbInscricaoEstadual.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mkbInscricaoEstadual_KeyDown);
+            this.MkbInscricaoEstadual.AllowPromptAsInput = false;
+            this.MkbInscricaoEstadual.Location = new System.Drawing.Point(200, 144);
+            this.MkbInscricaoEstadual.Mask = "000,000,000,000";
+            this.MkbInscricaoEstadual.Name = "MkbInscricaoEstadual";
+            this.MkbInscricaoEstadual.Size = new System.Drawing.Size(91, 20);
+            this.MkbInscricaoEstadual.TabIndex = 129;
+            this.MkbInscricaoEstadual.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MkbInscricaoEstadual_KeyDown);
             // 
-            // lblCnpj
+            // LblCnpj
             // 
-            this.lblCnpj.AutoSize = true;
-            this.lblCnpj.BackColor = System.Drawing.SystemColors.Control;
-            this.lblCnpj.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblCnpj.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCnpj.ForeColor = System.Drawing.Color.Blue;
-            this.lblCnpj.Location = new System.Drawing.Point(80, 125);
-            this.lblCnpj.Name = "lblCnpj";
-            this.lblCnpj.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblCnpj.Size = new System.Drawing.Size(41, 15);
-            this.lblCnpj.TabIndex = 143;
-            this.lblCnpj.Text = "CNPJ:";
+            this.LblCnpj.AutoSize = true;
+            this.LblCnpj.BackColor = System.Drawing.SystemColors.Control;
+            this.LblCnpj.Cursor = System.Windows.Forms.Cursors.Default;
+            this.LblCnpj.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblCnpj.ForeColor = System.Drawing.Color.Blue;
+            this.LblCnpj.Location = new System.Drawing.Point(80, 125);
+            this.LblCnpj.Name = "LblCnpj";
+            this.LblCnpj.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LblCnpj.Size = new System.Drawing.Size(41, 15);
+            this.LblCnpj.TabIndex = 143;
+            this.LblCnpj.Text = "CNPJ:";
             // 
-            // lblCidade
+            // LblCidade
             // 
-            this.lblCidade.AutoSize = true;
-            this.lblCidade.BackColor = System.Drawing.SystemColors.Control;
-            this.lblCidade.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCidade.ForeColor = System.Drawing.Color.Blue;
-            this.lblCidade.Location = new System.Drawing.Point(80, 69);
-            this.lblCidade.Name = "lblCidade";
-            this.lblCidade.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblCidade.Size = new System.Drawing.Size(49, 15);
-            this.lblCidade.TabIndex = 149;
-            this.lblCidade.Text = "Cidade:";
+            this.LblCidade.AutoSize = true;
+            this.LblCidade.BackColor = System.Drawing.SystemColors.Control;
+            this.LblCidade.Cursor = System.Windows.Forms.Cursors.Default;
+            this.LblCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblCidade.ForeColor = System.Drawing.Color.Blue;
+            this.LblCidade.Location = new System.Drawing.Point(80, 69);
+            this.LblCidade.Name = "LblCidade";
+            this.LblCidade.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LblCidade.Size = new System.Drawing.Size(49, 15);
+            this.LblCidade.TabIndex = 149;
+            this.LblCidade.Text = "Cidade:";
             // 
-            // txtCidade
+            // TxtCidade
             // 
-            this.txtCidade.AcceptsReturn = true;
-            this.txtCidade.BackColor = System.Drawing.SystemColors.Window;
-            this.txtCidade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCidade.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtCidade.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtCidade.Location = new System.Drawing.Point(83, 87);
-            this.txtCidade.MaxLength = 35;
-            this.txtCidade.Name = "txtCidade";
-            this.txtCidade.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtCidade.Size = new System.Drawing.Size(162, 20);
-            this.txtCidade.TabIndex = 148;
-            this.txtCidade.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCidade_KeyDown);
+            this.TxtCidade.AcceptsReturn = true;
+            this.TxtCidade.BackColor = System.Drawing.SystemColors.Window;
+            this.TxtCidade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtCidade.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TxtCidade.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.TxtCidade.Location = new System.Drawing.Point(83, 87);
+            this.TxtCidade.MaxLength = 35;
+            this.TxtCidade.Name = "TxtCidade";
+            this.TxtCidade.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TxtCidade.Size = new System.Drawing.Size(162, 20);
+            this.TxtCidade.TabIndex = 148;
+            this.TxtCidade.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtCidade_KeyDown);
             // 
-            // lblCep
+            // LblCep
             // 
-            this.lblCep.AutoSize = true;
-            this.lblCep.BackColor = System.Drawing.SystemColors.Control;
-            this.lblCep.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblCep.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCep.ForeColor = System.Drawing.Color.Blue;
-            this.lblCep.Location = new System.Drawing.Point(9, 69);
-            this.lblCep.Name = "lblCep";
-            this.lblCep.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblCep.Size = new System.Drawing.Size(40, 15);
-            this.lblCep.TabIndex = 146;
-            this.lblCep.Text = "C.E.P:";
+            this.LblCep.AutoSize = true;
+            this.LblCep.BackColor = System.Drawing.SystemColors.Control;
+            this.LblCep.Cursor = System.Windows.Forms.Cursors.Default;
+            this.LblCep.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblCep.ForeColor = System.Drawing.Color.Blue;
+            this.LblCep.Location = new System.Drawing.Point(9, 69);
+            this.LblCep.Name = "LblCep";
+            this.LblCep.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LblCep.Size = new System.Drawing.Size(40, 15);
+            this.LblCep.TabIndex = 146;
+            this.LblCep.Text = "C.E.P:";
             // 
-            // mkbCNPJ
+            // MkbCNPJ
             // 
-            this.mkbCNPJ.Location = new System.Drawing.Point(83, 143);
-            this.mkbCNPJ.Mask = "##.###.###/####-##";
-            this.mkbCNPJ.Name = "mkbCNPJ";
-            this.mkbCNPJ.Size = new System.Drawing.Size(101, 20);
-            this.mkbCNPJ.TabIndex = 128;
-            this.mkbCNPJ.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
-            this.mkbCNPJ.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mkbCNPJ_KeyDown);
+            this.MkbCNPJ.Location = new System.Drawing.Point(83, 143);
+            this.MkbCNPJ.Mask = "##.###.###/####-##";
+            this.MkbCNPJ.Name = "MkbCNPJ";
+            this.MkbCNPJ.Size = new System.Drawing.Size(101, 20);
+            this.MkbCNPJ.TabIndex = 128;
+            this.MkbCNPJ.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            this.MkbCNPJ.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MkbCNPJ_KeyDown);
             // 
-            // mkbCep
+            // MkbCep
             // 
-            this.mkbCep.Location = new System.Drawing.Point(12, 87);
-            this.mkbCep.Mask = "#####-###";
-            this.mkbCep.Name = "mkbCep";
-            this.mkbCep.Size = new System.Drawing.Size(55, 20);
-            this.mkbCep.TabIndex = 147;
-            this.mkbCep.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
-            this.mkbCep.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mkbCep_KeyDown);
+            this.MkbCep.Location = new System.Drawing.Point(12, 87);
+            this.MkbCep.Mask = "#####-###";
+            this.MkbCep.Name = "MkbCep";
+            this.MkbCep.Size = new System.Drawing.Size(55, 20);
+            this.MkbCep.TabIndex = 147;
+            this.MkbCep.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            this.MkbCep.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MkbCep_KeyDown);
             // 
-            // lblEndereco
+            // LblEndereco
             // 
-            this.lblEndereco.AutoSize = true;
-            this.lblEndereco.BackColor = System.Drawing.SystemColors.Control;
-            this.lblEndereco.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblEndereco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEndereco.ForeColor = System.Drawing.Color.Blue;
-            this.lblEndereco.Location = new System.Drawing.Point(269, 8);
-            this.lblEndereco.Name = "lblEndereco";
-            this.lblEndereco.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblEndereco.Size = new System.Drawing.Size(63, 15);
-            this.lblEndereco.TabIndex = 140;
-            this.lblEndereco.Text = "Endereco:";
+            this.LblEndereco.AutoSize = true;
+            this.LblEndereco.BackColor = System.Drawing.SystemColors.Control;
+            this.LblEndereco.Cursor = System.Windows.Forms.Cursors.Default;
+            this.LblEndereco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblEndereco.ForeColor = System.Drawing.Color.Blue;
+            this.LblEndereco.Location = new System.Drawing.Point(269, 8);
+            this.LblEndereco.Name = "LblEndereco";
+            this.LblEndereco.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LblEndereco.Size = new System.Drawing.Size(63, 15);
+            this.LblEndereco.TabIndex = 140;
+            this.LblEndereco.Text = "Endereco:";
             // 
-            // txtEndereco
+            // TxtEndereco
             // 
-            this.txtEndereco.AcceptsReturn = true;
-            this.txtEndereco.BackColor = System.Drawing.SystemColors.Window;
-            this.txtEndereco.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtEndereco.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtEndereco.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtEndereco.Location = new System.Drawing.Point(272, 26);
-            this.txtEndereco.MaxLength = 35;
-            this.txtEndereco.Name = "txtEndereco";
-            this.txtEndereco.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtEndereco.Size = new System.Drawing.Size(136, 20);
-            this.txtEndereco.TabIndex = 139;
-            this.txtEndereco.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEndereco_KeyDown);
+            this.TxtEndereco.AcceptsReturn = true;
+            this.TxtEndereco.BackColor = System.Drawing.SystemColors.Window;
+            this.TxtEndereco.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtEndereco.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TxtEndereco.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.TxtEndereco.Location = new System.Drawing.Point(272, 26);
+            this.TxtEndereco.MaxLength = 35;
+            this.TxtEndereco.Name = "TxtEndereco";
+            this.TxtEndereco.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TxtEndereco.Size = new System.Drawing.Size(136, 20);
+            this.TxtEndereco.TabIndex = 139;
+            this.TxtEndereco.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtEndereco_KeyDown);
             // 
-            // lbltxtCodigoDoFornecedor
+            // LbltxtCodigoDoFornecedor
             // 
-            this.lbltxtCodigoDoFornecedor.AutoSize = true;
-            this.lbltxtCodigoDoFornecedor.Location = new System.Drawing.Point(9, 10);
-            this.lbltxtCodigoDoFornecedor.Name = "lbltxtCodigoDoFornecedor";
-            this.lbltxtCodigoDoFornecedor.Size = new System.Drawing.Size(43, 13);
-            this.lbltxtCodigoDoFornecedor.TabIndex = 138;
-            this.lbltxtCodigoDoFornecedor.Text = "Código:";
+            this.LbltxtCodigoDoFornecedor.AutoSize = true;
+            this.LbltxtCodigoDoFornecedor.Location = new System.Drawing.Point(9, 10);
+            this.LbltxtCodigoDoFornecedor.Name = "LbltxtCodigoDoFornecedor";
+            this.LbltxtCodigoDoFornecedor.Size = new System.Drawing.Size(43, 13);
+            this.LbltxtCodigoDoFornecedor.TabIndex = 138;
+            this.LbltxtCodigoDoFornecedor.Text = "Código:";
             // 
-            // btnFechar
+            // BtnFechar
             // 
-            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFechar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnFechar.Location = new System.Drawing.Point(347, 307);
-            this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(61, 46);
-            this.btnFechar.TabIndex = 137;
-            this.btnFechar.Text = "&Fechar";
-            this.btnFechar.UseVisualStyleBackColor = true;
-            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
+            this.BtnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnFechar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.BtnFechar.Location = new System.Drawing.Point(347, 307);
+            this.BtnFechar.Name = "BtnFechar";
+            this.BtnFechar.Size = new System.Drawing.Size(61, 46);
+            this.BtnFechar.TabIndex = 137;
+            this.BtnFechar.Text = "&Fechar";
+            this.BtnFechar.UseVisualStyleBackColor = true;
+            this.BtnFechar.Click += new System.EventHandler(this.BtnFechar_Click);
             // 
-            // btnGravar
+            // BtnGravar
             // 
-            this.btnGravar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnGravar.Location = new System.Drawing.Point(12, 307);
-            this.btnGravar.Name = "btnGravar";
-            this.btnGravar.Size = new System.Drawing.Size(65, 46);
-            this.btnGravar.TabIndex = 134;
-            this.btnGravar.Text = "&Gravar";
-            this.btnGravar.UseVisualStyleBackColor = true;
-            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
+            this.BtnGravar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BtnGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.BtnGravar.Location = new System.Drawing.Point(12, 307);
+            this.BtnGravar.Name = "BtnGravar";
+            this.BtnGravar.Size = new System.Drawing.Size(65, 46);
+            this.BtnGravar.TabIndex = 134;
+            this.BtnGravar.Text = "&Gravar";
+            this.BtnGravar.UseVisualStyleBackColor = true;
+            this.BtnGravar.Click += new System.EventHandler(this.BtnGravar_Click);
             // 
-            // txtCodigoDoFornecedor
+            // TxtCodigoDoFornecedor
             // 
-            this.txtCodigoDoFornecedor.AcceptsReturn = true;
-            this.txtCodigoDoFornecedor.BackColor = System.Drawing.Color.White;
-            this.txtCodigoDoFornecedor.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtCodigoDoFornecedor.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtCodigoDoFornecedor.Location = new System.Drawing.Point(12, 26);
-            this.txtCodigoDoFornecedor.MaxLength = 0;
-            this.txtCodigoDoFornecedor.Name = "txtCodigoDoFornecedor";
-            this.txtCodigoDoFornecedor.ReadOnly = true;
-            this.txtCodigoDoFornecedor.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtCodigoDoFornecedor.Size = new System.Drawing.Size(55, 20);
-            this.txtCodigoDoFornecedor.TabIndex = 132;
+            this.TxtCodigoDoFornecedor.AcceptsReturn = true;
+            this.TxtCodigoDoFornecedor.BackColor = System.Drawing.Color.White;
+            this.TxtCodigoDoFornecedor.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TxtCodigoDoFornecedor.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.TxtCodigoDoFornecedor.Location = new System.Drawing.Point(12, 26);
+            this.TxtCodigoDoFornecedor.MaxLength = 0;
+            this.TxtCodigoDoFornecedor.Name = "TxtCodigoDoFornecedor";
+            this.TxtCodigoDoFornecedor.ReadOnly = true;
+            this.TxtCodigoDoFornecedor.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TxtCodigoDoFornecedor.Size = new System.Drawing.Size(55, 20);
+            this.TxtCodigoDoFornecedor.TabIndex = 132;
             // 
-            // lblRazaoSocial
+            // LblRazaoSocial
             // 
-            this.lblRazaoSocial.AutoSize = true;
-            this.lblRazaoSocial.BackColor = System.Drawing.SystemColors.Control;
-            this.lblRazaoSocial.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblRazaoSocial.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRazaoSocial.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.lblRazaoSocial.Location = new System.Drawing.Point(80, 8);
-            this.lblRazaoSocial.Name = "lblRazaoSocial";
-            this.lblRazaoSocial.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblRazaoSocial.Size = new System.Drawing.Size(83, 15);
-            this.lblRazaoSocial.TabIndex = 133;
-            this.lblRazaoSocial.Text = "Razao Social:";
+            this.LblRazaoSocial.AutoSize = true;
+            this.LblRazaoSocial.BackColor = System.Drawing.SystemColors.Control;
+            this.LblRazaoSocial.Cursor = System.Windows.Forms.Cursors.Default;
+            this.LblRazaoSocial.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblRazaoSocial.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.LblRazaoSocial.Location = new System.Drawing.Point(80, 8);
+            this.LblRazaoSocial.Name = "LblRazaoSocial";
+            this.LblRazaoSocial.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LblRazaoSocial.Size = new System.Drawing.Size(83, 15);
+            this.LblRazaoSocial.TabIndex = 133;
+            this.LblRazaoSocial.Text = "Razao Social:";
             // 
-            // txtRazaoSocial
+            // TxtRazaoSocial
             // 
-            this.txtRazaoSocial.AcceptsReturn = true;
-            this.txtRazaoSocial.BackColor = System.Drawing.SystemColors.Window;
-            this.txtRazaoSocial.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtRazaoSocial.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtRazaoSocial.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtRazaoSocial.Location = new System.Drawing.Point(83, 26);
-            this.txtRazaoSocial.MaxLength = 35;
-            this.txtRazaoSocial.Name = "txtRazaoSocial";
-            this.txtRazaoSocial.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtRazaoSocial.Size = new System.Drawing.Size(162, 20);
-            this.txtRazaoSocial.TabIndex = 126;
-            this.txtRazaoSocial.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRazaoSocial_KeyDown);
+            this.TxtRazaoSocial.AcceptsReturn = true;
+            this.TxtRazaoSocial.BackColor = System.Drawing.SystemColors.Window;
+            this.TxtRazaoSocial.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtRazaoSocial.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TxtRazaoSocial.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.TxtRazaoSocial.Location = new System.Drawing.Point(83, 26);
+            this.TxtRazaoSocial.MaxLength = 35;
+            this.TxtRazaoSocial.Name = "TxtRazaoSocial";
+            this.TxtRazaoSocial.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TxtRazaoSocial.Size = new System.Drawing.Size(162, 20);
+            this.TxtRazaoSocial.TabIndex = 126;
+            this.TxtRazaoSocial.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtRazaoSocial_KeyDown);
             // 
             // FrmCadFornecedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(421, 365);
-            this.Controls.Add(this.cbEstado);
-            this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.lblEmail);
-            this.Controls.Add(this.lblCelular);
-            this.Controls.Add(this.lblTelefone);
-            this.Controls.Add(this.mkbCelular);
-            this.Controls.Add(this.mkbTelefone);
-            this.Controls.Add(this.txtSite);
-            this.Controls.Add(this.lblSite);
-            this.Controls.Add(this.lblInscricaoEstadual);
-            this.Controls.Add(this.lblBairro);
-            this.Controls.Add(this.txtBairro);
-            this.Controls.Add(this.dtpDataDoCadastro);
-            this.Controls.Add(this.lblEstado);
-            this.Controls.Add(this.lblDataDoCadastro);
-            this.Controls.Add(this.mkbInscricaoEstadual);
-            this.Controls.Add(this.lblCnpj);
-            this.Controls.Add(this.lblCidade);
-            this.Controls.Add(this.txtCidade);
-            this.Controls.Add(this.lblCep);
-            this.Controls.Add(this.mkbCNPJ);
-            this.Controls.Add(this.mkbCep);
-            this.Controls.Add(this.lblEndereco);
-            this.Controls.Add(this.txtEndereco);
-            this.Controls.Add(this.lbltxtCodigoDoFornecedor);
-            this.Controls.Add(this.btnFechar);
-            this.Controls.Add(this.btnGravar);
-            this.Controls.Add(this.txtCodigoDoFornecedor);
-            this.Controls.Add(this.lblRazaoSocial);
-            this.Controls.Add(this.txtRazaoSocial);
+            this.Controls.Add(this.CbEstado);
+            this.Controls.Add(this.TxtEmail);
+            this.Controls.Add(this.LblEmail);
+            this.Controls.Add(this.LblCelular);
+            this.Controls.Add(this.LblTelefone);
+            this.Controls.Add(this.MkbCelular);
+            this.Controls.Add(this.MkbTelefone);
+            this.Controls.Add(this.TxtSite);
+            this.Controls.Add(this.LblSite);
+            this.Controls.Add(this.LblInscricaoEstadual);
+            this.Controls.Add(this.LblBairro);
+            this.Controls.Add(this.TxtBairro);
+            this.Controls.Add(this.DtpDataDoCadastro);
+            this.Controls.Add(this.LblEstado);
+            this.Controls.Add(this.LblDataDoCadastro);
+            this.Controls.Add(this.MkbInscricaoEstadual);
+            this.Controls.Add(this.LblCnpj);
+            this.Controls.Add(this.LblCidade);
+            this.Controls.Add(this.TxtCidade);
+            this.Controls.Add(this.LblCep);
+            this.Controls.Add(this.MkbCNPJ);
+            this.Controls.Add(this.MkbCep);
+            this.Controls.Add(this.LblEndereco);
+            this.Controls.Add(this.TxtEndereco);
+            this.Controls.Add(this.LbltxtCodigoDoFornecedor);
+            this.Controls.Add(this.BtnFechar);
+            this.Controls.Add(this.BtnGravar);
+            this.Controls.Add(this.TxtCodigoDoFornecedor);
+            this.Controls.Add(this.LblRazaoSocial);
+            this.Controls.Add(this.TxtRazaoSocial);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCadFornecedores";
@@ -486,7 +486,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmFornecedores";
-            this.Load += new System.EventHandler(this.frmCadastrarFornecedores_Load);
+            this.Load += new System.EventHandler(this.FrmCadastrarFornecedores_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -494,35 +494,35 @@
 
         #endregion
 
-        public System.Windows.Forms.ComboBox cbEstado;
-        internal System.Windows.Forms.TextBox txtEmail;
-        public System.Windows.Forms.Label lblEmail;
-        public System.Windows.Forms.Label lblCelular;
-        public System.Windows.Forms.Label lblTelefone;
-        internal System.Windows.Forms.MaskedTextBox mkbCelular;
-        internal System.Windows.Forms.MaskedTextBox mkbTelefone;
-        internal System.Windows.Forms.TextBox txtSite;
-        public System.Windows.Forms.Label lblSite;
-        public System.Windows.Forms.Label lblInscricaoEstadual;
-        public System.Windows.Forms.Label lblBairro;
-        public System.Windows.Forms.TextBox txtBairro;
-        internal System.Windows.Forms.DateTimePicker dtpDataDoCadastro;
-        public System.Windows.Forms.Label lblEstado;
-        public System.Windows.Forms.Label lblDataDoCadastro;
-        public System.Windows.Forms.MaskedTextBox mkbInscricaoEstadual;
-        public System.Windows.Forms.Label lblCnpj;
-        public System.Windows.Forms.Label lblCidade;
-        public System.Windows.Forms.TextBox txtCidade;
-        public System.Windows.Forms.Label lblCep;
-        internal System.Windows.Forms.MaskedTextBox mkbCNPJ;
-        internal System.Windows.Forms.MaskedTextBox mkbCep;
-        public System.Windows.Forms.Label lblEndereco;
-        public System.Windows.Forms.TextBox txtEndereco;
-        internal System.Windows.Forms.Label lbltxtCodigoDoFornecedor;
-        internal System.Windows.Forms.Button btnFechar;
-        internal System.Windows.Forms.Button btnGravar;
-        public System.Windows.Forms.TextBox txtCodigoDoFornecedor;
-        public System.Windows.Forms.Label lblRazaoSocial;
-        public System.Windows.Forms.TextBox txtRazaoSocial;
+        public System.Windows.Forms.ComboBox CbEstado;
+        internal System.Windows.Forms.TextBox TxtEmail;
+        public System.Windows.Forms.Label LblEmail;
+        public System.Windows.Forms.Label LblCelular;
+        public System.Windows.Forms.Label LblTelefone;
+        internal System.Windows.Forms.MaskedTextBox MkbCelular;
+        internal System.Windows.Forms.MaskedTextBox MkbTelefone;
+        internal System.Windows.Forms.TextBox TxtSite;
+        public System.Windows.Forms.Label LblSite;
+        public System.Windows.Forms.Label LblInscricaoEstadual;
+        public System.Windows.Forms.Label LblBairro;
+        public System.Windows.Forms.TextBox TxtBairro;
+        internal System.Windows.Forms.DateTimePicker DtpDataDoCadastro;
+        public System.Windows.Forms.Label LblEstado;
+        public System.Windows.Forms.Label LblDataDoCadastro;
+        public System.Windows.Forms.MaskedTextBox MkbInscricaoEstadual;
+        public System.Windows.Forms.Label LblCnpj;
+        public System.Windows.Forms.Label LblCidade;
+        public System.Windows.Forms.TextBox TxtCidade;
+        public System.Windows.Forms.Label LblCep;
+        internal System.Windows.Forms.MaskedTextBox MkbCNPJ;
+        internal System.Windows.Forms.MaskedTextBox MkbCep;
+        public System.Windows.Forms.Label LblEndereco;
+        public System.Windows.Forms.TextBox TxtEndereco;
+        internal System.Windows.Forms.Label LbltxtCodigoDoFornecedor;
+        internal System.Windows.Forms.Button BtnFechar;
+        internal System.Windows.Forms.Button BtnGravar;
+        public System.Windows.Forms.TextBox TxtCodigoDoFornecedor;
+        public System.Windows.Forms.Label LblRazaoSocial;
+        public System.Windows.Forms.TextBox TxtRazaoSocial;
     }
 }

@@ -65,7 +65,7 @@
             this.btnFechar.TabIndex = 165;
             this.btnFechar.Text = "Fechar";
             this.btnFechar.UseVisualStyleBackColor = true;
-            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
+            this.btnFechar.Click += new System.EventHandler(this.BtnFechar_Click);
             // 
             // dgv
             // 
@@ -74,7 +74,7 @@
             this.dgv.Name = "dgv";
             this.dgv.Size = new System.Drawing.Size(605, 315);
             this.dgv.TabIndex = 164;
-            this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellEnter);
+            this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_CellEnter);
             // 
             // btnExcluir
             // 
@@ -85,7 +85,7 @@
             this.btnExcluir.TabIndex = 168;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
-            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
             // 
             // btnEditar
             // 
@@ -97,7 +97,7 @@
             this.btnEditar.TabIndex = 167;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
             // 
             // btnNovo
             // 
@@ -109,7 +109,7 @@
             this.btnNovo.TabIndex = 166;
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
-            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            this.btnNovo.Click += new System.EventHandler(this.BtnNovo_Click);
             // 
             // frmFornecedores
             // 
@@ -127,7 +127,7 @@
             this.Name = "frmFornecedores";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Fornecedores";
-            this.Load += new System.EventHandler(this.frmFornecedores_Load);
+            this.Load += new System.EventHandler(this.FrmFornecedores_Load);
             this.gbBusca.ResumeLayout(false);
             this.gbBusca.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();

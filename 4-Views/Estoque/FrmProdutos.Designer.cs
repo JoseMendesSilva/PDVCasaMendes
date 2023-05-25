@@ -28,45 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gbBusca = new System.Windows.Forms.GroupBox();
-            this.txtCodigoDeBarras = new System.Windows.Forms.TextBox();
+            this.GbBusca = new System.Windows.Forms.GroupBox();
+            this.TxtCodigoDeBarras = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtBusca = new System.Windows.Forms.TextBox();
-            this.btnFechar = new System.Windows.Forms.Button();
-            this.btnAbrirListaDeesconto = new System.Windows.Forms.Button();
-            this.btnExcluir = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnNovo = new System.Windows.Forms.Button();
-            this.dgv = new System.Windows.Forms.DataGridView();
-            this.gbBusca.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+            this.TxtBusca = new System.Windows.Forms.TextBox();
+            this.BtnFechar = new System.Windows.Forms.Button();
+            this.BtnAbrirListaDeesconto = new System.Windows.Forms.Button();
+            this.BtnExcluir = new System.Windows.Forms.Button();
+            this.BtnEditar = new System.Windows.Forms.Button();
+            this.BtnNovo = new System.Windows.Forms.Button();
+            this.DgvProdutos = new System.Windows.Forms.DataGridView();
+            this.GbBusca.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvProdutos)).BeginInit();
             this.SuspendLayout();
             // 
-            // gbBusca
+            // GbBusca
             // 
-            this.gbBusca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.GbBusca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbBusca.Controls.Add(this.txtCodigoDeBarras);
-            this.gbBusca.Controls.Add(this.label2);
-            this.gbBusca.Controls.Add(this.label1);
-            this.gbBusca.Controls.Add(this.txtBusca);
-            this.gbBusca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbBusca.Location = new System.Drawing.Point(12, 12);
-            this.gbBusca.Name = "gbBusca";
-            this.gbBusca.Size = new System.Drawing.Size(1252, 58);
-            this.gbBusca.TabIndex = 162;
-            this.gbBusca.TabStop = false;
-            this.gbBusca.Text = "Buscar:";
+            this.GbBusca.Controls.Add(this.TxtCodigoDeBarras);
+            this.GbBusca.Controls.Add(this.label2);
+            this.GbBusca.Controls.Add(this.label1);
+            this.GbBusca.Controls.Add(this.TxtBusca);
+            this.GbBusca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GbBusca.Location = new System.Drawing.Point(12, 12);
+            this.GbBusca.Name = "GbBusca";
+            this.GbBusca.Size = new System.Drawing.Size(1252, 58);
+            this.GbBusca.TabIndex = 162;
+            this.GbBusca.TabStop = false;
+            this.GbBusca.Text = "Buscar:";
             // 
-            // txtCodigoDeBarras
+            // TxtCodigoDeBarras
             // 
-            this.txtCodigoDeBarras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCodigoDeBarras.Location = new System.Drawing.Point(1048, 19);
-            this.txtCodigoDeBarras.Name = "txtCodigoDeBarras";
-            this.txtCodigoDeBarras.Size = new System.Drawing.Size(199, 26);
-            this.txtCodigoDeBarras.TabIndex = 2;
-            this.txtCodigoDeBarras.TextChanged += new System.EventHandler(this.txtCodigoDeBarras_TextChanged);
+            this.TxtCodigoDeBarras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtCodigoDeBarras.Location = new System.Drawing.Point(1048, 19);
+            this.TxtCodigoDeBarras.Name = "TxtCodigoDeBarras";
+            this.TxtCodigoDeBarras.Size = new System.Drawing.Size(199, 26);
+            this.TxtCodigoDeBarras.TabIndex = 2;
+            this.TxtCodigoDeBarras.TextChanged += new System.EventHandler(this.TxtCodigoDeBarras_TextChanged);
             // 
             // label2
             // 
@@ -87,99 +87,99 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Produto:";
             // 
-            // txtBusca
+            // TxtBusca
             // 
-            this.txtBusca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.TxtBusca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBusca.Location = new System.Drawing.Point(82, 19);
-            this.txtBusca.Name = "txtBusca";
-            this.txtBusca.Size = new System.Drawing.Size(828, 26);
-            this.txtBusca.TabIndex = 0;
-            this.txtBusca.TextChanged += new System.EventHandler(this.txtBusca_TextChanged);
+            this.TxtBusca.Location = new System.Drawing.Point(82, 19);
+            this.TxtBusca.Name = "TxtBusca";
+            this.TxtBusca.Size = new System.Drawing.Size(828, 26);
+            this.TxtBusca.TabIndex = 0;
+            this.TxtBusca.TextChanged += new System.EventHandler(this.TxtBusca_TextChanged);
             // 
-            // btnFechar
+            // BtnFechar
             // 
-            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFechar.Location = new System.Drawing.Point(1200, 416);
-            this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(75, 57);
-            this.btnFechar.TabIndex = 161;
-            this.btnFechar.Text = "Fechar";
-            this.btnFechar.UseVisualStyleBackColor = true;
-            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
+            this.BtnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnFechar.Location = new System.Drawing.Point(1200, 416);
+            this.BtnFechar.Name = "BtnFechar";
+            this.BtnFechar.Size = new System.Drawing.Size(75, 57);
+            this.BtnFechar.TabIndex = 161;
+            this.BtnFechar.Text = "Fechar";
+            this.BtnFechar.UseVisualStyleBackColor = true;
+            this.BtnFechar.Click += new System.EventHandler(this.BtnFechar_Click);
             // 
-            // btnAbrirListaDeesconto
+            // BtnAbrirListaDeesconto
             // 
-            this.btnAbrirListaDeesconto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAbrirListaDeesconto.Location = new System.Drawing.Point(301, 416);
-            this.btnAbrirListaDeesconto.Name = "btnAbrirListaDeesconto";
-            this.btnAbrirListaDeesconto.Size = new System.Drawing.Size(69, 54);
-            this.btnAbrirListaDeesconto.TabIndex = 166;
-            this.btnAbrirListaDeesconto.Text = "Abrir lista de desconto";
-            this.btnAbrirListaDeesconto.UseVisualStyleBackColor = true;
+            this.BtnAbrirListaDeesconto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BtnAbrirListaDeesconto.Location = new System.Drawing.Point(301, 416);
+            this.BtnAbrirListaDeesconto.Name = "BtnAbrirListaDeesconto";
+            this.BtnAbrirListaDeesconto.Size = new System.Drawing.Size(69, 54);
+            this.BtnAbrirListaDeesconto.TabIndex = 166;
+            this.BtnAbrirListaDeesconto.Text = "Abrir lista de desconto";
+            this.BtnAbrirListaDeesconto.UseVisualStyleBackColor = true;
             // 
-            // btnExcluir
+            // BtnExcluir
             // 
-            this.btnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExcluir.Location = new System.Drawing.Point(202, 416);
-            this.btnExcluir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(69, 54);
-            this.btnExcluir.TabIndex = 165;
-            this.btnExcluir.Text = "Excluir";
-            this.btnExcluir.UseVisualStyleBackColor = true;
-            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            this.BtnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BtnExcluir.Location = new System.Drawing.Point(202, 416);
+            this.BtnExcluir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.BtnExcluir.Name = "BtnExcluir";
+            this.BtnExcluir.Size = new System.Drawing.Size(69, 54);
+            this.BtnExcluir.TabIndex = 165;
+            this.BtnExcluir.Text = "Excluir";
+            this.BtnExcluir.UseVisualStyleBackColor = true;
+            this.BtnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
             // 
-            // btnEditar
+            // BtnEditar
             // 
-            this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnEditar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnEditar.Location = new System.Drawing.Point(108, 416);
-            this.btnEditar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(69, 54);
-            this.btnEditar.TabIndex = 164;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            this.BtnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BtnEditar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.BtnEditar.Location = new System.Drawing.Point(108, 416);
+            this.BtnEditar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.BtnEditar.Name = "BtnEditar";
+            this.BtnEditar.Size = new System.Drawing.Size(69, 54);
+            this.BtnEditar.TabIndex = 164;
+            this.BtnEditar.Text = "Editar";
+            this.BtnEditar.UseVisualStyleBackColor = true;
+            this.BtnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
             // 
-            // btnNovo
+            // BtnNovo
             // 
-            this.btnNovo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnNovo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnNovo.Location = new System.Drawing.Point(12, 416);
-            this.btnNovo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(69, 54);
-            this.btnNovo.TabIndex = 163;
-            this.btnNovo.Text = "Novo";
-            this.btnNovo.UseVisualStyleBackColor = true;
-            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            this.BtnNovo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BtnNovo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.BtnNovo.Location = new System.Drawing.Point(12, 416);
+            this.BtnNovo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.BtnNovo.Name = "BtnNovo";
+            this.BtnNovo.Size = new System.Drawing.Size(69, 54);
+            this.BtnNovo.TabIndex = 163;
+            this.BtnNovo.Text = "Novo";
+            this.BtnNovo.UseVisualStyleBackColor = true;
+            this.BtnNovo.Click += new System.EventHandler(this.BtnNovo_Click);
             // 
-            // dgv
+            // DgvProdutos
             // 
-            this.dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.DgvProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv.Location = new System.Drawing.Point(12, 76);
-            this.dgv.Name = "dgv";
-            this.dgv.Size = new System.Drawing.Size(1263, 320);
-            this.dgv.TabIndex = 170;
-            this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellEnter);
+            this.DgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvProdutos.Location = new System.Drawing.Point(12, 76);
+            this.DgvProdutos.Name = "DgvProdutos";
+            this.DgvProdutos.Size = new System.Drawing.Size(1263, 320);
+            this.DgvProdutos.TabIndex = 170;
+            this.DgvProdutos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_CellEnter);
             // 
             // FrmProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1286, 481);
-            this.Controls.Add(this.dgv);
-            this.Controls.Add(this.gbBusca);
-            this.Controls.Add(this.btnFechar);
-            this.Controls.Add(this.btnAbrirListaDeesconto);
-            this.Controls.Add(this.btnExcluir);
-            this.Controls.Add(this.btnEditar);
-            this.Controls.Add(this.btnNovo);
+            this.Controls.Add(this.DgvProdutos);
+            this.Controls.Add(this.GbBusca);
+            this.Controls.Add(this.BtnFechar);
+            this.Controls.Add(this.BtnAbrirListaDeesconto);
+            this.Controls.Add(this.BtnExcluir);
+            this.Controls.Add(this.BtnEditar);
+            this.Controls.Add(this.BtnNovo);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
@@ -187,25 +187,25 @@
             this.Name = "FrmProdutos";
             this.Text = "FormProdutos";
             this.Load += new System.EventHandler(this.FrmProdutos_Load);
-            this.gbBusca.ResumeLayout(false);
-            this.gbBusca.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+            this.GbBusca.ResumeLayout(false);
+            this.GbBusca.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvProdutos)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox gbBusca;
-        private System.Windows.Forms.TextBox txtCodigoDeBarras;
+        private System.Windows.Forms.GroupBox GbBusca;
+        private System.Windows.Forms.TextBox TxtCodigoDeBarras;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtBusca;
-        private System.Windows.Forms.Button btnFechar;
-        private System.Windows.Forms.Button btnAbrirListaDeesconto;
-        public System.Windows.Forms.Button btnExcluir;
-        public System.Windows.Forms.Button btnEditar;
-        public System.Windows.Forms.Button btnNovo;
-        private System.Windows.Forms.DataGridView dgv;
+        private System.Windows.Forms.TextBox TxtBusca;
+        private System.Windows.Forms.Button BtnFechar;
+        private System.Windows.Forms.Button BtnAbrirListaDeesconto;
+        public System.Windows.Forms.Button BtnExcluir;
+        public System.Windows.Forms.Button BtnEditar;
+        public System.Windows.Forms.Button BtnNovo;
+        private System.Windows.Forms.DataGridView DgvProdutos;
     }
 }

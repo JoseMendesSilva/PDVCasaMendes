@@ -10,7 +10,7 @@ namespace CasaMendes
         public FrmPrincipal()
         {
             InitializeComponent();
-            //CriarTabelasDoSistema.CriarTabelas();
+            CriarTabelasDoSistema.CriarTabelas();
         }
 
         #region ToolsStrip
@@ -234,6 +234,7 @@ namespace CasaMendes
             CadCategoria.MdiParent = this;
             CadCategoria.Text = "Categorias " + childFormNumber++;
             // Display the new form.
+            CadCategoria.Show();
 
             if (!this.WindowState.Equals(FormWindowState.Maximized))
             {

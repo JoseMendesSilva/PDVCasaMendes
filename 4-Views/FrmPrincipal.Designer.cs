@@ -132,7 +132,7 @@
             // PrecosMenuItem
             // 
             this.PrecosMenuItem.Name = "PrecosMenuItem";
-            this.PrecosMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.PrecosMenuItem.Size = new System.Drawing.Size(109, 22);
             this.PrecosMenuItem.Text = "Preços";
             this.PrecosMenuItem.Click += new System.EventHandler(this.PrecosMenuItem_Click);
             // 
@@ -217,7 +217,6 @@
             this.EditMenu.Name = "EditMenu";
             this.EditMenu.Size = new System.Drawing.Size(61, 20);
             this.EditMenu.Text = "Estoque";
-            //this.EditMenu.Click += new System.EventHandler(this.EditMenu_Click);
             // 
             // FuncionarioMenuItem
             // 

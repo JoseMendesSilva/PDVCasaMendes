@@ -1,36 +1,20 @@
 ﻿using System;
-
+using System.Runtime.ConstrainedExecution;
+using System.Runtime.InteropServices;
 namespace CasaMendes
 {
+    //[DefaultEvent("Load")]
+    //[InitializationEvent("Load")]
+    [Serializable]
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ComVisible(true)]
     public class FrenteDeCaixa : Base, IDisposable
     {
         private bool disposedValue;
 
+        [ReliabilityContract(Consistency.WillNotCorruptState, Cer.MayFail)]
         public FrenteDeCaixa()
         {
-        }
-
-        public FrenteDeCaixa(bool disposedValue, int clienteId, string cliente, string tipoDeVenda, int numeroDaVenda, string codigoDeBarras, string produto, int quantidade, decimal dinheiro, decimal troco, decimal subTotal, decimal desconto, decimal descontoAplicado, decimal margem, decimal encargo, decimal anotar, DateTime dataLancamento, decimal entrada, decimal saidaAnterior)
-        {
-            this.disposedValue = disposedValue;
-            ClienteId = clienteId;
-            Cliente = cliente ?? throw new ArgumentNullException(nameof(cliente));
-            TipoDeVenda = tipoDeVenda ?? throw new ArgumentNullException(nameof(tipoDeVenda));
-            NumeroDaVenda = numeroDaVenda;
-            CodigoDeBarras = codigoDeBarras ?? throw new ArgumentNullException(nameof(codigoDeBarras));
-            Produto = produto ?? throw new ArgumentNullException(nameof(produto));
-            Quantidade = quantidade;
-            Dinheiro = dinheiro;
-            Troco = troco;
-            SubTotal = subTotal;
-            Desconto = desconto;
-            DescontoAplicado = descontoAplicado;
-            Margem = margem;
-            Encargo = encargo;
-            Anotar = anotar;
-            DataLancamento = dataLancamento;
-            Entrada = entrada;
-            SaidaAnterior = saidaAnterior;
         }
 
         public int ClienteId { get; set; }

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.DgvCategorias = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,20 +40,9 @@
             this.BtnExcluir = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.TxtBuscar = new System.Windows.Forms.TextBox();
+            this.DgvCategorias = new CasaMendes.Tabela();
             ((System.ComponentModel.ISupportInitialize)(this.DgvCategorias)).BeginInit();
             this.SuspendLayout();
-            // 
-            // DgvCategorias
-            // 
-            this.DgvCategorias.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DgvCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvCategorias.Location = new System.Drawing.Point(12, 44);
-            this.DgvCategorias.Name = "DgvCategorias";
-            this.DgvCategorias.Size = new System.Drawing.Size(498, 166);
-            this.DgvCategorias.TabIndex = 0;
-            this.DgvCategorias.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvCategorias_CellEnter);
             // 
             // label1
             // 
@@ -175,11 +163,21 @@
             this.TxtBuscar.TabIndex = 12;
             this.TxtBuscar.TextChanged += new System.EventHandler(this.TxtBuscar_TextChanged);
             // 
+            // DgvCategorias
+            // 
+            this.DgvCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvCategorias.Location = new System.Drawing.Point(15, 41);
+            this.DgvCategorias.Name = "DgvCategorias";
+            this.DgvCategorias.Size = new System.Drawing.Size(495, 162);
+            this.DgvCategorias.TabIndex = 13;
+            this.DgvCategorias.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvCategorias_CellEnter);
+            // 
             // FrmCadCategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(522, 421);
+            this.Controls.Add(this.DgvCategorias);
             this.Controls.Add(this.TxtBuscar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.BtnExcluir);
@@ -192,7 +190,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.DgvCategorias);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCadCategoria";
@@ -205,8 +202,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView DgvCategorias;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -219,5 +214,6 @@
         private System.Windows.Forms.Button BtnExcluir;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox TxtBuscar;
+        private Tabela DgvCategorias;
     }
 }
