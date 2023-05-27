@@ -40,7 +40,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.DgvTabelaDeMargem = new System.Windows.Forms.DataGridView();
             this.TxtTabelaDeMargenId = new System.Windows.Forms.TextBox();
-            this.TxtPorcentagemPessoPorItem = new System.Windows.Forms.TextBox();
+            this.TxtPorcentagemPesoPorItem = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.TxtDespesa = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -132,6 +132,7 @@
             this.TxtNumeroDeItensNaLoja.Size = new System.Drawing.Size(118, 20);
             this.TxtNumeroDeItensNaLoja.TabIndex = 0;
             this.TxtNumeroDeItensNaLoja.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TxtNumeroDeItensNaLoja.TextChanged += new System.EventHandler(this.TxtNumeroDeItensNaLoja_TextChanged);
             // 
             // TxtSubCategoriaId
             // 
@@ -180,16 +181,16 @@
             this.TxtTabelaDeMargenId.TabIndex = 47;
             this.TxtTabelaDeMargenId.Visible = false;
             // 
-            // TxtPorcentagemPessoPorItem
+            // TxtPorcentagemPesoPorItem
             // 
-            this.TxtPorcentagemPessoPorItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtPorcentagemPessoPorItem.Location = new System.Drawing.Point(473, 68);
-            this.TxtPorcentagemPessoPorItem.MaxLength = 40;
-            this.TxtPorcentagemPessoPorItem.Name = "TxtPorcentagemPessoPorItem";
-            this.TxtPorcentagemPessoPorItem.ReadOnly = true;
-            this.TxtPorcentagemPessoPorItem.Size = new System.Drawing.Size(118, 20);
-            this.TxtPorcentagemPessoPorItem.TabIndex = 3;
-            this.TxtPorcentagemPessoPorItem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TxtPorcentagemPesoPorItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtPorcentagemPesoPorItem.Location = new System.Drawing.Point(473, 68);
+            this.TxtPorcentagemPesoPorItem.MaxLength = 40;
+            this.TxtPorcentagemPesoPorItem.Name = "TxtPorcentagemPesoPorItem";
+            this.TxtPorcentagemPesoPorItem.ReadOnly = true;
+            this.TxtPorcentagemPesoPorItem.Size = new System.Drawing.Size(118, 20);
+            this.TxtPorcentagemPesoPorItem.TabIndex = 3;
+            this.TxtPorcentagemPesoPorItem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
@@ -382,7 +383,7 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.TxtDespesa);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.TxtPorcentagemPessoPorItem);
+            this.Controls.Add(this.TxtPorcentagemPesoPorItem);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TxtBuscar);
             this.Controls.Add(this.label5);
@@ -422,7 +423,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView DgvTabelaDeMargem;
         private System.Windows.Forms.TextBox TxtTabelaDeMargenId;
-        private System.Windows.Forms.TextBox TxtPorcentagemPessoPorItem;
+        private System.Windows.Forms.TextBox TxtPorcentagemPesoPorItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TxtDespesa;
         private System.Windows.Forms.Label label3;

@@ -226,7 +226,7 @@
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(75, 38);
             this.BtnCancelar.TabIndex = 33;
-            this.BtnCancelar.Text = "Novo";
+            this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 

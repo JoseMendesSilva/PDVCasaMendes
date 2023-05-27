@@ -19,6 +19,9 @@ namespace CasaMendes
         public string RazaoSocial { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
+        public string Endereco { get; set; }
+
+        [OpcoesBase(UsarNoBancoDeDados = true)]
         public string Cep { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
@@ -47,6 +50,9 @@ namespace CasaMendes
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public string InscricaoEstadual { get; set; }
+
+        [OpcoesBase(UsarNoBancoDeDados = true)]
+        public DateTime DataCadastro { get; set; } = DateTime.Now;
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public DateTime created_at { get; set; } = DateTime.Now;

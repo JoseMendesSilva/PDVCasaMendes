@@ -119,10 +119,15 @@ namespace CasaMendes
                     oFornecedor = (Fornecedore)dgv.Rows[LinhaIndex].DataBoundItem;
                     oFornecedor.Excluir();
                     oFornecedor.Dispose();
+                    MessageBox.Show($"O Fornecedor ' {oFornecedor.RazaoSocial} ' foi excluido com sucesso.");
                     Carregar();
                 }
+                else
+                {
+                    MessageBox.Show($"Seleciona um Fornecedor para excluir.");
+                }
             }
-            catch {; }
+            catch { }
         }
 
         private void Botoes(bool b)

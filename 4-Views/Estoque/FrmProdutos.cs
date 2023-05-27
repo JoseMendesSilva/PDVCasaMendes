@@ -105,18 +105,33 @@ namespace CasaMendes
                 }
 
                 cadProduto.ShowDialog();
+                
+                if( string.IsNullOrEmpty(cadProduto.oProduto.Nome) || 
+                    string.IsNullOrEmpty(cadProduto.oProduto.FornecedorId.ToString()) || 
+                    string.IsNullOrEmpty(cadProduto.oProduto.PrecoDeVenda.ToString()) || 
+                    string.IsNullOrEmpty(cadProduto.oProduto.PrecoUnitario.ToString()) || 
+                    string.IsNullOrEmpty(cadProduto.oProduto.Quantidade.ToString()) || 
+                    string.IsNullOrEmpty(cadProduto.oProduto.ValorCompra.ToString()) || 
+                    string.IsNullOrEmpty(cadProduto.oProduto.DataDeValidade.ToString()) ||
+                    string.IsNullOrEmpty(cadProduto.oProduto.CodigoDeBarras.ToString())) {
+                    MessageBox.Show("Todos os campos são obrigatorio."); 
+                    return; 
+                }
 
                 if (cadProduto.DialogResult.Equals(DialogResult.OK))
                 {
+                    if (string.IsNullOrEmpty(cadProduto.TxtQuantidadeItemDesconto.Text)) cadProduto.TxtQuantidadeItemDesconto.Text = "0";
+                    if (string.IsNullOrEmpty(cadProduto.TxtValorDesconto.Text)) cadProduto.TxtValorDesconto.Text = "0";
+
                     var oEstoque = new Estoque
                     {
-                        EstoqueId = 0,
+                       EstoqueId = 0,
                         ProdutoId = cadProduto.oProduto.ProdutoId,
                         CodigoDeBarras = cadProduto.oProduto.CodigoDeBarras,
                         Quantidade = cadProduto.oProduto.Quantidade,
                         PrecoDeVenda = decimal.Parse(cadProduto.oProduto.PrecoDeVenda.ToString("N2")),
                         QuantidadeItemDesconto = int.Parse(cadProduto.TxtQuantidadeItemDesconto.Text),
-                        ValorDesconto = decimal.Parse(cadProduto.TxtValorDesconto.Text),
+                        ValorDesconto = decimal.Parse(cadProduto.TxtValorDesconto.Text)
                     };
                     //Verificando se o nome já existe no estoque e resgata o EstoqueId.
                     var e = new Estoque

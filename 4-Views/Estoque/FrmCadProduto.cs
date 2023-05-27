@@ -52,14 +52,10 @@ namespace CasaMendes
             TxtCodigoDeBarras.DataBindings.Add("Text", BsProduto, "CodigoDeBarras");
             TxtNome.DataBindings.Add("Text", BsProduto, "Nome");
             DtpDataDeValidade.DataBindings.Add("Value", BsProduto, "DataDeValidade");
-            //TxtQuantidadeItemDesconto.DataBindings.Add("Text", BsProduto, "QuantidadeItemDesconto");
-            //TxtEstoque.DataBindings.Add("Text", BsProduto, "Estoque");
             TxtPrecoDeVenda.DataBindings.Add("Text", BsProduto, "PrecoDeVenda");
             TxtPrecoUnitario.DataBindings.Add("Text", BsProduto, "PrecoUnitario");
             TxtQuantidade.DataBindings.Add("Text", BsProduto, "Quantidade");
             TxtValorCompra.DataBindings.Add("Text", BsProduto, "ValorCompra");
-            //TxtCodigoDaNotaFiscal.DataBindings.Add("Text", BsProduto, "CodigoDaNotaFiscal");
-            //TxtValorDesconto.DataBindings.Add("Text", BsProduto, "ValorDesconto");
         }
 
         private void Botoes(bool b)
@@ -101,6 +97,7 @@ namespace CasaMendes
         private void FrmCadProduto_Load(object sender, EventArgs e)
         {
             Botoes(true);
+            bool status = true;
 
             if (oProduto == null)
                 oProduto = new Produto();
@@ -116,13 +113,29 @@ namespace CasaMendes
             CbFornecedores.DisplayMember = "RazaoSocial";
             CbFornecedores.DataSource = new Fornecedore().Todos();
 
+            if (CbFornecedores.Items.Count < 1)
+            {
+                MessageBox.Show("Não foram encontrado nemhum fornecedor cadastrado, cadastre fornecedores.");
+                status = false;
+            }
+            
             CbSubcategoria.DisplayMember = "Nome";
             CbSubcategoria.DataSource = new SubCategoria().Todos();
-            
+
+            if (CbSubcategoria.Items.Count < 1) { 
+                MessageBox.Show("Não foram encontrado nemhuma subcategoria cadastrada, cadastre subcategorias.");
+                status = false;
+            }
             if (oProduto.Foto != null)
                PicFoto.Image=Image.FromFile(oProduto.Foto);
             else
                 PicFoto.Image = Properties.Resources.CasaMendes1Jpg;
+
+            if (!status)
+            {
+                BtnGravar.Enabled = false;
+                BtnFechar.Enabled = true;
+            }
         }
 
         #endregion

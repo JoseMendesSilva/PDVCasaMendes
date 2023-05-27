@@ -8,12 +8,12 @@ namespace CasaMendes
     {
 
         #region FrmCadCategoria
-  
+
         public FrmCadCategoria()
         {
             InitializeComponent();
         }
- 
+
         #endregion
 
         #region variaveis
@@ -23,7 +23,7 @@ namespace CasaMendes
         int LinhaIndex;
         bool loading;
         private FrmProcessando oProcessamento;
-   
+
         #endregion
 
         #region propriedade
@@ -63,21 +63,6 @@ namespace CasaMendes
             oBsCategoria.DataSource = oCategoria;
         }
 
-        private void DgvCellEnter(DataGridViewCellEventArgs e)
-        {
-            if (DgvCategorias.Rows.Count > 0)
-            {
-                LinhaIndex = e.RowIndex;
-                Carregar();
-                BtnGravar.Visible = true;
-
-            }
-            else
-            {
-                BtnGravar.Enabled = false;
-            }
-        }
-
         #endregion
 
         #region manutenção
@@ -96,6 +81,14 @@ namespace CasaMendes
 
         private void Gravar()
         {
+            if (TxtNome.Text == "0" || TxtNome.Text == string.Empty)
+            {
+                MessageBox.Show("O nome da categoria é obrigatório.");
+                TxtNome.Focus();
+                TxtNome.SelectAll();
+                return; 
+            }
+
             BtnGravar.Enabled = true;
             BtnNovo.Enabled = true;
             BtnRetornar.Enabled = true;
@@ -108,18 +101,32 @@ namespace CasaMendes
 
         private void Excluir()
         {
-            if (TxtCategoriaId.Text == "0" || TxtCategoriaId.Text.Length == 0 || TxtCategoriaId.Text == string.Empty) { return; }
-            oCategoria.CategoriaId=int.Parse(TxtCategoriaId.Text);
-            oCategoria.Excluir();
-            MessageBox.Show($"A categoria ' {oCategoria.Nome} ' foi excluido com sucesso.");
+            var msg = string.Empty;
+            try
+            {
+                if (LinhaIndex != -1)
+                {
+                    if (TxtCategoriaId.Text == "0" || TxtCategoriaId.Text == string.Empty) { return; }
+                    oCategoria.CategoriaId = int.Parse(TxtCategoriaId.Text);
+                    oCategoria.Excluir();
+                    Carregar();
+                    msg = $"A categoria ' {oCategoria.Nome} ' foi excluido com sucesso.";
+                }
+                else
+                {
+                    msg = "Selecione uma categoria para excluir.";
+                }
+                MessageBox.Show(msg, Application.ProductName);
+            }
+            catch { }
 
         }
 
         #endregion
 
-        #region Load
- 
-        private void FrmLoad()
+        #region Events
+
+        private void FrmCadCategoria_Load(object sender, EventArgs e)
         {
             try
             {
@@ -154,9 +161,28 @@ namespace CasaMendes
 
         #endregion
 
+        #region Enter
+
+        private void DgvCategorias_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (DgvCategorias.Rows.Count > 0)
+            {
+                LinhaIndex = e.RowIndex;
+                Carregar();
+                BtnGravar.Visible = true;
+
+            }
+            else
+            {
+                BtnGravar.Enabled = false;
+            }
+        }
+
+        #endregion
+
         #region TextoChanged
 
-        private void TextoChanged()
+        private void TxtBuscar_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -168,33 +194,6 @@ namespace CasaMendes
                 OrganizarColunas();
             }
             catch { }
-        }
-
-        #endregion
-
-        #region Events
-
-        private void FrmCadCategoria_Load(object sender, EventArgs e)
-        {
-            FrmLoad();
-        }
-
-        #endregion
-
-        #region Enter
-
-        private void DgvCategorias_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            DgvCellEnter(e);
-        }
-
-        #endregion
-
-        #region TextoChanged
-
-        private void TxtBuscar_TextChanged(object sender, EventArgs e)
-        {
-            TextoChanged();
         }
 
         #endregion

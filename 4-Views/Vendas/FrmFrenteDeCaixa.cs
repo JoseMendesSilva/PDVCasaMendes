@@ -113,67 +113,37 @@ namespace CasaMendes
                     if (int.Parse(this.txtQuantidade.Text) > 1) { this.txtQuantidade.Text = "1"; }
                     this.Buscando = false;
 
-                    grid.CurrentCell = grid.Rows[grid.Rows.Count - 1].Cells[0];
-                    count++;
+                    if (grid.Rows.Count > 0)
+                    {
+                        grid.CurrentCell = grid.Rows[grid.Rows.Count - 1].Cells[8];
+                    }
 
                     lblStatusCaixa.Text = "CAIXA OCUPADO";
 
                     this.txtCodigo.Focus();
                     this.txtCodigo.SelectAll();
-                }
+            }
 
                 oEstoque = null;
                 ResEstoque = null;
 
             }
-            catch
+            catch(Exception e)
             {
+                MessageBox.Show(e.Message);
             }
         }
-
-        //private decimal ProcessarDescontos(decimal CodigoDeBarras, Int32 i)
-        //{
-        //    decimal descontar = 0;
-        //    //verifica se o código de barras existe na lista e promoção
-        //    if ((Opromocao.Dicionario_de_Promocao.ContainsKey(CodigoDeBarras.ToString().Trim())))
-        //    {
-        //        //le a quantidade e produto na grade cupom
-        //        decimal quantidade = Opromocao.De_String_Para_decimal(grid.Rows[i].Cells[3].Value.ToString().Trim());
-
-        //        //converte para decimal a porcentagem de desconto o dicionário promoção
-        //        decimal quantidade_desconto = Opromocao.De_String_Para_decimal(Opromocao.Dicionario_de_Promocao[CodigoDeBarras.ToString().Trim()].QuantidadeMinimaParaDesconto.ToString());
-
-        //        //le a quantidade de itens vendidos na grade cupom
-        //        decimal valor_desconto = Opromocao.De_String_Para_decimal(Opromocao.Dicionario_de_Promocao[CodigoDeBarras.ToString()].ValorDesconto.ToString());
-
-        //        if (quantidade >= quantidade_desconto)
-        //        {
-        //            descontar = (valor_desconto / quantidade_desconto) * quantidade;
-        //        }
-        //        else
-        //        {
-        //            descontar = 0;
-        //        }
-
-        //    }
-
-        //    return descontar;
-        //}
 
         private void FinalizarVenda()
         {
             try
             {
 
-                //int contar = this.grid.Rows.Count;
                 int counte = this.grid.Rows.Count;
                 if (this.grid.Rows.Count > 0)
                 {
 
-
-                    //if (oPreVenda.TipoDeVenda != "PENDURA")
-                    //{
-                    oPreVenda.Valor = decimal.Parse(this.txtTotal.Text.Replace("R$ ", "").ToString()); // Opromocao.De_String_Para_decimal(this.txtTotal.Text.Replace("R$ ", "").ToString());
+                    oPreVenda.Valor = decimal.Parse(this.txtTotal.Text.Replace("R$ ", "").ToString());
                     frmFinlizarVendas oFinlizarVenda = new frmFinlizarVendas();
                     oFinlizarVenda.txtTotal.Text = oPreVenda.Valor.ToString("N2");
                     oFinlizarVenda.ShowDialog();
@@ -205,8 +175,6 @@ namespace CasaMendes
                         oFinlizarVenda.Dispose();
                     }
 
-                    //}
-
                     for (int i = 0; i <= counte - 1; i++)
                     {
                         oPreVenda.ClienteId = int.Parse(grid.Rows[i].Cells[0].Value.ToString());
@@ -218,47 +186,32 @@ namespace CasaMendes
                         oPreVenda.Valor = decimal.Parse(grid.Rows[i].Cells[8].Value.ToString().Replace("R$ ", ""));
                         oPreVenda.Salvar();
                     }
+
+                    DialogResult dialogResult = (MessageBox.Show("Deseja imprimir o boleto?", Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question));
+                    if(dialogResult == DialogResult.Yes)
+                    {
+                        ImprimirBoleto();
+                    }
+
                     Limpar();
                 }
-
-
             }
-            catch// (Exception ex)
+            catch
             {
-                // MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                txtCodigo.Focus();
+                txtCodigo.SelectAll();
             }
 
         }
 
-        //private void SelecionarCliente()
-        //{
-        //    FrmBuscarCliente fc = new FrmBuscarCliente();
-
-        //    fc.ShowDialog();
-
-        //    if (fc.DialogResult.Equals(DialogResult.OK))
-        //    {
-        //        oPreVenda.ClienteId = fc.ClienteId;
-        //        this.Text = fc.Cliente;
-        //        lblCliente.Text = "Cliente: " + fc.Cliente;
-        //        oPreVenda.TipoDeVenda = "PENDURA";
-        //        Int32 conte = Convert.ToInt32(grid.Rows.Count);
-        //        //E_ANOTAR = ", ID: " + IdCliente + "." + Environment.NewLine + "Cliente: " + Cliente;
-        //        if (conte == 0 || oPreVenda.NumeroDaVenda == 0) { GerarNumero(); return; }
-
-        //        for (int i = 0; i< grid.Rows.Count; i++)
-        //        {
-        //            grid.Rows[i].Cells[0].Value = oPreVenda.ClienteId;
-        //            grid.Rows[i].Cells[1].Value = oPreVenda.NumeroDaVenda;
-        //            grid.Rows[i].Cells[2].Value = oPreVenda.TipoDeVenda;
-        //        }
-
-        //    }
-        //    else { oPreVenda.TipoDeVenda = "A VISTA"; }
-        //    fc.Dispose();
-        //    this.txtCodigo.Focus();
-        //    this.txtCodigo.SelectAll();
-        //}
+        private void ImprimirBoleto()
+        {
+            ImprimeVendaVista o = new ImprimeVendaVista(grid);
+            o.Print();
+        }
 
         private void GerarNumero()
         {
@@ -414,7 +367,7 @@ namespace CasaMendes
 
         #region Eventos
 
-        private void TxtCodigo_TextChanged(object sender, EventArgs e)
+        private void txtCodigo_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -445,6 +398,11 @@ namespace CasaMendes
             {
 
             }
+            //finally
+            //{
+            //    txtCodigo.Focus();
+            //    //txtCodigo.SelectAll();
+            //}
         }
 
         private void FrmPDV_Load(object sender, EventArgs e)
@@ -488,7 +446,7 @@ namespace CasaMendes
             }
         }
 
-        private void TxtQuantidade_Enter(object sender, EventArgs e)
+        private void txtQuantidade_Enter(object sender, EventArgs e)
         {
             if (txtQuantidade.Text.Length > 0)
             {
@@ -498,7 +456,7 @@ namespace CasaMendes
             else { txtQuantidade.Focus(); }
         }
 
-        private void TxtQuantidade_Leave(object sender, EventArgs e)
+        private void txtQuantidade_Leave(object sender, EventArgs e)
         {
             try
             {
@@ -512,6 +470,11 @@ namespace CasaMendes
         }
 
         #endregion
+
+        private void grid_Sorted(object sender, EventArgs e)
+        {
+            this.grid.FirstDisplayedCell = this.grid.CurrentCell;
+        }
     }
 }
 

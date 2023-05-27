@@ -41,6 +41,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTerminal = new System.Windows.Forms.Label();
             this.panelValores = new System.Windows.Forms.Panel();
+            this.txtCodigo = new CasaMendes.Numero();
+            this.txtTotal = new CasaMendes.JmsDecimalTextboxAR();
+            this.txtQuantidade = new CasaMendes.Numero();
+            this.txtSubtotal = new CasaMendes.JmsDecimalTextboxAC();
+            this.txtUnitario = new CasaMendes.JmsDecimalTextboxAC();
             this.txtLancarValor = new System.Windows.Forms.TextBox();
             this.lblTroco = new System.Windows.Forms.Label();
             this.lblLancarValor = new System.Windows.Forms.Label();
@@ -52,6 +57,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelDescricaoProduto = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.InputNumber = new System.Windows.Forms.TextBox();
             this.lblDescricaoProduto = new System.Windows.Forms.Label();
             this.panelTopo = new System.Windows.Forms.Panel();
@@ -79,11 +85,7 @@
             this.btnCancelarVenda = new System.Windows.Forms.Button();
             this.btnExcluirItem = new System.Windows.Forms.Button();
             this.panelPrincipal = new System.Windows.Forms.Panel();
-            this.txtTotal = new CasaMendes.JmsDecimalTextboxAR();
-            this.txtQuantidade = new CasaMendes.Numero();
-            this.txtSubtotal = new CasaMendes.JmsDecimalTextboxAC();
-            this.txtUnitario = new CasaMendes.JmsDecimalTextboxAC();
-            this.txtCodigo = new CasaMendes.Numero();
+            this.PrintCupom = new System.Drawing.Printing.PrintDocument();
             this.panelValores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogotipo)).BeginInit();
             this.panelDescricaoProduto.SuspendLayout();
@@ -127,6 +129,84 @@
             this.panelValores.Name = "panelValores";
             this.panelValores.Size = new System.Drawing.Size(513, 545);
             this.panelValores.TabIndex = 3;
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigo.Location = new System.Drawing.Point(3, 33);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(229, 44);
+            this.txtCodigo.TabIndex = 24;
+            this.txtCodigo.Text = "0";
+            this.txtCodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCodigo.ValorInteiro = 0;
+            this.txtCodigo.TextChanged += new System.EventHandler(this.txtCodigo_TextChanged);
+            this.txtCodigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCodigo_KeyDown);
+            this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress);
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.Location = new System.Drawing.Point(3, 415);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(229, 44);
+            this.txtTotal.TabIndex = 23;
+            this.txtTotal.Text = "0,00";
+            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTotal.ValorDecimal = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            // 
+            // txtQuantidade
+            // 
+            this.txtQuantidade.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtQuantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuantidade.Location = new System.Drawing.Point(3, 127);
+            this.txtQuantidade.Name = "txtQuantidade";
+            this.txtQuantidade.Size = new System.Drawing.Size(229, 44);
+            this.txtQuantidade.TabIndex = 21;
+            this.txtQuantidade.Text = "0";
+            this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtQuantidade.ValorInteiro = 0;
+            this.txtQuantidade.Enter += new System.EventHandler(this.txtQuantidade_Enter);
+            this.txtQuantidade.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQuantidade_KeyDown);
+            this.txtQuantidade.Leave += new System.EventHandler(this.txtQuantidade_Leave);
+            // 
+            // txtSubtotal
+            // 
+            this.txtSubtotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSubtotal.Location = new System.Drawing.Point(3, 319);
+            this.txtSubtotal.Name = "txtSubtotal";
+            this.txtSubtotal.Size = new System.Drawing.Size(229, 44);
+            this.txtSubtotal.TabIndex = 20;
+            this.txtSubtotal.Text = "0,00";
+            this.txtSubtotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSubtotal.ValorDecimal = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            // 
+            // txtUnitario
+            // 
+            this.txtUnitario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUnitario.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUnitario.Location = new System.Drawing.Point(3, 223);
+            this.txtUnitario.Name = "txtUnitario";
+            this.txtUnitario.Size = new System.Drawing.Size(229, 44);
+            this.txtUnitario.TabIndex = 19;
+            this.txtUnitario.Text = "0,00";
+            this.txtUnitario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtUnitario.ValorDecimal = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             // 
             // txtLancarValor
             // 
@@ -238,6 +318,7 @@
             // panelDescricaoProduto
             // 
             this.panelDescricaoProduto.BackColor = System.Drawing.Color.Transparent;
+            this.panelDescricaoProduto.Controls.Add(this.button1);
             this.panelDescricaoProduto.Controls.Add(this.InputNumber);
             this.panelDescricaoProduto.Controls.Add(this.lblDescricaoProduto);
             this.panelDescricaoProduto.Dock = System.Windows.Forms.DockStyle.Top;
@@ -245,6 +326,15 @@
             this.panelDescricaoProduto.Name = "panelDescricaoProduto";
             this.panelDescricaoProduto.Size = new System.Drawing.Size(1173, 80);
             this.panelDescricaoProduto.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(19, 25);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // InputNumber
             // 
@@ -387,6 +477,7 @@
             this.grid.Size = new System.Drawing.Size(638, 505);
             this.grid.TabIndex = 199;
             this.grid.TabStop = false;
+            this.grid.Sorted += new System.EventHandler(this.grid_Sorted);
             // 
             // ClienteId
             // 
@@ -580,77 +671,6 @@
             this.panelPrincipal.Size = new System.Drawing.Size(1173, 661);
             this.panelPrincipal.TabIndex = 43;
             // 
-            // txtTotal
-            // 
-            this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.Location = new System.Drawing.Point(3, 415);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(229, 44);
-            this.txtTotal.TabIndex = 23;
-            this.txtTotal.Text = "0,00";
-            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtTotal.ValorDecimal = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            // 
-            // txtQuantidade
-            // 
-            this.txtQuantidade.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtQuantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuantidade.Location = new System.Drawing.Point(3, 127);
-            this.txtQuantidade.Name = "txtQuantidade";
-            this.txtQuantidade.Size = new System.Drawing.Size(229, 44);
-            this.txtQuantidade.TabIndex = 21;
-            this.txtQuantidade.Text = "0";
-            this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtQuantidade.ValorInteiro = 0;
-            // 
-            // txtSubtotal
-            // 
-            this.txtSubtotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSubtotal.Location = new System.Drawing.Point(3, 319);
-            this.txtSubtotal.Name = "txtSubtotal";
-            this.txtSubtotal.Size = new System.Drawing.Size(229, 44);
-            this.txtSubtotal.TabIndex = 20;
-            this.txtSubtotal.Text = "0,00";
-            this.txtSubtotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtSubtotal.ValorDecimal = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            // 
-            // txtUnitario
-            // 
-            this.txtUnitario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtUnitario.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUnitario.Location = new System.Drawing.Point(3, 223);
-            this.txtUnitario.Name = "txtUnitario";
-            this.txtUnitario.Size = new System.Drawing.Size(229, 44);
-            this.txtUnitario.TabIndex = 19;
-            this.txtUnitario.Text = "0,00";
-            this.txtUnitario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtUnitario.ValorDecimal = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            // 
-            // txtCodigo
-            // 
-            this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.Location = new System.Drawing.Point(3, 33);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(229, 44);
-            this.txtCodigo.TabIndex = 24;
-            this.txtCodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtCodigo.ValorInteiro = 0;
-            // 
             // FrmFrenteDeCaixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -728,5 +748,7 @@
         private Numero txtQuantidade;
         private JmsDecimalTextboxAR txtTotal;
         private Numero txtCodigo;
+        private System.Drawing.Printing.PrintDocument PrintCupom;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -134,8 +134,7 @@ namespace CasaMendes
                             {
                                 chavePrimaria = pi.Name;
                             }
-
-                            if (!pOpcoesBase.ChavePrimaria)
+                            else
                             {
                                 if (pi.PropertyType.Name == "Double" || pi.PropertyType.Name == "Decimal" || pi.PropertyType.Name == "Float" || pi.PropertyType.Name == "Single")
                                 {
@@ -156,7 +155,7 @@ namespace CasaMendes
                     }
                 }
 
-                string queryString;// = "";
+                string queryString;
 
                 if (this.Key == 0)
                 {

@@ -59,7 +59,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.TxtSubCategoriaId = new System.Windows.Forms.TextBox();
             this.TxtCodigoDoFornecedor = new System.Windows.Forms.TextBox();
-            this.campo1 = new Campo();
             ((System.ComponentModel.ISupportInitialize)(this.PicFoto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -142,7 +141,7 @@
             this.TxtPrecoDeVenda.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TxtPrecoDeVenda.Name = "TxtPrecoDeVenda";
             this.TxtPrecoDeVenda.Size = new System.Drawing.Size(97, 26);
-            this.TxtPrecoDeVenda.TabIndex = 7;
+            this.TxtPrecoDeVenda.TabIndex = 8;
             this.TxtPrecoDeVenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // LblDesconto
@@ -185,7 +184,7 @@
             this.TxtValorCompra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TxtValorCompra.Name = "TxtValorCompra";
             this.TxtValorCompra.Size = new System.Drawing.Size(71, 26);
-            this.TxtValorCompra.TabIndex = 5;
+            this.TxtValorCompra.TabIndex = 6;
             this.TxtValorCompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // LblValorCompra
@@ -217,7 +216,7 @@
             this.TxtQuantidade.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TxtQuantidade.Name = "TxtQuantidade";
             this.TxtQuantidade.Size = new System.Drawing.Size(179, 26);
-            this.TxtQuantidade.TabIndex = 8;
+            this.TxtQuantidade.TabIndex = 5;
             this.TxtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.TxtQuantidade.TextChanged += new System.EventHandler(this.txtQuantidade_TextChanged);
             // 
@@ -261,7 +260,7 @@
             this.TxtPrecoUnitario.Name = "TxtPrecoUnitario";
             this.TxtPrecoUnitario.ReadOnly = true;
             this.TxtPrecoUnitario.Size = new System.Drawing.Size(71, 26);
-            this.TxtPrecoUnitario.TabIndex = 6;
+            this.TxtPrecoUnitario.TabIndex = 7;
             this.TxtPrecoUnitario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.TxtPrecoUnitario.TextChanged += new System.EventHandler(this.txtPrecoUnitario_TextChanged);
             // 
@@ -369,6 +368,7 @@
             this.TxtProdutoId.Name = "TxtProdutoId";
             this.TxtProdutoId.Size = new System.Drawing.Size(110, 21);
             this.TxtProdutoId.TabIndex = 170;
+            this.TxtProdutoId.Visible = false;
             // 
             // CbSubcategoria
             // 
@@ -407,13 +407,7 @@
             this.TxtCodigoDoFornecedor.Name = "TxtCodigoDoFornecedor";
             this.TxtCodigoDoFornecedor.Size = new System.Drawing.Size(110, 21);
             this.TxtCodigoDoFornecedor.TabIndex = 158;
-            // 
-            // campo1
-            // 
-            this.campo1.Location = new System.Drawing.Point(9, 185);
-            this.campo1.Name = "campo1";
-            this.campo1.Size = new System.Drawing.Size(197, 21);
-            this.campo1.TabIndex = 176;
+            this.TxtCodigoDoFornecedor.Visible = false;
             // 
             // FrmCadProduto
             // 
@@ -422,7 +416,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnFechar;
             this.ClientSize = new System.Drawing.Size(510, 380);
-            this.Controls.Add(this.campo1);
             this.Controls.Add(this.TxtPrecoUnitario);
             this.Controls.Add(this.TxtEstoque);
             this.Controls.Add(this.TxtPrecoDeVenda);
@@ -499,6 +492,5 @@
         internal System.Windows.Forms.Label label3;
         internal System.Windows.Forms.TextBox TxtSubCategoriaId;
         internal System.Windows.Forms.TextBox TxtCodigoDoFornecedor;
-        private Campo campo1;
     }
 }

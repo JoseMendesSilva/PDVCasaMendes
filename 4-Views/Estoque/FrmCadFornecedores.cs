@@ -40,7 +40,7 @@ namespace CasaMendes
 
         private void VincularBindingSource()
         {
-            TxtCodigoDoFornecedor.DataBindings.Add(new Binding("Text", BsFornecedor, "CodigoDoFornecedor"));
+            TxtCodigoDoFornecedor.DataBindings.Add(new Binding("Text", BsFornecedor, "FornecedorId"));
             TxtRazaoSocial.DataBindings.Add(new Binding("Text", BsFornecedor, "RazaoSocial"));
             TxtEndereco.DataBindings.Add(new Binding("Text", BsFornecedor, "Endereco"));
             MkbCep.DataBindings.Add(new Binding("Text", BsFornecedor, "Cep"));
@@ -66,9 +66,9 @@ namespace CasaMendes
 
         private void BtnGravar_Click(object sender, EventArgs e)
         {
-            oFornecedor.Cnpj = oFornecedor.Cnpj.Replace(",", "").Replace("-", "").Replace("-", "").Replace("/", "");
-            oFornecedor.InscricaoEstadual = oFornecedor.InscricaoEstadual.Replace(",", "");
-            this.oFornecedor.Estado = CbEstado.Text;
+            if (oFornecedor.Cnpj != null) oFornecedor.Cnpj = oFornecedor.Cnpj.Replace(",", "").Replace("-", "").Replace("-", "").Replace("/", "");
+            if (oFornecedor.InscricaoEstadual != null) oFornecedor.InscricaoEstadual = oFornecedor.InscricaoEstadual.Replace(",", "");
+            if (oFornecedor.Estado != null) this.oFornecedor.Estado = CbEstado.Text;
             this.Close();
         }
 

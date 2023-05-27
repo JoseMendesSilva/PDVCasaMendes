@@ -6,17 +6,17 @@ namespace CasaMendes
     public class TabelaDeMargen : Base, IDisposable
     {
 
-        private double _PorcentagemPessoPorItem;
+        private double _PorcentagemPesoPorItem;
         private bool disposedValue;
 
-        public TabelaDeMargen()
-        {
-            this.Porcentagem();
-        }
+        //public TabelaDeMargen()
+        //{
+        //    this.Porcentagem();
+        //}
 
-        private double Porcentagem()
+        public double Porcentagem()
         {
-            return _PorcentagemPessoPorItem = ValorDeBase / NumeroDeItensNaLoja;
+            return _PorcentagemPesoPorItem = ValorDeBase / NumeroDeItensNaLoja;
         }
 
         [OpcoesBase(UsarNoBancoDeDados = true, ChavePrimaria = true, UsarParaBuscar = true)]
@@ -26,17 +26,17 @@ namespace CasaMendes
         public int SubCategoriaId { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public int NumeroDeItensNaLoja { get; set; } = 28;
+        public int NumeroDeItensNaLoja { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public double ValorDeBase { get; set; } = 395.73;
+        public double ValorDeBase { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public double PorcentagemPesoPorItem { 
             get { 
-                return _PorcentagemPessoPorItem;
+                return _PorcentagemPesoPorItem;
             } 
-            set { _PorcentagemPessoPorItem = value;} 
+            set { _PorcentagemPesoPorItem = value;} 
         }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]

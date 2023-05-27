@@ -192,6 +192,9 @@
     <EmbeddedResource Include="MensagemBox.resx">
       <DependentUpon>MensagemBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MyPrinters.resx">
+      <DependentUpon>MyPrinters.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -386,6 +389,9 @@
     <Compile Include="5-Util\FrmProcessando.Designer.cs">
       <DependentUpon>FrmProcessando.cs</DependentUpon>
     </Compile>
+    <Compile Include="5-Util\ImprimeVendaVista.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="MensagemBox.cs">
       <SubType>Form</SubType>
@@ -395,6 +401,12 @@
     </Compile>
     <Compile Include="Mensagens.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="MyPrinters.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyPrinters.Designer.cs">
+      <DependentUpon>MyPrinters.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

@@ -256,7 +256,7 @@ namespace CasaMendes
 
         #endregion
 
-        #region TextChanged
+        #region TextoChanged
 
         private void MkbCep_TextChanged(object sender, EventArgs e)
         {

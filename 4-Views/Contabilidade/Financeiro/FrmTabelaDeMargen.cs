@@ -67,7 +67,7 @@ namespace CasaMendes
 
                 DgvTabelaDeMargem.Columns["NumeroDeItensNaLoja"].Width = clsGlobal.DimencionarColuna(18, this.DgvTabelaDeMargem.Width);
                 DgvTabelaDeMargem.Columns["ValorDeBase"].Width = clsGlobal.DimencionarColuna(15, this.DgvTabelaDeMargem.Width);
-                DgvTabelaDeMargem.Columns["PorcentagemPessoPorItem"].Width = clsGlobal.DimencionarColuna(18, this.DgvTabelaDeMargem.Width);
+                DgvTabelaDeMargem.Columns["PorcentagemPesoPorItem"].Width = clsGlobal.DimencionarColuna(18, this.DgvTabelaDeMargem.Width);
                 DgvTabelaDeMargem.Columns["Despesa"].Width = clsGlobal.DimencionarColuna(10, this.DgvTabelaDeMargem.Width);
                 DgvTabelaDeMargem.Columns["Custo"].Width = clsGlobal.DimencionarColuna(10, this.DgvTabelaDeMargem.Width);
                 DgvTabelaDeMargem.Columns["Encargo"].Width = clsGlobal.DimencionarColuna(10, this.DgvTabelaDeMargem.Width);
@@ -75,7 +75,7 @@ namespace CasaMendes
 
                 DgvTabelaDeMargem.Columns["NumeroDeItensNaLoja"].HeaderText = "Numero de itens";
                 DgvTabelaDeMargem.Columns["ValorDeBase"].HeaderText = "Valor base";
-                DgvTabelaDeMargem.Columns["PorcentagemPessoPorItem"].HeaderText = "Pesso aplicado";
+                DgvTabelaDeMargem.Columns["PorcentagemPesoPorItem"].HeaderText = "Pesso aplicado";
                 DgvTabelaDeMargem.Columns["Despesa"].HeaderText = "Despesa";
                 DgvTabelaDeMargem.Columns["Custo"].HeaderText = "Custo";
                 DgvTabelaDeMargem.Columns["Encargo"].HeaderText = "Encargo";
@@ -97,7 +97,7 @@ namespace CasaMendes
             this.TxtSubCategoriaId.DataBindings.Add("Text", BsTabelaDeMargem, "SubCategoriaId");
             this.TxtNumeroDeItensNaLoja.DataBindings.Add("Text", BsTabelaDeMargem, "NumeroDeItensNaLoja");
             this.TxtValorDeBase.DataBindings.Add("Text", BsTabelaDeMargem, "ValorDeBase");
-            this.TxtPorcentagemPessoPorItem.DataBindings.Add("Text", BsTabelaDeMargem, "PorcentagemPessoPorItem");
+            this.TxtPorcentagemPesoPorItem.DataBindings.Add("Text", BsTabelaDeMargem, "NumeroDeItensNaLoja");
             this.TxtDespesa.DataBindings.Add("Text", BsTabelaDeMargem, "Despesa");
             this.TxtCusto.DataBindings.Add("Text", BsTabelaDeMargem, "Custo");
             this.TxtEncargo.DataBindings.Add("Text", BsTabelaDeMargem, "Encargo");
@@ -110,7 +110,7 @@ namespace CasaMendes
             double d = oTabelaDeMargen.Despesa;
             d = double.Parse(this.TxtValorDeBase.Text) / double.Parse(this.TxtNumeroDeItensNaLoja.Text);
 
-            TxtPorcentagemPessoPorItem.Text = d.ToString("N2");
+            TxtPorcentagemPesoPorItem.Text = d.ToString("N2");
 
             d += oTabelaDeMargen.Custo;
             d += oTabelaDeMargen.MargemDeLucro;
@@ -207,8 +207,16 @@ namespace CasaMendes
 
                 SubCategoria oSubCategoria = new SubCategoria();
                 DgvSubcategorias.DataSource = oSubCategoria.Todos();
+                if (DgvSubcategorias.Rows.Count == 0)
+                {
+                    MessageBox.Show("Não foram encontrado nemhuma subcategoria cadastrada, cadastre subcategorias.");
+                    BtnGravar.Enabled = false;
+                    BtnExcluir.Enabled = false;
+                    BtnNovo.Enabled = false;
+                    BtnRetornar.Enabled = true;
+                }
                 OrganizarColunasSubcategoria();
-                if (TxtPorcentagemPessoPorItem.Text.Length > 0) { Calcular(); }
+                if (TxtPorcentagemPesoPorItem.Text.Length > 0) { Calcular(); }
             }
             catch { }
         }
@@ -331,6 +339,14 @@ namespace CasaMendes
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
             Excluir();
+        }
+
+        private void TxtNumeroDeItensNaLoja_TextChanged(object sender, EventArgs e)
+        {
+            if(!string.IsNullOrEmpty(TxtNumeroDeItensNaLoja.Text) && !string.IsNullOrEmpty(TxtValorDeBase.Text))
+            {
+              TxtPorcentagemPesoPorItem.Text = oTabelaDeMargen.Porcentagem().ToString();
+            }
         }
 
         private void BtnRetornar_Click(object sender, EventArgs e)
