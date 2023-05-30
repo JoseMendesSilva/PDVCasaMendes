@@ -13,7 +13,7 @@ namespace CasaMendes
     {
         private DataGridView DgvVendas;
         private PreVenda venda;
-        private Font bold = new Font(FontFamily.GenericSansSerif, 10, FontStyle.Bold);
+        private Font bold = new Font(FontFamily.GenericSansSerif, 9, FontStyle.Bold);
         private Font regular = new Font(FontFamily.GenericSansSerif, 8, FontStyle.Regular);
         private Font regularItens = new Font(FontFamily.GenericSansSerif, 6, FontStyle.Regular);
 
@@ -51,14 +51,13 @@ namespace CasaMendes
             PosicaoX += 100; //100
             PosicaoStartX = PosicaoStartXLine; //5
             graphics.DrawString(empresa, bold, Brushes.Black, 40, PosicaoStartY);
-            //graphics.DrawString(empresa, bold, Brushes.Black, PosicaoStartX, PosicaoStartY);
 
             PosicaoY = 15; //15
             PosicaoX += 195;
             graphics.DrawString(endereco, bold, Brushes.Black, PosicaoStartX, PosicaoY);
 
             PosicaoY += 13; //28
-            graphics.DrawString("Contato: (11)95384-7483".ToUpper(), bold, Brushes.Black, PosicaoStartX, PosicaoY);
+            graphics.DrawString("Contato:(11)95384-7483".ToUpper(), bold, Brushes.Black, PosicaoStartX, PosicaoY);
 
             PosicaoY += 14; //42
             if (DgvVendas.Rows.Count > 0)

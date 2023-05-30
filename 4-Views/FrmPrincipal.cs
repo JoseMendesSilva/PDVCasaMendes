@@ -308,44 +308,12 @@ namespace CasaMendes
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            try { FrenteDeCaixaMenuItem_Click(null, null); } catch { }
+            try
+            {
+                FrenteDeCaixaMenuItem_Click(null, null);
+            }
+            catch { }
         }
+
     }
 }
-
-//// Declare the DateChanged event.
-////public event DateRangeEventHandler DateChanged;
-//// The event does not have any data, so EventHandler is adequate
-//// as the event delegate.
-//private EventHandler onValueChanged;
-//// Define the event member using the event keyword.
-//// In this case, for efficiency, the event is defined
-//// using the event property construct.
-//public event EventHandler ValueChanged
-//{
-//    add
-//    {
-//        onValueChanged += value;
-//    }
-//    remove
-//    {
-//        onValueChanged -= value;
-//    }
-//}
-//// The protected method that raises the ValueChanged
-//// event when the value has actually
-//// changed. Derived controls can override this method.
-
-//protected virtual void OnValueChanged(EventArgs e)
-//{
-//    onValueChanged?.Invoke(this, e);
-//}
-
-////public property to set statusbar
-//public string SetStatus
-//{
-//    set { this.AtualStatus.Text = value; }
-//}
-//Vendas.AtualizarStatusLabel(this);
-//public void AtualizarStatusLabel(string status)
-//=> this.StatusLabelToolStrip.Text = status;

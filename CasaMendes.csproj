@@ -150,15 +150,13 @@
     <EmbeddedResource Include="4-Views\Estoque\FrmProdutos.resx">
       <DependentUpon>FrmProdutos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\Vendas\FrmBuscarCliente.resx">
-      <DependentUpon>FrmBuscarCliente.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="4-Views\Estoque\FrmEstoque.resx">
       <DependentUpon>FrmEstoque.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="4-Views\Contabilidade\Financeiro\FrmTabelaDeMargen.resx">
       <DependentUpon>FrmTabelaDeMargen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="4-Views\Vendas\FrmBuscarCliente.resx" />
     <EmbeddedResource Include="4-Views\Vendas\FrmCarregarVendas.resx">
       <DependentUpon>FrmCarregarVendas.cs</DependentUpon>
     </EmbeddedResource>
@@ -317,18 +315,16 @@
     <Compile Include="3-JMS Comp\Numero.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="4-Views\Vendas\FrmBuscarCliente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="4-Views\Vendas\FrmBuscarCliente.Designer.cs">
-      <DependentUpon>FrmBuscarCliente.cs</DependentUpon>
-    </Compile>
     <Compile Include="4-Views\Estoque\FrmEstoque.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="4-Views\Estoque\FrmEstoque.Designer.cs">
       <DependentUpon>FrmEstoque.cs</DependentUpon>
     </Compile>
+    <Compile Include="4-Views\Vendas\FrmBuscarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4-Views\Vendas\FrmBuscarCliente.Designer.cs" />
     <Compile Include="4-Views\Vendas\FrmCarregarVendas.cs">
       <SubType>Form</SubType>
     </Compile>

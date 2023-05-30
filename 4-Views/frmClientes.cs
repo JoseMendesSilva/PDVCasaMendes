@@ -10,7 +10,7 @@ namespace CasaMendes
         #region Variáveis
 
         Cliente oCliente;
-        private readonly BindingSource BsCliente;
+        private BindingSource BsCliente;
         bool editar;
         int LinhaIndex;
         private FrmCadClientes cadastrarClientes;
@@ -28,17 +28,6 @@ namespace CasaMendes
         public FrmClientes()
         {
             InitializeComponent();
-            editar = false;
-            LinhaIndex = -1;
-            oCliente = new Cliente();
-            BsCliente = new BindingSource
-            {
-                oCliente
-            };
-            BsCliente.DataSource = oCliente;
-            this.Text = clsGlobal.MontarTitulo("Clientes");
-            RedimencionarGrade();
-            this.DgvClientes.Focus();
         }
 
         #endregion
@@ -190,11 +179,41 @@ namespace CasaMendes
 
         private void FrmClientes_Load(object sender, EventArgs e)
         {
+
             try
             {
-                Botoes(true);
-                Carregar();
+                FrmProcessando oProcessando = new FrmProcessando();
+                oProcessando.Show();
+                oProcessando.TopMost = true;
+                oProcessando.Processo(1, "Lista de clientes", "Garregando.");
+                this.Text = clsGlobal.MontarTitulo("Clientes");
+                oProcessando.Processo(6, "Lista de clientes", "Garregando..");
+                editar = false;
+                oProcessando.Processo(13, "Lista de clientes", "Garregando...");
+                LinhaIndex = -1;
+                oProcessando.Processo(18, "Lista de clientes", "Garregando.");
+                oCliente = new Cliente();
+                oProcessando.Processo(27, "Lista de clientes", "Garregando..");
+                BsCliente = new BindingSource { oCliente };
+                oProcessando.Processo(33, "Lista de clientes", "Garregando...");
+                BsCliente.DataSource = oCliente;
+                oProcessando.Processo(39, "Lista de clientes", "Garregando.");
+                this.Text = clsGlobal.MontarTitulo("Clientes");
+                oProcessando.Processo(46, "Lista de clientes", "Garregando..");
                 RedimencionarGrade();
+                oProcessando.Processo(53, "Lista de clientes", "Garregando...");
+                this.DgvClientes.Focus();
+                oProcessando.Processo(59, "Lista de clientes", "Garregando.");
+                Botoes(true);
+                oProcessando.Processo(66, "Lista de clientes", "Garregando..");
+                Carregar();
+                oProcessando.Processo(73, "Lista de clientes", "Garregando...");
+                RedimencionarGrade();
+                oProcessando.Processo(80, "Lista de clientes", "Garregado.");
+                oProcessando.Processo(87, "Lista de clientes", "Garregando..");
+                oProcessando.Processo(100, "Lista de clientes", "Garregado...");
+                oProcessando.Close();
+                oProcessando.Dispose();
             }
             catch { }
         }

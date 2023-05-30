@@ -51,24 +51,41 @@ namespace CasaMendes
         {
             try
             {
+                FrmProcessando oProcessando = new FrmProcessando();
+                oProcessando.Show();
+                oProcessando.TopMost = true;
+                oProcessando.Processo(1, "Lista de clientes", "Garregando.");
                 this.Text = clsGlobal.MontarTitulo("Clientes");
+                oProcessando.Processo(1, "Lista de clientes", "Garregando..");
                 clsGlobal.RedimencionarGrade(this, ref DgvClientes);
+                oProcessando.Processo(1, "Lista de clientes", "Garregando...");
                 var oCliente = new Cliente();
+                oProcessando.Processo(1, "Lista de clientes", "Garregando.");
                 this.DgvClientes.DataSource = oCliente.Todos();
+                oProcessando.Processo(1, "Lista de clientes", "Garregando..");
                 if (DgvClientes.Rows.Count > 0)
                 {
                     for (int i = 0; i < DgvClientes.Rows.Count; i++)
                     {
+                        oProcessando.Processo(1, "Lista de clientes", "Garregando...");
                         DgvClientes.Columns[i].Visible = false;
                     }
+                    oProcessando.Processo(1, "Lista de clientes", "Garregando...");
                     DgvClientes.Columns["Nome"].Visible = true;
+                    oProcessando.Processo(1, "Lista de clientes", "Garregando.");
                     DgvClientes.Columns["Nome"].Width = DgvClientes.Width - 22;
+                    oProcessando.Processo(1, "Lista de clientes", "Garregando..");
                     this.DgvClientes.Focus();
+                    oProcessando.Processo(1, "Lista de clientes", "Garregando...");
                 }
                 else
                 {
+                    oProcessando.Processo(1, "Lista de clientes", "Garregando...");
                     MessageBox.Show("Nenhum cliente cadastrado.");
                 }
+                oProcessando.Processo(1, "Lista de clientes", "Garregado.");
+                oProcessando.Close();
+                oProcessando.Dispose();
             }
             catch { }
         }
