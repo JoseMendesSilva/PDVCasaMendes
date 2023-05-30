@@ -36,49 +36,49 @@ namespace CasaMendes
             switch (Posicao)
             {
                 case 0:
-                    iFormato = string.Format("{0,0}", Dado.Trim());
+                    iFormato = string.Format("{0,0:#}", DeStringParaInt(Dado.Trim()));
                     break;
                 case 1:
-                    iFormato = string.Format("{0,1:#0}", Dado.Trim());
+                    iFormato = string.Format("{0,1:#0}", DeStringParaInt(Dado.Trim()));
                     break;
                 case 2:
-                    iFormato = string.Format("{0,2:#00}", Dado.Trim());
+                    iFormato = string.Format("{0,2:#00}", DeStringParaInt(Dado.Trim()));
                     break;
                 case 3:
-                    iFormato = string.Format("{0,3:#000}", Dado.Trim());
+                    iFormato = string.Format("{0,3:#000}", DeStringParaInt(Dado.Trim()));
                     break;
                 case 4:
-                    iFormato = string.Format("{0,4:#0000}", Dado.Trim());
+                    iFormato = string.Format("{0,4:#0000}", DeStringParaInt(Dado.Trim()));
                     break;
                 case 5:
-                    iFormato = string.Format("{0,5:#00000}", Dado.Trim());
+                    iFormato = string.Format("{0,5:#00000}", DeStringParaInt(Dado.Trim()));
                     break;
                 case 6:
-                    iFormato = string.Format("{0,6:#000000}", Dado.Trim());
+                    iFormato = string.Format("{0,6:#000000}", DeStringParaInt(Dado.Trim()));
                     break;
                 case 7:
-                    iFormato = string.Format("{0,7:#0000000}", Dado.Trim());
+                    iFormato = string.Format("{0,7:#0000000}", DeStringParaInt(Dado.Trim()));
                     break;
                 case 8:
-                    iFormato = string.Format("{0,8:#00000000}", Dado.Trim());
+                    iFormato = string.Format("{0,8:#00000000}", DeStringParaInt(Dado.Trim()));
                     break;
                 case 9:
-                    iFormato = string.Format("{0,10:G}", Dado.Trim());
+                    iFormato = string.Format("{0,9:#000000000}", DeStringParaInt(Dado.Trim()));
                     break;
                 case 10:
-                    iFormato = string.Format("{0,10:#0000000000}", Dado.Trim());
+                    iFormato = string.Format("{0,10:#0000000000}", DeStringParaInt(Dado.Trim()));
                     break;
                 case 11:
-                    iFormato = string.Format("{0,11:#00000000000}", Dado.Trim());
+                    iFormato = string.Format("{0,11:#00000000000}", DeStringParaInt(Dado.Trim()));
                     break;
                 case 12:
-                    iFormato = string.Format("{0,12:#000000000000}", Dado.Trim());
+                    iFormato = string.Format("{0,12:#000000000000}", DeStringParaInt(Dado.Trim()));
                     break;
                 case 13:
-                    iFormato = string.Format("{0,13:#0000000000000}", Dado.Trim());
+                    iFormato = string.Format("{0,13:#0000000000000}", DeStringParaInt(Dado.Trim()));
                     break;
                 case 14:
-                    iFormato = string.Format("{0,14:#00000000000000}", Dado.Trim());
+                    iFormato = string.Format("{0,14:#00000000000000}", DeStringParaInt(Dado.Trim()));
                     break;
                 default:
                     break;

@@ -3,6 +3,7 @@ using System.Drawing;
 using System;
 using System.Windows.Forms;
 using System.Configuration;
+using DocumentFormat.OpenXml.Drawing;
 
 namespace CasaMendes
 {
@@ -35,23 +36,29 @@ namespace CasaMendes
             int PosicaoX = 0;
             int PosicaoY = 0;
 
+            int PosicaoStartXLine = 4;
+            int PosicaoXLine = 180;
+
+            int PosicaoXMenu = 40;
+
             decimal SubTotal = 0;
             decimal total = 0;
 
             string empresa = "Casa Mendes".ToUpper();
-            string endereco = ("Viela 5" + " Nº ").ToUpper() + 39 + (", JD. Rosas - Francisco Morato").ToUpper();
+            string endereco = ("Viela 5" + " Nº ").ToUpper() + 39 + (", JD. Rosas").ToUpper();
 
             //print header
             PosicaoX += 100; //100
-            PosicaoStartX += 10; //10
-            graphics.DrawString(empresa, bold, Brushes.Black, PosicaoX, PosicaoStartY);
+            PosicaoStartX = PosicaoStartXLine; //5
+            graphics.DrawString(empresa, bold, Brushes.Black, 40, PosicaoStartY);
+            //graphics.DrawString(empresa, bold, Brushes.Black, PosicaoStartX, PosicaoStartY);
 
             PosicaoY = 15; //15
             PosicaoX += 195;
             graphics.DrawString(endereco, bold, Brushes.Black, PosicaoStartX, PosicaoY);
 
             PosicaoY += 13; //28
-            graphics.DrawString("Contato: (11) 95384-7483".ToUpper(), bold, Brushes.Black, PosicaoStartX, PosicaoY);
+            graphics.DrawString("Contato: (11)95384-7483".ToUpper(), bold, Brushes.Black, PosicaoStartX, PosicaoY);
 
             PosicaoY += 14; //42
             if (DgvVendas.Rows.Count > 0)
@@ -66,55 +73,65 @@ namespace CasaMendes
 
             PosicaoY += 14; //56
             PosicaoX -= 5;
-            graphics.DrawLine(Pens.Black, PosicaoStartX, PosicaoY, PosicaoX, PosicaoY);
+            graphics.DrawLine(Pens.Black, PosicaoStartXLine, PosicaoY, PosicaoXLine, PosicaoY);
 
             PosicaoY += 3; //59
             PosicaoX -= 210; //80
-            graphics.DrawString("CUPOM NÃO FISCAL".ToUpper(), bold, Brushes.Black, PosicaoX, PosicaoY);
+            graphics.DrawString("CUPOM NÃO FISCAL".ToUpper(), bold, Brushes.Black, 15, PosicaoY);
+            //graphics.DrawString("CUPOM NÃO FISCAL".ToUpper(), bold, Brushes.Black, PosicaoStartX, PosicaoY);
 
-            PosicaoY += 18; //67
+            PosicaoY += 18; //77
             PosicaoX += 210;//290
-            graphics.DrawLine(Pens.Black, PosicaoStartX, PosicaoY, PosicaoX, PosicaoY);
+            graphics.DrawLine(Pens.Black, PosicaoStartXLine, PosicaoY, PosicaoXLine, PosicaoY);
 
             //itens header                                          x              y
-            PosicaoY += 2; //75
+            PosicaoY += 2; //79
             //offset = offset;
             graphics.DrawString("ITEM", regular, Brushes.Black, PosicaoStartX, PosicaoY);
-            graphics.DrawString("PRODUTO", regular, Brushes.Black, 40, PosicaoY);
-            graphics.DrawString("UNIT.", regular, Brushes.Black, 170, PosicaoY);
-            graphics.DrawString("QTD.", regular, Brushes.Black, 210, PosicaoY);
-            graphics.DrawString("TOTAL", regular, Brushes.Black, 250, PosicaoY);
-            graphics.DrawLine(Pens.Black, PosicaoStartX, offset, PosicaoX, offset);
+            graphics.DrawString("PRODUTO", regular, Brushes.Black, PosicaoXMenu, PosicaoY);
+            PosicaoY += 13; //92
+            graphics.DrawString("UNIT.", regular, Brushes.Black, PosicaoXMenu, PosicaoY);
+            PosicaoXMenu += 45; //85 
+            graphics.DrawString("QTD.", regular, Brushes.Black, PosicaoXMenu, PosicaoY);
+            PosicaoXMenu += 50; //135 
+            graphics.DrawString("TOTAL", regular, Brushes.Black, PosicaoXMenu, PosicaoY);
+            graphics.DrawLine(Pens.Black, PosicaoStartXLine, offset, PosicaoXLine, offset);
 
-
+            PosicaoY += 23; //105 ++
+            PosicaoXMenu -= 95; //135 
             //itens de venda
             for (int i = 0; i < DgvVendas.Rows.Count; i++)
             {
-                    this.venda.Desconto = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[i].Cells[3].Value.ToString());
-                    this.venda.Tributos = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[i].Cells[4].Value.ToString());
-                       this.venda.Juros = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[i].Cells[5].Value.ToString());
+                string Item = clsGlobal.Formatar(DgvVendas.Rows[i].Cells[0].Value.ToString(), 4);
+                //string Item = string.Format("{0,4:#0000}", DgvVendas.Rows[i].Cells[0].Value);
+                this.venda.Desconto = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[i].Cells[3].Value.ToString());
+                this.venda.Tributos = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[i].Cells[4].Value.ToString());
+                this.venda.Juros = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[i].Cells[5].Value.ToString());
                 this.venda.TotalPendura = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[i].Cells[6].Value.ToString());
-                            string Item = DgvVendas.Rows[i].Cells[7].Value.ToString();
-                     this.venda.Produto = DgvVendas.Rows[i].Cells[9].Value.ToString();
-                  this.venda.Quantidade = clsGlobal.DeStringParaInt(DgvVendas.Rows[i].Cells[10].Value.ToString());
+                this.venda.Produto = DgvVendas.Rows[i].Cells[9].Value.ToString();
+                this.venda.Quantidade = clsGlobal.DeStringParaInt(DgvVendas.Rows[i].Cells[10].Value.ToString());
                 this.venda.PrecoDeVenda = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[i].Cells[11].Value.ToString());
-                       this.venda.Valor = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[i].Cells[12].Value.ToString());
+                this.venda.Valor = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[i].Cells[12].Value.ToString());
 
+                PosicaoXMenu = 40; //40 
                 graphics.DrawString(Item.ToString(), regularItens, Brushes.Black, PosicaoStartX, offset);
-                graphics.DrawString(venda.Produto.Length > 20 ? venda.Produto.Substring(0, 20) + "..." : venda.Produto, regularItens, Brushes.Black, 40, offset);
-                graphics.DrawString(venda.PrecoDeVenda.ToString(), regularItens, Brushes.Black, 175, offset);
-                graphics.DrawString(venda.Quantidade.ToString(), regularItens, Brushes.Black, 215, offset);
-                graphics.DrawString(venda.Valor.ToString(), regularItens, Brushes.Black, 250, offset);
-                offset += PosicaoStartX;
+                graphics.DrawString(venda.Produto.Length > 20 ? venda.Produto.Substring(0, 20) + "..." : venda.Produto, regularItens, Brushes.Black, PosicaoXMenu, offset);
+                graphics.DrawString(venda.PrecoDeVenda.ToString(), regularItens, Brushes.Black, PosicaoXMenu, PosicaoY);
+                PosicaoXMenu = 90; //85 
+                graphics.DrawString(venda.Quantidade.ToString(), regularItens, Brushes.Black, PosicaoXMenu, PosicaoY);
+                PosicaoXMenu = 140; //120 
+                graphics.DrawString(venda.Valor.ToString(), regularItens, Brushes.Black, PosicaoXMenu, PosicaoY);
+                offset += 20;
+                PosicaoY = offset + 10; //105 ++ 78400924
                 SubTotal += this.venda.Valor;
 
             }
 
             offset += 1;
             //total
-            graphics.DrawLine(Pens.Black, PosicaoStartX, offset, PosicaoX, offset);
+            graphics.DrawLine(Pens.Black, PosicaoStartXLine, offset, PosicaoXLine, offset);
             offset += 5;
-            PosicaoX -= 65; //225
+            PosicaoX -= 155; //135
 
             graphics.DrawString("SUBTOTAL R$: ", regular, Brushes.Black, PosicaoStartX, offset);
             graphics.DrawString(SubTotal.ToString("N2"), regular, Brushes.Black, PosicaoX, offset);
@@ -137,31 +154,46 @@ namespace CasaMendes
                 offset += 16;
 
             }
-                graphics.DrawString("TOTAL R$: ", regular, Brushes.Black, PosicaoStartX, offset);
-                graphics.DrawString(total.ToString("N2"), regular, Brushes.Black, PosicaoX, offset);
-                offset += 15;
-            PosicaoX += 65; //290
 
-            graphics.DrawLine(Pens.Black, PosicaoStartX, offset, PosicaoX, offset);
+            graphics.DrawString("TOTAL R$: ", regular, Brushes.Black, PosicaoStartX, offset);
+            graphics.DrawString(total.ToString("N2"), regular, Brushes.Black, PosicaoX, offset);
+            offset += 15;
+            //PosicaoX += 105; //290
+
+            graphics.DrawLine(Pens.Black, PosicaoStartXLine, offset, PosicaoXLine, offset);
             offset += 1;
-            PosicaoX -= 240;//50
+            //PosicaoX -= 240;//50
 
             graphics.DrawString("Cliente: ", regular, Brushes.Black, PosicaoStartX, offset);
-            graphics.DrawString(this.venda.ClienteId.ToString(), regular, Brushes.Black, PosicaoStartX + PosicaoX, offset);
+            graphics.DrawString(this.venda.ClienteId.ToString(), regular, Brushes.Black, PosicaoX, offset);
             offset += 15;
 
+            PosicaoX -= 15; //290
             graphics.DrawString("Venda: ", regular, Brushes.Black, PosicaoStartX, offset);
-            graphics.DrawString(this.venda.TipoDeVenda, regular, Brushes.Black, PosicaoStartX + PosicaoX, offset);
+            graphics.DrawString(this.venda.TipoDeVenda, regular, Brushes.Black, PosicaoX, offset);
             offset += 13;
-            PosicaoX += 240; //290
 
-            graphics.DrawLine(Pens.Black, PosicaoStartX, offset, PosicaoX, offset);
-            offset += 5;
-            PosicaoX -= 70;//220
+            graphics.DrawLine(Pens.Black, PosicaoStartXLine, offset, PosicaoXLine, offset);
+            //offset += 3;
+            PosicaoX -= 7;//220
 
             ////bottom
             graphics.DrawString("Data: " + DateTime.Now.ToString("dd/MM/yyyy"), regularItens, Brushes.Black, PosicaoStartX, offset);
             graphics.DrawString("HORA: " + DateTime.Now.ToString("HH:mm:ss"), regularItens, Brushes.Black, PosicaoX, offset);
+            offset += 10;
+
+            graphics.DrawLine(Pens.Black, PosicaoStartXLine, offset, PosicaoXLine, offset);
+            //offset += 5;
+            graphics.DrawString("", regularItens, Brushes.Black, PosicaoStartX, offset);
+            offset += 5;
+            graphics.DrawString("TROCA: ", regularItens, Brushes.Black, PosicaoStartX, offset);
+            offset += 10;
+            graphics.DrawString("COM DATA DE VALIDADE VENCIDA.", regularItens, Brushes.Black, PosicaoStartX, offset);
+            offset += 15;
+            graphics.DrawString("DEVOLUÇÕES: ", regularItens, Brushes.Black, PosicaoStartX, offset);
+            offset += 10;
+            graphics.DrawString("NÃO ECEITAMOS DEVOLUÇÕES.", regularItens, Brushes.Black, PosicaoStartX, offset);
+            //offset += 5;
 
             e.HasMorePages = false;
 

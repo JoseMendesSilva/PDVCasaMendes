@@ -73,7 +73,7 @@ namespace CasaMendes
         {
             try
             {
-                if (Filtro.Length < 8) return;
+                if (Filtro.Length < 13) return;
                 if (oPreVenda.NumeroDaVenda == "0") { GerarNumero(); }
 
                 var oEstoque = new Estoque();
@@ -399,6 +399,7 @@ namespace CasaMendes
         {
             try
             {
+                string Item;
                 Int32 tamanho = TxtCodigo.Text.Length;
                 string operador = "";
                 if (this.Buscando == false)
@@ -416,11 +417,15 @@ namespace CasaMendes
                 else
                 {
                     Buscando = false;
-                    if (TxtCodigo.Text.Length < 4)
-                    { this.TxtCodigo.Focus(); return; }
+                    if (TxtCodigo.Text.Length < 8)
+                    { 
+                        this.TxtCodigo.Focus();
+                        return; 
+                    }
+                     Item = clsGlobal.Formatar(TxtCodigo.Text, 14);
                 }
 
-                this.BuscarProduto(this.TxtCodigo.Text);
+                this.BuscarProduto(Item); 
             }
             catch
             {
@@ -455,11 +460,6 @@ namespace CasaMendes
         }
 
         #endregion
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ImprimirBoleto();
-        }
 
     }
 }

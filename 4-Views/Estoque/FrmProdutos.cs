@@ -128,7 +128,7 @@ namespace CasaMendes
                         EstoqueId = 0,
                         ProdutoId = cadProduto.oProduto.ProdutoId,
                         Produto = cadProduto.oProduto.Nome,
-                        CodigoDeBarras = clsGlobal.Formatar(cadProduto.oProduto.CodigoDeBarras, 14),
+                        CodigoDeBarras = clsGlobal.Formatar(cadProduto.oProduto.CodigoDeBarras,14),
                         Quantidade = cadProduto.oProduto.Quantidade,
                         PrecoDeVenda = clsGlobal.DeStringParaDecimal(cadProduto.oProduto.PrecoDeVenda.ToString("N2")),
                         QuantidadeItemDesconto = clsGlobal.DeStringParaInt(cadProduto.TxtQuantidadeItemDesconto.Text),

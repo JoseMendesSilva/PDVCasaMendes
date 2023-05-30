@@ -205,15 +205,15 @@ namespace CasaMendes
 
         #endregion
 
-        #endregion
-
         private void TxtCodigoDeBarras_Leave(object sender, EventArgs e)
         {
             try {
-                string texto = string.Format("{0,10:###########}", TxtCodigoDeBarras.Text.Trim());//clsGlobal.Formatar(TxtCodigoDeBarras.Text.ToString(), 9);
-                TxtCodigoDeBarras.Text = texto;
+                TxtCodigoDeBarras.Text = clsGlobal.Formatar(TxtCodigoDeBarras.Text, 14);
             }
             catch { }
         }
+
+        #endregion
+   
     }
 }
