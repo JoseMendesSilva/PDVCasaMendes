@@ -1,16 +1,17 @@
 ﻿
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace CasaMendes
 {
-    public class Estoque : Base, IDisposable
+    public class Estoque : Base, IDisposable, IEnumerable
     {
         private bool disposedValue;
 
-        public Estoque()
-        {
-        }
+        //public Estoque()
+        //{
+        //}
 
         [OpcoesBase(UsarNoBancoDeDados = true, ChavePrimaria = true, UsarParaBuscar = true)]
         public int EstoqueId { get; set; }
@@ -21,7 +22,7 @@ namespace CasaMendes
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
         public string CodigoDeBarras { get; set; }
 
-        [OpcoesBase(UsarNoBancoDeDados = false)]
+        [OpcoesBase(UsarNoBancoDeDados = true)]
         public string Produto { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
@@ -35,6 +36,9 @@ namespace CasaMendes
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public decimal ValorDesconto { get; set; }
+
+        [OpcoesBase(UsarNoBancoDeDados = false)]
+        public string Foto { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public DateTime created_at { get; set; } = DateTime.Now;
@@ -63,6 +67,11 @@ namespace CasaMendes
                 estoque.Add((Estoque)ibase);
             }
             return estoque;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return ((IEnumerable)CodigoDeBarras).GetEnumerator();
         }
 
         protected virtual void Dispose(bool disposing)

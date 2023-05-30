@@ -327,8 +327,8 @@ namespace CasaMendes
 
             //try
             //{
-            //    clsGlobal.SetUpDataGridView(this.dgvVendas);
-            //    clsGlobal.SetUpDataGridView(this.dgvClientes);
+            //    clsGlobal.ConfigurarGrade(this.dgvVendas);
+            //    clsGlobal.ConfigurarGrade(this.dgvClientes);
 
             //    //Cl_PreVenda.CarregarGradeClente(this.dgvClientes);
 

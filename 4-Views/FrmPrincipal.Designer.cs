@@ -81,8 +81,9 @@
             this.ToolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.HelpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.StatusStrip = new System.Windows.Forms.StatusStrip();
-            this.StatusLabeTtoolStrip = new System.Windows.Forms.ToolStripStatusLabel();
+            this.AtualStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.MenuStrip.SuspendLayout();
             this.ToolStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
@@ -520,25 +521,35 @@
             // StatusStrip
             // 
             this.StatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.StatusLabeTtoolStrip});
+            this.AtualStatus});
             this.StatusStrip.Location = new System.Drawing.Point(0, 636);
             this.StatusStrip.Name = "StatusStrip";
             this.StatusStrip.Size = new System.Drawing.Size(1084, 25);
             this.StatusStrip.TabIndex = 2;
             this.StatusStrip.Text = "StatusStrip";
             // 
-            // StatusLabeTtoolStrip
+            // AtualStatus
             // 
-            this.StatusLabeTtoolStrip.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.StatusLabeTtoolStrip.Name = "StatusLabeTtoolStrip";
-            this.StatusLabeTtoolStrip.Size = new System.Drawing.Size(49, 20);
-            this.StatusLabeTtoolStrip.Text = "Status";
+            this.AtualStatus.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.AtualStatus.Name = "AtualStatus";
+            this.AtualStatus.Size = new System.Drawing.Size(49, 20);
+            this.AtualStatus.Text = "Status";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(449, 1);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 48);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 661);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.StatusStrip);
             this.Controls.Add(this.ToolStrip);
             this.Controls.Add(this.MenuStrip);
@@ -548,6 +559,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmPrincipal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             this.MenuStrip.ResumeLayout(false);
             this.MenuStrip.PerformLayout();
             this.ToolStrip.ResumeLayout(false);
@@ -609,11 +621,12 @@
         private System.Windows.Forms.ToolStripButton PrintPreviewToolStripButton;
         private System.Windows.Forms.ToolStripButton HelpToolStripButton;
         private System.Windows.Forms.ToolTip ToolTip;
-        public System.Windows.Forms.ToolStripStatusLabel StatusLabeTtoolStrip;
         private System.Windows.Forms.ToolStripMenuItem EstoqueMenuItem;
         private System.Windows.Forms.ToolStripMenuItem VendaspMenuItem;
         private System.Windows.Forms.ToolStripMenuItem GestaoMenuItem;
         private System.Windows.Forms.ToolStripMenuItem PrecosMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel AtualStatus;
+        private System.Windows.Forms.Button button1;
     }
 }
 

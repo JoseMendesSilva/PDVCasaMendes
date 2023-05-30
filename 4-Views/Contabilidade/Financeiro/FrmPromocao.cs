@@ -26,7 +26,7 @@ namespace CasaMendes
             {
                 //ClsPromocao oP = new ClsPromocao();
 
-                //clsGlobal.SetUpDataGridView(this.dgv);
+                //clsGlobal.ConfigurarGrade(this.dgv);
                 //oP.lerPromocao(this.dgv);
                 //clsGlobal.RedimencionarGrade(this, this.dgv);
 

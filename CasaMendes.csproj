@@ -129,6 +129,12 @@
     <Content Include="CasaMendes.ico" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="3-JMS Comp\AttributesDemoControl.resx">
+      <DependentUpon>AttributesDemoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3-JMS Comp\FirstControl.resx">
+      <DependentUpon>FirstControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="4-Views\Estoque\FrmCadCategoria.resx">
       <DependentUpon>FrmCadCategoria.cs</DependentUpon>
     </EmbeddedResource>
@@ -149,9 +155,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="4-Views\Estoque\FrmEstoque.resx">
       <DependentUpon>FrmEstoque.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\frmCarregaCodigoDeNota.resx">
-      <DependentUpon>frmCarregaCodigoDeNota.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="4-Views\Contabilidade\Financeiro\FrmTabelaDeMargen.resx">
       <DependentUpon>FrmTabelaDeMargen.cs</DependentUpon>
@@ -231,6 +234,12 @@
     <Compile Include="2-Models\Vendas\PreVenda.cs" />
     <Compile Include="2-Models\Estoque\SubCategoria.cs" />
     <Compile Include="2-Models\Estoque\Fornecedore.cs" />
+    <Compile Include="3-JMS Comp\AttributesDemoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="3-JMS Comp\AttributesDemoControl.Designer.cs">
+      <DependentUpon>AttributesDemoControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="3-JMS Comp\Barra.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -248,6 +257,12 @@
     </Compile>
     <Compile Include="3-JMS Comp\ControlesObrigatorios.Designer.cs">
       <DependentUpon>ControlesObrigatorios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="3-JMS Comp\FirstControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="3-JMS Comp\FirstControl.Designer.cs">
+      <DependentUpon>FirstControl.cs</DependentUpon>
     </Compile>
     <Compile Include="3-JMS Comp\GradientPanel.cs">
       <SubType>Component</SubType>
@@ -313,12 +328,6 @@
     </Compile>
     <Compile Include="4-Views\Estoque\FrmEstoque.Designer.cs">
       <DependentUpon>FrmEstoque.cs</DependentUpon>
-    </Compile>
-    <Compile Include="4-Views\frmCarregaCodigoDeNota.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="4-Views\frmCarregaCodigoDeNota.Designer.cs">
-      <DependentUpon>frmCarregaCodigoDeNota.cs</DependentUpon>
     </Compile>
     <Compile Include="4-Views\Vendas\FrmCarregarVendas.cs">
       <SubType>Form</SubType>

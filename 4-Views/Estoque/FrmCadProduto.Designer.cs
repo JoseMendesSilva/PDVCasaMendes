@@ -360,6 +360,7 @@
             this.TxtCodigoDeBarras.Size = new System.Drawing.Size(150, 26);
             this.TxtCodigoDeBarras.TabIndex = 0;
             this.TxtCodigoDeBarras.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtCodigoDeBarras.Leave += new System.EventHandler(this.TxtCodigoDeBarras_Leave);
             // 
             // TxtProdutoId
             // 

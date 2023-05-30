@@ -63,7 +63,7 @@ namespace CasaMendes
             if (e.KeyCode == Keys.Enter)
             {
                 e.SuppressKeyPress = true;
-                SendKeys.Send("{Tab}");
+                    SendKeys.Send("{Tab}");
             }
             base.OnKeyDown(e);
         }

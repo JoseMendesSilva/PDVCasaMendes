@@ -125,12 +125,14 @@ namespace CasaMendes
 
                     var oEstoque = new Estoque
                     {
-                       EstoqueId = 0,
+                        EstoqueId = 0,
                         ProdutoId = cadProduto.oProduto.ProdutoId,
-                        CodigoDeBarras = cadProduto.oProduto.CodigoDeBarras,
+                        Produto = cadProduto.oProduto.Nome,
+                        CodigoDeBarras = clsGlobal.Formatar(cadProduto.oProduto.CodigoDeBarras, 14),
                         Quantidade = cadProduto.oProduto.Quantidade,
-                        PrecoDeVenda = decimal.Parse(cadProduto.oProduto.PrecoDeVenda.ToString("N2")),
-                        QuantidadeItemDesconto = int.Parse(cadProduto.TxtQuantidadeItemDesconto.Text),
+                        PrecoDeVenda = clsGlobal.DeStringParaDecimal(cadProduto.oProduto.PrecoDeVenda.ToString("N2")),
+                        QuantidadeItemDesconto = clsGlobal.DeStringParaInt(cadProduto.TxtQuantidadeItemDesconto.Text),
+                        Foto = cadProduto.oProduto.Foto,
                         ValorDesconto = decimal.Parse(cadProduto.TxtValorDesconto.Text)
                     };
                     //Verificando se o nome já existe no estoque e resgata o EstoqueId.
@@ -148,12 +150,12 @@ namespace CasaMendes
                     cadProduto.oProduto.Salvar();
                     oEstoque.Salvar();
                     Carregar();
-                    MessageBox.Show("O cadastro realizado com sucesso.");
+                    MessageBox.Show("O produto cadastrado com sucesso.");
                 }
                 else
                 {
-                    string msg = "O cadastro";
-                    if (editar) { msg = "A edição"; }
+                    string msg = "O cadastro do";
+                    if (editar) { msg = "A edição do"; }
                     MessageBox.Show($"{msg} foi cancelado(a).");
                 }
             }

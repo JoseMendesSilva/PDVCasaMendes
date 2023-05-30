@@ -9,11 +9,6 @@ namespace CasaMendes
         private double _PorcentagemPesoPorItem;
         private bool disposedValue;
 
-        //public TabelaDeMargen()
-        //{
-        //    this.Porcentagem();
-        //}
-
         public double Porcentagem()
         {
             return _PorcentagemPesoPorItem = ValorDeBase / NumeroDeItensNaLoja;

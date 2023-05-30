@@ -5,13 +5,22 @@ namespace CasaMendes
 {
     public partial class FrmPrincipal : Form
     {
+
+        #region Variaveis
+
         private int childFormNumber = 0;
+
+        #endregion
+
+        #region Construtor
 
         public FrmPrincipal()
         {
             InitializeComponent();
             CriarTabelasDoSistema.CriarTabelas();
         }
+
+        #endregion
 
         #region ToolsStrip
 
@@ -27,7 +36,7 @@ namespace CasaMendes
 
         private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           StatusStrip.Visible = StatusBarMenuItem.Checked;
+            StatusStrip.Visible = StatusBarMenuItem.Checked;
         }
 
         private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -81,7 +90,7 @@ namespace CasaMendes
                 funcionario.Top = this.Top + 8;
                 funcionario.Left = this.Left + 8;
             }
-            this.StatusLabeTtoolStrip.Text = $"Funcionários ativos: ( {funcionario.StatusLabel} ) funcionários.";
+            this.AtualStatus.Text = $"Funcionários ativos: ( {funcionario.StatusLabel} ) funcionários.";
         }
 
         private void ClienteMenuItem_Click(object sender, EventArgs e)
@@ -103,7 +112,7 @@ namespace CasaMendes
                 cliente.Top = this.Top + 8;
                 cliente.Left = this.Left + 8;
             }
-            this.StatusLabeTtoolStrip.Text = $"Cliente no cadastrado: ( {cliente.StatusLabel} ) clientes.";
+            this.AtualStatus.Text = $"Cliente no cadastrado: ( {cliente.StatusLabel} ) clientes.";
         }
 
         private void FornecedorMenuItem_Click(object sender, EventArgs e)
@@ -125,7 +134,7 @@ namespace CasaMendes
                 fornecedores.Top = this.Top + 8;
                 fornecedores.Left = this.Left + 8;
             }
-            this.StatusLabeTtoolStrip.Text = $"Fornecedores ativos.: ( {fornecedores.StatusLabel} ) clientes.";
+            this.AtualStatus.Text = $"Fornecedores ativos.: ( {fornecedores.StatusLabel} ) clientes.";
         }
 
         private void ProdutoMenuItem_Click(object sender, EventArgs e)
@@ -148,7 +157,7 @@ namespace CasaMendes
                 produtos.Left = this.Left + 8;
             }
 
-            this.StatusLabeTtoolStrip.Text = $"Produtos cadastrados: ( {produtos.StatusLabel} ) Itens.";
+            this.AtualStatus.Text = $"Produtos cadastrados: ( {produtos.StatusLabel} ) Itens.";
         }
 
         private void FrenteDeCaixaMenuItem_Click(object sender, EventArgs e)
@@ -180,29 +189,32 @@ namespace CasaMendes
                 estoque.Top = this.Top + 8;
                 estoque.Left = this.Left + 8;
             }
-            this.StatusLabeTtoolStrip.Text = $"Produtos em estoque: (  { estoque.StatusLabel } ) Itens.";
+            this.AtualStatus.Text = $"Produtos em estoque: (  {estoque.StatusLabel} ) Itens.";
         }
 
         private void VendasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var ResumoDeVenda = new FrmCarregarVendas();
+            var Vendas = new FrmCarregarVendas();
             // Set the Parent Form of the Child window.
-            ResumoDeVenda.MdiParent = this;
-            ResumoDeVenda.Text = "ResumoDeVendasAtual " + childFormNumber++;
+            Vendas.MdiParent = this;
+            childFormNumber++;
+            Vendas.Width = this.Width - 20;
+            Vendas.Height = this.Height - 120;
             // Display the new form.
-            ResumoDeVenda.Show();
+            Vendas.Show();
+            Vendas.gbBusca.Width = Vendas.DgvVendas.Width;
 
             if (!this.WindowState.Equals(FormWindowState.Maximized))
             {
-                ResumoDeVenda.Top = this.Top;
-                ResumoDeVenda.Left = this.Left;
+                Vendas.Top = this.Top;
+                Vendas.Left = this.Left;
             }
             else
             {
-                ResumoDeVenda.Top = this.Top + 8;
-                ResumoDeVenda.Left = this.Left + 8;
+                Vendas.Top = this.Top + 8;
+                Vendas.Left = this.Left + 8;
             }
-            this.StatusLabeTtoolStrip.Text = $"Produtos em estoque: ( {ResumoDeVenda.StatusLabel} ) Itens.";
+            this.AtualStatus.Text = $"Número de venda(s): ( {Vendas.StatusLabel} )";
         }
 
         private void ReceberPenduraMenuItem_Click(object sender, EventArgs e)
@@ -224,7 +236,7 @@ namespace CasaMendes
                 CarregarVenda.Top = this.Top + 8;
                 CarregarVenda.Left = this.Left + 8;
             }
-            this.StatusLabeTtoolStrip.Text = $"Venda(s): ( {CarregarVenda.StatusLabel} ) efetuadas até: {DateTime.Now.ToShortDateString()}.";
+            this.AtualStatus.Text = $"Venda(s): ( {CarregarVenda.StatusLabel} ) efetuadas até: {DateTime.Now.ToShortDateString()}.";
         }
 
         private void CategoriaMenuItem_Click(object sender, EventArgs e)
@@ -246,7 +258,7 @@ namespace CasaMendes
                 CadCategoria.Top = this.Top + 8;
                 CadCategoria.Left = this.Left + 8;
             }
-            this.StatusLabeTtoolStrip.Text = $"Categoria(s): ( {CadCategoria.StatusLabel} ) definida(s).";
+            this.AtualStatus.Text = $"Categoria(s): ( {CadCategoria.StatusLabel} ) definida(s).";
         }
 
         private void SubCategoriaMenuItem_Click(object sender, EventArgs e)
@@ -268,7 +280,7 @@ namespace CasaMendes
                 CadSubcategoria.Top = this.Top + 8;
                 CadSubcategoria.Left = this.Left + 8;
             }
-            this.StatusLabeTtoolStrip.Text = $"Subcategoria(s): ( {CadSubcategoria.StatusLabel} ) definida(s).";
+            this.AtualStatus.Text = $"Subcategoria(s): ( {CadSubcategoria.StatusLabel} ) definida(s).";
         }
 
         private void PrecosMenuItem_Click(object sender, EventArgs e)
@@ -289,10 +301,51 @@ namespace CasaMendes
                 oTabelaDeMargen.Top = this.Top + 8;
                 oTabelaDeMargen.Left = this.Left + 8;
             }
-            this.StatusLabeTtoolStrip.Text = $"Existem: ( {oTabelaDeMargen.StatusLabel} ) regras de preços definida(s).";
+            this.AtualStatus.Text = $"Existem: ( {oTabelaDeMargen.StatusLabel} ) regras de preços definida(s).";
         }
 
         #endregion
 
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+            try { FrenteDeCaixaMenuItem_Click(null, null); } catch { }
+        }
     }
 }
+
+//// Declare the DateChanged event.
+////public event DateRangeEventHandler DateChanged;
+//// The event does not have any data, so EventHandler is adequate
+//// as the event delegate.
+//private EventHandler onValueChanged;
+//// Define the event member using the event keyword.
+//// In this case, for efficiency, the event is defined
+//// using the event property construct.
+//public event EventHandler ValueChanged
+//{
+//    add
+//    {
+//        onValueChanged += value;
+//    }
+//    remove
+//    {
+//        onValueChanged -= value;
+//    }
+//}
+//// The protected method that raises the ValueChanged
+//// event when the value has actually
+//// changed. Derived controls can override this method.
+
+//protected virtual void OnValueChanged(EventArgs e)
+//{
+//    onValueChanged?.Invoke(this, e);
+//}
+
+////public property to set statusbar
+//public string SetStatus
+//{
+//    set { this.AtualStatus.Text = value; }
+//}
+//Vendas.AtualizarStatusLabel(this);
+//public void AtualizarStatusLabel(string status)
+//=> this.StatusLabelToolStrip.Text = status;

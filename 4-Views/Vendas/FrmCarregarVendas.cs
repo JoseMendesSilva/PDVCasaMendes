@@ -20,8 +20,7 @@ namespace CasaMendes
         public FrmCarregarVendas()
         {
             InitializeComponent();
-            this.Text = clsGlobal.MontarTitulo("Resumo e Vendas atual (Diário).");
-            clsGlobal.SetUpDataGridView(DgvVendas);
+            this.Text = clsGlobal.MontarTitulo("Vendas (Diário).");
         }
 
         private void SelecionarCliente()
@@ -42,25 +41,26 @@ namespace CasaMendes
             this.oPreVenda.ClienteId = this.ClienteId;
             this.LblCliente.Text = this.Cliente;
         }
+
         private void RedimencionarColunas()
         {
             try
             {
-                if (TamanhoColuna == false)
+                if (TamanhoColuna == false && DgvVendas.Rows.Count> 0)
                 {
                     this.DgvVendas.Columns["PreVendaId"].Visible = false;
                     this.DgvVendas.Columns["ClienteId"].Visible = false;
                     this.DgvVendas.Columns["updated_at"].Visible = false;
                     this.DgvVendas.Columns["Key"].Visible = false;
 
-                    this.DgvVendas.Columns["Produto"].Width = clsGlobal.DimencionarColuna(43, this.Width);
+                    this.DgvVendas.Columns["Produto"].Width = clsGlobal.DimencionarColuna(25, this.Width);
                     this.DgvVendas.Columns["Quantidade"].Width = clsGlobal.DimencionarColuna(10, this.Width);
-                    this.DgvVendas.Columns["PrecoDeVenda"].Width = clsGlobal.DimencionarColuna(13, this.Width);
-                    this.DgvVendas.Columns["NumeroDaVenda"].Width = clsGlobal.DimencionarColuna(10, this.Width);
-                    this.DgvVendas.Columns["TipoDeVenda"].Width = clsGlobal.DimencionarColuna(13, this.Width);
+                    this.DgvVendas.Columns["PrecoDeVenda"].Width = clsGlobal.DimencionarColuna(9, this.Width);
+                    this.DgvVendas.Columns["NumeroDaVenda"].Width = clsGlobal.DimencionarColuna(8, this.Width);
+                    this.DgvVendas.Columns["TipoDeVenda"].Width = clsGlobal.DimencionarColuna(10, this.Width);
                     this.DgvVendas.Columns["Valor"].Width = clsGlobal.DimencionarColuna(10, this.Width);
                     this.DgvVendas.Columns["Dinheiro"].Width = clsGlobal.DimencionarColuna(10, this.Width);
-                    this.DgvVendas.Columns["Parcela"].Width = clsGlobal.DimencionarColuna(13, this.Width);
+                    this.DgvVendas.Columns["Parcela"].Width = clsGlobal.DimencionarColuna(10, this.Width);
                     this.DgvVendas.Columns["created_at"].Width = clsGlobal.DimencionarColuna(10, this.Width);
 
                     clsGlobal.AlinharElementosNoGridView(DgvVendas, 2, "left");
@@ -82,11 +82,21 @@ namespace CasaMendes
             }
         }
 
-        private void CarregarVendas()
+        private void CarregarVendas(string filtro = null)
         {
             try
             {
-                DgvVendas.DataSource = oPreVenda.Busca();
+                if (filtro == null)
+                {
+                    oPreVenda.ClienteId = 0;
+                    DgvVendas.DataSource = oPreVenda.Todos();
+                }
+                else
+                {
+                    oPreVenda.ClienteId = 0;
+                    oPreVenda.TipoDeVenda = filtro;
+                    DgvVendas.DataSource = oPreVenda.Busca();
+                }
 
                 if (this.DgvVendas.Rows.Count > 0)
                 {
@@ -115,7 +125,7 @@ namespace CasaMendes
                 gbBusca.Left = DgvVendas.Left;
                 gbBusca.Width = DgvVendas.Width;
 
-                clsGlobal.RedimencionarGrade(this, DgvVendas);
+                clsGlobal.RedimencionarGrade(this, ref DgvVendas);
                 oPreVenda = new PreVenda();
 
                 this.ClienteId = 0;
@@ -179,15 +189,19 @@ namespace CasaMendes
         private void RbPendura_Click(object sender, EventArgs e)
         {
             SelecionarCliente();
-            oPreVenda.TipoDeVenda = RbPendura.Text;
-            LblCliente.Text = oPreVenda.TipoDeVenda;
-            CarregarVendas();
+            LblCliente.Text = RbPendura.Text;
+            CarregarVendas(RbPendura.Text);
         }
 
         private void RbAVista_Click(object sender, EventArgs e)
         {
-            oPreVenda.TipoDeVenda = RbAVista.Text;
-            LblCliente.Text = oPreVenda.TipoDeVenda;
+            LblCliente.Text = RbAVista.Text;
+            CarregarVendas(RbAVista.Text);
+        }
+
+        private void RbTodos_Click(object sender, EventArgs e)
+        {
+            LblCliente.Text = RbTodos.Text;
             CarregarVendas();
         }
     }

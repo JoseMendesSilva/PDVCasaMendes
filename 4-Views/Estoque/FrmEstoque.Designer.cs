@@ -97,6 +97,7 @@ namespace CasaMendes
             this.DgvEstoque.Size = new System.Drawing.Size(1080, 403);
             this.DgvEstoque.TabIndex = 156;
             this.DgvEstoque.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_CellEnter);
+            this.DgvEstoque.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DgvEstoque_KeyDown);
             // 
             // FrmEstoque
             // 

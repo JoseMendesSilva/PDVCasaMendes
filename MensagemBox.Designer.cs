@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace CasaMendes
 {
-    partial class Mensagem
+    partial class MensagemBox
     {
         /// <summary>
         /// Required designer variable.
@@ -110,7 +110,6 @@ namespace CasaMendes
             this.Name = "Mensagem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mensagem";
-            this.Load += new System.EventHandler(this.Mensagem_Load);
             this.gradientPanelMuda1.ResumeLayout(false);
             this.gradientPanelMuda1.PerformLayout();
             this.ResumeLayout(false);

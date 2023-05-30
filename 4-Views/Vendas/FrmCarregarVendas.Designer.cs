@@ -32,8 +32,9 @@ namespace CasaMendes
             this.btnFechar = new System.Windows.Forms.Button();
             this.DgvVendas = new System.Windows.Forms.DataGridView();
             this.gbBusca = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.RbTodos = new System.Windows.Forms.RadioButton();
             this.LblCliente = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.RbAVista = new System.Windows.Forms.RadioButton();
             this.RbPendura = new System.Windows.Forms.RadioButton();
             this.DtpDataCadastro = new System.Windows.Forms.DateTimePicker();
@@ -47,7 +48,7 @@ namespace CasaMendes
             // btnFechar
             // 
             this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnFechar.Location = new System.Drawing.Point(12, 544);
+            this.btnFechar.Location = new System.Drawing.Point(12, 506);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(75, 45);
             this.btnFechar.TabIndex = 308;
@@ -62,13 +63,14 @@ namespace CasaMendes
             this.DgvVendas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvVendas.Location = new System.Drawing.Point(12, 57);
             this.DgvVendas.Name = "DgvVendas";
-            this.DgvVendas.Size = new System.Drawing.Size(897, 422);
+            this.DgvVendas.Size = new System.Drawing.Size(1264, 401);
             this.DgvVendas.TabIndex = 307;
             // 
             // gbBusca
             // 
             this.gbBusca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbBusca.Controls.Add(this.RbTodos);
             this.gbBusca.Controls.Add(this.LblCliente);
             this.gbBusca.Controls.Add(this.label2);
             this.gbBusca.Controls.Add(this.RbAVista);
@@ -78,35 +80,49 @@ namespace CasaMendes
             this.gbBusca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbBusca.Location = new System.Drawing.Point(12, -2);
             this.gbBusca.Name = "gbBusca";
-            this.gbBusca.Size = new System.Drawing.Size(897, 53);
+            this.gbBusca.Size = new System.Drawing.Size(1264, 53);
             this.gbBusca.TabIndex = 312;
             this.gbBusca.TabStop = false;
             // 
-            // label2
+            // RbTodos
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(728, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 20);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "VENDAS:";
+            this.RbTodos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.RbTodos.AutoSize = true;
+            this.RbTodos.Location = new System.Drawing.Point(192, 12);
+            this.RbTodos.Name = "RbTodos";
+            this.RbTodos.Size = new System.Drawing.Size(83, 24);
+            this.RbTodos.TabIndex = 9;
+            this.RbTodos.TabStop = true;
+            this.RbTodos.Text = "TODOS";
+            this.RbTodos.UseVisualStyleBackColor = true;
+            this.RbTodos.Click += new System.EventHandler(this.RbTodos_Click);
             // 
             // LblCliente
             // 
             this.LblCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LblCliente.AutoSize = true;
-            this.LblCliente.Location = new System.Drawing.Point(803, 18);
+            this.LblCliente.Location = new System.Drawing.Point(1170, 18);
             this.LblCliente.Name = "LblCliente";
             this.LblCliente.Size = new System.Drawing.Size(88, 20);
             this.LblCliente.TabIndex = 7;
             this.LblCliente.Text = "PENDURA";
             this.LblCliente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1084, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(80, 20);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "VENDAS:";
+            // 
             // RbAVista
             // 
             this.RbAVista.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.RbAVista.AutoSize = true;
-            this.RbAVista.Location = new System.Drawing.Point(314, 16);
+            this.RbAVista.Location = new System.Drawing.Point(393, 10);
             this.RbAVista.Name = "RbAVista";
             this.RbAVista.Size = new System.Drawing.Size(89, 24);
             this.RbAVista.TabIndex = 6;
@@ -119,7 +135,7 @@ namespace CasaMendes
             // 
             this.RbPendura.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.RbPendura.AutoSize = true;
-            this.RbPendura.Location = new System.Drawing.Point(187, 16);
+            this.RbPendura.Location = new System.Drawing.Point(281, 12);
             this.RbPendura.Name = "RbPendura";
             this.RbPendura.Size = new System.Drawing.Size(106, 24);
             this.RbPendura.TabIndex = 5;
@@ -151,7 +167,7 @@ namespace CasaMendes
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.label3.Location = new System.Drawing.Point(695, 564);
+            this.label3.Location = new System.Drawing.Point(1062, 526);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 17);
             this.label3.TabIndex = 313;
@@ -161,7 +177,7 @@ namespace CasaMendes
             // 
             this.TxtVendas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtVendas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtVendas.Location = new System.Drawing.Point(755, 557);
+            this.TxtVendas.Location = new System.Drawing.Point(1122, 519);
             this.TxtVendas.Name = "TxtVendas";
             this.TxtVendas.Size = new System.Drawing.Size(154, 29);
             this.TxtVendas.TabIndex = 316;
@@ -171,18 +187,18 @@ namespace CasaMendes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 598);
+            this.ClientSize = new System.Drawing.Size(1290, 560);
             this.Controls.Add(this.TxtVendas);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.gbBusca);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.DgvVendas);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCarregarVendas";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Vendas a vista";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Text = "Vendas.";
             this.Load += new System.EventHandler(this.FrmCarregarVendas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvVendas)).EndInit();
             this.gbBusca.ResumeLayout(false);
@@ -195,8 +211,6 @@ namespace CasaMendes
         #endregion
 
         private System.Windows.Forms.Button btnFechar;
-        private System.Windows.Forms.DataGridView DgvVendas;
-        private System.Windows.Forms.GroupBox gbBusca;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox TxtVendas;
@@ -205,5 +219,8 @@ namespace CasaMendes
         private System.Windows.Forms.RadioButton RbPendura;
         private System.Windows.Forms.Label LblCliente;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.RadioButton RbTodos;
+        public System.Windows.Forms.GroupBox gbBusca;
+        public System.Windows.Forms.DataGridView DgvVendas;
     }
 }

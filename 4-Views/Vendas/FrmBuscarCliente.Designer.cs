@@ -64,7 +64,7 @@ namespace CasaMendes
             // 
             this.BtnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancelar.Location = new System.Drawing.Point(503, 377);
+            this.BtnCancelar.Location = new System.Drawing.Point(503, 397);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(75, 57);
             this.BtnCancelar.TabIndex = 308;
@@ -80,16 +80,17 @@ namespace CasaMendes
             this.DgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvClientes.Location = new System.Drawing.Point(8, 79);
             this.DgvClientes.Name = "DgvClientes";
-            this.DgvClientes.Size = new System.Drawing.Size(570, 288);
+            this.DgvClientes.Size = new System.Drawing.Size(570, 235);
             this.DgvClientes.TabIndex = 307;
             this.DgvClientes.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_RowEnter);
+            this.DgvClientes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DgvClientes_KeyDown);
             // 
             // BtnAceitar
             // 
             this.BtnAceitar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BtnAceitar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.BtnAceitar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnAceitar.Location = new System.Drawing.Point(8, 381);
+            this.BtnAceitar.Location = new System.Drawing.Point(8, 401);
             this.BtnAceitar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnAceitar.Name = "BtnAceitar";
             this.BtnAceitar.Size = new System.Drawing.Size(70, 53);
@@ -102,7 +103,7 @@ namespace CasaMendes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(586, 442);
+            this.ClientSize = new System.Drawing.Size(586, 462);
             this.Controls.Add(this.gbBusca);
             this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.DgvClientes);

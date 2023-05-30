@@ -70,6 +70,13 @@ namespace CasaMendes
                     DgvEstoque.DataSource = oEstoque.Todos(); 
                     RedimencionarGrade();
                 }
+                if(this.DgvEstoque.Rows.Count > 1) {
+                    txtCodigoDeBarras.Focus();
+                    txtCodigoDeBarras.SelectAll();
+                }
+                else {
+                    DgvEstoque.Focus();
+                }
             }catch { }
         }
 
@@ -99,6 +106,18 @@ namespace CasaMendes
                 CodigoProduto = DgvEstoque.Rows[e.RowIndex].Cells["CodigoDeBarras"].Value.ToString();
             }
         }
- 
+
+        private void DgvEstoque_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }else if (e.KeyCode == Keys.Escape) {
+                this.DialogResult = DialogResult.Cancel;
+                CodigoProduto = "0";
+                this.Close();
+            }
+        }
     }
 }

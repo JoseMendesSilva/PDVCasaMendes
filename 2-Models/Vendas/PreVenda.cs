@@ -7,8 +7,6 @@ namespace CasaMendes
     {
         private bool disposedValue;
 
-        public PreVenda() { }
-
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true, ChavePrimaria = true)]
         public int PreVendaId { get; set; }
 
@@ -25,7 +23,7 @@ namespace CasaMendes
         public decimal PrecoDeVenda { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
-        public int NumeroDaVenda { get; set; }
+        public string NumeroDaVenda { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
         public string TipoDeVenda { get; set; } // pendura, pg, debito, crédito e pix.
@@ -37,10 +35,22 @@ namespace CasaMendes
         public decimal Dinheiro { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
+        public decimal Desconto { get; set; }
+
+        [OpcoesBase(UsarNoBancoDeDados = true)]
         public decimal Troco { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public decimal Parcela { get; set; }
+
+        [OpcoesBase(UsarNoBancoDeDados = true)]
+        public decimal Tributos { get; set; }
+
+        [OpcoesBase(UsarNoBancoDeDados = true)]
+        public decimal Juros { get; set; }
+
+        [OpcoesBase(UsarNoBancoDeDados = true)]
+        public decimal TotalPendura { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
         public DateTime created_at { get; set; } = DateTime.Parse(DateTime.Now.ToShortDateString());

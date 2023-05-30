@@ -15,18 +15,87 @@ namespace CasaMendes
         private static OpenFileDialog fDialogo;
 
         //====================================================================================================
-        //private static int LinhasPromocao = 0;
-
-        //====================================================================================================
-        public static int CodigoVenda { get; set; }
-
-        //====================================================================================================
-        public static string TagForm { get; set; }
-
-        //====================================================================================================
-        public static decimal DeStringParadecimal(string sValor)
+        /// <summary>
+        /// Função para conbeter de string para decimal
+        /// </summary>
+        /// <param name="sValor">Valor a ser convertido</param>
+        /// <returns>Decimal</returns>
+        public static decimal DeStringParaDecimal(string sValor)
         {
             if (sValor != string.Empty) return Convert.ToDecimal(sValor);
+            else return 0;
+        }
+        public static decimal De_String_Para_decimal(string sValor)
+        {
+            decimal valor_decimal = Convert.ToDecimal(sValor);
+            return valor_decimal;
+        }
+        public static string Formatar (string Dado, int Posicao)
+        {
+            string iFormato = "";
+            switch (Posicao)
+            {
+                case 0:
+                    iFormato = string.Format("{0,0}", Dado.Trim());
+                    break;
+                case 1:
+                    iFormato = string.Format("{0,1:#0}", Dado.Trim());
+                    break;
+                case 2:
+                    iFormato = string.Format("{0,2:#00}", Dado.Trim());
+                    break;
+                case 3:
+                    iFormato = string.Format("{0,3:#000}", Dado.Trim());
+                    break;
+                case 4:
+                    iFormato = string.Format("{0,4:#0000}", Dado.Trim());
+                    break;
+                case 5:
+                    iFormato = string.Format("{0,5:#00000}", Dado.Trim());
+                    break;
+                case 6:
+                    iFormato = string.Format("{0,6:#000000}", Dado.Trim());
+                    break;
+                case 7:
+                    iFormato = string.Format("{0,7:#0000000}", Dado.Trim());
+                    break;
+                case 8:
+                    iFormato = string.Format("{0,8:#00000000}", Dado.Trim());
+                    break;
+                case 9:
+                    iFormato = string.Format("{0,10:G}", Dado.Trim());
+                    break;
+                case 10:
+                    iFormato = string.Format("{0,10:#0000000000}", Dado.Trim());
+                    break;
+                case 11:
+                    iFormato = string.Format("{0,11:#00000000000}", Dado.Trim());
+                    break;
+                case 12:
+                    iFormato = string.Format("{0,12:#000000000000}", Dado.Trim());
+                    break;
+                case 13:
+                    iFormato = string.Format("{0,13:#0000000000000}", Dado.Trim());
+                    break;
+                case 14:
+                    iFormato = string.Format("{0,14:#00000000000000}", Dado.Trim());
+                    break;
+                default:
+                    break;
+            }
+            return iFormato;
+        }
+
+
+        //====================================================================================================
+        /// <summary>
+        /// Função para converter de string para int de tamanho 32
+        /// </summary>
+        /// <param name="sValor">Valor a ser convertido</param>
+        /// <returns>Int</returns>
+        public static int DeStringParaInt(string sValor)
+        {
+            if (sValor != string.Empty) return Convert.ToInt32(sValor);
             else return 0;
         }
 
@@ -45,12 +114,11 @@ namespace CasaMendes
         }
 
 
-        #region métodos
-        /*
-         * Carrega uma imagem selecionada e copia, se ela não, para a pasta dentro do diretório
-         * padrão do sistema.
-         */
-        //private static string BuscarFotoProduto(PictureBox PicFoto)
+        #region métodos  
+        /// <summary>
+        /// Carrega uma imagem selecionada e a copia, se ela não, para a pasta dentro do diretório padrão do sistema.
+        /// </summary>
+        /// <returns></returns>
         public static string BuscarFotoProduto()
         {
             string sourceDir = Abririmagens();
@@ -107,17 +175,22 @@ namespace CasaMendes
 
         }
 
+        /// <summary>
+        /// Carrega uma imagem do sistama.
+        /// </summary>
+        /// <param name="PicName">Nome da imagem</param>
+        /// <returns>Retorna o diretório da imagem com o seu respectivo nome.</returns>
         public static string AbrirImagem(string PicName)
         {
             string AppDir = @ConfigurationManager.AppSettings["DiretorioFotos"];
             var result = ValidarDiretorio(AppDir, PicName);
-            //carrega a imagem na tela.
-            //PicFoto.Image = Image.FromFile($"{ sourceDir } + { fName }");
             return result; ;
-
-
         }
 
+        /// <summary>
+        /// Carrega o diretório da imagem.
+        /// </summary>
+        /// <returns>Diretório</returns>
         public static string Abririmagens()
         {
             var dir = string.Empty;
@@ -145,7 +218,10 @@ namespace CasaMendes
 
         }
 
-        //====================================================================================================
+        /// <summary>
+        /// Carrega um PictureBox com uma imagem/foto selecionada pelo usuário.
+        /// </summary>
+        /// <param name="PicFoto">void</param>
         public static void Abririmagens(PictureBox PicFoto)
         {
             fDialogo = new OpenFileDialog();
@@ -171,11 +247,11 @@ namespace CasaMendes
 
         #endregion
 
-        /*
-         * ====================================================================================================
-         * Lista de países do mundo
-         * Abaixo há uma lista de países que podem ser copiados e colados em uma questão, como um menu suspenso.
-         */
+        /// <summary>
+        /// Lista de países.
+        /// Abaixo há uma lista de países que podem ser copiados e colados em uma questão, como um menu suspenso.
+        /// </summary>
+        /// <param name="cb"></param>
         public static void CarregarPaises(ComboBox cb)
         {
             cb.Items.Clear();
@@ -437,10 +513,12 @@ namespace CasaMendes
         }
 
         //===============================================================================================
-        public static string sCaminho = Application.StartupPath;
+        //public static string sCaminho = Application.StartupPath;
 
         public static string ValidarDiretorio(string pDiretorio = "", string pArquivo = "")
         {
+            if(pDiretorio=="") pDiretorio = Application.StartupPath;
+
             if (pDiretorio == null) { return (null); }
             string sDir = pDiretorio.Substring(pDiretorio.Length - 1, 1);
             if (sDir == @"\")
@@ -712,7 +790,7 @@ namespace CasaMendes
         {
             try
             {
-                string path = ValidarDiretorio(sCaminho, @"\CasaMendes.Log");
+                var path = ValidarDiretorio(ConfigurationManager.AppSettings["DirLogs"], @"\CasaMendes.Log");
 
                 //// Create the file if it not exists.
                 if (!File.Exists(path))
@@ -722,38 +800,33 @@ namespace CasaMendes
 
                 //Create the file.
                 using (StreamWriter sw = new StreamWriter(path, true))
-                //using (FileStream fs = File.OpenWrite(path),)
                 {
-                    //AddText(fs,numeroDoErro.ToString() + ": " + MenssagemDeErro);
                     sw.WriteLine(numeroDoErro.ToString() + ": " + MenssagemDeErro);
                     sw.Flush();
                     sw.Dispose();
                 }
 
             }
-            catch //(Exception ex)
-            {
-                //MessageBox.Show(ex.Message);
-            }
+            catch {}
         }
 
         //===============================================================================================
-        public static void SetUpDataGridView(DataGridView dgv)
+        private static void ConfigurarGrade(DataGridView Grade)
         {
-            DataGridViewCellStyle style = dgv.ColumnHeadersDefaultCellStyle;
+            DataGridViewCellStyle style = Grade.ColumnHeadersDefaultCellStyle;
             style.BackColor = Color.Gold;
             style.ForeColor = Color.Red;
-            dgv.AllowUserToAddRows = false;
-            dgv.AutoGenerateColumns = true;
-            dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
-            dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Raised;
-            dgv.CellBorderStyle = DataGridViewCellBorderStyle.Single;
-            dgv.GridColor = SystemColors.ActiveBorder;
-            dgv.RowHeadersVisible = false;
-            dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgv.MultiSelect = false;
-            dgv.BackgroundColor = Color.Green;
-            dgv.ReadOnly = true;
+            Grade.AllowUserToAddRows = false;
+            Grade.AutoGenerateColumns = true;
+            Grade.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            Grade.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Raised;
+            Grade.CellBorderStyle = DataGridViewCellBorderStyle.Single;
+            Grade.GridColor = SystemColors.ActiveBorder;
+            Grade.RowHeadersVisible = false;
+            Grade.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            Grade.MultiSelect = false;
+            Grade.BackgroundColor = Color.Green;
+            Grade.ReadOnly = true;
         }
 
         /// <summary>
@@ -798,24 +871,17 @@ namespace CasaMendes
         }
 
         //===============================================================================================
-        public static void RedimencionarGrade(Form frm, DataGridView dgv)
+        public static void RedimencionarGrade(Form frm, ref DataGridView dgv)
         {
             try
             {
-                SetUpDataGridView(dgv);
-                //          //=============================================================================================
+                ConfigurarGrade(dgv);
                 int Espaco = frm.Width - 16;
                 dgv.Left = 12;
                 dgv.Width = Espaco - (dgv.Left * 2);
-                dgv.Height = frm.Height - 130;
-                //frm.Refresh();
-                //          //=============================================================================================
+                dgv.Height = frm.Height - 200;
             }
-            catch
-            {
-
-            }
-
+            catch{}
         }
 
         //===============================================================================================
@@ -848,12 +914,6 @@ namespace CasaMendes
             {
                 return true;
             }
-        }
-
-        public decimal De_String_Para_decimal(string sValor)
-        {
-            decimal valor_decimal = Convert.ToDecimal(sValor);
-            return valor_decimal;
         }
 
     }

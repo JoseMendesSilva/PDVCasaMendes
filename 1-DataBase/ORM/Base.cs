@@ -16,7 +16,7 @@ namespace CasaMendes
     [ComVisible(true)]
     public class Base : IBase
     {
-        private readonly string connectionString = string.Concat(@ConfigurationManager.AppSettings["DbServer"], @ConfigurationManager.AppSettings["DbDiretorio"], @"\", ConfigurationManager.AppSettings["DbName"]);
+        private readonly string connectionString = string.Concat(@ConfigurationManager.AppSettings["ServerDb"], @ConfigurationManager.AppSettings["DirDb"], @"\", ConfigurationManager.AppSettings["NameDb"]);
 
         public virtual int Key
         {

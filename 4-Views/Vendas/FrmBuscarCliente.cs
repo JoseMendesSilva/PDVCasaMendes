@@ -51,8 +51,8 @@ namespace CasaMendes
         {
             try
             {
-                this.Text = clsGlobal.MontarTitulo("Buscar cliente");
-                clsGlobal.SetUpDataGridView(DgvClientes);
+                this.Text = clsGlobal.MontarTitulo("Clientes");
+                clsGlobal.RedimencionarGrade(this, ref DgvClientes);
                 var oCliente = new Cliente();
                 this.DgvClientes.DataSource = oCliente.Todos();
                 if (DgvClientes.Rows.Count > 0)
@@ -73,5 +73,17 @@ namespace CasaMendes
             catch { }
         }
 
+        private void DgvClientes_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BtnAceitar.PerformClick();
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                BtnCancelar.PerformClick();
+            }
+            else return;
+        }
     }
 }
