@@ -35,25 +35,32 @@
             // 
             // barra1
             // 
-            this.barra1.Location = new System.Drawing.Point(12, 102);
+            this.barra1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.barra1.Location = new System.Drawing.Point(12, 70);
             this.barra1.Name = "barra1";
-            this.barra1.Size = new System.Drawing.Size(695, 11);
+            this.barra1.Size = new System.Drawing.Size(512, 11);
             this.barra1.TabIndex = 0;
             // 
             // LblTitulo
             // 
-            this.LblTitulo.AutoSize = true;
-            this.LblTitulo.Location = new System.Drawing.Point(12, 9);
+            this.LblTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LblTitulo.Location = new System.Drawing.Point(13, 9);
             this.LblTitulo.Name = "LblTitulo";
-            this.LblTitulo.Size = new System.Drawing.Size(35, 13);
+            this.LblTitulo.Size = new System.Drawing.Size(510, 13);
             this.LblTitulo.TabIndex = 1;
             this.LblTitulo.Text = "label1";
+            this.LblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LblMensagem
             // 
+            this.LblMensagem.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.LblMensagem.Location = new System.Drawing.Point(10, 32);
             this.LblMensagem.Name = "LblMensagem";
-            this.LblMensagem.Size = new System.Drawing.Size(696, 70);
+            this.LblMensagem.Size = new System.Drawing.Size(513, 38);
             this.LblMensagem.TabIndex = 2;
             this.LblMensagem.Text = "label1";
             this.LblMensagem.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -62,7 +69,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(719, 125);
+            this.BackColor = System.Drawing.Color.Green;
+            this.ClientSize = new System.Drawing.Size(536, 93);
             this.ControlBox = false;
             this.Controls.Add(this.LblMensagem);
             this.Controls.Add(this.LblTitulo);
@@ -74,7 +82,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmProcessando";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

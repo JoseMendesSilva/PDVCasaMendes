@@ -142,13 +142,22 @@ namespace CasaMendes
 
         private void FrmFornecedores_Load(object sender, EventArgs e)
         {
+            var oProcessando = new FrmProcessando();
+            oProcessando.Show();
+            oProcessando.TopMost = true;
+            oProcessando.Processo(15,"Lista de fornecedores","Carregando.");
             using (Fornecedore oFornecedor = new Fornecedore())
             {
+                oProcessando.Processo(35, "Lista de fornecedores", "Carregando..");
                 dgv.DataSource = oFornecedor.Todos();
+                oProcessando.Processo(60, "Lista de fornecedores", "Carregando...");
                 StatusLabel = (dgv.RowCount - 1).ToString();
+                oProcessando.Processo(75, "Lista de fornecedores", "Carregando.");
 
                 RedimencionarGrade();
-                //Botoes(true);
+                oProcessando.Processo(100, "Lista de fornecedores", "Carregando..");
+                oProcessando.Close();
+                oProcessando.Dispose();
             }
         }
 

@@ -197,9 +197,18 @@ namespace CasaMendes
 
         private void FrmProdutos_Load(object sender, EventArgs e)
         {
+            var oProcessando = new FrmProcessando();
+            oProcessando.Show();
+            oProcessando.TopMost = true;
+            oProcessando.Processo(15, "Lista de Produtos", "Carregando.");
             Botoes(true);
+            oProcessando.Processo(28, "Lista de Produtos", "Carregando.");
             Carregar();
+            oProcessando.Processo(56, "Lista de Produtos", "Carregando.");
             RedimencionarGrade();
+            oProcessando.Processo(90, "Lista de Produtos", "Carregando.");
+            oProcessando.Close();
+            oProcessando.Dispose();
         }
 
         private void TxtCodigoDeBarras_TextChanged(object sender, EventArgs e)
@@ -269,5 +278,6 @@ namespace CasaMendes
         }
 
         #endregion
+ 
     }
 }

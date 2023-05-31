@@ -144,21 +144,42 @@ namespace CasaMendes
         {
             try
             {
+                var oProcessando = new FrmProcessando();
+                oProcessando.Show();
+                oProcessando.TopMost = true;
+                oProcessando.Processo(3, "Cadastro de funcionário", "Carregando.");
                 LinhaIndex = -1;
+                oProcessando.Processo(10, "Cadastro de funcionário", "Carregando.");
                 this.Text = clsGlobal.MontarTitulo(Mensagens.M00041);
+                oProcessando.Processo(16, "Cadastro de funcionário", "Carregando.");
                 frmLoading = true;
+                oProcessando.Processo(22, "Cadastro de funcionário", "Carregando.");
                 frmLoaded = false;
+                oProcessando.Processo(28, "Cadastro de funcionário", "Carregando.");
                 BsFuncionario = new BindingSource();
+                oProcessando.Processo(34, "Cadastro de funcionário", "Carregando.");
                 oFuncionario = new Funcionario();
+                oProcessando.Processo(40, "Cadastro de funcionário", "Carregando.");
                 if (oFuncionario.FuncionarioId.Equals(0)) BsFuncionario.Add(oFuncionario);
+                oProcessando.Processo(46, "Cadastro de funcionário", "Carregando.");
                 Limpar();
+                oProcessando.Processo(52, "Cadastro de funcionário", "Carregando.");
                 Botoes(true);
+                oProcessando.Processo(58, "Cadastro de funcionário", "Carregando.");
                 CarregarCombo();
+                oProcessando.Processo(64, "Cadastro de funcionário", "Carregando.");
                 VincularBindingSource();
+                oProcessando.Processo(70, "Cadastro de funcionário", "Carregando.");
                 frmLoading = false;
+                oProcessando.Processo(76, "Cadastro de funcionário", "Carregando.");
                 Carregar();
+                oProcessando.Processo(84, "Cadastro de funcionário", "Carregando.");
                 frmLoaded = true;
+                oProcessando.Processo(90, "Cadastro de funcionário", "Carregando.");
                 this.TxtNome.Focus();
+                oProcessando.Processo(96, "Cadastro de funcionário", "Carregando.");
+                oProcessando.Close();
+                oProcessando.Dispose();
             }
             catch
             {

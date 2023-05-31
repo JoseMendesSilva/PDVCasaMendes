@@ -220,11 +220,22 @@ namespace CasaMendes
  
         private void FrmCadastrarClientes_Load(object sender, EventArgs e)
         {
+            var oProcessando = new FrmProcessando();
+            oProcessando.Show();
+            oProcessando.TopMost = true;
+            oProcessando.Processo(5, "Cadastrar cliente", "Carregando.");
             clsGlobal.CarregarPaises(this.CbPais);
+            oProcessando.Processo(17, "Cadastrar cliente", "Carregando..");
             clsGlobal.CarregarEstados(this.CbEstado);
+            oProcessando.Processo(34, "Cadastrar cliente", "Carregando...");
             if (oCliente.ClienteId > 0) BsCliente.DataSource = oCliente;
+            oProcessando.Processo(51, "Cadastrar cliente", "Carregando.");
             VincularBindingSource();
+            oProcessando.Processo(68, "Cadastrar cliente", "Carregando..");
             AtribuirValores();
+            oProcessando.Processo(90, "Cadastrar cliente", "Carregando...");
+            oProcessando.Close();
+            oProcessando.Dispose();
         }
 
         #endregion

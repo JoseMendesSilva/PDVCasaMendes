@@ -65,19 +65,37 @@ namespace CasaMendes
         {
             try
             {
+                var oProcessando = new FrmProcessando();
+                oProcessando.Show();
+                oProcessando.TopMost = true;
+                oProcessando.Processo(4,"Liste Estoque.","Carregando.");
                 using(var oEstoque = new Estoque())
                 {
-                    DgvEstoque.DataSource = oEstoque.Todos(); 
+                    oProcessando.Processo(20, "Liste Estoque.", "Carregando..");
+                    DgvEstoque.DataSource = oEstoque.Todos();
+                    oProcessando.Processo(33, "Liste Estoque.", "Carregando...");
                     RedimencionarGrade();
+                    oProcessando.Processo(45, "Liste Estoque.", "Carregando.");
                 }
-                if(this.DgvEstoque.Rows.Count > 1) {
+                if(this.DgvEstoque.Rows.Count > 1)
+                {
+                    oProcessando.Processo(58, "Liste Estoque.", "Carregando..");
                     txtCodigoDeBarras.Focus();
+                    oProcessando.Processo(70, "Liste Estoque.", "Carregando...");
                     txtCodigoDeBarras.SelectAll();
+                    oProcessando.Processo(100, "Liste Estoque.", "Carregando.");
                 }
-                else {
+                else
+                {
+                    oProcessando.Processo(58, "Liste Estoque.", "Carregando..");
                     DgvEstoque.Focus();
+                    oProcessando.Processo(70, "Liste Estoque.", "Carregando...");
                 }
-            }catch { }
+                oProcessando.Processo(100, "Liste Estoque.", "Carregando.");
+                oProcessando.Close();
+                oProcessando.Dispose();
+            }
+            catch { }
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)

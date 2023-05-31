@@ -83,6 +83,7 @@
             this.StatusStrip = new System.Windows.Forms.StatusStrip();
             this.AtualStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.configurarImpressoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip.SuspendLayout();
             this.ToolStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
@@ -113,6 +114,7 @@
             this.FrenteDeCaixaMenuItem,
             this.ReceberPenduraMenuItem,
             this.ToolStripSeparator4,
+            this.configurarImpressoraToolStripMenuItem,
             this.ImprimirListaDePrecoMenuItem,
             this.ToolStripSeparator5,
             this.ExitToolStripMenuItem});
@@ -534,6 +536,13 @@
             this.AtualStatus.Size = new System.Drawing.Size(49, 20);
             this.AtualStatus.Text = "Status";
             // 
+            // configurarImpressoraToolStripMenuItem
+            // 
+            this.configurarImpressoraToolStripMenuItem.Name = "configurarImpressoraToolStripMenuItem";
+            this.configurarImpressoraToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
+            this.configurarImpressoraToolStripMenuItem.Text = "Configurar Impressora";
+            this.configurarImpressoraToolStripMenuItem.Click += new System.EventHandler(this.configurarImpressoraToolStripMenuItem_Click);
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -615,6 +624,7 @@
         private System.Windows.Forms.ToolStripMenuItem GestaoMenuItem;
         private System.Windows.Forms.ToolStripMenuItem PrecosMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel AtualStatus;
+        private System.Windows.Forms.ToolStripMenuItem configurarImpressoraToolStripMenuItem;
     }
 }
 

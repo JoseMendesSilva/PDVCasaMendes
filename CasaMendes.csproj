@@ -144,7 +144,7 @@
     <EmbeddedResource Include="4-Views\Estoque\FrmCadSubcategoria.resx">
       <DependentUpon>FrmCadSubcategoria.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\FrmPrincipal.resx">
+    <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="4-Views\Estoque\FrmProdutos.resx">
@@ -156,7 +156,9 @@
     <EmbeddedResource Include="4-Views\Contabilidade\Financeiro\FrmTabelaDeMargen.resx">
       <DependentUpon>FrmTabelaDeMargen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\Vendas\FrmBuscarCliente.resx" />
+    <EmbeddedResource Include="4-Views\Vendas\FrmBuscarCliente.resx">
+      <DependentUpon>FrmBuscarCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="4-Views\Vendas\FrmCarregarVendas.resx">
       <DependentUpon>FrmCarregarVendas.cs</DependentUpon>
     </EmbeddedResource>
@@ -172,7 +174,7 @@
     <EmbeddedResource Include="4-Views\Vendas\FrmReceberPendura.resx">
       <DependentUpon>FrmReceberPendura.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\frmClientes.resx">
+    <EmbeddedResource Include="4-Views\Vendas\frmClientes.resx">
       <DependentUpon>frmClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="4-Views\Vendas\frmFinlizarVendas.resx">
@@ -190,10 +192,10 @@
     <EmbeddedResource Include="5-Util\FrmProcessando.resx">
       <DependentUpon>FrmProcessando.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MensagemBox.resx">
+    <EmbeddedResource Include="5-Util\MensagemBox.resx">
       <DependentUpon>MensagemBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyPrinters.resx">
+    <EmbeddedResource Include="5-Util\MyPrinters.resx">
       <DependentUpon>MyPrinters.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -289,10 +291,10 @@
     <Compile Include="4-Views\Estoque\FrmCadSubcategoria.Designer.cs">
       <DependentUpon>FrmCadSubcategoria.cs</DependentUpon>
     </Compile>
-    <Compile Include="4-Views\FrmPrincipal.cs">
+    <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="4-Views\FrmPrincipal.Designer.cs">
+    <Compile Include="FrmPrincipal.Designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="4-Views\Contabilidade\Financeiro\FrmTabelaDeMargen.cs">
@@ -324,7 +326,9 @@
     <Compile Include="4-Views\Vendas\FrmBuscarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="4-Views\Vendas\FrmBuscarCliente.Designer.cs" />
+    <Compile Include="4-Views\Vendas\FrmBuscarCliente.Designer.cs">
+      <DependentUpon>FrmBuscarCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="4-Views\Vendas\FrmCarregarVendas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -355,10 +359,10 @@
     <Compile Include="4-Views\Vendas\FrmReceberPendura.Designer.cs">
       <DependentUpon>FrmReceberPendura.cs</DependentUpon>
     </Compile>
-    <Compile Include="4-Views\frmClientes.cs">
+    <Compile Include="4-Views\Vendas\frmClientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="4-Views\frmClientes.Designer.cs">
+    <Compile Include="4-Views\Vendas\frmClientes.Designer.cs">
       <DependentUpon>frmClientes.cs</DependentUpon>
     </Compile>
     <Compile Include="4-Views\Vendas\frmFinlizarVendas.cs">
@@ -398,18 +402,18 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Global.cs" />
-    <Compile Include="MensagemBox.cs">
+    <Compile Include="5-Util\MensagemBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MensagemBox.Designer.cs">
+    <Compile Include="5-Util\MensagemBox.Designer.cs">
       <DependentUpon>MensagemBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mensagens.cs" />
+    <Compile Include="5-Util\Mensagens.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="MyPrinters.cs">
+    <Compile Include="5-Util\MyPrinters.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MyPrinters.Designer.cs">
+    <Compile Include="5-Util\MyPrinters.Designer.cs">
       <DependentUpon>MyPrinters.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />

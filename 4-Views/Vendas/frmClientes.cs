@@ -202,7 +202,8 @@ namespace CasaMendes
                 oProcessando.Processo(46, "Lista de clientes", "Garregando..");
                 RedimencionarGrade();
                 oProcessando.Processo(53, "Lista de clientes", "Garregando...");
-                this.DgvClientes.Focus();
+                TxtBusca.Focus();
+                TxtBusca.SelectAll();
                 oProcessando.Processo(59, "Lista de clientes", "Garregando.");
                 Botoes(true);
                 oProcessando.Processo(66, "Lista de clientes", "Garregando..");
@@ -210,9 +211,8 @@ namespace CasaMendes
                 oProcessando.Processo(73, "Lista de clientes", "Garregando...");
                 RedimencionarGrade();
                 oProcessando.Processo(80, "Lista de clientes", "Garregado.");
-                oProcessando.Processo(87, "Lista de clientes", "Garregando..");
-                oProcessando.Processo(100, "Lista de clientes", "Garregado...");
                 oProcessando.Close();
+                oProcessando.Processo(100, "Lista de clientes", "Garregado...");
                 oProcessando.Dispose();
             }
             catch { }
@@ -222,7 +222,7 @@ namespace CasaMendes
 
         #region Enter
 
-        private void Dgv_CellEnter(object sender, DataGridViewCellEventArgs e)
+        private void DgvClientes_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (DgvClientes.Rows.Count > 0)
             {
@@ -248,5 +248,9 @@ namespace CasaMendes
 
         #endregion
 
+        //private void DgvClientes_CellEnter(object sender, DataGridViewCellEventArgs e)
+        //{
+
+        //}
     }
 }

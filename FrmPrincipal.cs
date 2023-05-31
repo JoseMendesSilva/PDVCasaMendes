@@ -315,5 +315,13 @@ namespace CasaMendes
             catch { }
         }
 
+        private void configurarImpressoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MyPrinters myPrinters = new MyPrinters();
+                myPrinters.ShowDialog(this);
+            }catch { }
+        }
     }
 }

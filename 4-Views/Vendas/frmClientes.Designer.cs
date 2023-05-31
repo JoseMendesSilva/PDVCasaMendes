@@ -75,6 +75,7 @@
             this.DgvClientes.Name = "DgvClientes";
             this.DgvClientes.Size = new System.Drawing.Size(582, 287);
             this.DgvClientes.TabIndex = 157;
+            this.DgvClientes.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvClientes_CellEnter);
             // 
             // BtnNovo
             // 
