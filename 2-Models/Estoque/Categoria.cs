@@ -7,9 +7,9 @@ namespace CasaMendes
     {
         private bool disposedValue;
 
-        public Categoria()
-        {
-        }
+        //public Categoria()
+        //{
+        //}
 
         [OpcoesBase(UsarNoBancoDeDados = true, ChavePrimaria = true, UsarParaBuscar = true)]
         public int CategoriaId { get; set; }

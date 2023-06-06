@@ -52,7 +52,7 @@ namespace CasaMendes
             this.gradientPanelMuda1.Controls.Add(this.lblMensagem);
             this.gradientPanelMuda1.Location = new System.Drawing.Point(-5, 0);
             this.gradientPanelMuda1.Name = "gradientPanelMuda1";
-            this.gradientPanelMuda1.Size = new System.Drawing.Size(384, 198);
+            this.gradientPanelMuda1.Size = new System.Drawing.Size(685, 198);
             this.gradientPanelMuda1.TabIndex = 0;
             // 
             // btnNao
@@ -93,21 +93,21 @@ namespace CasaMendes
             this.lblMensagem.BackColor = System.Drawing.Color.Transparent;
             this.lblMensagem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMensagem.ForeColor = System.Drawing.Color.White;
-            this.lblMensagem.Location = new System.Drawing.Point(80, 64);
+            this.lblMensagem.Location = new System.Drawing.Point(81, 9);
             this.lblMensagem.MaximumSize = new System.Drawing.Size(250, 0);
             this.lblMensagem.Name = "lblMensagem";
             this.lblMensagem.Size = new System.Drawing.Size(57, 21);
             this.lblMensagem.TabIndex = 0;
             this.lblMensagem.Text = "label1";
             // 
-            // Mensagem
+            // MensagemBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(378, 198);
             this.Controls.Add(this.gradientPanelMuda1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Mensagem";
+            this.Name = "MensagemBox";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mensagem";
             this.gradientPanelMuda1.ResumeLayout(false);

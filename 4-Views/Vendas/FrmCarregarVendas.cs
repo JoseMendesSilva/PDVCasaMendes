@@ -46,10 +46,12 @@ namespace CasaMendes
         {
             try
             {
-                if (TamanhoColuna == false && DgvVendas.Rows.Count> 0)
+                if (TamanhoColuna == false && DgvVendas.Rows.Count > 0)
                 {
                     this.DgvVendas.Columns["PreVendaId"].Visible = false;
                     this.DgvVendas.Columns["ClienteId"].Visible = false;
+                    this.DgvVendas.Columns["Tributos"].Visible = false;
+                    this.DgvVendas.Columns["Juros"].Visible = false;
                     this.DgvVendas.Columns["updated_at"].Visible = false;
                     this.DgvVendas.Columns["Key"].Visible = false;
 
@@ -93,16 +95,27 @@ namespace CasaMendes
                 }
                 else
                 {
+                    //int cId = oPreVenda.ClienteId;
                     oPreVenda.ClienteId = 0;
                     oPreVenda.TipoDeVenda = filtro;
                     DgvVendas.DataSource = oPreVenda.Busca();
+                    //oPreVenda.ClienteId = cId;
                 }
 
                 if (this.DgvVendas.Rows.Count > 0)
                 {
                     RedimencionarColunas();
                     decimal vendas = clsGlobal.Calcular(this.DgvVendas, 4);
-                    this.TxtVendas.Text = vendas.ToString("C2");
+                    if (oPreVenda.ClienteId > 0)
+                    {
+                        decimal porcentagemPendura = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[0].Cells["Tributos"].Value.ToString());
+                        porcentagemPendura += clsGlobal.DeStringParaDecimal(DgvVendas.Rows[0].Cells["Juros"].Value.ToString());
+                        porcentagemPendura = 1 - (porcentagemPendura / 100);
+                        decimal totalPendura = vendas;
+                        vendas = (totalPendura / porcentagemPendura) - oPreVenda.Parcela;
+                    }
+
+                    this.TxtVendas.Text = vendas.ToString("N2");
                     StatusLabel = (DgvVendas.RowCount - 1).ToString();
                 }
                 else

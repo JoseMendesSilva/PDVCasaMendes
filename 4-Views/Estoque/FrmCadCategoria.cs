@@ -32,15 +32,11 @@ namespace CasaMendes
 
         #region Carregar dados
 
-        private void AssociarDataBinding()
+        private void LerDados()
         {
-            oCategoria = new Categoria();
-            oBsCategoria = new BindingSource{
-                oCategoria
-            };
-            TxtCategoriaId.DataBindings.Add("Text", oBsCategoria, "CategoriaId");
-            TxtNome.DataBindings.Add("Text", oBsCategoria, "Nome");
-            TxtDescricao.DataBindings.Add("Text", oBsCategoria, "Descricao");
+            oCategoria.CategoriaId = clsGlobal.DeStringParaInt(TxtCategoriaId.Text);
+            oCategoria.Nome = TxtNome.Text;
+            oCategoria.Descricao = TxtDescricao.Text;
         }
 
         private void OrganizarColunas()
@@ -58,9 +54,11 @@ namespace CasaMendes
 
         private void Carregar()
         {
-            if (loading || DgvCategorias.Rows.Count <= 0) return;
+            if (loading || DgvCategorias.Rows.Count < 1) return;
             oCategoria = (Categoria)DgvCategorias.Rows[LinhaIndex].DataBoundItem;
-            oBsCategoria.DataSource = oCategoria;
+            TxtCategoriaId.Text = oCategoria.CategoriaId.ToString();
+            TxtNome.Text= oCategoria.Nome;
+            TxtDescricao.Text= oCategoria.Descricao;
         }
 
         #endregion
@@ -69,12 +67,18 @@ namespace CasaMendes
 
         private void Novo()
         {
+            oCategoria.CategoriaId = 0;
+            oCategoria.Nome = "";
+            oCategoria.Descricao = "";
+
             BtnGravar.Enabled = true;
             BtnNovo.Enabled = false;
             BtnRetornar.Enabled = false;
+
             TxtCategoriaId.Clear();
             TxtNome.Clear();
             TxtDescricao.Clear();
+
             TxtNome.Focus();
             TxtNome.SelectAll();
         }
@@ -86,16 +90,18 @@ namespace CasaMendes
                 MessageBox.Show("O nome da categoria é obrigatório.");
                 TxtNome.Focus();
                 TxtNome.SelectAll();
-                return; 
+                return;
             }
+
+            LerDados();
 
             BtnGravar.Enabled = true;
             BtnNovo.Enabled = true;
             BtnRetornar.Enabled = true;
             oCategoria.Salvar();
+            DgvCategorias.DataSource = oCategoria.Todos();
             Carregar();
             MessageBox.Show("Cadastro realizado com sucesso!");
-            oBsCategoria.DataSource = oCategoria;
             DgvCategorias.Focus();
         }
 
@@ -106,11 +112,15 @@ namespace CasaMendes
             {
                 if (LinhaIndex != -1)
                 {
-                    if (TxtCategoriaId.Text == "0" || TxtCategoriaId.Text == string.Empty) { return; }
-                    oCategoria.CategoriaId = int.Parse(TxtCategoriaId.Text);
-                    oCategoria.Excluir();
-                    Carregar();
-                    msg = $"A categoria ' {oCategoria.Nome} ' foi excluido com sucesso.";
+                    DialogResult dresult = MensagemBox.Mostrar($"Esta ação é definitiva, você deseja excluir o produto '{oCategoria.Nome}'", "Sim", "Não");
+                    if (dresult == DialogResult.Yes)
+                    {
+                        if (TxtCategoriaId.Text == "0" || TxtCategoriaId.Text == string.Empty) { return; }
+                        oCategoria.CategoriaId = int.Parse(TxtCategoriaId.Text);
+                        oCategoria.Excluir();
+                        msg = $"A categoria ' {oCategoria.Nome} ' foi excluido com sucesso.";
+                        Carregar();
+                    }
                 }
                 else
                 {
@@ -133,11 +143,15 @@ namespace CasaMendes
                 oProcessamento = new FrmProcessando();
                 oProcessamento.Show();
                 oProcessamento.TopMost = true;
+
+                oCategoria = new Categoria();
+                if (oBsCategoria != null) oBsCategoria = null;
+                oBsCategoria = new BindingSource { oCategoria };
+
                 oProcessamento.Processo(16, "Formulário.", "iniciando a carga do formulário.");
                 loading = true;
 
                 oProcessamento.Processo(32, "Formulário.", "iniciando a carga do formulário.");
-                AssociarDataBinding();
 
                 oProcessamento.Processo(48, "Formulário.", "carregondo dados.");
                 DgvCategorias.DataSource = oCategoria.Todos();
@@ -223,6 +237,16 @@ namespace CasaMendes
         }
 
         #endregion
+
+        private void BtnSubcategorias_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var sc = new FrmCadSubcategoria();
+                sc.ShowDialog();
+            }
+            catch { }
+        }
 
     }
 }

@@ -52,13 +52,13 @@
             this.LblFornecedor = new System.Windows.Forms.Label();
             this.LblDataDeValidade = new System.Windows.Forms.Label();
             this.LblProduto = new System.Windows.Forms.Label();
-            this.BtnGravar = new System.Windows.Forms.Button();
             this.TxtCodigoDeBarras = new System.Windows.Forms.TextBox();
             this.TxtProdutoId = new System.Windows.Forms.TextBox();
             this.CbSubcategoria = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.TxtSubCategoriaId = new System.Windows.Forms.TextBox();
             this.TxtCodigoDoFornecedor = new System.Windows.Forms.TextBox();
+            this.BtnGravar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PicFoto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -143,6 +143,7 @@
             this.TxtPrecoDeVenda.Size = new System.Drawing.Size(97, 26);
             this.TxtPrecoDeVenda.TabIndex = 8;
             this.TxtPrecoDeVenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtPrecoDeVenda.Leave += new System.EventHandler(this.TxtPrecoDeVenda_Leave);
             // 
             // LblDesconto
             // 
@@ -332,18 +333,6 @@
             this.LblProduto.TabIndex = 160;
             this.LblProduto.Text = "Produto:";
             // 
-            // BtnGravar
-            // 
-            this.BtnGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.BtnGravar.Location = new System.Drawing.Point(334, 328);
-            this.BtnGravar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.BtnGravar.Name = "BtnGravar";
-            this.BtnGravar.Size = new System.Drawing.Size(71, 42);
-            this.BtnGravar.TabIndex = 12;
-            this.BtnGravar.Text = "Gravar";
-            this.BtnGravar.UseVisualStyleBackColor = true;
-            this.BtnGravar.Click += new System.EventHandler(this.btnGravar_Click);
-            // 
             // TxtCodigoDeBarras
             // 
             this.TxtCodigoDeBarras.AcceptsReturn = true;
@@ -360,7 +349,6 @@
             this.TxtCodigoDeBarras.Size = new System.Drawing.Size(150, 26);
             this.TxtCodigoDeBarras.TabIndex = 0;
             this.TxtCodigoDeBarras.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TxtCodigoDeBarras.Leave += new System.EventHandler(this.TxtCodigoDeBarras_Leave);
             // 
             // TxtProdutoId
             // 
@@ -410,13 +398,23 @@
             this.TxtCodigoDoFornecedor.TabIndex = 158;
             this.TxtCodigoDoFornecedor.Visible = false;
             // 
+            // BtnGravar
+            // 
+            this.BtnGravar.Location = new System.Drawing.Point(350, 327);
+            this.BtnGravar.Name = "BtnGravar";
+            this.BtnGravar.Size = new System.Drawing.Size(70, 42);
+            this.BtnGravar.TabIndex = 176;
+            this.BtnGravar.Text = "Gravar";
+            this.BtnGravar.UseVisualStyleBackColor = true;
+            this.BtnGravar.Click += new System.EventHandler(this.BtnGravar_Click);
+            // 
             // FrmCadProduto
             // 
-            this.AcceptButton = this.BtnGravar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnFechar;
             this.ClientSize = new System.Drawing.Size(510, 380);
+            this.Controls.Add(this.BtnGravar);
             this.Controls.Add(this.TxtPrecoUnitario);
             this.Controls.Add(this.TxtEstoque);
             this.Controls.Add(this.TxtPrecoDeVenda);
@@ -445,7 +443,6 @@
             this.Controls.Add(this.LblFornecedor);
             this.Controls.Add(this.LblDataDeValidade);
             this.Controls.Add(this.LblProduto);
-            this.Controls.Add(this.BtnGravar);
             this.Controls.Add(this.TxtCodigoDeBarras);
             this.Controls.Add(this.TxtProdutoId);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -486,12 +483,12 @@
         internal System.Windows.Forms.Label LblFornecedor;
         internal System.Windows.Forms.Label LblDataDeValidade;
         internal System.Windows.Forms.Label LblProduto;
-        internal System.Windows.Forms.Button BtnGravar;
         protected internal System.Windows.Forms.TextBox TxtCodigoDeBarras;
         public System.Windows.Forms.TextBox TxtProdutoId;
         public System.Windows.Forms.ComboBox CbSubcategoria;
         internal System.Windows.Forms.Label label3;
         internal System.Windows.Forms.TextBox TxtSubCategoriaId;
         internal System.Windows.Forms.TextBox TxtCodigoDoFornecedor;
+        private System.Windows.Forms.Button BtnGravar;
     }
 }

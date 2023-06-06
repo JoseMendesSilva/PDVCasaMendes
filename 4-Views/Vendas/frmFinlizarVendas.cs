@@ -27,10 +27,9 @@ namespace CasaMendes
 
         public decimal Tributos { get; set; }
         public decimal Juros { get; set; }
-        public decimal TotalPendura { get; set; }
         public decimal Dinheiro { get; set; }
         public decimal Desconto { get; set; }
-        private decimal Total { get; set; }
+        public decimal Total { get; set; }
         public decimal Troco { get; set; }
         public int ClienteId { get; set; }
         public string Cliente { get; set; }
@@ -45,30 +44,29 @@ namespace CasaMendes
         {
             try
             {
-                
-                   this.Dinheiro = clsGlobal.DeStringParaDecimal(this.txtDinheiro.Text);
+                this.TxtTributos.Text = "0,00";
+                this.TxtJuros.Text = "0,00";
+
+                this.Dinheiro = clsGlobal.DeStringParaDecimal(this.txtDinheiro.Text);
                    this.Desconto = clsGlobal.DeStringParaDecimal(this.TxtDesconto.Text);
                       this.Total = clsGlobal.DeStringParaDecimal(this.txtTotal.Text);
-                   this.Tributos = clsGlobal.DeStringParaDecimal(ConfigurationManager.AppSettings["Tributos"]);
-                      this.Juros = clsGlobal.DeStringParaDecimal(ConfigurationManager.AppSettings["Juros"]);
-                this.TipoDeVenda = CbFormaDePagamento.Text;
+                this.TipoDeVenda = this.CbFormaDePagamento.Text;
 
                 decimal DinheiroMaisDesconto = this.Dinheiro + this.Desconto;
-                decimal dinheiro = DinheiroMaisDesconto - this.Total;
+                this.Troco = DinheiroMaisDesconto - this.Total;
 
-                if (this.TipoDeVenda == "PENDURA")
-                {
-                     decimal encargos = (this.Juros + this.Tributos) / 100;
-                             encargos = 1 - encargos;
-                    this.TotalPendura = this.Total / encargos;
-                }
+                //if (this.TipoDeVenda == "PENDURA")
+                //{
+                //    this.Tributos = clsGlobal.DeStringParaDecimal(ConfigurationManager.AppSettings["Tributos"]);
+                //    this.Juros = clsGlobal.DeStringParaDecimal(ConfigurationManager.AppSettings["Juros"]);
 
-                    this.txtDinheiro.Text = Dinheiro.ToString("N2");
-                    this.TxtDesconto.Text = Desconto.ToString("N2");
-                    this.TxtTributos.Text = this.Tributos.ToString("N2");
-                       this.txtTotal.Text = Total.ToString("N2");
-                       this.TxtJuros.Text = Juros.ToString("N2");
-                this.TxtTotalPendura.Text = TotalPendura.ToString("N2");
+                //    this.TxtTributos.Text = this.Tributos.ToString("N2");
+                //       this.TxtJuros.Text = this.Juros.ToString("N2");
+                //}
+
+                this.txtTotal.Text = this.Total.ToString("N2");
+                this.Troco = clsGlobal.DeStringParaDecimal(this.txtTroco.Text);
+
             }
             catch { }
         }
@@ -127,9 +125,6 @@ namespace CasaMendes
                 {
                     txtDinheiro.Focus();
                     return;
-                }
-                else
-                {
                 }
             }
             catch {; }

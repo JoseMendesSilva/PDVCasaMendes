@@ -81,6 +81,7 @@
     <Reference Include="DocumentFormat.OpenXml, Version=2.9.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
       <HintPath>packages\DocumentFormat.OpenXml.2.9.1\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System">
       <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
     </Reference>
@@ -89,6 +90,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Common, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Drawing.Common.7.0.0\lib\net462\System.Drawing.Common.dll</HintPath>
+    </Reference>
     <Reference Include="System.Messaging" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Speech" />
@@ -144,8 +148,8 @@
     <EmbeddedResource Include="4-Views\Estoque\FrmCadSubcategoria.resx">
       <DependentUpon>FrmCadSubcategoria.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmPrincipal.resx">
-      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    <EmbeddedResource Include="FrmCasaMendes.resx">
+      <DependentUpon>FrmCasaMendes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="4-Views\Estoque\FrmProdutos.resx">
       <DependentUpon>FrmProdutos.cs</DependentUpon>
@@ -198,9 +202,15 @@
     <EmbeddedResource Include="5-Util\MyPrinters.resx">
       <DependentUpon>MyPrinters.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InicioResumen.resx">
+      <DependentUpon>InicioResumen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="5-Util\ProcessarEstoque.resx">
+      <DependentUpon>ProcessarEstoque.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -291,11 +301,14 @@
     <Compile Include="4-Views\Estoque\FrmCadSubcategoria.Designer.cs">
       <DependentUpon>FrmCadSubcategoria.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmPrincipal.cs">
+    <Compile Include="5-Util\ImprimerListaDeCompra .cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FrmCasaMendes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmPrincipal.Designer.cs">
-      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    <Compile Include="FrmCasaMendes.Designer.cs">
+      <DependentUpon>FrmCasaMendes.cs</DependentUpon>
     </Compile>
     <Compile Include="4-Views\Contabilidade\Financeiro\FrmTabelaDeMargen.cs">
       <SubType>Form</SubType>
@@ -401,7 +414,7 @@
     <Compile Include="5-Util\ImprimeVendaVista.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Global.cs" />
+    <Compile Include="5-Util\Global.cs" />
     <Compile Include="5-Util\MensagemBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -415,6 +428,12 @@
     </Compile>
     <Compile Include="5-Util\MyPrinters.Designer.cs">
       <DependentUpon>MyPrinters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InicioResumen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InicioResumen.Designer.cs">
+      <DependentUpon>InicioResumen.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -433,6 +452,12 @@
     </Compile>
     <Compile Include="4-Views\Estoque\FrmProdutos.Designer.cs">
       <DependentUpon>FrmProdutos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="5-Util\ProcessarEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="5-Util\ProcessarEstoque.Designer.cs">
+      <DependentUpon>ProcessarEstoque.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -5,13 +5,9 @@ using System.Collections.Generic;
 
 namespace CasaMendes
 {
-    public class Estoque : Base, IDisposable, IEnumerable
+    public class Estoque : Base, IDisposable
     {
         private bool disposedValue;
-
-        //public Estoque()
-        //{
-        //}
 
         [OpcoesBase(UsarNoBancoDeDados = true, ChavePrimaria = true, UsarParaBuscar = true)]
         public int EstoqueId { get; set; }
@@ -22,7 +18,7 @@ namespace CasaMendes
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
         public string CodigoDeBarras { get; set; }
 
-        [OpcoesBase(UsarNoBancoDeDados = true)]
+        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
         public string Produto { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
@@ -49,6 +45,9 @@ namespace CasaMendes
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public DateTime? deleted_at { get; set; } = null;
 
+        [OpcoesBase(UsarNoBancoDeDados = false)]
+        public bool Listar { get; set; }
+
         public new List<Estoque> Todos()
         {
             var estoque = new List<Estoque>();
@@ -69,9 +68,14 @@ namespace CasaMendes
             return estoque;
         }
 
-        public IEnumerator GetEnumerator()
+        public new List<Estoque> BuscaComLike()
         {
-            return ((IEnumerable)CodigoDeBarras).GetEnumerator();
+            var estoque = new List<Estoque>();
+            foreach (var ibase in base.BuscaComLike())
+            {
+                estoque.Add((Estoque)ibase);
+            }
+            return estoque;
         }
 
         protected virtual void Dispose(bool disposing)

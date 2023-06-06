@@ -7,8 +7,6 @@ namespace CasaMendes
     {
         private bool disposedValue;
 
-        public SubCategoria() { }
-
         [OpcoesBase(UsarNoBancoDeDados = true, ChavePrimaria = true, UsarParaBuscar = true)]
         public int SubCategoriaId { get; set; }
 
@@ -39,6 +37,16 @@ namespace CasaMendes
                 subCategoriia.Add((SubCategoria)ibase);
             }
             return subCategoriia;
+        }
+
+        public new List<SubCategoria> BuscaComParametro(string Elementos)
+        {
+            var oSubCategoria = new List<SubCategoria>();
+            foreach (var ibase in base.BuscaComParametro(Elementos))
+            {
+                oSubCategoria.Add((SubCategoria)ibase);
+            }
+            return oSubCategoria;
         }
 
         protected virtual void Dispose(bool disposing)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Bibliography;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
@@ -26,23 +27,20 @@ namespace CasaMendes
         #endregion
 
         #region métodos
-  
+
         private void CalcularPreco()
         {
-            double temp;
-            if (!TxtQuantidade.Text.Equals("") && !TxtValorCompra.Text.Equals(""))
-            {
-                temp = double.Parse(TxtValorCompra.Text) / double.Parse(TxtQuantidade.Text);
-                TxtPrecoUnitario.Text=temp.ToString("N2");
-            }
-            if (!TxtPrecoUnitario.Text.Equals(""))
-            {
+            decimal temp;
+            if (TxtQuantidade.Text.Equals("") || TxtValorCompra.Text.Equals("")) return;
+            
+                temp = clsGlobal.DeStringParaDecimal(TxtValorCompra.Text) / clsGlobal.DeStringParaDecimal(TxtQuantidade.Text);
+                TxtPrecoUnitario.Text = temp.ToString("N2");
                 temp = (oListaDeMargen[0].Despesa + oListaDeMargen[0].MargemDeLucro + oListaDeMargen[0].Custo + oListaDeMargen[0].Encargo + oListaDeMargen[0].PorcentagemPesoPorItem);
                 temp /= 100;
                 temp = 1 - temp;
-                temp = double.Parse(TxtPrecoUnitario.Text) / temp;
+                temp = clsGlobal.DeStringParaDecimal(TxtPrecoUnitario.Text) / temp;
                 TxtPrecoDeVenda.Text = temp.ToString("N2");
-            }
+            
         }
 
         private void VincularBindingSource()
@@ -52,7 +50,6 @@ namespace CasaMendes
             TxtCodigoDeBarras.DataBindings.Add("Text", BsProduto, "CodigoDeBarras");
             TxtNome.DataBindings.Add("Text", BsProduto, "Nome");
             DtpDataDeValidade.DataBindings.Add("Value", BsProduto, "DataDeValidade");
-            TxtPrecoDeVenda.DataBindings.Add("Text", BsProduto, "PrecoDeVenda");
             TxtPrecoUnitario.DataBindings.Add("Text", BsProduto, "PrecoUnitario");
             TxtQuantidade.DataBindings.Add("Text", BsProduto, "Quantidade");
             TxtValorCompra.DataBindings.Add("Text", BsProduto, "ValorCompra");
@@ -70,9 +67,64 @@ namespace CasaMendes
 
         #region Click
 
-        private void btnGravar_Click(object sender, EventArgs e)
+        private void Gravar()
         {
-            this.Close();
+            try
+            {
+
+                if (string.IsNullOrEmpty(oProduto.Nome) ||
+                string.IsNullOrEmpty(oProduto.FornecedorId.ToString()) ||
+                string.IsNullOrEmpty(oProduto.SubCategoriaId.ToString()) ||
+                string.IsNullOrEmpty(oProduto.PrecoDeVenda.ToString()) ||
+                string.IsNullOrEmpty(oProduto.PrecoUnitario.ToString()) ||
+                string.IsNullOrEmpty(oProduto.Quantidade.ToString()) ||
+                string.IsNullOrEmpty(oProduto.ValorCompra.ToString()) ||
+                string.IsNullOrEmpty(oProduto.DataDeValidade.ToString()) ||
+                string.IsNullOrEmpty(oProduto.CodigoDeBarras.ToString()))
+                {
+                    MessageBox.Show("Todos os campos são obrigatorio.");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(TxtQuantidadeItemDesconto.Text)) TxtQuantidadeItemDesconto.Text = "0";
+                if (string.IsNullOrEmpty(TxtValorDesconto.Text)) TxtValorDesconto.Text = "0,00";
+
+                oProduto.CodigoDeBarras = oProduto.CodigoDeBarras;
+
+                var oEstoque = new Estoque
+                {
+                    EstoqueId = 0,
+                    ProdutoId = oProduto.ProdutoId,
+                    Produto = oProduto.Nome,
+                    CodigoDeBarras = oProduto.CodigoDeBarras,
+                    Quantidade = oProduto.Quantidade,
+                    PrecoDeVenda = clsGlobal.DeStringParaDecimal(oProduto.PrecoDeVenda.ToString("N2")),
+                    QuantidadeItemDesconto = clsGlobal.DeStringParaInt(TxtQuantidadeItemDesconto.Text),
+                    Foto = oProduto.Foto,
+                    ValorDesconto = decimal.Parse(TxtValorDesconto.Text)
+                };
+
+                //Verificando se o nome já existe no estoque e resgata o EstoqueId.
+                var eEstoque = new Estoque
+                {
+                    CodigoDeBarras = oEstoque.CodigoDeBarras
+                };
+
+                List<Estoque> lEstoque = eEstoque.Busca();
+                if (lEstoque.Count > 0)
+                {
+                    oEstoque.EstoqueId = lEstoque[0].EstoqueId;
+                }
+
+                oProduto.Salvar();
+                oEstoque.Salvar();
+                MessageBox.Show("Processo realisado com sucesso.");
+            }
+            catch
+            {
+                MessageBox.Show("O cadastro não foi realizado com sucesso.");
+            }
+
         }
 
         private void PicFoto_Click(object sender, EventArgs e)
@@ -88,6 +140,11 @@ namespace CasaMendes
                 PicFoto.Image = Image.FromFile(clsGlobal.AbrirImagem(oProduto.Foto));
             }
             catch { }
+        }
+
+        private void BtnGravar_Click(object sender, EventArgs e)
+        {
+            Gravar();
         }
 
         #endregion
@@ -118,16 +175,17 @@ namespace CasaMendes
                 MessageBox.Show("Não foram encontrado nemhum fornecedor cadastrado, cadastre fornecedores.");
                 status = false;
             }
-            
-            CbSubcategoria.DisplayMember = "Nome";
-            CbSubcategoria.DataSource = new SubCategoria().Todos();
 
-            if (CbSubcategoria.Items.Count < 1) { 
+            CbSubcategoria.DisplayMember = "Nome";
+            CbSubcategoria.DataSource = new SubCategoria().BuscaComParametro("Nome");
+
+            if (CbSubcategoria.Items.Count < 1)
+            {
                 MessageBox.Show("Não foram encontrado nemhuma subcategoria cadastrada, cadastre subcategorias.");
                 status = false;
             }
             if (oProduto.Foto != null)
-               PicFoto.Image=Image.FromFile(oProduto.Foto);
+                PicFoto.Image = Image.FromFile(oProduto.Foto);
             else
                 PicFoto.Image = Properties.Resources.CasaMendes1Jpg;
 
@@ -189,6 +247,8 @@ namespace CasaMendes
         {
             try
             {
+                int quant = clsGlobal.DeStringParaInt(TxtQuantidade.Text);
+                oProduto.Quantidade = quant;
                 CalcularPreco();
             }
             catch { }
@@ -205,15 +265,17 @@ namespace CasaMendes
 
         #endregion
 
-        private void TxtCodigoDeBarras_Leave(object sender, EventArgs e)
+        #endregion
+
+        private void TxtPrecoDeVenda_Leave(object sender, EventArgs e)
         {
-            try {
-                TxtCodigoDeBarras.Text = clsGlobal.Formatar(TxtCodigoDeBarras.Text, 14);
+            try
+            {
+                decimal pv = clsGlobal.DeStringParaInt(TxtPrecoDeVenda.Text);
+                oProduto.PrecoDeVenda = pv;
+                TxtPrecoDeVenda.Text = oProduto.PrecoDeVenda.ToString();
             }
             catch { }
         }
-
-        #endregion
-   
     }
 }

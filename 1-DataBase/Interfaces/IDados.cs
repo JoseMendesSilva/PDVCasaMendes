@@ -14,6 +14,5 @@ namespace CasaMendes
         void Atualizar(string Procedimento);
         void Excluir(string Procedimento);
 
-
     }
 }

@@ -55,7 +55,6 @@ namespace CasaMendes
             }
         }
 
-
         public virtual void CriarTabela()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -270,6 +269,80 @@ namespace CasaMendes
             return list;
         }
 
+        public List<IBase> BuscaComParametro(string Elementos)
+        {
+            var list = new List<IBase>();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string queryString = $"select {Elementos} from " + this.GetType().Name + "s";
+                SqlCommand command = new SqlCommand(queryString, connection);
+                command.Connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    var obj = (IBase)Activator.CreateInstance(this.GetType());
+                    SetProperty(ref obj, reader);
+                    list.Add(obj);
+                }
+            }
+            return list;
+        }
+       
+        public List<IBase> BuscaComLike()
+        {
+            var list = new List<IBase>();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                List<string> where = new List<string>();
+                string chavePrimaria = string.Empty;
+                foreach (PropertyInfo pi in this.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance))
+                {
+                    OpcoesBase pOpcoesBase = (OpcoesBase)pi.GetCustomAttribute(typeof(OpcoesBase));
+                    if (pOpcoesBase != null)
+                    {
+                        if (pOpcoesBase.ChavePrimaria)
+                        {
+                            chavePrimaria = pi.Name;
+                        }
+
+                        if (pOpcoesBase.UsarParaBuscar)
+                        {
+                            var valor = pi.GetValue(this);
+                            if (valor != null && !valor.Equals(0) && !valor.Equals(""))
+                            {
+                                if (pi.PropertyType.Name == "DateTime")
+                                {
+                                    DateTime s = DateTime.Parse(pi.GetValue(this).ToString());
+                                    valor = s.ToString("yyyy-MM-dd");
+                                }
+
+                                where.Add(pi.Name + " like '%" + valor + "%'");
+                            }
+                        }
+                    }
+                }
+
+                string queryString = "select * from " + this.GetType().Name + "s where " + chavePrimaria + " is not null";
+                if (where.Count > 0)
+                {
+                    queryString += " and " + string.Join(" and ", where.ToArray());
+                }
+
+                SqlCommand command = new SqlCommand(queryString, connection);
+                command.Connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    var obj = (IBase)Activator.CreateInstance(this.GetType());
+                    SetProperty(ref obj, reader);
+                    list.Add(obj);
+                }
+            }
+            return list;
+        }
+        
         private void SetProperty(ref IBase obj, SqlDataReader reader)
         {
             foreach (PropertyInfo pi in obj.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance))
@@ -309,7 +382,7 @@ namespace CasaMendes
                             break;
                         case "DateTime":
                             value = reader[pi.Name].ToString();
-                            if (value == "") { continue; }
+                            if (value == "" || value == null) { continue; }
                             pi.SetValue(obj, DateTime.Parse(value));
                             break;
                         case "tinyint":
@@ -319,7 +392,7 @@ namespace CasaMendes
                             continue;
                         default:
                             value = reader[pi.Name].ToString();
-                            if (value == null || value == "" || pi.Name.ToString().Equals("deleted_at"))
+                            if (value == null || value == "" || pi.Name.ToString().Equals("deleted_at") || pi.Name.ToString().Equals("created_at"))
                             {
                                 break;
                             }

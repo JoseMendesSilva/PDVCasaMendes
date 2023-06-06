@@ -92,7 +92,7 @@ namespace CasaMendes
             }
             else
             {
-               PicFoto.Image = Properties.Resources.CasaMendes1Jpg;
+                PicFoto.Image = Properties.Resources.CasaMendes1Jpg;
             }
 
         }
@@ -102,7 +102,7 @@ namespace CasaMendes
             //se a flag DataLoding for true, então carrega os dados no grid, se não retorna
             if (frmLoading) return;
 
-                DgvFuncionarios.DataSource = null;
+            DgvFuncionarios.DataSource = null;
             DgvFuncionarios.DataSource = oFuncionario.Todos();
 
             // se está carregando os dados e o grid ainda não estiver sedo carregado antes
@@ -233,11 +233,15 @@ namespace CasaMendes
         {
             if (this.TxtCodigo.Text != null && this.TxtCodigo.Text != "0")
             {
-                oFuncionario.Excluir(); 
-                Carregar();
-                if (DgvFuncionarios.Rows.Count>0)
-                    AtribuirValores();
-                MessageBox.Show($"O funcionário ' {oFuncionario.Nome} ' foi excluido com sucesso.");
+                DialogResult dresult = MensagemBox.Mostrar($"Esta ação é definitiva, você deseja excluir o produto '{oFuncionario.Nome}'", "Sim", "Não");
+                if (dresult == DialogResult.Yes)
+                {
+                    oFuncionario.Excluir();
+                    MessageBox.Show($"O funcionário ' {oFuncionario.Nome} ' foi excluido com sucesso.");
+                    Carregar();
+                    if (DgvFuncionarios.Rows.Count > 0)
+                    { AtribuirValores(); }
+                }
             }
             else
                 MessageBox.Show($"O funcionário ' {oFuncionario.Nome} ' naõ foi excluido.");

@@ -1,6 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Drawing.Printing;
+using System.Drawing;
+using System;
 using System.Windows.Forms;
+using System.Configuration;
+using DocumentFormat.OpenXml.Spreadsheet;
+using System.Windows.Media;
 
 namespace CasaMendes
 {
@@ -11,11 +15,12 @@ namespace CasaMendes
         bool editar;
         Produto oProduto;
         FrmCadProduto cadProduto;
+
         #endregion
 
         #region Propriedades
 
-        public string StatusLabel{ get; set; }
+        public string StatusLabel { get; set; }
 
         #endregion
 
@@ -28,63 +33,87 @@ namespace CasaMendes
         }
         #endregion
 
-        #region Métodos auxiliares
- 
+        #region Métodos
+
         private void Botoes(bool b)
         {
             BtnEditar.Enabled = !b;
             BtnFechar.Enabled = b;
             BtnExcluir.Enabled = !b;
             BtnNovo.Enabled = b;
-            BtnAbrirListaDeesconto.Enabled = b;
+            BtnListaDeCompra.Enabled = b;
         }
 
         private void Carregar()
         {
+            DgvProdutos.MultiSelect = true;
+            DgvProdutos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
             oProduto = new Produto();
             DgvProdutos.DataSource = oProduto.Todos();
-            StatusLabel = (DgvProdutos.RowCount - 1).ToString("N2");
+            StatusLabel = (DgvProdutos.RowCount).ToString();
+            LblProdutosCadastrados.Text = $"Constam: {StatusLabel} produtos cadastrados.".ToUpper();
+
+            //foreach (DataGridViewRow row in DgvProdutos.Rows)
+            //{
+            //    int quantity;
+            //    if (int.TryParse(row.Cells["Quantidade"].Value.ToString(), out quantity))
+            //    {
+            //        if (quantity < 20)
+            //            row.Cells["Quantidade"].Style.BackColor = System.Drawing.Color.Red;
+            //        if (quantity < 10)
+            //            row.Cells["Quantidade"].Style.BackColor = System.Drawing.Color.Orange;
+            //    }
+            //}
+            //for (int i = 0; i < DgvProdutos.RowCount; i++)
+            //{
+            //    if (int.Parse(DgvProdutos.Rows[i].Cells["Quantidade"].Value.ToString()) <= 3)
+            //    {
+            //        DgvProdutos.Rows[i].DefaultCellStyle.BackColor = System.Drawing.Color.Red;//Color.LightGray;
+            //    }
+            //    else
+            //    {
+            //        DgvProdutos.Rows[i].DefaultCellStyle.BackColor = System.Drawing.Color.Green;//Color.LightGray;
+            //    }
+            //}
+            //this.Refresh();
+
         }
 
         private void RedimencionarGrade()
         {
             try
             {
-                    DgvProdutos.RowHeadersVisible = false;
+                DgvProdutos.RowHeadersVisible = false;
 
-                    for (int i = 0; i < DgvProdutos.Columns.Count; i++)
+                for (int i = 0; i < DgvProdutos.Columns.Count; i++)
+                {
+                    if ((DgvProdutos.Columns[i] == DgvProdutos.Columns["ProdutoId"]) || (DgvProdutos.Columns[i] == DgvProdutos.Columns["ValorCompra"]) || (DgvProdutos.Columns[i] == DgvProdutos.Columns["Quantidade"]) || (DgvProdutos.Columns[i] == DgvProdutos.Columns["FornecedorId"]) || (DgvProdutos.Columns[i] == DgvProdutos.Columns["Foto"]) || (DgvProdutos.Columns[i] == DgvProdutos.Columns["SubCategoriaId"]) || (DgvProdutos.Columns[i] == DgvProdutos.Columns["Key"]))
                     {
-                        if ((DgvProdutos.Columns[i] == DgvProdutos.Columns["ProdutoId"]) || (DgvProdutos.Columns[i] == DgvProdutos.Columns["ValorCompra"]) || (DgvProdutos.Columns[i] == DgvProdutos.Columns["Quantidade"]) || (DgvProdutos.Columns[i] == DgvProdutos.Columns["FornecedorId"]) || (DgvProdutos.Columns[i] == DgvProdutos.Columns["Foto"]) || (DgvProdutos.Columns[i] == DgvProdutos.Columns["Key"]))
-                        {
-                            DgvProdutos.Columns[i].Visible = false;
-                        }
+                        DgvProdutos.Columns[i].Visible = false;
                     }
+                }
 
-                    DgvProdutos.Columns["CodigoDeBarras"].HeaderText = "Cód Barras";
-                    DgvProdutos.Columns["Nome"].HeaderText = "Produto";
-                    DgvProdutos.Columns["DataDeValidade"].HeaderText = "D. Validade";
-                    //DgvProdutos.Columns["ValorCompra"].HeaderText = "V. Compra";
-                    //DgvProdutos.Columns["Estoque"].HeaderText = "Estoques";
-                    DgvProdutos.Columns["PrecoUnitario"].HeaderText = "Valor unitário";
-                    DgvProdutos.Columns["PrecoDeVenda"].HeaderText = "Valor venda";
-                    //DgvProdutos.Columns["Desconto"].HeaderText = "Qtd. Desc";
-                    //DgvProdutos.Columns["ValorDesconto"].HeaderText = "Valor desc";
-                    DgvProdutos.Columns["created_at"].HeaderText = "Data cadastro";
-                    DgvProdutos.Columns["updated_at"].HeaderText = "Atualizado";
-                    DgvProdutos.Columns["deleted_at"].HeaderText = "Inativo";
+                DgvProdutos.Columns["Quantidade"].Visible = true;
+                DgvProdutos.Columns["CodigoDeBarras"].HeaderText = "Cód Barras";
+                DgvProdutos.Columns["Nome"].HeaderText = "Produto";
+                DgvProdutos.Columns["DataDeValidade"].HeaderText = "D. Validade";
+                DgvProdutos.Columns["PrecoUnitario"].HeaderText = "Valor unitário";
+                DgvProdutos.Columns["PrecoDeVenda"].HeaderText = "Valor venda";
+                DgvProdutos.Columns["created_at"].HeaderText = "Data cadastro";
+                DgvProdutos.Columns["updated_at"].HeaderText = "Atualizado";
+                DgvProdutos.Columns["deleted_at"].HeaderText = "Inativo";
 
-                    DgvProdutos.Columns["CodigoDeBarras"].Width = clsGlobal.DimencionarColuna(10, this.Width);
-                    DgvProdutos.Columns["Nome"].Width = clsGlobal.DimencionarColuna(21, this.Width);
-                    DgvProdutos.Columns["DataDeValidade"].Width = clsGlobal.DimencionarColuna(10, this.Width);
-                    //DgvProdutos.Columns["ValorCompra"].Width = clsGlobal.DimencionarColuna(6, this.Width);
-                    //DgvProdutos.Columns["Estoque"].Width = clsGlobal.DimencionarColuna(6, this.Width);
-                    DgvProdutos.Columns["PrecoUnitario"].Width = clsGlobal.DimencionarColuna(8, this.Width);
-                    DgvProdutos.Columns["PrecoDeVenda"].Width = clsGlobal.DimencionarColuna(9, this.Width);
-                    //DgvProdutos.Columns["Desconto"].Width = clsGlobal.DimencionarColuna(6, this.Width);
-                    //DgvProdutos.Columns["ValorDesconto"].Width = clsGlobal.DimencionarColuna(6, this.Width);
-                    DgvProdutos.Columns["created_at"].Width = clsGlobal.DimencionarColuna(6, this.Width);
-                    DgvProdutos.Columns["updated_at"].Width = clsGlobal.DimencionarColuna(6, this.Width);
-                    DgvProdutos.Columns["deleted_at"].Width = clsGlobal.DimencionarColuna(6, this.Width);
+                DgvProdutos.Columns["CodigoDeBarras"].Width = clsGlobal.DimencionarColuna(12, this.Width);
+                DgvProdutos.Columns["Nome"].Width = clsGlobal.DimencionarColuna(35, this.Width);
+                DgvProdutos.Columns["DataDeValidade"].Width = clsGlobal.DimencionarColuna(10, this.Width);
+                DgvProdutos.Columns["Quantidade"].Width = clsGlobal.DimencionarColuna(10, this.Width);
+                DgvProdutos.Columns["PrecoUnitario"].Width = clsGlobal.DimencionarColuna(10, this.Width);
+                DgvProdutos.Columns["PrecoDeVenda"].Width = clsGlobal.DimencionarColuna(10, this.Width);
+                DgvProdutos.Columns["created_at"].Width = clsGlobal.DimencionarColuna(10, this.Width);
+                DgvProdutos.Columns["updated_at"].Width = clsGlobal.DimencionarColuna(10, this.Width);
+                DgvProdutos.Columns["deleted_at"].Width = clsGlobal.DimencionarColuna(10, this.Width);
+                DgvProdutos.Columns["Listar"].Width = clsGlobal.DimencionarColuna(10, this.Width);
 
             }
             catch
@@ -93,104 +122,6 @@ namespace CasaMendes
             }
         }
 
-        private void Gravar()
-        {
-            try
-            {
-                cadProduto = new FrmCadProduto();
-
-                if (editar.Equals(true) && LinhaIndex != -1)
-                {
-                   cadProduto.oProduto = (Produto)DgvProdutos.Rows[LinhaIndex].DataBoundItem;
-                }
-
-                cadProduto.ShowDialog();
-                
-                if( string.IsNullOrEmpty(cadProduto.oProduto.Nome) || 
-                    string.IsNullOrEmpty(cadProduto.oProduto.FornecedorId.ToString()) || 
-                    string.IsNullOrEmpty(cadProduto.oProduto.PrecoDeVenda.ToString()) || 
-                    string.IsNullOrEmpty(cadProduto.oProduto.PrecoUnitario.ToString()) || 
-                    string.IsNullOrEmpty(cadProduto.oProduto.Quantidade.ToString()) || 
-                    string.IsNullOrEmpty(cadProduto.oProduto.ValorCompra.ToString()) || 
-                    string.IsNullOrEmpty(cadProduto.oProduto.DataDeValidade.ToString()) ||
-                    string.IsNullOrEmpty(cadProduto.oProduto.CodigoDeBarras.ToString())) {
-                    MessageBox.Show("Todos os campos são obrigatorio."); 
-                    return; 
-                }
-
-                if (cadProduto.DialogResult.Equals(DialogResult.OK))
-                {
-                    if (string.IsNullOrEmpty(cadProduto.TxtQuantidadeItemDesconto.Text)) cadProduto.TxtQuantidadeItemDesconto.Text = "0";
-                    if (string.IsNullOrEmpty(cadProduto.TxtValorDesconto.Text)) cadProduto.TxtValorDesconto.Text = "0";
-
-                    var oEstoque = new Estoque
-                    {
-                        EstoqueId = 0,
-                        ProdutoId = cadProduto.oProduto.ProdutoId,
-                        Produto = cadProduto.oProduto.Nome,
-                        CodigoDeBarras = clsGlobal.Formatar(cadProduto.oProduto.CodigoDeBarras,14),
-                        Quantidade = cadProduto.oProduto.Quantidade,
-                        PrecoDeVenda = clsGlobal.DeStringParaDecimal(cadProduto.oProduto.PrecoDeVenda.ToString("N2")),
-                        QuantidadeItemDesconto = clsGlobal.DeStringParaInt(cadProduto.TxtQuantidadeItemDesconto.Text),
-                        Foto = cadProduto.oProduto.Foto,
-                        ValorDesconto = decimal.Parse(cadProduto.TxtValorDesconto.Text)
-                    };
-                    //Verificando se o nome já existe no estoque e resgata o EstoqueId.
-                    var e = new Estoque
-                    {
-                        CodigoDeBarras = oEstoque.CodigoDeBarras
-                    };
-
-                    List<Estoque> l = e.Busca();
-                    if (l.Count > 0)
-                    {
-                        oEstoque.EstoqueId = l[0].EstoqueId;
-                    }
-
-                    cadProduto.oProduto.Salvar();
-                    oEstoque.Salvar();
-                    Carregar();
-                    MessageBox.Show("O produto cadastrado com sucesso.");
-                }
-                else
-                {
-                    string msg = "O cadastro do";
-                    if (editar) { msg = "A edição do"; }
-                    MessageBox.Show($"{msg} foi cancelado(a).");
-                }
-            }
-            catch 
-            {
-                MessageBox.Show("O cadastro não foi realizado com sucesso.");
-            }
-
-        }
-
-        private void Novo()
-        {
-            editar = false;
-            Gravar();
-        }
-
-        private void Excluir()
-        {
-            try
-            {
-                if (LinhaIndex != -1)
-                {
-                    oProduto = (Produto)DgvProdutos.Rows[LinhaIndex].DataBoundItem;
-                    oProduto.Excluir();
-                    Carregar();
-                    MessageBox.Show($"O produro {oProduto.Nome} foi excluido com sucesso.");
-                }
-                else
-                {
-                    MessageBox.Show("Selecione um produto para excluir.");
-                }
-            }
-            catch {; }
-        }
- 
         #endregion
 
         #region Eventos
@@ -209,6 +140,8 @@ namespace CasaMendes
             oProcessando.Processo(90, "Lista de Produtos", "Carregando.");
             oProcessando.Close();
             oProcessando.Dispose();
+            TxtBusca.Focus();
+            TxtCodigoDeBarras.SelectAll();
         }
 
         private void TxtCodigoDeBarras_TextChanged(object sender, EventArgs e)
@@ -219,8 +152,12 @@ namespace CasaMendes
                 {
                     this.TxtBusca.Clear();
                 }
-                if (this.TxtCodigoDeBarras.Text != "0") oProduto.CodigoDeBarras = TxtCodigoDeBarras.Text;
-                DgvProdutos.DataSource = oProduto.Busca();
+                if (!string.IsNullOrEmpty(this.TxtCodigoDeBarras.Text))
+                {
+                    oProduto.CodigoDeBarras = this.TxtCodigoDeBarras.Text;
+                    DgvProdutos.DataSource = oProduto.BuscaComLike();
+                }
+
             }
             catch { }
         }
@@ -233,8 +170,11 @@ namespace CasaMendes
                 {
                     this.TxtCodigoDeBarras.Clear();
                 }
-                if (this.TxtBusca.Text != "0") oProduto.Nome= TxtBusca.Text;
-                DgvProdutos.DataSource = oProduto.Busca();
+                if (!string.IsNullOrEmpty(this.TxtBusca.Text))
+                {
+                    oProduto.Nome = TxtBusca.Text;
+                    DgvProdutos.DataSource = oProduto.BuscaComLike();
+                }
             }
             catch { }
         }
@@ -251,6 +191,8 @@ namespace CasaMendes
             }
             editar = false;
             BtnEditar.Enabled = editar;
+            TxtBusca.Focus();
+            TxtCodigoDeBarras.SelectAll();
         }
 
         #endregion
@@ -259,7 +201,14 @@ namespace CasaMendes
 
         private void BtnEditar_Click(object sender, EventArgs e)
         {
-            Gravar();
+            cadProduto = new FrmCadProduto();
+
+            if (LinhaIndex != -1)
+            {
+                cadProduto.oProduto = (Produto)DgvProdutos.Rows[LinhaIndex].DataBoundItem;
+                cadProduto.ShowDialog();
+                Carregar();
+            }
         }
 
         private void BtnFechar_Click(object sender, EventArgs e)
@@ -269,15 +218,55 @@ namespace CasaMendes
 
         private void BtnNovo_Click(object sender, EventArgs e)
         {
-            Novo();
+            cadProduto = new FrmCadProduto();
+            cadProduto.ShowDialog();
+            Carregar();
         }
 
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
-            Excluir();
+
+            try
+            {
+                if (LinhaIndex != -1)
+                {
+                    DialogResult dresult = MensagemBox.Mostrar($"Esta ação é definitiva, você deseja excluir o produto '{oProduto.Nome}'", "Sim", "Não");
+                    if (dresult == DialogResult.Yes)
+                    {
+                        oProduto = (Produto)DgvProdutos.Rows[LinhaIndex].DataBoundItem;
+                        oProduto.Excluir();
+                        MessageBox.Show($"O produro {oProduto.Nome} foi excluido com sucesso.");
+                        Carregar();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Selecione um produto para excluir.");
+                }
+            }
+            catch {; }
         }
 
         #endregion
+
+        private void DgvProdutos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            //Fetch the value of the second Column.
+            int quantity = int.Parse(DgvProdutos.Rows[e.RowIndex].Cells["Quantidade"].Value.ToString());
+
+            //Apply Background color based on value.
+            if (quantity <= 6)
+            {
+                DgvProdutos.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
+            }
+            if (quantity > 6)
+            {
+                DgvProdutos.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.GreenYellow;
+            }
+        }
+
  
     }
+
 }
+

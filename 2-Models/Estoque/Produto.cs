@@ -8,10 +8,6 @@ namespace CasaMendes
     {
         private bool disposedValue;
 
-        public Produto()
-        {
-        }
-
         [OpcoesBase(UsarNoBancoDeDados = true, ChavePrimaria = true, UsarParaBuscar = true)]
         public int ProdutoId { get; set; }
 
@@ -51,6 +47,9 @@ namespace CasaMendes
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public DateTime? deleted_at { get; set; } = null;
 
+        [OpcoesBase(UsarNoBancoDeDados = true)]
+        public int SubCategoriaId { get; set; }
+
         public new List<Produto> Todos()
         {
             var produtos = new List<Produto>();
@@ -65,6 +64,16 @@ namespace CasaMendes
         {
             var produtos = new List<Produto>();
             foreach (var ibase in base.Busca())
+            {
+                produtos.Add((Produto)ibase);
+            }
+            return produtos;
+        }
+
+        public new List<Produto> BuscaComLike()
+        {
+            var produtos = new List<Produto>();
+            foreach (var ibase in base.BuscaComLike())
             {
                 produtos.Add((Produto)ibase);
             }
@@ -86,7 +95,8 @@ namespace CasaMendes
             }
         }
 
-        // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+        // TODO: override finalizer only if 'Dispose(bool disposing)'
+        // has code to free unmanaged resources
         ~Produto()
         {
             // Não altere este código. Coloque o código de limpeza no método 'Dispose(bool disposing)'

@@ -117,9 +117,13 @@ namespace CasaMendes
             {
                 if (editar.Equals(true) && LinhaIndex != -1)
                 {
-                    oCliente = (Cliente)DgvClientes.Rows[LinhaIndex].DataBoundItem;
-                    oCliente.Excluir();
-                    Carregar();
+                    DialogResult dresult = MensagemBox.Mostrar($"Esta ação é definitiva, você deseja excluir o produto '{oCliente.Nome}'", "Sim", "Não");
+                    if (dresult == DialogResult.Yes)
+                    {
+                        oCliente = (Cliente)DgvClientes.Rows[LinhaIndex].DataBoundItem;
+                        oCliente.Excluir();
+                        Carregar();
+                    }
                 }
             }
             catch {; }

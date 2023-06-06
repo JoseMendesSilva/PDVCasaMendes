@@ -5,6 +5,7 @@ using System.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 using System.Drawing;
 using System.Configuration;
+using DocumentFormat.OpenXml.Bibliography;
 
 namespace CasaMendes
 {
@@ -61,20 +62,72 @@ namespace CasaMendes
             oPreVenda.Parcela = 0;
             oPreVenda.Tributos = 0;
             oPreVenda.Juros = 0;
-            oPreVenda.TotalPendura = 0;
+            oPreVenda.SubTotal = 0;
 
             grid.Rows.Clear();
+
             lblOperador.Text = "Operador: " + this.Funcionario;
             lblTerminal.Text = "Terminal: " + 1;
             this.PicLogoTipo.Image = Properties.Resources.CasaMendes1Jpg;
         }
 
-        private void BuscarProduto(string Filtro)
+        public void CarregarPendura(int ClienteId, string TipoDeVenda)
         {
             try
             {
-                if (Filtro.Length < 13) return;
-                if (oPreVenda.NumeroDaVenda == "0") { GerarNumero(); }
+                Buscando = true;
+                this.oPreVenda.ClienteId = ClienteId;
+                this.oPreVenda.TipoDeVenda = TipoDeVenda;
+                this.oPreVenda.NumeroDaVenda = null;
+                this.oPreVenda.created_at = null;
+                var ListaPreVenda = new List<PreVenda>();
+                ListaPreVenda = this.oPreVenda.Busca();
+
+                if (ListaPreVenda.Count > 0)
+                {
+                    GerarNumero();
+                    decimal SubTotal = 0;
+                    decimal encargos = 0;
+                            lblStatusCaixa.Text = "CAIXA OCUPADO";
+
+                    for (int i = 0; i < ListaPreVenda.Count; i++)
+                    {
+                        this.oPreVenda = (PreVenda)ListaPreVenda[i];
+                        if (this.oPreVenda.Produto != "" && oPreVenda.Produto != null)
+                        {
+                            encargos = 1 - ((this.oPreVenda.Tributos + this.oPreVenda.Juros) / 100);
+                            SubTotal = (this.oPreVenda.Quantidade * this.oPreVenda.Valor) / encargos;
+                            string[] row = { this.oPreVenda.ClienteId.ToString(), this.oPreVenda.NumeroDaVenda.ToString(), this.oPreVenda.TipoDeVenda.ToString(), this.oPreVenda.Desconto.ToString(), this.oPreVenda.Tributos.ToString(), this.oPreVenda.Juros.ToString(), this.oPreVenda.SubTotal.ToString(), string.Format("{0,4:#0000}", count), this.oPreVenda.PreVendaId.ToString(), this.oPreVenda.Produto, this.oPreVenda.Quantidade.ToString(), this.oPreVenda.PrecoDeVenda.ToString("N2"), SubTotal.ToString("N2"), this.oPreVenda.PreVendaId.ToString() };
+                            this.grid.Rows.Add(row);
+
+                            count++;
+
+                        }
+                    }
+
+                    decimal total = clsGlobal.Calcular(grid, 12) - oPreVenda.Parcela;
+                    this.TxtTotal.Text = total.ToString("N2");
+                    if (grid.Rows.Count > 0)
+                    {
+                        grid.CurrentCell = grid.Rows[grid.Rows.Count - 1].Cells[8];
+                    }
+
+                    Buscando = false;
+                    this.TxtCodigo.Focus();
+                    this.TxtCodigo.SelectAll();
+                }
+            }
+            catch
+            {
+            }
+        }
+
+        private void BuscarProduto()
+        {
+            try
+            {
+                string Filtro = TxtCodigo.Text;
+                if (oPreVenda.NumeroDaVenda == "0" || oPreVenda.NumeroDaVenda == null) { GerarNumero(); }
 
                 var oEstoque = new Estoque();
                 List<Estoque> ResEstoque = new List<Estoque>();
@@ -84,15 +137,13 @@ namespace CasaMendes
                 if (ResEstoque.Count > 0)
                 {
                     oEstoque = (Estoque)ResEstoque[0];
-
                     ResEstoque = null;
-
                     if (oEstoque.Produto != "" && oEstoque.Produto != null)
                     {
                         int quant = clsGlobal.DeStringParaInt(TxtQuantidade.Text);
                         decimal SubTotal = quant * oEstoque.PrecoDeVenda;
 
-                        string[] row = { oPreVenda.ClienteId.ToString(), oPreVenda.NumeroDaVenda.ToString(), oPreVenda.TipoDeVenda.ToString(), oPreVenda.Desconto.ToString(), oPreVenda.Tributos.ToString(), oPreVenda.Juros.ToString(), oPreVenda.TotalPendura.ToString(), string.Format("{0,4:#0000}", count), oEstoque.CodigoDeBarras, oEstoque.Produto, this.TxtQuantidade.Text, oEstoque.PrecoDeVenda.ToString("N2"), SubTotal.ToString("N2") };
+                        string[] row = { oPreVenda.ClienteId.ToString(), oPreVenda.NumeroDaVenda.ToString(), oPreVenda.TipoDeVenda.ToString(), oPreVenda.Desconto.ToString(), oPreVenda.Tributos.ToString(), oPreVenda.Juros.ToString(), oPreVenda.SubTotal.ToString(), string.Format("{0,4:#0000}", count), oEstoque.CodigoDeBarras, oEstoque.Produto, this.TxtQuantidade.Text, oEstoque.PrecoDeVenda.ToString("N2"), SubTotal.ToString("N2"), "" };
                         this.grid.Rows.Add(row);
 
                         this.TxtUnitario.Text = oEstoque.PrecoDeVenda.ToString("N2");
@@ -109,19 +160,15 @@ namespace CasaMendes
                         {
                             grid.CurrentCell = grid.Rows[grid.Rows.Count - 1].Cells[8];
                         }
-                      count++;
+                        count++;
 
                         lblStatusCaixa.Text = "CAIXA OCUPADO";
 
-                        oEstoque = null;
 
                         this.TxtCodigo.Focus();
                         this.TxtCodigo.SelectAll();
                     }
-                }
-                else
-                {
-                    if (Filtro.Length < 13)
+                    if (Filtro.Length < 14)
                     {
                         this.TxtCodigo.Focus();
                     }
@@ -129,7 +176,6 @@ namespace CasaMendes
                     {
                         this.TxtCodigo.Focus();
                         this.TxtCodigo.SelectAll();
-                        //return;
                     }
                 }
             }
@@ -144,33 +190,40 @@ namespace CasaMendes
             {
 
                 int counte = this.grid.Rows.Count;
-                if (this.grid.Rows.Count > 0)
+                if (counte > 0)
                 {
-
+                    if (this.oPreVenda == null) this.oPreVenda = new PreVenda();
                     oPreVenda.Valor = clsGlobal.DeStringParaDecimal(this.TxtTotal.Text.Replace("R$ ", "").ToString());
                     frmFinlizarVendas oFinlizarVenda = new frmFinlizarVendas();
-                    oFinlizarVenda.txtTotal.Text = oPreVenda.Valor.ToString("N2");
+                    oFinlizarVenda.txtTotal.Text = this.oPreVenda.Valor.ToString("N2");
                     oFinlizarVenda.ShowDialog();
 
-                    oPreVenda.Dinheiro = oFinlizarVenda.Dinheiro;
-                    oPreVenda.Desconto = oFinlizarVenda.Desconto;
-                    oPreVenda.Troco = oFinlizarVenda.Troco;
-                    oPreVenda.ClienteId = oFinlizarVenda.ClienteId;
-                    oPreVenda.TipoDeVenda = oFinlizarVenda.TipoDeVenda;
+                    this.oPreVenda.Dinheiro = oFinlizarVenda.Dinheiro;
+                    this.oPreVenda.Desconto = oFinlizarVenda.Desconto;
+                    this.oPreVenda.Troco = oFinlizarVenda.Troco;
+                    this.oPreVenda.ClienteId = oFinlizarVenda.ClienteId;
+                    this.oPreVenda.TipoDeVenda = oFinlizarVenda.TipoDeVenda;
 
-                    oPreVenda.Tributos = oFinlizarVenda.Tributos;
-                    oPreVenda.Juros = oFinlizarVenda.Juros;
-                    oPreVenda.TotalPendura = oFinlizarVenda.TotalPendura;
+                    if (this.oPreVenda.TipoDeVenda == "PENDURA")
+                    {
+                        this.oPreVenda.Tributos = clsGlobal.DeStringParaDecimal(ConfigurationManager.AppSettings["Tributos"]);
+                        this.oPreVenda.Juros = clsGlobal.DeStringParaDecimal(ConfigurationManager.AppSettings["Juros"]);
+                    }
+                    else
+                    {
+                        this.oPreVenda.Tributos = 0;
+                        this.oPreVenda.Juros = 0;
+                    }
 
                     for (int i = 0; i < grid.Rows.Count; i++)
                     {
-                        grid.Rows[i].Cells[0].Value = oPreVenda.ClienteId;
-                        grid.Rows[i].Cells[1].Value = oPreVenda.NumeroDaVenda;
-                        grid.Rows[i].Cells[2].Value = oPreVenda.TipoDeVenda;
-                        grid.Rows[i].Cells[3].Value = oPreVenda.Desconto;
-                        grid.Rows[i].Cells[4].Value = oPreVenda.Tributos;
-                        grid.Rows[i].Cells[5].Value = oPreVenda.Juros;
-                        grid.Rows[i].Cells[6].Value = oPreVenda.TotalPendura;
+                        grid.Rows[i].Cells["NumeroDaVenda"].Value = this.oPreVenda.NumeroDaVenda;
+                        grid.Rows[i].Cells["TipoDeVenda"].Value = this.oPreVenda.TipoDeVenda;
+                        grid.Rows[i].Cells["Desconto"].Value = this.oPreVenda.Desconto;
+                        grid.Rows[i].Cells["Tributos"].Value = this.oPreVenda.Tributos;
+                        grid.Rows[i].Cells["Juros"].Value = this.oPreVenda.Juros;
+                        if(oPreVenda.Tributos > 0 || oPreVenda.Juros > 0) this.oPreVenda.SubTotal = clsGlobal.AplicarEncargos((this.oPreVenda.Valor = clsGlobal.DeStringParaDecimal(grid.Rows[i].Cells["ValorTotal"].Value.ToString())), this.oPreVenda.Tributos, this.oPreVenda.Juros);
+                        grid.Rows[i].Cells["ValorTotal"].Value = this.oPreVenda.SubTotal.ToString("N2");
                     }
 
                     if (oFinlizarVenda.DialogResult == DialogResult.Cancel)
@@ -187,18 +240,14 @@ namespace CasaMendes
 
                     for (int i = 0; i <= counte - 1; i++)
                     {
-                        oPreVenda.ClienteId = clsGlobal.DeStringParaInt(grid.Rows[i].Cells[0].Value.ToString());
-                        oPreVenda.NumeroDaVenda = grid.Rows[i].Cells[1].Value.ToString();
-                        oPreVenda.TipoDeVenda = grid.Rows[i].Cells[2].Value.ToString() == null ? "A VISTA" : grid.Rows[i].Cells[2].Value.ToString();
-                        oPreVenda.Desconto = clsGlobal.DeStringParaDecimal(grid.Rows[i].Cells[3].Value.ToString());
-                        oPreVenda.Tributos = clsGlobal.DeStringParaDecimal(grid.Rows[i].Cells[4].Value.ToString());
-                        oPreVenda.Juros = clsGlobal.DeStringParaDecimal(grid.Rows[i].Cells[5].Value.ToString());
-                        oPreVenda.TotalPendura = clsGlobal.DeStringParaDecimal(grid.Rows[i].Cells[6].Value.ToString());
-                        oPreVenda.Produto = grid.Rows[i].Cells[9].Value.ToString();
-                        oPreVenda.Quantidade = clsGlobal.DeStringParaInt(grid.Rows[i].Cells[10].Value.ToString().Trim());
-                        oPreVenda.PrecoDeVenda = clsGlobal.DeStringParaDecimal(grid.Rows[i].Cells[11].Value.ToString().Replace("R$ ", ""));
-                        oPreVenda.Valor = clsGlobal.DeStringParaDecimal(grid.Rows[i].Cells[12].Value.ToString().Replace("R$ ", ""));
-                        oPreVenda.Salvar();
+                        this.oPreVenda.Produto = grid.Rows[i].Cells["Descricao"].Value.ToString();
+                        this.oPreVenda.Quantidade = clsGlobal.DeStringParaInt(grid.Rows[i].Cells["Quantidade"].Value.ToString().Trim());
+                        this.oPreVenda.PrecoDeVenda = clsGlobal.DeStringParaDecimal(grid.Rows[i].Cells["ValorUnitario"].Value.ToString());
+                        this.oPreVenda.NumeroDaVenda = grid.Rows[i].Cells["NumeroDaVenda"].Value.ToString();
+                        this.oPreVenda.TipoDeVenda = grid.Rows[i].Cells["TipoDeVenda"].Value.ToString() == null ? "A VISTA" : grid.Rows[i].Cells["TipoDeVenda"].Value.ToString();
+                        this.oPreVenda.Valor = clsGlobal.DeStringParaDecimal(grid.Rows[i].Cells["ValorTotal"].Value.ToString());
+                        if(oPreVenda.PreVendaId > 0) this.oPreVenda.PreVendaId = clsGlobal.DeStringParaInt(grid.Rows[i].Cells["PreVendaId"].Value.ToString());
+                        this.oPreVenda.Salvar();
                     }
 
                     DialogResult dialogResult = MensagemBox.Mostrar("Deseja imprimir o cupom não fiscal?", "Sim", "Nao");
@@ -206,17 +255,12 @@ namespace CasaMendes
                     {
                         ImprimirBoleto();
                     }
-
+                    Buscando = false;
                     Limpar();
                 }
             }
             catch
             {
-            }
-            finally
-            {
-                //TxtCodigo.Focus();
-                //TxtCodigo.SelectAll();
             }
 
         }
@@ -229,17 +273,8 @@ namespace CasaMendes
 
         private void GerarNumero()
         {
-            //var rnd = new Random();
-            int day = int.Parse(DateTime.Now.Day.ToString());
-            int month = int.Parse(DateTime.Now.Month.ToString());
-            int yar = int.Parse(DateTime.Now.Year.ToString());
-            int minuto = int.Parse(DateTime.Now.Minute.ToString("G2"));
-            DateTime dadetime = new DateTime(yar, month, day);
-            DateTime dadetime2 = DateTime.Parse(DateTime.Now.ToString());
-            string dteTime = dadetime.ToString("ddMMyyyy");
-            string dteTime2 = dadetime2.ToString("HHmm");
-            string numero = string.Concat(dteTime, dteTime2);
-            oPreVenda.NumeroDaVenda = numero;
+            var rnd = new Random();
+            oPreVenda.NumeroDaVenda = rnd.Next(0, 999999).ToString();
         }
 
         #endregion
@@ -399,7 +434,6 @@ namespace CasaMendes
         {
             try
             {
-                string Item;
                 Int32 tamanho = TxtCodigo.Text.Length;
                 string operador = "";
                 if (this.Buscando == false)
@@ -418,14 +452,10 @@ namespace CasaMendes
                 {
                     Buscando = false;
                     if (TxtCodigo.Text.Length < 8)
-                    { 
-                        this.TxtCodigo.Focus();
-                        return; 
-                    }
-                     Item = clsGlobal.Formatar(TxtCodigo.Text, 14);
+                    { this.TxtCodigo.Focus(); return; }
                 }
 
-                this.BuscarProduto(Item); 
+                this.BuscarProduto();
             }
             catch
             {
@@ -437,7 +467,6 @@ namespace CasaMendes
         {
             if (oPreVenda == null) oPreVenda = new PreVenda();
             Limpar();
-
             TxtCodigo.Focus();
             TxtCodigo.SelectAll();
         }
@@ -459,7 +488,11 @@ namespace CasaMendes
             }
         }
 
-        #endregion
+        private void iconcerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
+        #endregion
     }
 }

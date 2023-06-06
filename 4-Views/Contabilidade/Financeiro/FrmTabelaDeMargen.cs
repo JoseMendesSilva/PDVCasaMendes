@@ -33,7 +33,7 @@ namespace CasaMendes
 
         #endregion
 
-        #region métodos auxiliares
+        #region métodos
 
         private void OrganizarColunasSubcategoria()
         {
@@ -97,7 +97,7 @@ namespace CasaMendes
             this.TxtSubCategoriaId.DataBindings.Add("Text", BsTabelaDeMargem, "SubCategoriaId");
             this.TxtNumeroDeItensNaLoja.DataBindings.Add("Text", BsTabelaDeMargem, "NumeroDeItensNaLoja");
             this.TxtValorDeBase.DataBindings.Add("Text", BsTabelaDeMargem, "ValorDeBase");
-            this.TxtPorcentagemPesoPorItem.DataBindings.Add("Text", BsTabelaDeMargem, "NumeroDeItensNaLoja");
+            this.TxtPorcentagemPesoPorItem.DataBindings.Add("Text", BsTabelaDeMargem, "PorcentagemPesoPorItem");
             this.TxtDespesa.DataBindings.Add("Text", BsTabelaDeMargem, "Despesa");
             this.TxtCusto.DataBindings.Add("Text", BsTabelaDeMargem, "Custo");
             this.TxtEncargo.DataBindings.Add("Text", BsTabelaDeMargem, "Encargo");
@@ -107,18 +107,17 @@ namespace CasaMendes
         private void Calcular()
         {
             if (this.TxtCusto.Text.Equals("") || this.TxtMargemDeLucro.Text.Equals("") || this.TxtDespesa.Text.Equals("") || this.TxtEncargo.Text.Equals("")) return;
-            double d = oTabelaDeMargen.Despesa;
-            d = double.Parse(this.TxtValorDeBase.Text) / double.Parse(this.TxtNumeroDeItensNaLoja.Text);
+            decimal d = oTabelaDeMargen.Despesa;
+            d = clsGlobal.DeStringParaDecimal(this.TxtValorDeBase.Text) / clsGlobal.DeStringParaDecimal(this.TxtNumeroDeItensNaLoja.Text);
 
-            TxtPorcentagemPesoPorItem.Text = d.ToString("N2");
 
             d += oTabelaDeMargen.Custo;
             d += oTabelaDeMargen.MargemDeLucro;
             d += oTabelaDeMargen.Despesa;
             d += oTabelaDeMargen.Encargo;
 
+            this.TxtPorcentagemPesoPorItem.Text = d.ToString("N2");
             this.TxtTotal.Text = d.ToString("N2");
-
         }
 
         private void Botoes(bool b)
@@ -143,42 +142,9 @@ namespace CasaMendes
             TxtMargemDeLucro.Clear();
             TxtDespesa.Clear();
             TxtEncargo.Clear();
-        }
-
-        private void Novo()
-        {
-            Botoes(false);
-            TxtTabelaDeMargenId.Text = "0";
-            oTabelaDeMargen.TabelaDeMargenId = 0;
-            editar = false;
-        }
-
-        private void Cancelar()
-        {
-            Botoes(true);
-            editar = true;
-        }
-
-        private void Gravar()
-        {
-            if (!editar)
-            {
-                TxtTabelaDeMargenId.Text = "0";
-                oTabelaDeMargen.TabelaDeMargenId = 0;
-            }
-            oTabelaDeMargen.Salvar();
-            LoadingTabelaDeMargen();
-            MessageBox.Show("Cadastro realizado com sucesso.");
-            Botoes(true);
-            editar = true;
-        }
-
-        private void Excluir()
-        {
-            oTabelaDeMargen = (TabelaDeMargen)DgvTabelaDeMargem.Rows[LinhaIndexMargem].DataBoundItem;
-            oTabelaDeMargen.Excluir();
-            MessageBox.Show("O registro foi excluido com sucesso.");
-            LoadingTabelaDeMargen();
+            TxtNumeroDeItensNaLoja.Text = "67";
+            TxtValorDeBase.Text = "1.228,07"; 
+            TxtPorcentagemPesoPorItem.Text = oTabelaDeMargen.Porcentagem().ToString("N2");
         }
 
         private void LoadingTabelaDeMargen()
@@ -186,7 +152,7 @@ namespace CasaMendes
             try
             {
                 if (LinhaIndex.Equals(-1) && !Loading) return;
-                int index = int.Parse(DgvSubcategorias.Rows[LinhaIndex].Cells[0].Value.ToString());
+                int index = clsGlobal.DeStringParaInt(DgvSubcategorias.Rows[LinhaIndex].Cells[0].Value.ToString());
                 oTabelaDeMargen.SubCategoriaId = index;
                 oTabelaDeMargen.TabelaDeMargenId = 0;
                  DgvTabelaDeMargem.DataSource = oTabelaDeMargen.Busca();
@@ -195,8 +161,12 @@ namespace CasaMendes
             }
             catch { }
         }
+  
+        #endregion
 
-        private void LoadingForm()
+        #region Load
+
+        private void FrmTabelaDeMargen_Load(object sender, EventArgs e)
         {
             try
             {
@@ -216,18 +186,13 @@ namespace CasaMendes
                     BtnRetornar.Enabled = true;
                 }
                 OrganizarColunasSubcategoria();
-                if (TxtPorcentagemPesoPorItem.Text.Length > 0) { Calcular(); }
+                //Limpar();
+                int tValor = clsGlobal.DeStringParaInt(TxtNumeroDeItensNaLoja.Text);
+                if (tValor == 0) TxtNumeroDeItensNaLoja.Text = "67";
+                 tValor = clsGlobal.DeStringParaInt(TxtValorDeBase.Text);
+                if (TxtValorDeBase.Text.Length > 0) TxtValorDeBase.Text = "1228,07";
             }
             catch { }
-        }
-  
-        #endregion
-
-        #region Load
-
-        private void FrmTabelaDeMargen_Load(object sender, EventArgs e)
-        {
-            LoadingForm();
         }
 
         #endregion
@@ -259,14 +224,14 @@ namespace CasaMendes
 
         #endregion
 
-        #region TextChanged
+        #region TextoChanged
 
         private void TxtCusto_TextChanged(object sender, EventArgs e)
         {
             try
             {
                 if (this.TxtCusto.Text.Equals("")) return;
-                oTabelaDeMargen.Custo = double.Parse(this.TxtCusto.Text);
+                oTabelaDeMargen.Custo = clsGlobal.DeStringParaDecimal(this.TxtCusto.Text);
                 if (oTabelaDeMargen.Custo > 0) Calcular();
             }catch { }
         }
@@ -276,7 +241,7 @@ namespace CasaMendes
             try
             {
                 if (this.TxtMargemDeLucro.Text.Equals("")) return;
-                oTabelaDeMargen.MargemDeLucro = double.Parse(this.TxtMargemDeLucro.Text);
+                oTabelaDeMargen.MargemDeLucro = clsGlobal.DeStringParaDecimal(this.TxtMargemDeLucro.Text);
                 if (oTabelaDeMargen.MargemDeLucro > 0) Calcular();
             }
             catch { }
@@ -287,7 +252,7 @@ namespace CasaMendes
             try
             {
                 if (this.TxtDespesa.Text.Equals("")) return;
-                oTabelaDeMargen.Despesa = double.Parse(this.TxtDespesa.Text);
+                oTabelaDeMargen.Despesa = clsGlobal.DeStringParaDecimal(this.TxtDespesa.Text);
                 if (oTabelaDeMargen.Despesa > 0) Calcular();
             }
             catch { }
@@ -298,7 +263,7 @@ namespace CasaMendes
             try
             {
                 if (this.TxtEncargo.Text.Equals("")) return;
-                oTabelaDeMargen.Encargo = double.Parse(this.TxtEncargo.Text);
+                oTabelaDeMargen.Encargo = clsGlobal.DeStringParaDecimal(this.TxtEncargo.Text);
                 if (oTabelaDeMargen.Encargo > 0) Calcular();
             }
             catch { }
@@ -314,6 +279,26 @@ namespace CasaMendes
             }catch{ }
         }
 
+        private void TxtValorDeBase_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(TxtNumeroDeItensNaLoja.Text) && !string.IsNullOrEmpty(TxtValorDeBase.Text))
+                {
+                    TxtPorcentagemPesoPorItem.Text = oTabelaDeMargen.Porcentagem().ToString("N2");
+                }
+            }
+            catch { }
+        }
+
+        private void TxtNumeroDeItensNaLoja_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TxtNumeroDeItensNaLoja.Text) && !string.IsNullOrEmpty(TxtValorDeBase.Text))
+            {
+                TxtPorcentagemPesoPorItem.Text = oTabelaDeMargen.Porcentagem().ToString("N2");
+            }
+        }
+
         #endregion
 
         #region Click
@@ -322,30 +307,42 @@ namespace CasaMendes
         {
             if (BtnNovo.Text.Equals("Cancelar"))
             {
-                Cancelar();
+                Botoes(true);
+                editar = true;
             }
             else
             {
                 Limpar();
-                Novo();
+                Botoes(false);
+                TxtTabelaDeMargenId.Text = "0";
+                oTabelaDeMargen.TabelaDeMargenId = 0;
+                editar = false;
             }
         }
 
         private void BtnGravar_Click(object sender, EventArgs e)
         {
-            Gravar();
+            if (!editar)
+            {
+                TxtTabelaDeMargenId.Text = "0";
+                oTabelaDeMargen.TabelaDeMargenId = 0;
+            }
+            oTabelaDeMargen.Salvar();
+            LoadingTabelaDeMargen();
+            MessageBox.Show("Cadastro realizado com sucesso.");
+            Botoes(true);
+            editar = true;
         }
 
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
-            Excluir();
-        }
-
-        private void TxtNumeroDeItensNaLoja_TextChanged(object sender, EventArgs e)
-        {
-            if(!string.IsNullOrEmpty(TxtNumeroDeItensNaLoja.Text) && !string.IsNullOrEmpty(TxtValorDeBase.Text))
+            DialogResult dresult = MensagemBox.Mostrar($"Esta ação é definitiva, você deseja excluir o produto '{oTabelaDeMargen.Encargo}'", "Sim", "Não");
+            if (dresult == DialogResult.Yes)
             {
-              TxtPorcentagemPesoPorItem.Text = oTabelaDeMargen.Porcentagem().ToString();
+                oTabelaDeMargen = (TabelaDeMargen)DgvTabelaDeMargem.Rows[LinhaIndexMargem].DataBoundItem;
+                oTabelaDeMargen.Excluir();
+                MessageBox.Show("O registro foi excluido com sucesso.");
+                LoadingTabelaDeMargen();
             }
         }
 
@@ -356,6 +353,6 @@ namespace CasaMendes
         }
 
         #endregion
-  
+
     }
 }

@@ -101,12 +101,12 @@ namespace CasaMendes
             //itens de venda
             for (int i = 0; i < DgvVendas.Rows.Count; i++)
             {
-                string Item = clsGlobal.Formatar(DgvVendas.Rows[i].Cells[0].Value.ToString(), 4);
+                string Item = DgvVendas.Rows[i].Cells[0].Value.ToString();
                 //string Item = string.Format("{0,4:#0000}", DgvVendas.Rows[i].Cells[0].Value);
                 this.venda.Desconto = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[i].Cells[3].Value.ToString());
                 this.venda.Tributos = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[i].Cells[4].Value.ToString());
                 this.venda.Juros = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[i].Cells[5].Value.ToString());
-                this.venda.TotalPendura = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[i].Cells[6].Value.ToString());
+                this.venda.SubTotal = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[i].Cells["ValorTotal"].Value.ToString());
                 this.venda.Produto = DgvVendas.Rows[i].Cells[9].Value.ToString();
                 this.venda.Quantidade = clsGlobal.DeStringParaInt(DgvVendas.Rows[i].Cells[10].Value.ToString());
                 this.venda.PrecoDeVenda = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[i].Cells[11].Value.ToString());
@@ -119,7 +119,7 @@ namespace CasaMendes
                 PosicaoXMenu = 90; //85 
                 graphics.DrawString(venda.Quantidade.ToString(), regularItens, Brushes.Black, PosicaoXMenu, PosicaoY);
                 PosicaoXMenu = 140; //120 
-                graphics.DrawString(venda.Valor.ToString(), regularItens, Brushes.Black, PosicaoXMenu, PosicaoY);
+                graphics.DrawString(venda.Valor.ToString("N2"), regularItens, Brushes.Black, PosicaoXMenu, PosicaoY);
                 offset += 20;
                 PosicaoY = offset + 10; //105 ++ 78400924
                 SubTotal += this.venda.Valor;
@@ -149,7 +149,10 @@ namespace CasaMendes
 
                 graphics.DrawString("JUROS R$: ", regular, Brushes.Black, PosicaoStartX, offset);
                 graphics.DrawString(this.venda.Juros.ToString("N2"), regular, Brushes.Black, PosicaoX, offset);
-                total = this.venda.TotalPendura;
+                offset += 16;
+
+                graphics.DrawString("PARCELA R$: ", regular, Brushes.Black, PosicaoStartX, offset);
+                graphics.DrawString(this.venda.Parcela.ToString("N2"), regular, Brushes.Black, PosicaoX, offset);
                 offset += 16;
 
             }
@@ -157,11 +160,9 @@ namespace CasaMendes
             graphics.DrawString("TOTAL R$: ", regular, Brushes.Black, PosicaoStartX, offset);
             graphics.DrawString(total.ToString("N2"), regular, Brushes.Black, PosicaoX, offset);
             offset += 15;
-            //PosicaoX += 105; //290
 
             graphics.DrawLine(Pens.Black, PosicaoStartXLine, offset, PosicaoXLine, offset);
             offset += 1;
-            //PosicaoX -= 240;//50
 
             graphics.DrawString("Cliente: ", regular, Brushes.Black, PosicaoStartX, offset);
             graphics.DrawString(this.venda.ClienteId.ToString(), regular, Brushes.Black, PosicaoX, offset);
@@ -173,7 +174,6 @@ namespace CasaMendes
             offset += 13;
 
             graphics.DrawLine(Pens.Black, PosicaoStartXLine, offset, PosicaoXLine, offset);
-            //offset += 3;
             PosicaoX -= 7;//220
 
             ////bottom
@@ -182,7 +182,6 @@ namespace CasaMendes
             offset += 10;
 
             graphics.DrawLine(Pens.Black, PosicaoStartXLine, offset, PosicaoXLine, offset);
-            //offset += 5;
             graphics.DrawString("", regularItens, Brushes.Black, PosicaoStartX, offset);
             offset += 5;
             graphics.DrawString("TROCA: ", regularItens, Brushes.Black, PosicaoStartX, offset);
@@ -192,7 +191,6 @@ namespace CasaMendes
             graphics.DrawString("DEVOLUÇÕES: ", regularItens, Brushes.Black, PosicaoStartX, offset);
             offset += 10;
             graphics.DrawString("NÃO ECEITAMOS DEVOLUÇÕES.", regularItens, Brushes.Black, PosicaoStartX, offset);
-            //offset += 5;
 
             e.HasMorePages = false;
 

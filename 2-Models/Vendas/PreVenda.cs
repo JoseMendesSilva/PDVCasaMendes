@@ -50,13 +50,13 @@ namespace CasaMendes
         public decimal Juros { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public decimal TotalPendura { get; set; }
+        public decimal SubTotal { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
-        public DateTime created_at { get; set; } = DateTime.Parse(DateTime.Now.ToShortDateString());
+        public DateTime? created_at { get; set; } = DateTime.Now;
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public DateTime updated_at { get; set; } = DateTime.Parse(DateTime.Now.ToShortDateString());
+        public DateTime updated_at { get; set; } = DateTime.Now;
 
         public new List<PreVenda> Todos()
         {

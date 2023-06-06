@@ -46,6 +46,7 @@
             this.TxtBuscar = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.BtnCancelar = new System.Windows.Forms.Button();
+            this.BtnFrmTabelaDeMargen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvSubcategorias)).BeginInit();
             this.SuspendLayout();
             // 
@@ -230,11 +231,23 @@
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
+            // BtnFrmTabelaDeMargen
+            // 
+            this.BtnFrmTabelaDeMargen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnFrmTabelaDeMargen.Location = new System.Drawing.Point(6, 370);
+            this.BtnFrmTabelaDeMargen.Name = "BtnFrmTabelaDeMargen";
+            this.BtnFrmTabelaDeMargen.Size = new System.Drawing.Size(75, 38);
+            this.BtnFrmTabelaDeMargen.TabIndex = 34;
+            this.BtnFrmTabelaDeMargen.Text = "Preços";
+            this.BtnFrmTabelaDeMargen.UseVisualStyleBackColor = true;
+            this.BtnFrmTabelaDeMargen.Click += new System.EventHandler(this.BtnFrmTabelaDeMargen_Click);
+            // 
             // FrmCadSubcategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(522, 421);
+            this.Controls.Add(this.BtnFrmTabelaDeMargen);
             this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.TxtBuscar);
             this.Controls.Add(this.label5);
@@ -283,5 +296,6 @@
         private System.Windows.Forms.TextBox TxtBuscar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button BtnCancelar;
+        private System.Windows.Forms.Button BtnFrmTabelaDeMargen;
     }
 }

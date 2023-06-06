@@ -113,14 +113,18 @@ namespace CasaMendes
         {
             try
             {
+                    var oFornecedor = new Fornecedore();
                 if (editar.Equals(true) && LinhaIndex != -1)
                 {
-                    var oFornecedor = new Fornecedore();
                     oFornecedor = (Fornecedore)dgv.Rows[LinhaIndex].DataBoundItem;
+                    DialogResult dresult = MensagemBox.Mostrar($"Esta ação é definitiva, você deseja excluir o produto '{oFornecedor.RazaoSocial}'", "Sim", "Não");
+                    if (dresult == DialogResult.Yes)
+                    {
                     oFornecedor.Excluir();
                     oFornecedor.Dispose();
                     MessageBox.Show($"O Fornecedor ' {oFornecedor.RazaoSocial} ' foi excluido com sucesso.");
                     Carregar();
+                    }
                 }
                 else
                 {

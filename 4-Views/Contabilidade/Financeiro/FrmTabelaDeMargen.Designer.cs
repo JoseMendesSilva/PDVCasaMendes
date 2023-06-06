@@ -313,6 +313,7 @@
             this.TxtValorDeBase.Size = new System.Drawing.Size(118, 20);
             this.TxtValorDeBase.TabIndex = 1;
             this.TxtValorDeBase.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TxtValorDeBase.TextChanged += new System.EventHandler(this.TxtValorDeBase_TextChanged);
             // 
             // label10
             // 

@@ -29,5 +29,13 @@ namespace CasaMendes
 
         [MethodImpl(MethodImplOptions.InternalCall)]
         List<IBase> Busca();
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        List<IBase> BuscaComParametro(string Elementos);
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        List<IBase> BuscaComLike();
+
     }
+    
 }

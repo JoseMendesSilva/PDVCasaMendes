@@ -45,7 +45,7 @@ namespace CasaMendes
             DgvSubcategorias.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             DgvSubcategorias.Columns["Key"].Visible = false;
-            DgvSubcategorias.Columns["SubcategoriaId"].Visible = false;
+            //DgvSubcategorias.Columns["SubcategoriaId"].Visible = false;
             DgvSubcategorias.Columns["CategoriaId"].Visible = false;
 
             DgvSubcategorias.Columns["Nome"].Width = clsGlobal.DimencionarColuna(45, this.DgvSubcategorias.Width);
@@ -90,7 +90,7 @@ namespace CasaMendes
         {
             BtnRetornar.Enabled = true;
             BtnExcluir.Enabled = true;
-            BtnCancelar.Enabled = false;
+            BtnCancelar.Visible = false;
             loading = false;
             Carregar();
             loading = true;
@@ -107,14 +107,14 @@ namespace CasaMendes
                     BtnNovo.Visible = true;
                     BtnExcluir.Enabled = true;
                     BtnRetornar.Enabled = true;
-                    BtnCancelar.Visible = !BtnNovo.Visible;
+                    BtnCancelar.Visible = false;
                     if (!string.IsNullOrEmpty(TxtCategoriaId.Text)) oSubcategoria.CategoriaId = int.Parse(TxtCategoriaId.Text);
                     oSubcategoria.Salvar();
                     DgvSubcategorias.DataSource = oSubcategoria.Todos();
                     loading = false;
                     loading = true;
 
-                    if(editar && oSubcategoria.SubCategoriaId > 0)
+                    if (editar && oSubcategoria.SubCategoriaId > 0)
                         MessageBox.Show("Registro atualizado com sucesso!");
                     else
                         MessageBox.Show("Cadastro realizado com sucesso!");
@@ -133,9 +133,13 @@ namespace CasaMendes
             loading = true;
             if (!TxtCategoriaId.Text.Equals("0") && !TxtCategoriaId.Text.Equals(""))
             {
-                oSubcategoria.SubCategoriaId = int.Parse(TxtSubCategoriaId.Text);
-                oSubcategoria.Excluir();
-                MessageBox.Show($"A subcategoria ' {oSubcategoria.Nome} ' foi excluida com sucesso.");
+                DialogResult dresult = MensagemBox.Mostrar($"Esta ação é definitiva, você deseja excluir o produto '{oSubcategoria.Nome}'", "Sim", "Não");
+                if (dresult == DialogResult.Yes)
+                {
+                    oSubcategoria.SubCategoriaId = int.Parse(TxtSubCategoriaId.Text);
+                    oSubcategoria.Excluir();
+                    MessageBox.Show($"A subcategoria ' {oSubcategoria.Nome} ' foi excluida com sucesso.");
+                }
             }
             else
             {
@@ -312,5 +316,15 @@ namespace CasaMendes
         }
 
         #endregion
+
+        private void BtnFrmTabelaDeMargen_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var tm = new FrmTabelaDeMargen();
+                tm.ShowDialog();
+            }
+            catch { }
+        }
     }
 }

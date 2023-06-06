@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Drawing;
+using System;
 using System.Collections.Generic;
 
 namespace CasaMendes
@@ -6,12 +7,12 @@ namespace CasaMendes
     public class TabelaDeMargen : Base, IDisposable
     {
 
-        private double _PorcentagemPesoPorItem;
         private bool disposedValue;
 
-        public double Porcentagem()
+        public decimal Porcentagem()
         {
-            return _PorcentagemPesoPorItem = ValorDeBase / NumeroDeItensNaLoja;
+            if (ValorDeBase <= 0 || NumeroDeItensNaLoja <= 0) return 0;
+            return ValorDeBase / NumeroDeItensNaLoja;
         }
 
         [OpcoesBase(UsarNoBancoDeDados = true, ChavePrimaria = true, UsarParaBuscar = true)]
@@ -24,27 +25,22 @@ namespace CasaMendes
         public int NumeroDeItensNaLoja { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public double ValorDeBase { get; set; }
+        public decimal ValorDeBase { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public double PorcentagemPesoPorItem { 
-            get { 
-                return _PorcentagemPesoPorItem;
-            } 
-            set { _PorcentagemPesoPorItem = value;} 
-        }
+        public decimal PorcentagemPesoPorItem {get;set;}
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public double Despesa { get; set; }
+        public decimal Despesa { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public double Custo { get; set; }
+        public decimal Custo { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public double Encargo { get; set; }
+        public decimal Encargo { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public double MargemDeLucro { get; set; }
+        public decimal MargemDeLucro { get; set; }
 
         public new List<TabelaDeMargen> Todos()
         {
@@ -94,29 +90,6 @@ namespace CasaMendes
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
-
-        //bool disposed = false;
-        //public void Dispose()
-        //{
-        //    Dispose(disposing: true);
-        //    GC.SuppressFinalize(this);
-        //}
-
-        //// Protected implementation of Dispose pattern.
-        //protected virtual void Dispose(bool disposing)
-        //{
-        //    if (disposed)
-        //        return;
-
-        //    if (disposing)
-        //    {
-        //        this.Dispose();
-        //        // Free any other managed objects here.
-        //        //
-        //    }
-
-        //    disposed = true;
-        //}
 
     }
 }
