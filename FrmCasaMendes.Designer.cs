@@ -31,10 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCasaMendes));
             this.iconmaximizar = new System.Windows.Forms.PictureBox();
             this.btnMenu = new System.Windows.Forms.PictureBox();
-            this.lblcorreo = new System.Windows.Forms.Label();
-            this.lbluser = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.lblusuario = new System.Windows.Forms.Label();
             this.btnPdv = new System.Windows.Forms.Button();
             this.btnEstoque = new System.Windows.Forms.Button();
             this.btnFornecedores = new System.Windows.Forms.Button();
@@ -46,16 +42,23 @@
             this.btnVendasDia = new System.Windows.Forms.Button();
             this.btnprod = new System.Windows.Forms.Button();
             this.MenuVertical = new System.Windows.Forms.Panel();
-            this.BtnProcessarDados = new System.Windows.Forms.Button();
+            this.BtnTabelaDeMargens = new System.Windows.Forms.Button();
             this.BtnReceberPendura = new System.Windows.Forms.Button();
             this.BtnCategorias = new System.Windows.Forms.Button();
             this.PicConfiguracoes = new System.Windows.Forms.PictureBox();
             this.btnlogoInicio = new System.Windows.Forms.PictureBox();
             this.panelContenedor = new System.Windows.Forms.Panel();
-            this.BtnTabelaDeMargens = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.BtnPlateleiraEstoque = new System.Windows.Forms.Button();
+            this.BtnProcessarDados = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.lblcorreo = new System.Windows.Forms.Label();
+            this.lbluser = new System.Windows.Forms.Label();
+            this.lblusuario = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.iconmaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconminimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconrestaurar)).BeginInit();
             this.BarraTitulo.SuspendLayout();
@@ -63,6 +66,10 @@
             this.MenuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicConfiguracoes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnlogoInicio)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // iconmaximizar
@@ -87,54 +94,6 @@
             this.btnMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnMenu.TabIndex = 0;
             this.btnMenu.TabStop = false;
-            // 
-            // lblcorreo
-            // 
-            this.lblcorreo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblcorreo.AutoSize = true;
-            this.lblcorreo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcorreo.ForeColor = System.Drawing.Color.White;
-            this.lblcorreo.Location = new System.Drawing.Point(72, 743);
-            this.lblcorreo.Name = "lblcorreo";
-            this.lblcorreo.Size = new System.Drawing.Size(53, 17);
-            this.lblcorreo.TabIndex = 17;
-            this.lblcorreo.Text = "Correo";
-            // 
-            // lbluser
-            // 
-            this.lbluser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbluser.AutoSize = true;
-            this.lbluser.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbluser.ForeColor = System.Drawing.Color.White;
-            this.lbluser.Location = new System.Drawing.Point(72, 725);
-            this.lbluser.Name = "lbluser";
-            this.lbluser.Size = new System.Drawing.Size(54, 17);
-            this.lbluser.TabIndex = 16;
-            this.lbluser.Text = "Usuario";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(1, 692);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(70, 66);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 15;
-            this.pictureBox2.TabStop = false;
-            // 
-            // lblusuario
-            // 
-            this.lblusuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblusuario.AutoSize = true;
-            this.lblusuario.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblusuario.ForeColor = System.Drawing.Color.White;
-            this.lblusuario.Location = new System.Drawing.Point(72, 708);
-            this.lblusuario.Name = "lblusuario";
-            this.lblusuario.Size = new System.Drawing.Size(50, 17);
-            this.lblusuario.TabIndex = 14;
-            this.lblusuario.Text = "Cargo";
             // 
             // btnPdv
             // 
@@ -289,15 +248,11 @@
             // MenuVertical
             // 
             this.MenuVertical.BackColor = System.Drawing.Color.Green;
+            this.MenuVertical.Controls.Add(this.panel2);
+            this.MenuVertical.Controls.Add(this.panel1);
             this.MenuVertical.Controls.Add(this.BtnTabelaDeMargens);
-            this.MenuVertical.Controls.Add(this.BtnProcessarDados);
             this.MenuVertical.Controls.Add(this.BtnReceberPendura);
             this.MenuVertical.Controls.Add(this.BtnCategorias);
-            this.MenuVertical.Controls.Add(this.PicConfiguracoes);
-            this.MenuVertical.Controls.Add(this.lblcorreo);
-            this.MenuVertical.Controls.Add(this.lbluser);
-            this.MenuVertical.Controls.Add(this.pictureBox2);
-            this.MenuVertical.Controls.Add(this.lblusuario);
             this.MenuVertical.Controls.Add(this.btnPdv);
             this.MenuVertical.Controls.Add(this.btnEstoque);
             this.MenuVertical.Controls.Add(this.btnFornecedores);
@@ -311,23 +266,22 @@
             this.MenuVertical.Size = new System.Drawing.Size(250, 762);
             this.MenuVertical.TabIndex = 4;
             // 
-            // BtnProcessarDados
+            // BtnTabelaDeMargens
             // 
-            this.BtnProcessarDados.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BtnProcessarDados.FlatAppearance.BorderSize = 0;
-            this.BtnProcessarDados.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.BtnProcessarDados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnProcessarDados.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnProcessarDados.ForeColor = System.Drawing.Color.White;
-            this.BtnProcessarDados.Image = ((System.Drawing.Image)(resources.GetObject("BtnProcessarDados.Image")));
-            this.BtnProcessarDados.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnProcessarDados.Location = new System.Drawing.Point(3, 595);
-            this.BtnProcessarDados.Name = "BtnProcessarDados";
-            this.BtnProcessarDados.Size = new System.Drawing.Size(256, 40);
-            this.BtnProcessarDados.TabIndex = 21;
-            this.BtnProcessarDados.Text = "Processar dados";
-            this.BtnProcessarDados.UseVisualStyleBackColor = true;
-            this.BtnProcessarDados.Click += new System.EventHandler(this.BtnProcessarDados_Click);
+            this.BtnTabelaDeMargens.FlatAppearance.BorderSize = 0;
+            this.BtnTabelaDeMargens.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.BtnTabelaDeMargens.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnTabelaDeMargens.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnTabelaDeMargens.ForeColor = System.Drawing.Color.White;
+            this.BtnTabelaDeMargens.Image = ((System.Drawing.Image)(resources.GetObject("BtnTabelaDeMargens.Image")));
+            this.BtnTabelaDeMargens.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnTabelaDeMargens.Location = new System.Drawing.Point(3, 448);
+            this.BtnTabelaDeMargens.Name = "BtnTabelaDeMargens";
+            this.BtnTabelaDeMargens.Size = new System.Drawing.Size(247, 40);
+            this.BtnTabelaDeMargens.TabIndex = 22;
+            this.BtnTabelaDeMargens.Text = "Tabela de margens";
+            this.BtnTabelaDeMargens.UseVisualStyleBackColor = true;
+            this.BtnTabelaDeMargens.Click += new System.EventHandler(this.BtnTabelaDeMargens_Click);
             // 
             // BtnReceberPendura
             // 
@@ -340,7 +294,7 @@
             this.BtnReceberPendura.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnReceberPendura.Location = new System.Drawing.Point(3, 494);
             this.BtnReceberPendura.Name = "BtnReceberPendura";
-            this.BtnReceberPendura.Size = new System.Drawing.Size(256, 40);
+            this.BtnReceberPendura.Size = new System.Drawing.Size(247, 40);
             this.BtnReceberPendura.TabIndex = 20;
             this.BtnReceberPendura.Text = "Receber Pendura";
             this.BtnReceberPendura.UseVisualStyleBackColor = true;
@@ -364,10 +318,11 @@
             // 
             // PicConfiguracoes
             // 
+            this.PicConfiguracoes.Dock = System.Windows.Forms.DockStyle.Left;
             this.PicConfiguracoes.Image = ((System.Drawing.Image)(resources.GetObject("PicConfiguracoes.Image")));
-            this.PicConfiguracoes.Location = new System.Drawing.Point(12, 641);
+            this.PicConfiguracoes.Location = new System.Drawing.Point(0, 0);
             this.PicConfiguracoes.Name = "PicConfiguracoes";
-            this.PicConfiguracoes.Size = new System.Drawing.Size(45, 45);
+            this.PicConfiguracoes.Size = new System.Drawing.Size(45, 70);
             this.PicConfiguracoes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PicConfiguracoes.TabIndex = 18;
             this.PicConfiguracoes.TabStop = false;
@@ -393,22 +348,116 @@
             this.panelContenedor.Size = new System.Drawing.Size(1050, 717);
             this.panelContenedor.TabIndex = 8;
             // 
-            // BtnTabelaDeMargens
+            // panel1
             // 
-            this.BtnTabelaDeMargens.FlatAppearance.BorderSize = 0;
-            this.BtnTabelaDeMargens.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.BtnTabelaDeMargens.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnTabelaDeMargens.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnTabelaDeMargens.ForeColor = System.Drawing.Color.White;
-            this.BtnTabelaDeMargens.Image = ((System.Drawing.Image)(resources.GetObject("BtnTabelaDeMargens.Image")));
-            this.BtnTabelaDeMargens.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnTabelaDeMargens.Location = new System.Drawing.Point(3, 448);
-            this.BtnTabelaDeMargens.Name = "BtnTabelaDeMargens";
-            this.BtnTabelaDeMargens.Size = new System.Drawing.Size(256, 40);
-            this.BtnTabelaDeMargens.TabIndex = 22;
-            this.BtnTabelaDeMargens.Text = "Tabela de margens";
-            this.BtnTabelaDeMargens.UseVisualStyleBackColor = true;
-            this.BtnTabelaDeMargens.Click += new System.EventHandler(this.BtnTabelaDeMargens_Click);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Controls.Add(this.PicConfiguracoes);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 692);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(250, 70);
+            this.panel1.TabIndex = 0;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(45, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(70, 70);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 19;
+            this.pictureBox2.TabStop = false;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.BtnPlateleiraEstoque);
+            this.panel2.Controls.Add(this.BtnProcessarDados);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 626);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(250, 66);
+            this.panel2.TabIndex = 0;
+            // 
+            // BtnPlateleiraEstoque
+            // 
+            this.BtnPlateleiraEstoque.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnPlateleiraEstoque.FlatAppearance.BorderSize = 0;
+            this.BtnPlateleiraEstoque.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.BtnPlateleiraEstoque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnPlateleiraEstoque.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnPlateleiraEstoque.ForeColor = System.Drawing.Color.White;
+            this.BtnPlateleiraEstoque.Image = ((System.Drawing.Image)(resources.GetObject("BtnPlateleiraEstoque.Image")));
+            this.BtnPlateleiraEstoque.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnPlateleiraEstoque.Location = new System.Drawing.Point(0, 0);
+            this.BtnPlateleiraEstoque.Name = "BtnPlateleiraEstoque";
+            this.BtnPlateleiraEstoque.Size = new System.Drawing.Size(250, 28);
+            this.BtnPlateleiraEstoque.TabIndex = 25;
+            this.BtnPlateleiraEstoque.Text = "Plateleira Estoque ";
+            this.BtnPlateleiraEstoque.UseVisualStyleBackColor = true;
+            this.BtnPlateleiraEstoque.Click += new System.EventHandler(this.BtnPlateleiraEstoque_Click);
+            // 
+            // BtnProcessarDados
+            // 
+            this.BtnProcessarDados.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.BtnProcessarDados.FlatAppearance.BorderSize = 0;
+            this.BtnProcessarDados.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.BtnProcessarDados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnProcessarDados.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnProcessarDados.ForeColor = System.Drawing.Color.White;
+            this.BtnProcessarDados.Image = ((System.Drawing.Image)(resources.GetObject("BtnProcessarDados.Image")));
+            this.BtnProcessarDados.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnProcessarDados.Location = new System.Drawing.Point(0, 38);
+            this.BtnProcessarDados.Name = "BtnProcessarDados";
+            this.BtnProcessarDados.Size = new System.Drawing.Size(250, 28);
+            this.BtnProcessarDados.TabIndex = 24;
+            this.BtnProcessarDados.Text = "Processar dados";
+            this.BtnProcessarDados.UseVisualStyleBackColor = true;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.lblcorreo);
+            this.panel3.Controls.Add(this.lbluser);
+            this.panel3.Controls.Add(this.lblusuario);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(115, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(135, 70);
+            this.panel3.TabIndex = 0;
+            // 
+            // lblcorreo
+            // 
+            this.lblcorreo.AutoSize = true;
+            this.lblcorreo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblcorreo.ForeColor = System.Drawing.Color.White;
+            this.lblcorreo.Location = new System.Drawing.Point(6, 44);
+            this.lblcorreo.Name = "lblcorreo";
+            this.lblcorreo.Size = new System.Drawing.Size(53, 17);
+            this.lblcorreo.TabIndex = 24;
+            this.lblcorreo.Text = "Correo";
+            // 
+            // lbluser
+            // 
+            this.lbluser.AutoSize = true;
+            this.lbluser.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbluser.ForeColor = System.Drawing.Color.White;
+            this.lbluser.Location = new System.Drawing.Point(6, 26);
+            this.lbluser.Name = "lbluser";
+            this.lbluser.Size = new System.Drawing.Size(54, 17);
+            this.lbluser.TabIndex = 23;
+            this.lbluser.Text = "Usuario";
+            // 
+            // lblusuario
+            // 
+            this.lblusuario.AutoSize = true;
+            this.lblusuario.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblusuario.ForeColor = System.Drawing.Color.White;
+            this.lblusuario.Location = new System.Drawing.Point(6, 9);
+            this.lblusuario.Name = "lblusuario";
+            this.lblusuario.Size = new System.Drawing.Size(50, 17);
+            this.lblusuario.TabIndex = 22;
+            this.lblusuario.Text = "Cargo";
             // 
             // FrmCasaMendes
             // 
@@ -426,15 +475,18 @@
             this.Load += new System.EventHandler(this.FrmCasaMendes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.iconmaximizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconminimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconrestaurar)).EndInit();
             this.BarraTitulo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.iconcerrar)).EndInit();
             this.MenuVertical.ResumeLayout(false);
-            this.MenuVertical.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicConfiguracoes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnlogoInicio)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -442,10 +494,6 @@
 
         private System.Windows.Forms.PictureBox iconmaximizar;
         private System.Windows.Forms.PictureBox btnMenu;
-        private System.Windows.Forms.Label lblcorreo;
-        private System.Windows.Forms.Label lbluser;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label lblusuario;
         private System.Windows.Forms.Button btnPdv;
         private System.Windows.Forms.Button btnEstoque;
         private System.Windows.Forms.Button btnFornecedores;
@@ -462,8 +510,16 @@
         private System.Windows.Forms.PictureBox PicConfiguracoes;
         private System.Windows.Forms.Button BtnCategorias;
         private System.Windows.Forms.Button BtnReceberPendura;
-        private System.Windows.Forms.Button BtnProcessarDados;
         private System.Windows.Forms.Button BtnTabelaDeMargens;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button BtnPlateleiraEstoque;
+        private System.Windows.Forms.Button BtnProcessarDados;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label lblcorreo;
+        private System.Windows.Forms.Label lbluser;
+        private System.Windows.Forms.Label lblusuario;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 

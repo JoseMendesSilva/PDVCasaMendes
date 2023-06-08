@@ -8,14 +8,14 @@ namespace CasaMendes
 
         #region Variáveis.
 
-        private int _Codigo = 0;
-        private string _Cliente;
-        private bool Arrumado;
-        private bool dgvClientesRowEnter;
+        private int _Codigo { get; set; } = 0;
+        private string _Cliente { get; set; }
+        private bool Arrumado { get; set; }
+        private bool dgvClientesRowEnter { get; set; }
 
-        #endregion
+    #endregion
 
-        public FrmReceberPendura()
+    public FrmReceberPendura()
         {
             InitializeComponent();
         }
@@ -32,14 +32,14 @@ namespace CasaMendes
                 this.DgvVendas.Columns["Quantidade"].Visible = true;
                 this.DgvVendas.Columns["PrecoDeVenda"].Visible = true;
                 this.DgvVendas.Columns["Parcela"].Visible = true;
-                this.DgvVendas.Columns["SubTotal"].Visible = true;
+                this.DgvVendas.Columns["Valor"].Visible = true;
                 this.DgvVendas.Columns["created_at"].Visible = true;
 
                 this.DgvVendas.Columns["Produto"].Width = clsGlobal.DimencionarColuna(30, DgvVendas.Width);
                 this.DgvVendas.Columns["Quantidade"].Width = clsGlobal.DimencionarColuna(12, DgvVendas.Width);
                 this.DgvVendas.Columns["PrecoDeVenda"].Width = clsGlobal.DimencionarColuna(12, DgvVendas.Width);
                 this.DgvVendas.Columns["Parcela"].Width = clsGlobal.DimencionarColuna(8, DgvVendas.Width);
-                this.DgvVendas.Columns["SubTotal"].Width = clsGlobal.DimencionarColuna(15, DgvVendas.Width);
+                this.DgvVendas.Columns["Valor"].Width = clsGlobal.DimencionarColuna(15, DgvVendas.Width);
                 this.DgvVendas.Columns["created_at"].Width = clsGlobal.DimencionarColuna(16, DgvVendas.Width);
 
                 clsGlobal.AlinharElementosNoGridView(DgvVendas, 2, "left");
@@ -63,33 +63,29 @@ namespace CasaMendes
                     oPreV.ClienteId = this._Codigo;
                     oPreV.TipoDeVenda = "PENDURA";
                     oPreV.created_at = null;
+                    if (DgvVendas.Rows.Count > 0) DgvVendas.DataSource = null;
                     DgvVendas.DataSource = oPreV.Busca();
 
+                    Arrumado = false;
                     RedimencionarColunas();
+                    Arrumado = true;
 
-                        if (!Arrumado && this.DgvVendas.Rows.Count > 0)
-                        {
-                            Arrumado = true;
-                        }
+                    oPreV.Parcela = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[0].Cells["Parcela"].Value.ToString());
 
-                        oPreV.Parcela = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[0].Cells["Parcela"].Value.ToString());
-                        //oPreV.SubTotal = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[0].Cells["SubTotal"].Value.ToString());
-
-                    decimal valor = clsGlobal.Calcular(DgvVendas, 14);
+                    decimal valor = clsGlobal.Calcular(DgvVendas, 7);
                     this.txtTotalGeral.Text = valor.ToString("N2");
 
-                        if (oPreV.Parcela != 0)
+                    if (oPreV.Parcela != 0)
                     {
                         this.txtTotalReceber.Text = (valor - oPreV.Parcela).ToString("N2");
-                        }
-                        else
-                        {
-                            this.txtTotalReceber.Text = this.txtTotalGeral.Text;
-                        }
-
                     }
+                    else
+                    {
+                        this.txtTotalReceber.Text = this.txtTotalGeral.Text;
+                    }
+                }
             }
-            catch 
+            catch
             {
             }
         }
@@ -115,10 +111,11 @@ namespace CasaMendes
                 } while (iCount < this.DgvVendas.Rows.Count);
                 BuscarAnotado();
             }
-            else { 
-                txtDinheiro.Text = "0.00"; 
-                this.txtDinheiro.Focus(); 
-                this.txtDinheiro.SelectAll(); 
+            else
+            {
+                txtDinheiro.Text = "0.00";
+                this.txtDinheiro.Focus();
+                this.txtDinheiro.SelectAll();
             }
         }
 
@@ -165,14 +162,14 @@ namespace CasaMendes
         {
             try
             {
-                decimal dinheiro = clsGlobal.DeStringParaDecimal(txtDinheiro.Text); 
+                decimal dinheiro = clsGlobal.DeStringParaDecimal(txtDinheiro.Text);
                 decimal totalReceber = clsGlobal.DeStringParaDecimal(txtTotalReceber.Text);
                 if (e.KeyCode == Keys.Enter)
                 {
-                        if (dinheiro > 0 && dinheiro < totalReceber)
-                        {
-                            btnGravarParcela.Enabled = true;
-                        }
+                    if (dinheiro > 0 && dinheiro < totalReceber)
+                    {
+                        btnGravarParcela.Enabled = true;
+                    }
                 }
             }
             catch { }
@@ -182,22 +179,14 @@ namespace CasaMendes
         {
             try
             {
-                    for (int i = 0; i < dgvClientes.ColumnCount; i++)
-                    {
-                        this.dgvClientes.Columns[i].Visible = false;
-                    }
-                    this.dgvClientes.Columns["Nome"].Visible = true;
-
-                    this._Codigo = clsGlobal.DeStringParaInt(dgvClientes.Rows[e.RowIndex].Cells[0].Value.ToString());
-                    this._Cliente = dgvClientes.Rows[e.RowIndex].Cells[1].Value.ToString();
-                    BuscarAnotado();
+                this._Codigo = clsGlobal.DeStringParaInt(dgvClientes.Rows[e.RowIndex].Cells[0].Value.ToString());
+                this._Cliente = dgvClientes.Rows[e.RowIndex].Cells[1].Value.ToString();
+                BuscarAnotado();
             }
             catch
             {
 
             }
-            finally { dgvClientesRowEnter = false; }
-
         }
 
         private void frmCarregarVenda_Load(object sender, EventArgs e)
@@ -219,6 +208,8 @@ namespace CasaMendes
                     this.dgvClientes.Columns["Nome"].Visible = true;
                 }
 
+                RedimencionarColunas();
+
                 this.txtDinheiro.Text = "0,00";
                 this.txtTotalGeral.Text = "0,00";
 
@@ -226,8 +217,6 @@ namespace CasaMendes
                 this.txtParcela.ReadOnly = true;
 
                 this.txtTotalReceber.Text = "0,00";
-
-                BuscarAnotado();
 
                 this.btnGravarParcela.Enabled = false;
                 this.btnReceber.Enabled = false;
@@ -253,6 +242,6 @@ namespace CasaMendes
             }
             catch { }
         }
-     
+
     }
 }

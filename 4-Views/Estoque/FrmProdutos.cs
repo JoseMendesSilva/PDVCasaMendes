@@ -113,7 +113,6 @@ namespace CasaMendes
                 DgvProdutos.Columns["created_at"].Width = clsGlobal.DimencionarColuna(10, this.Width);
                 DgvProdutos.Columns["updated_at"].Width = clsGlobal.DimencionarColuna(10, this.Width);
                 DgvProdutos.Columns["deleted_at"].Width = clsGlobal.DimencionarColuna(10, this.Width);
-                DgvProdutos.Columns["Listar"].Width = clsGlobal.DimencionarColuna(10, this.Width);
 
             }
             catch
@@ -251,18 +250,18 @@ namespace CasaMendes
 
         private void DgvProdutos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            //Fetch the value of the second Column.
-            int quantity = int.Parse(DgvProdutos.Rows[e.RowIndex].Cells["Quantidade"].Value.ToString());
+            ////Fetch the value of the second Column.
+            //int quantity = int.Parse(DgvProdutos.Rows[e.RowIndex].Cells["Quantidade"].Value.ToString());
 
-            //Apply Background color based on value.
-            if (quantity <= 6)
-            {
-                DgvProdutos.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
-            }
-            if (quantity > 6)
-            {
+            ////Apply Background color based on value.
+            //if (quantity <= 6)
+            //{
+            //    DgvProdutos.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
+            //}
+            //if (quantity > 6)
+            //{
                 DgvProdutos.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.GreenYellow;
-            }
+            //}
         }
 
  

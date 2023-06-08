@@ -87,6 +87,7 @@
             // TxtNome
             // 
             this.TxtNome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.TxtNome.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtNome.Location = new System.Drawing.Point(6, 299);
             this.TxtNome.MaxLength = 40;
             this.TxtNome.Name = "TxtNome";
@@ -96,6 +97,7 @@
             // TxtDescricao
             // 
             this.TxtDescricao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.TxtDescricao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtDescricao.Location = new System.Drawing.Point(6, 351);
             this.TxtDescricao.MaxLength = 250;
             this.TxtDescricao.Multiline = true;
@@ -158,6 +160,7 @@
             // 
             // TxtBuscar
             // 
+            this.TxtBuscar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtBuscar.Location = new System.Drawing.Point(49, 15);
             this.TxtBuscar.Name = "TxtBuscar";
             this.TxtBuscar.Size = new System.Drawing.Size(461, 20);

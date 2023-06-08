@@ -838,9 +838,8 @@ namespace CasaMendes
         {
             decimal soma = 0;
             decimal celula;
-            Int32 conte = dgv.Rows.Count - 1;
 
-            for (Int32 i = 0; i <= conte; i++)
+            for (Int32 i = 0; i < dgv.Rows.Count; i++)
             {
                 if (dgv.Rows[i].Cells[_iCelula].Value != null)
                 {

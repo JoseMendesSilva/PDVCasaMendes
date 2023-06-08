@@ -269,26 +269,6 @@ namespace CasaMendes
             return list;
         }
 
-        public List<IBase> BuscaComParametro(string Elementos)
-        {
-            var list = new List<IBase>();
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                string queryString = $"select {Elementos} from " + this.GetType().Name + "s";
-                SqlCommand command = new SqlCommand(queryString, connection);
-                command.Connection.Open();
-
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    var obj = (IBase)Activator.CreateInstance(this.GetType());
-                    SetProperty(ref obj, reader);
-                    list.Add(obj);
-                }
-            }
-            return list;
-        }
-       
         public List<IBase> BuscaComLike()
         {
             var list = new List<IBase>();
@@ -404,5 +384,14 @@ namespace CasaMendes
             }
         }
 
+        public void SalvarSql(string Query)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(Query, connection);
+                command.Connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }

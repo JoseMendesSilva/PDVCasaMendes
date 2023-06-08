@@ -45,7 +45,7 @@ namespace CasaMendes
             DgvSubcategorias.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             DgvSubcategorias.Columns["Key"].Visible = false;
-            //DgvSubcategorias.Columns["SubcategoriaId"].Visible = false;
+            DgvSubcategorias.Columns["SubcategoriaId"].Visible = false;
             DgvSubcategorias.Columns["CategoriaId"].Visible = false;
 
             DgvSubcategorias.Columns["Nome"].Width = clsGlobal.DimencionarColuna(45, this.DgvSubcategorias.Width);
@@ -60,94 +60,6 @@ namespace CasaMendes
                 oSubcategoria = (SubCategoria)DgvSubcategorias.Rows[LinhaIndex].DataBoundItem;
                 BsSubcategoria.DataSource = oSubcategoria;
             }
-        }
-
-        #endregion
-
-        #region manutenção
-
-        private void Novo()
-        {
-            BtnNovo.Visible = false;
-            BtnRetornar.Enabled = false;
-            BtnExcluir.Enabled = false;
-            BtnCancelar.Visible = !BtnNovo.Visible;
-            TxtSubCategoriaId.Clear();
-            TxtCategoriaId.Clear();
-            TxtNome.Clear();
-            TxtDescricao.Clear();
-            CbCategorias.Text = string.Empty;
-            editar = false;
-            if (oSubcategoria != null) oSubcategoria = null;
-            oSubcategoria = new SubCategoria();
-            BsSubcategoria.DataSource = oSubcategoria;
-
-            TxtNome.Focus();
-            TxtNome.SelectAll();
-        }
-
-        private void Cancelar()
-        {
-            BtnRetornar.Enabled = true;
-            BtnExcluir.Enabled = true;
-            BtnCancelar.Visible = false;
-            loading = false;
-            Carregar();
-            loading = true;
-            MessageBox.Show("Cadastro cancelado.");
-        }
-
-        private void Gravar()
-        {
-            try
-            {
-                if (CbCategorias.Items.Count > 0)
-                {
-                    loading = true;
-                    BtnNovo.Visible = true;
-                    BtnExcluir.Enabled = true;
-                    BtnRetornar.Enabled = true;
-                    BtnCancelar.Visible = false;
-                    if (!string.IsNullOrEmpty(TxtCategoriaId.Text)) oSubcategoria.CategoriaId = int.Parse(TxtCategoriaId.Text);
-                    oSubcategoria.Salvar();
-                    DgvSubcategorias.DataSource = oSubcategoria.Todos();
-                    loading = false;
-                    loading = true;
-
-                    if (editar && oSubcategoria.SubCategoriaId > 0)
-                        MessageBox.Show("Registro atualizado com sucesso!");
-                    else
-                        MessageBox.Show("Cadastro realizado com sucesso!");
-
-                }
-                else
-                {
-                    MessageBox.Show("Cadastro nçao realizado.");
-                }
-            }
-            catch {; }
-        }
-
-        private void Excluir()
-        {
-            loading = true;
-            if (!TxtCategoriaId.Text.Equals("0") && !TxtCategoriaId.Text.Equals(""))
-            {
-                DialogResult dresult = MensagemBox.Mostrar($"Esta ação é definitiva, você deseja excluir o produto '{oSubcategoria.Nome}'", "Sim", "Não");
-                if (dresult == DialogResult.Yes)
-                {
-                    oSubcategoria.SubCategoriaId = int.Parse(TxtSubCategoriaId.Text);
-                    oSubcategoria.Excluir();
-                    MessageBox.Show($"A subcategoria ' {oSubcategoria.Nome} ' foi excluida com sucesso.");
-                }
-            }
-            else
-            {
-                MessageBox.Show($"Seleciona uma subcategoria para excluir.");
-            }
-            loading = false; // ao definir esta flag como false os dados poderão serem carregados.
-            Carregar();
-            loading = true;
         }
 
         #endregion
@@ -199,6 +111,10 @@ namespace CasaMendes
                 {
                     oProcessando.Processo(100, "Subcategoria.", "Mostrando os ados no formulário.");
                     Carregar();
+                    BtnExcluir.Enabled = true;
+                    BtnNovo.Enabled = true;
+                    BtnCancelar.Enabled = true;
+                    BtnGravar.Enabled = true;
                 }
             }
             catch { }
@@ -290,22 +206,88 @@ namespace CasaMendes
 
         private void BtnNovo_Click(object sender, EventArgs e)
         {
-            Novo();
+            BtnNovo.Visible = false;
+            BtnRetornar.Enabled = false;
+            BtnExcluir.Enabled = false;
+            BtnCancelar.Visible = !BtnNovo.Visible;
+            //TxtSubCategoriaId.Clear();
+            //TxtCategoriaId.Clear();
+            TxtNome.Clear();
+            TxtDescricao.Clear();
+            CbCategorias.Text = string.Empty;
+            editar = false;
+            if (oSubcategoria != null) oSubcategoria = null;
+            oSubcategoria = new SubCategoria();
+            BsSubcategoria.DataSource = oSubcategoria;
+
+            TxtNome.Focus();
+            TxtNome.SelectAll();
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
-            Cancelar();
+            BtnRetornar.Enabled = true;
+            BtnExcluir.Enabled = true;
+            BtnCancelar.Visible = false;
+            loading = false;
+            Carregar();
+            loading = true;
+            MessageBox.Show("Cadastro cancelado.");
         }
 
         private void BtnGravar_Click(object sender, EventArgs e)
         {
-            Gravar();
+            try
+            {
+                if (CbCategorias.Items.Count > 0)
+                {
+                    loading = true;
+                    BtnNovo.Visible = true;
+                    BtnExcluir.Enabled = true;
+                    BtnRetornar.Enabled = true;
+                    BtnCancelar.Visible = false;
+                    if (!string.IsNullOrEmpty(TxtCategoriaId.Text)) oSubcategoria.CategoriaId = int.Parse(TxtCategoriaId.Text);
+                    oSubcategoria.Salvar();
+                    DgvSubcategorias.DataSource = oSubcategoria.Todos();
+                    loading = false;
+                    loading = true;
+
+                    if (editar && oSubcategoria.SubCategoriaId > 0)
+                        MessageBox.Show("Registro atualizado com sucesso!");
+                    else
+                        MessageBox.Show("Cadastro realizado com sucesso!");
+
+                }
+                else
+                {
+                    MessageBox.Show("Cadastro nçao realizado.");
+                }
+            }
+            catch {; }
         }
 
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
-            Excluir();
+            loading = true;
+            if (oSubcategoria.SubCategoriaId > 0)
+            {
+                DialogResult dresult = MensagemBox.Mostrar($"Esta ação é definitiva, você deseja excluir o produto '{oSubcategoria.Nome}'", "Sim", "Não");
+                if (dresult == DialogResult.Yes)
+                {
+                    oSubcategoria.SubCategoriaId = int.Parse(TxtSubCategoriaId.Text);
+                    oSubcategoria.Excluir();
+                    MessageBox.Show($"A subcategoria ' {oSubcategoria.Nome} ' foi excluida com sucesso.");
+
+                    DgvSubcategorias.DataSource = oSubcategoria.Todos();
+                }
+            }
+            else
+            {
+                MessageBox.Show($"Seleciona uma subcategoria para excluir.");
+            }
+            loading = false; // ao definir esta flag como false os dados poderão serem carregados.
+            Carregar();
+            loading = true;
         }
 
         private void BtnRetornar_Click(object sender, EventArgs e)
@@ -317,14 +299,5 @@ namespace CasaMendes
 
         #endregion
 
-        private void BtnFrmTabelaDeMargen_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var tm = new FrmTabelaDeMargen();
-                tm.ShowDialog();
-            }
-            catch { }
-        }
     }
 }

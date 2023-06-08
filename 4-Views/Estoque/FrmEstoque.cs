@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Configuration;
 using System.Reflection.Emit;
 using System.Windows.Forms;
 
@@ -106,6 +107,7 @@ namespace CasaMendes
 
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
+            this.CodigoProduto=null;
             this.Close();
         }
 
@@ -122,7 +124,7 @@ namespace CasaMendes
             catch { }
         }
 
-        private void Dgv_CellEnter(object sender, DataGridViewCellEventArgs e)
+        private void DgvProdutos_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (DgvProdutos.Rows.Count > 0 && !frmLoading)
             {
@@ -132,7 +134,6 @@ namespace CasaMendes
             }
             else { BtnExcluir.Enabled = false; }
         }
-
         private void DgvProdutos_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -178,15 +179,16 @@ namespace CasaMendes
 
         private void DgvProdutos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            //Fetch the value of the second Column.
-            int quantity = int.Parse(DgvProdutos.Rows[e.RowIndex].Cells["Quantidade"].Value.ToString());
+            int quantity = clsGlobal.DeStringParaInt(DgvProdutos.Rows[e.RowIndex].Cells["Quantidade"].Value.ToString());
+            int EstoqueMinimo = clsGlobal.DeStringParaInt(ConfigurationManager.AppSettings["EstoqueMinimo"]);
 
             //Apply Background color based on value.
-            if (quantity <= 10)
+            if (quantity <= EstoqueMinimo)
             {
                 DgvProdutos.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
+                DgvProdutos.Rows[e.RowIndex].DefaultCellStyle.ForeColor = System.Drawing.Color.White;
             }
-            if (quantity > 10)
+            if (quantity > EstoqueMinimo)
             {
                 DgvProdutos.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.GreenYellow;
             }
@@ -197,5 +199,6 @@ namespace CasaMendes
             ImprimerListaDeCompra oListaDeCompra = new ImprimerListaDeCompra(DgvProdutos);
             oListaDeCompra.Print();
         }
+
     }
 }

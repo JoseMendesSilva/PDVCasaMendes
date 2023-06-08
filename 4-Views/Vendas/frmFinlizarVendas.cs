@@ -48,9 +48,9 @@ namespace CasaMendes
                 this.TxtJuros.Text = "0,00";
 
                 this.Dinheiro = clsGlobal.DeStringParaDecimal(this.txtDinheiro.Text);
-                   this.Desconto = clsGlobal.DeStringParaDecimal(this.TxtDesconto.Text);
-                      this.Total = clsGlobal.DeStringParaDecimal(this.txtTotal.Text);
-                this.TipoDeVenda = this.CbFormaDePagamento.Text;
+                this.Desconto = clsGlobal.DeStringParaDecimal(this.TxtDesconto.Text);
+                   this.Total = clsGlobal.DeStringParaDecimal(this.txtTotal.Text);
+             this.TipoDeVenda = this.CbFormaDePagamento.Text;
 
                 decimal DinheiroMaisDesconto = this.Dinheiro + this.Desconto;
                 this.Troco = DinheiroMaisDesconto - this.Total;
@@ -65,7 +65,7 @@ namespace CasaMendes
                 //}
 
                 this.txtTotal.Text = this.Total.ToString("N2");
-                this.Troco = clsGlobal.DeStringParaDecimal(this.txtTroco.Text);
+                this.txtTroco.Text = this.Troco.ToString("N2");
 
             }
             catch { }

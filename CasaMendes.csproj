@@ -148,6 +148,9 @@
     <EmbeddedResource Include="4-Views\Estoque\FrmCadSubcategoria.resx">
       <DependentUpon>FrmCadSubcategoria.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="4-Views\Estoque\FrmPlateleiraEstoque .resx">
+      <DependentUpon>FrmPlateleiraEstoque .cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCasaMendes.resx">
       <DependentUpon>FrmCasaMendes.cs</DependentUpon>
     </EmbeddedResource>
@@ -300,6 +303,12 @@
     </Compile>
     <Compile Include="4-Views\Estoque\FrmCadSubcategoria.Designer.cs">
       <DependentUpon>FrmCadSubcategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="4-Views\Estoque\FrmPlateleiraEstoque .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4-Views\Estoque\FrmPlateleiraEstoque .Designer.cs">
+      <DependentUpon>FrmPlateleiraEstoque .cs</DependentUpon>
     </Compile>
     <Compile Include="5-Util\ImprimerListaDeCompra .cs">
       <SubType>Component</SubType>
@@ -471,7 +480,9 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
   <ProjectExtensions>
     <VisualStudio AllowExistingFolder="true" />

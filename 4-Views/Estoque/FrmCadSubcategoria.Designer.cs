@@ -46,7 +46,6 @@
             this.TxtBuscar = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.BtnCancelar = new System.Windows.Forms.Button();
-            this.BtnFrmTabelaDeMargen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvSubcategorias)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +53,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 338);
+            this.label3.Location = new System.Drawing.Point(12, 587);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 13;
@@ -64,7 +63,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 302);
+            this.label2.Location = new System.Drawing.Point(12, 551);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 12;
@@ -74,7 +73,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 230);
+            this.label1.Location = new System.Drawing.Point(12, 479);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 13);
             this.label1.TabIndex = 11;
@@ -88,14 +87,14 @@
             this.DgvSubcategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvSubcategorias.Location = new System.Drawing.Point(12, 29);
             this.DgvSubcategorias.Name = "DgvSubcategorias";
-            this.DgvSubcategorias.Size = new System.Drawing.Size(498, 181);
+            this.DgvSubcategorias.Size = new System.Drawing.Size(498, 430);
             this.DgvSubcategorias.TabIndex = 10;
             this.DgvSubcategorias.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvSubcategorias_CellEnter);
             // 
             // textBox4
             // 
             this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBox4.Location = new System.Drawing.Point(315, 339);
+            this.textBox4.Location = new System.Drawing.Point(315, 588);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(106, 20);
             this.textBox4.TabIndex = 20;
@@ -105,7 +104,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 266);
+            this.label4.Location = new System.Drawing.Point(12, 515);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 13);
             this.label4.TabIndex = 21;
@@ -115,7 +114,7 @@
             // 
             this.CbCategorias.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CbCategorias.FormattingEnabled = true;
-            this.CbCategorias.Location = new System.Drawing.Point(87, 263);
+            this.CbCategorias.Location = new System.Drawing.Point(87, 512);
             this.CbCategorias.Name = "CbCategorias";
             this.CbCategorias.Size = new System.Drawing.Size(193, 21);
             this.CbCategorias.TabIndex = 22;
@@ -124,7 +123,8 @@
             // TxtDescricao
             // 
             this.TxtDescricao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TxtDescricao.Location = new System.Drawing.Point(87, 335);
+            this.TxtDescricao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtDescricao.Location = new System.Drawing.Point(87, 584);
             this.TxtDescricao.MaxLength = 250;
             this.TxtDescricao.Multiline = true;
             this.TxtDescricao.Name = "TxtDescricao";
@@ -134,7 +134,8 @@
             // TxtNome
             // 
             this.TxtNome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TxtNome.Location = new System.Drawing.Point(87, 299);
+            this.TxtNome.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtNome.Location = new System.Drawing.Point(87, 548);
             this.TxtNome.MaxLength = 40;
             this.TxtNome.Name = "TxtNome";
             this.TxtNome.Size = new System.Drawing.Size(334, 20);
@@ -143,7 +144,7 @@
             // TxtSubCategoriaId
             // 
             this.TxtSubCategoriaId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TxtSubCategoriaId.Location = new System.Drawing.Point(87, 227);
+            this.TxtSubCategoriaId.Location = new System.Drawing.Point(87, 476);
             this.TxtSubCategoriaId.Name = "TxtSubCategoriaId";
             this.TxtSubCategoriaId.ReadOnly = true;
             this.TxtSubCategoriaId.Size = new System.Drawing.Size(75, 20);
@@ -152,7 +153,7 @@
             // BtnExcluir
             // 
             this.BtnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnExcluir.Location = new System.Drawing.Point(435, 313);
+            this.BtnExcluir.Location = new System.Drawing.Point(435, 562);
             this.BtnExcluir.Name = "BtnExcluir";
             this.BtnExcluir.Size = new System.Drawing.Size(75, 38);
             this.BtnExcluir.TabIndex = 29;
@@ -163,7 +164,7 @@
             // BtnRetornar
             // 
             this.BtnRetornar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnRetornar.Location = new System.Drawing.Point(435, 370);
+            this.BtnRetornar.Location = new System.Drawing.Point(435, 619);
             this.BtnRetornar.Name = "BtnRetornar";
             this.BtnRetornar.Size = new System.Drawing.Size(75, 38);
             this.BtnRetornar.TabIndex = 28;
@@ -174,7 +175,7 @@
             // BtnGravar
             // 
             this.BtnGravar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnGravar.Location = new System.Drawing.Point(435, 264);
+            this.BtnGravar.Location = new System.Drawing.Point(435, 513);
             this.BtnGravar.Name = "BtnGravar";
             this.BtnGravar.Size = new System.Drawing.Size(75, 38);
             this.BtnGravar.TabIndex = 27;
@@ -185,7 +186,7 @@
             // BtnNovo
             // 
             this.BtnNovo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnNovo.Location = new System.Drawing.Point(435, 216);
+            this.BtnNovo.Location = new System.Drawing.Point(435, 465);
             this.BtnNovo.Name = "BtnNovo";
             this.BtnNovo.Size = new System.Drawing.Size(75, 38);
             this.BtnNovo.TabIndex = 26;
@@ -196,7 +197,7 @@
             // TxtCategoriaId
             // 
             this.TxtCategoriaId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TxtCategoriaId.Location = new System.Drawing.Point(255, 352);
+            this.TxtCategoriaId.Location = new System.Drawing.Point(255, 601);
             this.TxtCategoriaId.Name = "TxtCategoriaId";
             this.TxtCategoriaId.ReadOnly = true;
             this.TxtCategoriaId.Size = new System.Drawing.Size(166, 20);
@@ -205,6 +206,7 @@
             // 
             // TxtBuscar
             // 
+            this.TxtBuscar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtBuscar.Location = new System.Drawing.Point(49, 3);
             this.TxtBuscar.Name = "TxtBuscar";
             this.TxtBuscar.Size = new System.Drawing.Size(461, 20);
@@ -223,7 +225,7 @@
             // BtnCancelar
             // 
             this.BtnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnCancelar.Location = new System.Drawing.Point(435, 217);
+            this.BtnCancelar.Location = new System.Drawing.Point(435, 466);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(75, 38);
             this.BtnCancelar.TabIndex = 33;
@@ -231,24 +233,11 @@
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
-            // BtnFrmTabelaDeMargen
-            // 
-            this.BtnFrmTabelaDeMargen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnFrmTabelaDeMargen.Location = new System.Drawing.Point(6, 370);
-            this.BtnFrmTabelaDeMargen.Name = "BtnFrmTabelaDeMargen";
-            this.BtnFrmTabelaDeMargen.Size = new System.Drawing.Size(75, 38);
-            this.BtnFrmTabelaDeMargen.TabIndex = 34;
-            this.BtnFrmTabelaDeMargen.Text = "Preços";
-            this.BtnFrmTabelaDeMargen.UseVisualStyleBackColor = true;
-            this.BtnFrmTabelaDeMargen.Click += new System.EventHandler(this.BtnFrmTabelaDeMargen_Click);
-            // 
             // FrmCadSubcategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(522, 421);
-            this.Controls.Add(this.BtnFrmTabelaDeMargen);
-            this.Controls.Add(this.BtnCancelar);
+            this.ClientSize = new System.Drawing.Size(522, 670);
             this.Controls.Add(this.TxtBuscar);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.BtnExcluir);
@@ -266,9 +255,11 @@
             this.Controls.Add(this.DgvSubcategorias);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.TxtCategoriaId);
+            this.Controls.Add(this.BtnCancelar);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCadSubcategoria";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmCadSubcategoria";
             this.Load += new System.EventHandler(this.FrmCadSubcategoria_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvSubcategorias)).EndInit();
@@ -296,6 +287,5 @@
         private System.Windows.Forms.TextBox TxtBuscar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button BtnCancelar;
-        private System.Windows.Forms.Button BtnFrmTabelaDeMargen;
     }
 }

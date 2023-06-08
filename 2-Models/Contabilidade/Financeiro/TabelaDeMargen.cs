@@ -9,7 +9,7 @@ namespace CasaMendes
 
         private bool disposedValue;
 
-        public decimal Porcentagem()
+        private decimal Porcentagem()
         {
             if (ValorDeBase <= 0 || NumeroDeItensNaLoja <= 0) return 0;
             return ValorDeBase / NumeroDeItensNaLoja;
@@ -28,7 +28,14 @@ namespace CasaMendes
         public decimal ValorDeBase { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
-        public decimal PorcentagemPesoPorItem {get;set;}
+        public decimal PorcentagemPesoPorItem
+        {
+            get
+            {
+                return Porcentagem();
+            }
+            set{ }
+        }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public decimal Despesa { get; set; }
@@ -77,12 +84,12 @@ namespace CasaMendes
             }
         }
 
-         // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
-         ~TabelaDeMargen()
-         {
-             // Não altere este código. Coloque o código de limpeza no método 'Dispose(bool disposing)'
-             Dispose(disposing: false);
-         }
+        // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+        ~TabelaDeMargen()
+        {
+            // Não altere este código. Coloque o código de limpeza no método 'Dispose(bool disposing)'
+            Dispose(disposing: false);
+        }
 
         public void Dispose()
         {

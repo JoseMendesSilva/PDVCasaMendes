@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.TxtCodigoDaNotaFiscal = new System.Windows.Forms.TextBox();
             this.TxtValorDesconto = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.PicFoto = new System.Windows.Forms.PictureBox();
@@ -46,7 +45,6 @@
             this.LblPrecoUnitario = new System.Windows.Forms.Label();
             this.TxtNome = new System.Windows.Forms.TextBox();
             this.TxtPrecoUnitario = new System.Windows.Forms.TextBox();
-            this.TxtEstoque = new System.Windows.Forms.TextBox();
             this.BtnFechar = new System.Windows.Forms.Button();
             this.LblCodigoDeBarras = new System.Windows.Forms.Label();
             this.LblFornecedor = new System.Windows.Forms.Label();
@@ -61,24 +59,6 @@
             this.BtnGravar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PicFoto)).BeginInit();
             this.SuspendLayout();
-            // 
-            // TxtCodigoDaNotaFiscal
-            // 
-            this.TxtCodigoDaNotaFiscal.AcceptsReturn = true;
-            this.TxtCodigoDaNotaFiscal.BackColor = System.Drawing.SystemColors.Window;
-            this.TxtCodigoDaNotaFiscal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtCodigoDaNotaFiscal.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TxtCodigoDaNotaFiscal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtCodigoDaNotaFiscal.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.TxtCodigoDaNotaFiscal.Location = new System.Drawing.Point(276, 7);
-            this.TxtCodigoDaNotaFiscal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.TxtCodigoDaNotaFiscal.MaxLength = 50;
-            this.TxtCodigoDaNotaFiscal.Name = "TxtCodigoDaNotaFiscal";
-            this.TxtCodigoDaNotaFiscal.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TxtCodigoDaNotaFiscal.Size = new System.Drawing.Size(110, 26);
-            this.TxtCodigoDaNotaFiscal.TabIndex = 0;
-            this.TxtCodigoDaNotaFiscal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TxtCodigoDaNotaFiscal.Visible = false;
             // 
             // TxtValorDesconto
             // 
@@ -104,10 +84,10 @@
             // PicFoto
             // 
             this.PicFoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PicFoto.Location = new System.Drawing.Point(381, 37);
+            this.PicFoto.Location = new System.Drawing.Point(381, 26);
             this.PicFoto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PicFoto.Name = "PicFoto";
-            this.PicFoto.Size = new System.Drawing.Size(117, 137);
+            this.PicFoto.Size = new System.Drawing.Size(117, 148);
             this.PicFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PicFoto.TabIndex = 159;
             this.PicFoto.TabStop = false;
@@ -159,7 +139,7 @@
             // 
             this.LblPicFoto.AutoSize = true;
             this.LblPicFoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblPicFoto.Location = new System.Drawing.Point(413, 12);
+            this.LblPicFoto.Location = new System.Drawing.Point(412, 7);
             this.LblPicFoto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblPicFoto.Name = "LblPicFoto";
             this.LblPicFoto.Size = new System.Drawing.Size(46, 20);
@@ -265,18 +245,6 @@
             this.TxtPrecoUnitario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.TxtPrecoUnitario.TextChanged += new System.EventHandler(this.txtPrecoUnitario_TextChanged);
             // 
-            // TxtEstoque
-            // 
-            this.TxtEstoque.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtEstoque.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtEstoque.Location = new System.Drawing.Point(276, 6);
-            this.TxtEstoque.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.TxtEstoque.Name = "TxtEstoque";
-            this.TxtEstoque.Size = new System.Drawing.Size(100, 26);
-            this.TxtEstoque.TabIndex = 6;
-            this.TxtEstoque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TxtEstoque.Visible = false;
-            // 
             // BtnFechar
             // 
             this.BtnFechar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -352,7 +320,7 @@
             // 
             // TxtProdutoId
             // 
-            this.TxtProdutoId.Location = new System.Drawing.Point(276, 9);
+            this.TxtProdutoId.Location = new System.Drawing.Point(211, 8);
             this.TxtProdutoId.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.TxtProdutoId.Name = "TxtProdutoId";
             this.TxtProdutoId.Size = new System.Drawing.Size(110, 21);
@@ -382,7 +350,7 @@
             // 
             // TxtSubCategoriaId
             // 
-            this.TxtSubCategoriaId.Location = new System.Drawing.Point(276, 9);
+            this.TxtSubCategoriaId.Location = new System.Drawing.Point(249, 8);
             this.TxtSubCategoriaId.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TxtSubCategoriaId.Name = "TxtSubCategoriaId";
             this.TxtSubCategoriaId.Size = new System.Drawing.Size(110, 21);
@@ -391,7 +359,7 @@
             // 
             // TxtCodigoDoFornecedor
             // 
-            this.TxtCodigoDoFornecedor.Location = new System.Drawing.Point(276, 9);
+            this.TxtCodigoDoFornecedor.Location = new System.Drawing.Point(249, 8);
             this.TxtCodigoDoFornecedor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TxtCodigoDoFornecedor.Name = "TxtCodigoDoFornecedor";
             this.TxtCodigoDoFornecedor.Size = new System.Drawing.Size(110, 21);
@@ -416,13 +384,11 @@
             this.ClientSize = new System.Drawing.Size(510, 380);
             this.Controls.Add(this.BtnGravar);
             this.Controls.Add(this.TxtPrecoUnitario);
-            this.Controls.Add(this.TxtEstoque);
             this.Controls.Add(this.TxtPrecoDeVenda);
             this.Controls.Add(this.TxtSubCategoriaId);
             this.Controls.Add(this.CbSubcategoria);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.TxtCodigoDoFornecedor);
-            this.Controls.Add(this.TxtCodigoDaNotaFiscal);
             this.Controls.Add(this.TxtValorDesconto);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PicFoto);
@@ -449,7 +415,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "FrmCadProduto";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmCadProduto";
             this.Load += new System.EventHandler(this.FrmCadProduto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PicFoto)).EndInit();
@@ -459,7 +425,6 @@
         }
 
         #endregion
-        protected internal System.Windows.Forms.TextBox TxtCodigoDaNotaFiscal;
         public System.Windows.Forms.TextBox TxtValorDesconto;
         internal System.Windows.Forms.Label label1;
         public System.Windows.Forms.PictureBox PicFoto;
@@ -477,7 +442,6 @@
         internal System.Windows.Forms.Label LblPrecoUnitario;
         internal System.Windows.Forms.TextBox TxtNome;
         public System.Windows.Forms.TextBox TxtPrecoUnitario;
-        public System.Windows.Forms.TextBox TxtEstoque;
         internal System.Windows.Forms.Button BtnFechar;
         public System.Windows.Forms.Label LblCodigoDeBarras;
         internal System.Windows.Forms.Label LblFornecedor;

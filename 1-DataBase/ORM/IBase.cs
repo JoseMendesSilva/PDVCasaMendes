@@ -18,6 +18,9 @@ namespace CasaMendes
         void Salvar();
 
         [MethodImpl(MethodImplOptions.InternalCall)]
+        void SalvarSql(string Query);
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
         void Excluir();
 
         [MethodImpl(MethodImplOptions.InternalCall)]
@@ -29,9 +32,6 @@ namespace CasaMendes
 
         [MethodImpl(MethodImplOptions.InternalCall)]
         List<IBase> Busca();
-
-        [MethodImpl(MethodImplOptions.InternalCall)]
-        List<IBase> BuscaComParametro(string Elementos);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
         List<IBase> BuscaComLike();

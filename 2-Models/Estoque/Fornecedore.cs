@@ -7,10 +7,10 @@ namespace CasaMendes
     {
         private bool disposedValue;
 
-        public Fornecedore()
-        {
+        //public Fornecedore()
+        //{
           
-        }
+        //}
 
         [OpcoesBase(UsarNoBancoDeDados = true, ChavePrimaria = true, UsarParaBuscar = true)]
          public int FornecedorId { get; set; }

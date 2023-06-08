@@ -49,8 +49,8 @@ namespace CasaMendes
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public decimal Juros { get; set; }
 
-        [OpcoesBase(UsarNoBancoDeDados = true)]
-        public decimal SubTotal { get; set; }
+        //[OpcoesBase(UsarNoBancoDeDados = true)]
+        //public decimal SubTotal { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
         public DateTime? created_at { get; set; } = DateTime.Now;

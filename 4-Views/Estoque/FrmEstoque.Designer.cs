@@ -132,6 +132,9 @@ namespace CasaMendes
             this.DgvProdutos.Name = "DgvProdutos";
             this.DgvProdutos.Size = new System.Drawing.Size(1082, 366);
             this.DgvProdutos.TabIndex = 170;
+            this.DgvProdutos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvProdutos_CellEnter);
+            this.DgvProdutos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DgvProdutos_CellFormatting);
+            this.DgvProdutos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DgvProdutos_KeyDown);
             // 
             // FrmEstoque
             // 

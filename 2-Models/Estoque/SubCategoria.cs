@@ -39,16 +39,6 @@ namespace CasaMendes
             return subCategoriia;
         }
 
-        public new List<SubCategoria> BuscaComParametro(string Elementos)
-        {
-            var oSubCategoria = new List<SubCategoria>();
-            foreach (var ibase in base.BuscaComParametro(Elementos))
-            {
-                oSubCategoria.Add((SubCategoria)ibase);
-            }
-            return oSubCategoria;
-        }
-
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)

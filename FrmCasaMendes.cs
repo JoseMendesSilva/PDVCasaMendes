@@ -182,5 +182,13 @@ namespace CasaMendes
             FrmTabelaDeMargen frmTabelaDeMargen = new FrmTabelaDeMargen();
             frmTabelaDeMargen.ShowDialog();
         }
+
+        private void BtnPlateleiraEstoque_Click(object sender, EventArgs e)
+        {
+
+            FrmAtualizarQuantValorEstoque AtualizarQuantValorEstoque = new FrmAtualizarQuantValorEstoque();
+            AtualizarQuantValorEstoque.ShowDialog();
+        }
+
     }
 }

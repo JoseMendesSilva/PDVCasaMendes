@@ -12,9 +12,14 @@ namespace CasaMendes
     {
 
         #region var
+
+#pragma warning disable CS0414 // O campo "FrmCadProduto.Loading" é atribuído, mas seu valor nunca é usado
+        bool Loading;
+#pragma warning restore CS0414 // O campo "FrmCadProduto.Loading" é atribuído, mas seu valor nunca é usado
         public BindingSource BsProduto;
         public Produto oProduto;
         private List<TabelaDeMargen> oListaDeMargen;
+
         #endregion
 
         #region FrmCadProduto
@@ -22,6 +27,7 @@ namespace CasaMendes
         public FrmCadProduto()
         {
             InitializeComponent();
+            Loading = true;
         }
 
         #endregion
@@ -67,10 +73,27 @@ namespace CasaMendes
 
         #region Click
 
-        private void Gravar()
+        private void PicFoto_Click(object sender, EventArgs e)
         {
             try
             {
+                PicFoto.Image = Image.FromFile(clsGlobal.BuscarFotoProduto());
+            }
+            catch { }
+            try
+            {
+                oProduto.Foto = clsGlobal.BuscarFotoProduto();
+                PicFoto.Image = Image.FromFile(clsGlobal.AbrirImagem(oProduto.Foto));
+            }
+            catch { }
+        }
+
+        private void BtnGravar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                oProduto.PrecoDeVenda = clsGlobal.DeStringParaDecimal(TxtPrecoDeVenda.Text);
+                oProduto.PrecoUnitario = clsGlobal.DeStringParaDecimal(TxtPrecoUnitario.Text);
 
                 if (string.IsNullOrEmpty(oProduto.Nome) ||
                 string.IsNullOrEmpty(oProduto.FornecedorId.ToString()) ||
@@ -86,10 +109,12 @@ namespace CasaMendes
                     return;
                 }
 
-                if (string.IsNullOrEmpty(TxtQuantidadeItemDesconto.Text)) TxtQuantidadeItemDesconto.Text = "0";
-                if (string.IsNullOrEmpty(TxtValorDesconto.Text)) TxtValorDesconto.Text = "0,00";
+                if (string.IsNullOrEmpty(TxtQuantidadeItemDesconto.Text)) 
+                    TxtQuantidadeItemDesconto.Text = "0";
+                if (string.IsNullOrEmpty(TxtValorDesconto.Text)) 
+                    TxtValorDesconto.Text = "0,00";
 
-                oProduto.CodigoDeBarras = oProduto.CodigoDeBarras;
+                //oProduto.CodigoDeBarras = oProduto.CodigoDeBarras;
 
                 var oEstoque = new Estoque
                 {
@@ -98,7 +123,7 @@ namespace CasaMendes
                     Produto = oProduto.Nome,
                     CodigoDeBarras = oProduto.CodigoDeBarras,
                     Quantidade = oProduto.Quantidade,
-                    PrecoDeVenda = clsGlobal.DeStringParaDecimal(oProduto.PrecoDeVenda.ToString("N2")),
+                    PrecoDeVenda = oProduto.PrecoDeVenda,
                     QuantidadeItemDesconto = clsGlobal.DeStringParaInt(TxtQuantidadeItemDesconto.Text),
                     Foto = oProduto.Foto,
                     ValorDesconto = decimal.Parse(TxtValorDesconto.Text)
@@ -127,26 +152,6 @@ namespace CasaMendes
 
         }
 
-        private void PicFoto_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                PicFoto.Image = Image.FromFile(clsGlobal.BuscarFotoProduto());
-            }
-            catch { }
-            try
-            {
-                oProduto.Foto = clsGlobal.BuscarFotoProduto();
-                PicFoto.Image = Image.FromFile(clsGlobal.AbrirImagem(oProduto.Foto));
-            }
-            catch { }
-        }
-
-        private void BtnGravar_Click(object sender, EventArgs e)
-        {
-            Gravar();
-        }
-
         #endregion
 
         #region Load
@@ -164,8 +169,8 @@ namespace CasaMendes
                 oListaDeMargen = new List<TabelaDeMargen>();
 
             if (oProduto.ProdutoId.Equals(0)) BsProduto.Add(oProduto);
-            VincularBindingSource();
             BsProduto.DataSource = oProduto;
+            VincularBindingSource();
 
             CbFornecedores.DisplayMember = "RazaoSocial";
             CbFornecedores.DataSource = new Fornecedore().Todos();
@@ -177,7 +182,7 @@ namespace CasaMendes
             }
 
             CbSubcategoria.DisplayMember = "Nome";
-            CbSubcategoria.DataSource = new SubCategoria().BuscaComParametro("Nome");
+            CbSubcategoria.DataSource = new SubCategoria().Todos();
 
             if (CbSubcategoria.Items.Count < 1)
             {
@@ -194,6 +199,7 @@ namespace CasaMendes
                 BtnGravar.Enabled = false;
                 BtnFechar.Enabled = true;
             }
+            Loading = false;
         }
 
         #endregion
@@ -271,11 +277,11 @@ namespace CasaMendes
         {
             try
             {
-                decimal pv = clsGlobal.DeStringParaInt(TxtPrecoDeVenda.Text);
-                oProduto.PrecoDeVenda = pv;
+                oProduto.PrecoDeVenda = clsGlobal.DeStringParaDecimal(TxtPrecoDeVenda.Text); ;
                 TxtPrecoDeVenda.Text = oProduto.PrecoDeVenda.ToString();
             }
             catch { }
         }
+
     }
 }

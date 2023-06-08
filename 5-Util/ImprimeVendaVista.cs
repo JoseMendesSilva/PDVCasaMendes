@@ -106,11 +106,10 @@ namespace CasaMendes
                 this.venda.Desconto = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[i].Cells[3].Value.ToString());
                 this.venda.Tributos = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[i].Cells[4].Value.ToString());
                 this.venda.Juros = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[i].Cells[5].Value.ToString());
-                this.venda.SubTotal = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[i].Cells["ValorTotal"].Value.ToString());
-                this.venda.Produto = DgvVendas.Rows[i].Cells[9].Value.ToString();
-                this.venda.Quantidade = clsGlobal.DeStringParaInt(DgvVendas.Rows[i].Cells[10].Value.ToString());
-                this.venda.PrecoDeVenda = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[i].Cells[11].Value.ToString());
-                this.venda.Valor = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[i].Cells[12].Value.ToString());
+                this.venda.Produto = DgvVendas.Rows[i].Cells[8].Value.ToString();
+                this.venda.Quantidade = clsGlobal.DeStringParaInt(DgvVendas.Rows[i].Cells[9].Value.ToString());
+                this.venda.PrecoDeVenda = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[i].Cells[10].Value.ToString());
+                this.venda.Valor = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[i].Cells["ValorTotal"].Value.ToString());
 
                 PosicaoXMenu = 40; //40 
                 graphics.DrawString(Item.ToString(), regularItens, Brushes.Black, PosicaoStartX, offset);
