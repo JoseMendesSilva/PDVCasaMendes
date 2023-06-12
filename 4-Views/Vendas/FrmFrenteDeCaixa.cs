@@ -31,7 +31,6 @@ namespace CasaMendes
             this.TxtQuantidade.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtQuantidade_KeyDown);
             this.TxtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCodigo_KeyPress);
             this.TxtCodigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtCodigo_KeyDown);
-            this.TxtCodigo.TextChanged += new System.EventHandler(this.TxtCodigo_TextChanged);
         }
 
         #region Vendas
@@ -199,6 +198,17 @@ namespace CasaMendes
                     this.oPreVenda.ClienteId = oFinlizarVenda.ClienteId;
                     this.oPreVenda.TipoDeVenda = oFinlizarVenda.TipoDeVenda;
 
+                    if (this.oPreVenda.TipoDeVenda == "PENDURA")
+                    {
+                        this.oPreVenda.Tributos = clsGlobal.DeStringParaDecimal(ConfigurationManager.AppSettings["Tributos"]);
+                        this.oPreVenda.Juros = clsGlobal.DeStringParaDecimal(ConfigurationManager.AppSettings["Juros"]);
+                    }
+                    else
+                    {
+                        this.oPreVenda.Tributos = 0;
+                        this.oPreVenda.Juros = 0;
+                    }
+
                     if (oFinlizarVenda.DialogResult == DialogResult.Cancel)
                     {
                         oFinlizarVenda.Dispose();
@@ -209,17 +219,6 @@ namespace CasaMendes
                     else
                     {
                         oFinlizarVenda.Dispose();
-                    }
-
-                    if (this.oPreVenda.TipoDeVenda == "PENDURA")
-                    {
-                        this.oPreVenda.Tributos = clsGlobal.DeStringParaDecimal(ConfigurationManager.AppSettings["Tributos"]);
-                        this.oPreVenda.Juros = clsGlobal.DeStringParaDecimal(ConfigurationManager.AppSettings["Juros"]);
-                    }
-                    else
-                    {
-                        this.oPreVenda.Tributos = 0;
-                        this.oPreVenda.Juros = 0;
                     }
 
                     for (int i = 0; i < grid.Rows.Count; i++)
@@ -360,18 +359,18 @@ namespace CasaMendes
             else if (e.KeyCode == Keys.F9)
             {
                 //Abre o formulário para a pesquisa de produos.
-                FrmEstoque ffc = new FrmEstoque();
-                ffc.ShowDialog();
-                if (ffc.DialogResult.Equals(DialogResult.OK))
+                FrmEstoqueLista oEstoqueLista = new FrmEstoqueLista();
+                oEstoqueLista.ShowDialog();
+                if (oEstoqueLista.DialogResult.Equals(DialogResult.OK))
                 {
-                    TxtCodigo.Text = ffc.CodigoProduto;
+                    TxtCodigo.Text = oEstoqueLista.CodigoProduto;
                 }
                 else
                 {
                     TxtCodigo.Focus();
                     TxtCodigo.SelectAll();
                 }
-                ffc.Dispose();
+                oEstoqueLista.Dispose();
             }
             else if (e.Control && e.KeyCode == Keys.Q)
             {
@@ -495,5 +494,11 @@ namespace CasaMendes
         }
 
         #endregion
+
+        private void TxtQuantidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = clsGlobal.SomenteNumeros(e);
+        }
+
     }
 }

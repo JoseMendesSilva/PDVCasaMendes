@@ -30,6 +30,7 @@ namespace CasaMendes
         private void InitializeComponent()
         {
             this.gbBusca = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.TxtValor = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.TxtQuantidade = new System.Windows.Forms.TextBox();
@@ -49,6 +50,7 @@ namespace CasaMendes
             this.PrecoUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrecoDeVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SubCategoriaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BtnCarregarDoEstoque = new System.Windows.Forms.Button();
             this.gbBusca.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvProdutos)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +59,7 @@ namespace CasaMendes
             // 
             this.gbBusca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbBusca.Controls.Add(this.label4);
             this.gbBusca.Controls.Add(this.TxtValor);
             this.gbBusca.Controls.Add(this.label3);
             this.gbBusca.Controls.Add(this.TxtQuantidade);
@@ -71,12 +74,23 @@ namespace CasaMendes
             this.gbBusca.TabStop = false;
             this.gbBusca.Text = "Buscar";
             // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(611, 37);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(51, 20);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "label4";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // TxtValor
             // 
             this.TxtValor.Location = new System.Drawing.Point(326, 51);
             this.TxtValor.Name = "TxtValor";
             this.TxtValor.Size = new System.Drawing.Size(73, 26);
-            this.TxtValor.TabIndex = 6;
+            this.TxtValor.TabIndex = 2;
             // 
             // label3
             // 
@@ -92,7 +106,7 @@ namespace CasaMendes
             this.TxtQuantidade.Location = new System.Drawing.Point(166, 51);
             this.TxtQuantidade.Name = "TxtQuantidade";
             this.TxtQuantidade.Size = new System.Drawing.Size(130, 26);
-            this.TxtQuantidade.TabIndex = 4;
+            this.TxtQuantidade.TabIndex = 1;
             // 
             // label1
             // 
@@ -108,7 +122,7 @@ namespace CasaMendes
             this.TxtBusca.Location = new System.Drawing.Point(6, 51);
             this.TxtBusca.Name = "TxtBusca";
             this.TxtBusca.Size = new System.Drawing.Size(130, 26);
-            this.TxtBusca.TabIndex = 2;
+            this.TxtBusca.TabIndex = 0;
             this.TxtBusca.TextChanged += new System.EventHandler(this.TxtBusca_TextChanged);
             // 
             // label2
@@ -127,7 +141,7 @@ namespace CasaMendes
             this.BtnCancelar.Location = new System.Drawing.Point(605, 447);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(75, 53);
-            this.BtnCancelar.TabIndex = 157;
+            this.BtnCancelar.TabIndex = 1;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
@@ -139,7 +153,7 @@ namespace CasaMendes
             this.BtnSalvar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnSalvar.Name = "BtnSalvar";
             this.BtnSalvar.Size = new System.Drawing.Size(69, 54);
-            this.BtnSalvar.TabIndex = 166;
+            this.BtnSalvar.TabIndex = 0;
             this.BtnSalvar.Text = "Salvar";
             this.BtnSalvar.UseVisualStyleBackColor = true;
             this.BtnSalvar.Click += new System.EventHandler(this.BtnSalvar_Click);
@@ -223,12 +237,25 @@ namespace CasaMendes
             this.SubCategoriaId.Name = "SubCategoriaId";
             this.SubCategoriaId.Visible = false;
             // 
+            // BtnCarregarDoEstoque
+            // 
+            this.BtnCarregarDoEstoque.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnCarregarDoEstoque.Location = new System.Drawing.Point(100, 447);
+            this.BtnCarregarDoEstoque.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.BtnCarregarDoEstoque.Name = "BtnCarregarDoEstoque";
+            this.BtnCarregarDoEstoque.Size = new System.Drawing.Size(170, 54);
+            this.BtnCarregarDoEstoque.TabIndex = 8;
+            this.BtnCarregarDoEstoque.Text = "Carregar do Estoque";
+            this.BtnCarregarDoEstoque.UseVisualStyleBackColor = true;
+            this.BtnCarregarDoEstoque.Visible = false;
+            // 
             // FrmAtualizarQuantValorEstoque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(693, 522);
+            this.Controls.Add(this.BtnCarregarDoEstoque);
             this.Controls.Add(this.DgvProdutos);
             this.Controls.Add(this.BtnSalvar);
             this.Controls.Add(this.gbBusca);
@@ -239,6 +266,7 @@ namespace CasaMendes
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Estoque";
+            this.Load += new System.EventHandler(this.FrmAtualizarQuantValorEstoque_Load);
             this.gbBusca.ResumeLayout(false);
             this.gbBusca.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvProdutos)).EndInit();
@@ -268,5 +296,7 @@ namespace CasaMendes
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecoUnitario;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecoDeVenda;
         private System.Windows.Forms.DataGridViewTextBoxColumn SubCategoriaId;
+        public System.Windows.Forms.Button BtnCarregarDoEstoque;
+        private System.Windows.Forms.Label label4;
     }
 }

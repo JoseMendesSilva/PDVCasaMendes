@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace CasaMendes
 {
@@ -12,13 +13,20 @@ namespace CasaMendes
         private string _Cliente { get; set; }
         private bool Arrumado { get; set; }
         private bool dgvClientesRowEnter { get; set; }
+        private int Linha { get; set; }
 
-    #endregion
+        #endregion
 
-    public FrmReceberPendura()
+        #region Variáveis.
+
+        public FrmReceberPendura()
         {
             InitializeComponent();
         }
+
+        #endregion
+
+        #region Métodos.
 
         private void RedimencionarColunas()
         {
@@ -89,6 +97,10 @@ namespace CasaMendes
             {
             }
         }
+
+        #endregion
+
+        #region eventos.
 
         private void BtnFechar_Click(object sender, EventArgs e)
         {
@@ -183,10 +195,7 @@ namespace CasaMendes
                 this._Cliente = dgvClientes.Rows[e.RowIndex].Cells[1].Value.ToString();
                 BuscarAnotado();
             }
-            catch
-            {
-
-            }
+            catch { }
         }
 
         private void frmCarregarVenda_Load(object sender, EventArgs e)
@@ -237,11 +246,37 @@ namespace CasaMendes
                 this.btnReceber.Enabled = false;
                 if (DgvVendas.Rows.Count > 0)
                 {
+                    Linha = e.RowIndex;
                     btnReceber.Enabled = true;
                 }
             }
             catch { }
         }
+
+        private void DgvVendas_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete && Linha>-1)
+            {
+                string mensagem = $"Você deseja excluir á venda {DgvVendas.Rows[Linha].Cells["Produto"].Value}";
+                DialogResult result = MessageBox.Show(mensagem, Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    using (var preVenda = new PreVenda())
+                    {
+                        int quantidade = clsGlobal.DeStringParaInt(DgvVendas.Rows[Linha].Cells["Quantidade"].Value.ToString());
+                        preVenda.PreVendaId = clsGlobal.DeStringParaInt(DgvVendas.Rows[Linha].Cells["PreVendaId"].Value.ToString());
+                        preVenda.Produto = DgvVendas.Rows[Linha].Cells["Produto"].Value.ToString();
+                        preVenda.Excluir();
+                        var oEstq = new Estoque();
+                        string sql = $"UPDATE Estoques SET Quantidade = (Quantidade + '{quantidade}') WHERE Produto = '{preVenda.Produto}'";
+                        oEstq.SalvarSql(sql);
+                        BuscarAnotado();
+                    }
+                }
+            }
+        }
+
+        #endregion
 
     }
 }

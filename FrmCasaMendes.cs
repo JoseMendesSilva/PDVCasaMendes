@@ -104,14 +104,9 @@ namespace CasaMendes
 
         private void FrmCasaMendes_Load(object sender, EventArgs e)
         {
-            //temp temp = new temp();
-            //temp.ShowDialog();
-            //AbrirFormEnPanel(new temp());
             CriarTabelasDoSistema.CriarTabelas();
             btnlogoInicio_Click(null, e);
             this.Refresh();
-            //Thread.Sleep(500);
-            //this.btnPdv.PerformClick();
         }
 
         private void btnVendas_Click(object sender, EventArgs e)
@@ -143,7 +138,6 @@ namespace CasaMendes
         {
             FrmFrenteDeCaixa frenteDeCaixa = new FrmFrenteDeCaixa();
             // Set the Parent Form of the Child window.
-            //frenteDeCaixa.MdiParent = this;
             frenteDeCaixa.Text = "FrenteDeCaixa ";
             // Display the new form.
             frenteDeCaixa.ShowDialog();
@@ -153,11 +147,9 @@ namespace CasaMendes
         {
             MyPrinters myPrinters = new MyPrinters();
             // Set the Parent Form of the Child window.
-            //frenteDeCaixa.MdiParent = this;
             myPrinters.Text = "Configuracoes ";
             // Display the new form.
             myPrinters.ShowDialog();
-            //AbrirFormEnPanel(new MyPrinters());
         }
 
         private void BtnCategorias_Click(object sender, EventArgs e)

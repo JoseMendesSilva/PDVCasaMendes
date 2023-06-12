@@ -18,6 +18,15 @@ namespace CasaMendes
     {
         private readonly string connectionString = string.Concat(@ConfigurationManager.AppSettings["ServerDb"], @ConfigurationManager.AppSettings["DirDb"], @"\", ConfigurationManager.AppSettings["NameDb"]);
 
+        //var builder = new MySqlConnectionStringBuilder
+        //{
+        //private string Server = "YOUR-SERVER.mysql.database.azure.com";
+        //private string Database = "YOUR-DATABASE";
+        //private string UserID = "USER@YOUR-SERVER";
+        //private string Password = "PASSWORD";
+        ////    SslMode = MySqlSslMode.Required,
+        //};
+
         public virtual int Key
         {
             get

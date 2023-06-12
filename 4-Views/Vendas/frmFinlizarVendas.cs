@@ -202,5 +202,14 @@ namespace CasaMendes
             }
         }
 
+        private void txtDinheiro_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //e.Handled = clsGlobal.SomenteNumeros(e);
+        }
+
+        private void TxtDesconto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //e.Handled = clsGlobal.SomenteNumeros(e);
+        }
     }
 }

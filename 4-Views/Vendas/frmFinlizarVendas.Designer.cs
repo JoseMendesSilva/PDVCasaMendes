@@ -91,6 +91,7 @@
             this.txtDinheiro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtDinheiro.TextChanged += new System.EventHandler(this.txtDinheiro_TextChanged);
             this.txtDinheiro.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDinheiro_KeyDown);
+            this.txtDinheiro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDinheiro_KeyPress);
             // 
             // label9
             // 
@@ -243,6 +244,7 @@
             this.TxtDesconto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TxtDesconto.TextChanged += new System.EventHandler(this.TxtDesconto_TextChanged);
             this.TxtDesconto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtDesconto_KeyDown);
+            this.TxtDesconto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtDesconto_KeyPress);
             // 
             // label5
             // 

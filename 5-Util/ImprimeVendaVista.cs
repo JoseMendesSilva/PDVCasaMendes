@@ -156,10 +156,10 @@ namespace CasaMendes
 
             }
 
+
             graphics.DrawString("TOTAL R$: ", regular, Brushes.Black, PosicaoStartX, offset);
             graphics.DrawString(total.ToString("N2"), regular, Brushes.Black, PosicaoX, offset);
             offset += 15;
-
             graphics.DrawLine(Pens.Black, PosicaoStartXLine, offset, PosicaoXLine, offset);
             offset += 1;
 
@@ -170,10 +170,15 @@ namespace CasaMendes
             PosicaoX -= 15; //290
             graphics.DrawString("Venda: ", regular, Brushes.Black, PosicaoStartX, offset);
             graphics.DrawString(this.venda.TipoDeVenda, regular, Brushes.Black, PosicaoX, offset);
+            offset += 15;
+
+            PosicaoX += 15;
+            graphics.DrawString("Troco: R$ ", regular, Brushes.Black, PosicaoStartX, offset);
+            graphics.DrawString(this.venda.Troco.ToString(), regular, Brushes.Black, PosicaoX, offset);
             offset += 13;
 
             graphics.DrawLine(Pens.Black, PosicaoStartXLine, offset, PosicaoXLine, offset);
-            PosicaoX -= 7;//220
+            PosicaoX -= 30;//220
 
             ////bottom
             graphics.DrawString("Data: " + DateTime.Now.ToString("dd/MM/yyyy"), regularItens, Brushes.Black, PosicaoStartX, offset);
@@ -190,6 +195,10 @@ namespace CasaMendes
             graphics.DrawString("DEVOLUÇÕES: ", regularItens, Brushes.Black, PosicaoStartX, offset);
             offset += 10;
             graphics.DrawString("NÃO ECEITAMOS DEVOLUÇÕES.", regularItens, Brushes.Black, PosicaoStartX, offset);
+            offset += 10;
+
+            graphics.DrawLine(Pens.Black, PosicaoStartXLine, offset, PosicaoXLine, offset);
+            graphics.DrawString("Volte sempre!".ToUpper(), regularItens, Brushes.Black, 40, offset);
 
             e.HasMorePages = false;
 

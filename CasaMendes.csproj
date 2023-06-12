@@ -148,8 +148,14 @@
     <EmbeddedResource Include="4-Views\Estoque\FrmCadSubcategoria.resx">
       <DependentUpon>FrmCadSubcategoria.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="4-Views\Estoque\FrmEstoque.resx">
+      <DependentUpon>FrmEstoque.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="4-Views\Estoque\FrmPlateleiraEstoque .resx">
       <DependentUpon>FrmPlateleiraEstoque .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="5-Util\ImprimerListaDeCompra .resx">
+      <DependentUpon>ImprimerListaDeCompra .cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCasaMendes.resx">
       <DependentUpon>FrmCasaMendes.cs</DependentUpon>
@@ -157,8 +163,8 @@
     <EmbeddedResource Include="4-Views\Estoque\FrmProdutos.resx">
       <DependentUpon>FrmProdutos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\Estoque\FrmEstoque.resx">
-      <DependentUpon>FrmEstoque.cs</DependentUpon>
+    <EmbeddedResource Include="4-Views\Estoque\FrmEstoqueLista.resx">
+      <DependentUpon>FrmEstoqueLista.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="4-Views\Contabilidade\Financeiro\FrmTabelaDeMargen.resx">
       <DependentUpon>FrmTabelaDeMargen.cs</DependentUpon>
@@ -304,6 +310,12 @@
     <Compile Include="4-Views\Estoque\FrmCadSubcategoria.Designer.cs">
       <DependentUpon>FrmCadSubcategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="4-Views\Estoque\FrmEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4-Views\Estoque\FrmEstoque.Designer.cs">
+      <DependentUpon>FrmEstoque.cs</DependentUpon>
+    </Compile>
     <Compile Include="4-Views\Estoque\FrmPlateleiraEstoque .cs">
       <SubType>Form</SubType>
     </Compile>
@@ -326,8 +338,7 @@
       <DependentUpon>FrmTabelaDeMargen.cs</DependentUpon>
     </Compile>
     <Compile Include="1-DataBase\ORM\Base.cs" />
-    <Compile Include="1-DataBase\ORM\IBase.cs" />
-    <Compile Include="1-DataBase\Interfaces\IDados.cs" />
+    <Compile Include="1-DataBase\Interfaces\IBase.cs" />
     <Compile Include="2-Models\Estoque\Produto.cs" />
     <Compile Include="4-Views\Estoque\FrmCadProduto.cs">
       <SubType>Form</SubType>
@@ -339,11 +350,11 @@
     <Compile Include="3-JMS Comp\Numero.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="4-Views\Estoque\FrmEstoque.cs">
+    <Compile Include="4-Views\Estoque\FrmEstoqueLista.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="4-Views\Estoque\FrmEstoque.Designer.cs">
-      <DependentUpon>FrmEstoque.cs</DependentUpon>
+    <Compile Include="4-Views\Estoque\FrmEstoqueLista.Designer.cs">
+      <DependentUpon>FrmEstoqueLista.cs</DependentUpon>
     </Compile>
     <Compile Include="4-Views\Vendas\FrmBuscarCliente.cs">
       <SubType>Form</SubType>

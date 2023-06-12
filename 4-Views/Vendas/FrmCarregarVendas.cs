@@ -13,9 +13,7 @@ namespace CasaMendes
         #endregion
 
         PreVenda oPreVenda;
-        public int ClienteId { get; set; }
-        public string Cliente { get; set; }
-        bool TamanhoColuna;
+        //bool TamanhoColuna;
 
         public FrmCarregarVendas()
         {
@@ -23,60 +21,34 @@ namespace CasaMendes
             this.Text = clsGlobal.MontarTitulo("Vendas (Diário).");
         }
 
-        private void SelecionarCliente()
-        {
-            FrmBuscarCliente fc = new FrmBuscarCliente();
-            fc.ShowDialog();
-            if (fc.DialogResult.Equals(DialogResult.OK))
-            {
-                this.ClienteId = fc.ClienteId;
-                this.Cliente = fc.Cliente;
-            }
-            else
-            {
-                this.ClienteId = 0;
-                this.Cliente = "A VISTA";
-            }
-            fc.Dispose();
-            this.oPreVenda.ClienteId = this.ClienteId;
-            this.LblCliente.Text = this.Cliente;
-        }
-
         private void RedimencionarColunas()
         {
             try
             {
-                if (TamanhoColuna == false && DgvVendas.Rows.Count > 0)
-                {
-                    this.DgvVendas.Columns["PreVendaId"].Visible = false;
-                    this.DgvVendas.Columns["ClienteId"].Visible = false;
-                    this.DgvVendas.Columns["Tributos"].Visible = false;
-                    this.DgvVendas.Columns["Juros"].Visible = false;
-                    this.DgvVendas.Columns["updated_at"].Visible = false;
-                    this.DgvVendas.Columns["Key"].Visible = false;
+                
+                    for (int i = 0; i < DgvVendas.ColumnCount; i++)
+                    {
+                        DgvVendas.Columns[i].Visible = false;
+                    }
 
-                    this.DgvVendas.Columns["Produto"].Width = clsGlobal.DimencionarColuna(25, this.Width);
-                    this.DgvVendas.Columns["Quantidade"].Width = clsGlobal.DimencionarColuna(10, this.Width);
-                    this.DgvVendas.Columns["PrecoDeVenda"].Width = clsGlobal.DimencionarColuna(9, this.Width);
-                    this.DgvVendas.Columns["NumeroDaVenda"].Width = clsGlobal.DimencionarColuna(8, this.Width);
-                    this.DgvVendas.Columns["TipoDeVenda"].Width = clsGlobal.DimencionarColuna(10, this.Width);
-                    this.DgvVendas.Columns["Valor"].Width = clsGlobal.DimencionarColuna(10, this.Width);
-                    this.DgvVendas.Columns["Dinheiro"].Width = clsGlobal.DimencionarColuna(10, this.Width);
-                    this.DgvVendas.Columns["Parcela"].Width = clsGlobal.DimencionarColuna(10, this.Width);
-                    this.DgvVendas.Columns["created_at"].Width = clsGlobal.DimencionarColuna(10, this.Width);
+                    this.DgvVendas.Columns["Produto"].Visible = true;
+                    this.DgvVendas.Columns["Quantidade"].Visible = true;
+                    this.DgvVendas.Columns["PrecoDeVenda"].Visible = true;
+                    this.DgvVendas.Columns["Valor"].Visible = true;
+                    this.DgvVendas.Columns["created_at"].Visible = true;
+
+                    this.DgvVendas.Columns["Produto"].Width = clsGlobal.DimencionarColuna(40, DgvVendas.Width);
+                    this.DgvVendas.Columns["Quantidade"].Width = clsGlobal.DimencionarColuna(15, DgvVendas.Width);
+                    this.DgvVendas.Columns["PrecoDeVenda"].Width = clsGlobal.DimencionarColuna(15, DgvVendas.Width);
+                    this.DgvVendas.Columns["Valor"].Width = clsGlobal.DimencionarColuna(15, DgvVendas.Width);
+                    this.DgvVendas.Columns["created_at"].Width = clsGlobal.DimencionarColuna(15, DgvVendas.Width);
+                    this.DgvVendas.Columns["created_at"].HeaderText = "Data cadastro";
 
                     clsGlobal.AlinharElementosNoGridView(DgvVendas, 2, "left");
                     clsGlobal.AlinharElementosNoGridView(DgvVendas, 3, "right");
                     clsGlobal.AlinharElementosNoGridView(DgvVendas, 4, "right");
-                    clsGlobal.AlinharElementosNoGridView(DgvVendas, 5, "center");
-                    clsGlobal.AlinharElementosNoGridView(DgvVendas, 6, "center");
                     clsGlobal.AlinharElementosNoGridView(DgvVendas, 7, "right");
                     clsGlobal.AlinharElementosNoGridView(DgvVendas, 8, "right");
-                    clsGlobal.AlinharElementosNoGridView(DgvVendas, 9, "right");
-                    clsGlobal.AlinharElementosNoGridView(DgvVendas, 10, "right");
-                    clsGlobal.AlinharElementosNoGridView(DgvVendas, 11, "center");
-                    TamanhoColuna = true;
-                }
             }
             catch
             {
@@ -88,6 +60,8 @@ namespace CasaMendes
         {
             try
             {
+                DgvVendas.DataSource = null;
+                DgvVendas.Rows.Clear();
                 if (filtro == null)
                 {
                     oPreVenda.ClienteId = 0;
@@ -95,11 +69,10 @@ namespace CasaMendes
                 }
                 else
                 {
-                    //int cId = oPreVenda.ClienteId;
+                    oPreVenda.created_at = null;
                     oPreVenda.ClienteId = 0;
                     oPreVenda.TipoDeVenda = filtro;
                     DgvVendas.DataSource = oPreVenda.Busca();
-                    //oPreVenda.ClienteId = cId;
                 }
 
                 if (this.DgvVendas.Rows.Count > 0)
@@ -119,7 +92,10 @@ namespace CasaMendes
                     StatusLabel = (DgvVendas.RowCount - 1).ToString();
                 }
                 else
+                {
+                    DgvVendas.Rows.Clear();
                     this.TxtVendas.Text = "R$ 0.00";
+                }
             }
             catch { }
         }
@@ -134,18 +110,15 @@ namespace CasaMendes
         {
             try
             {
-                TamanhoColuna = false;
+                //TamanhoColuna = false;
                 gbBusca.Left = DgvVendas.Left;
                 gbBusca.Width = DgvVendas.Width;
 
                 clsGlobal.RedimencionarGrade(this, ref DgvVendas);
                 oPreVenda = new PreVenda();
 
-                this.ClienteId = 0;
-                this.Cliente = "A VISTA";
-
-                oPreVenda.ClienteId = this.ClienteId;
-                this.LblCliente.Text = this.Cliente;
+                oPreVenda.ClienteId = 0;
+                this.LblCliente.Text = "A VISTA";
 
                 CarregarVendas();
                 this.RedimencionarColunas();
@@ -201,7 +174,6 @@ namespace CasaMendes
 
         private void RbPendura_Click(object sender, EventArgs e)
         {
-            SelecionarCliente();
             LblCliente.Text = RbPendura.Text;
             CarregarVendas(RbPendura.Text);
         }

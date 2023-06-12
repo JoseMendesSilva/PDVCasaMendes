@@ -37,6 +37,7 @@ namespace CasaMendes
             this.BtnExcluir = new System.Windows.Forms.Button();
             this.BtnListaDeCompra = new System.Windows.Forms.Button();
             this.DgvProdutos = new System.Windows.Forms.DataGridView();
+            this.LblEstoqueMinimo = new System.Windows.Forms.Label();
             this.gbBusca.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvProdutos)).BeginInit();
             this.SuspendLayout();
@@ -90,7 +91,7 @@ namespace CasaMendes
             // 
             this.BtnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancelar.Location = new System.Drawing.Point(1019, 461);
+            this.BtnCancelar.Location = new System.Drawing.Point(1019, 573);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(75, 53);
             this.BtnCancelar.TabIndex = 157;
@@ -101,7 +102,7 @@ namespace CasaMendes
             // BtnExcluir
             // 
             this.BtnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BtnExcluir.Location = new System.Drawing.Point(12, 461);
+            this.BtnExcluir.Location = new System.Drawing.Point(12, 573);
             this.BtnExcluir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnExcluir.Name = "BtnExcluir";
             this.BtnExcluir.Size = new System.Drawing.Size(69, 54);
@@ -113,7 +114,7 @@ namespace CasaMendes
             // BtnListaDeCompra
             // 
             this.BtnListaDeCompra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BtnListaDeCompra.Location = new System.Drawing.Point(190, 460);
+            this.BtnListaDeCompra.Location = new System.Drawing.Point(190, 572);
             this.BtnListaDeCompra.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnListaDeCompra.Name = "BtnListaDeCompra";
             this.BtnListaDeCompra.Size = new System.Drawing.Size(69, 54);
@@ -130,18 +131,31 @@ namespace CasaMendes
             this.DgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvProdutos.Location = new System.Drawing.Point(12, 71);
             this.DgvProdutos.Name = "DgvProdutos";
-            this.DgvProdutos.Size = new System.Drawing.Size(1082, 366);
+            this.DgvProdutos.Size = new System.Drawing.Size(1082, 451);
             this.DgvProdutos.TabIndex = 170;
             this.DgvProdutos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvProdutos_CellEnter);
             this.DgvProdutos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DgvProdutos_CellFormatting);
             this.DgvProdutos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DgvProdutos_KeyDown);
+            // 
+            // LblEstoqueMinimo
+            // 
+            this.LblEstoqueMinimo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.LblEstoqueMinimo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblEstoqueMinimo.ForeColor = System.Drawing.Color.Red;
+            this.LblEstoqueMinimo.Location = new System.Drawing.Point(503, 537);
+            this.LblEstoqueMinimo.Name = "LblEstoqueMinimo";
+            this.LblEstoqueMinimo.Size = new System.Drawing.Size(591, 23);
+            this.LblEstoqueMinimo.TabIndex = 171;
+            this.LblEstoqueMinimo.Text = "label1";
+            this.LblEstoqueMinimo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // FrmEstoque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1107, 522);
+            this.ClientSize = new System.Drawing.Size(1107, 634);
+            this.Controls.Add(this.LblEstoqueMinimo);
             this.Controls.Add(this.DgvProdutos);
             this.Controls.Add(this.BtnListaDeCompra);
             this.Controls.Add(this.BtnExcluir);
@@ -171,5 +185,6 @@ namespace CasaMendes
         private System.Windows.Forms.Label LblEstoqueItens;
         public System.Windows.Forms.Button BtnListaDeCompra;
         private System.Windows.Forms.DataGridView DgvProdutos;
+        private System.Windows.Forms.Label LblEstoqueMinimo;
     }
 }

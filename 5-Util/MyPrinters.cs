@@ -11,6 +11,8 @@ namespace CasaMendes
     {
 
         //StringBuilder StringBuilder;
+        //Properties.Settings.Default.FirstUserSetting = "abc";
+        //Properties.Settings.Default.Save();
 
         public MyPrinters()
         {
@@ -157,7 +159,6 @@ namespace CasaMendes
                 MensagemBox.Mostrar("O nome da impressoara selecionada, não foi salvo com sucesso.", "OK", "Cancelar");
             }
         }
-
     }
 }
 

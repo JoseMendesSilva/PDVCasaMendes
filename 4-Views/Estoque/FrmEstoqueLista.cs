@@ -1,27 +1,21 @@
 ﻿
-using DocumentFormat.OpenXml.Drawing;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Drawing;
-using System.Threading;
-//using System.Reflection.Emit;
+using System.Reflection.Emit;
 using System.Windows.Forms;
 
 namespace CasaMendes
 {
-    public partial class FrmEstoque : Form
+    public partial class FrmEstoqueLista : Form
     {
-
         public string StatusLabel { get; set; }
         public string CodigoProduto { get; set; }
-        private int LinhaIndex;
-        private int Count;
-        private bool frmLoading;
+        private int LinhaIndex { get; set; }
+        private bool frmLoading { get; set; }
 
         #region Construtor
 
-        public FrmEstoque()
+        public FrmEstoqueLista()
         {
             InitializeComponent();
         }
@@ -72,20 +66,19 @@ namespace CasaMendes
 
         private void FrmEstoque_Load(object sender, EventArgs e)
         {
-            var oProcessando = new FrmProcessando();
             try
             {
+                var oProcessando = new FrmProcessando();
                 oProcessando.Show();
                 oProcessando.TopMost = true;
                 oProcessando.Processo(4, "Liste Estoque.", "Carregando.");
-                DgvProdutos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                this.Count = 1;
-                this.LinhaIndex = -1;
-                this.frmLoading = true;
+                LinhaIndex = -1;
+                frmLoading = true;
                 using (var oEstoque = new Estoque())
                 {
                     oProcessando.Processo(20, "Liste Estoque.", "Carregando..");
                     DgvProdutos.DataSource = oEstoque.Todos();
+                    frmLoading = false;
                     oProcessando.Processo(33, "Liste Estoque.", "Carregando...");
                     RedimencionarGrade();
                     oProcessando.Processo(45, "Liste Estoque.", "Carregando.");
@@ -104,22 +97,12 @@ namespace CasaMendes
                     DgvProdutos.Focus();
                     oProcessando.Processo(70, "Liste Estoque.", "Carregando...");
                 }
-                DgvProdutos.CurrentCell = DgvProdutos.Rows[DgvProdutos.Rows.Count - 1].Cells[3];
-                LblEstoqueItens.Text = DgvProdutos.RowCount.ToString();
-                LblEstoqueMinimo.Text = string.Concat(this.Count.ToString("0000"), " Produtos passiveis de reposição.").ToString();
                 oProcessando.Processo(100, "Liste Estoque.", "Carregando.");
-
+                LblEstoqueItens.Text = DgvProdutos.RowCount.ToString();
                 oProcessando.Close();
                 oProcessando.Dispose();
-
-                frmLoading = false;
-                this.Count = 0;
             }
             catch { }
-            finally
-            {
-            }
-
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
@@ -128,7 +111,7 @@ namespace CasaMendes
             this.Close();
         }
 
-        private void TxtCodigoDeBarras_TextChanged(object sender, EventArgs e)
+        private void TxtBusca_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -189,7 +172,7 @@ namespace CasaMendes
                 {
                     MessageBox.Show("Selecione um produto para excluir.");
                 }
-                oEstoque.CodigoDeBarras = TxtBusca.Text;
+oEstoque.CodigoDeBarras = TxtBusca.Text;
 
             }
             catch {; }
@@ -199,23 +182,14 @@ namespace CasaMendes
         {
             int quantity = clsGlobal.DeStringParaInt(DgvProdutos.Rows[e.RowIndex].Cells["Quantidade"].Value.ToString());
             int EstoqueMinimo = clsGlobal.DeStringParaInt(ConfigurationManager.AppSettings["EstoqueMinimo"]);
-            int EmbalagemMaisQueQuarentaUnidades = clsGlobal.DeStringParaInt(ConfigurationManager.AppSettings["EmbalagemMaisQueQuarentaUnidades"]);
 
             //Apply Background color based on value.
             if (quantity <= EstoqueMinimo)
             {
                 DgvProdutos.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
                 DgvProdutos.Rows[e.RowIndex].DefaultCellStyle.ForeColor = System.Drawing.Color.White;
-                DgvProdutos.Rows[e.RowIndex].Cells["Listar"].Value = checked(true);
-                if (frmLoading)
-                    LblEstoqueMinimo.Text = string.Concat((this.Count++).ToString("0000"), " Produtos passiveis de reposição.");
             }
-            else if (quantity <= EmbalagemMaisQueQuarentaUnidades && quantity > EstoqueMinimo)
-            {
-                DgvProdutos.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Orange;
-                DgvProdutos.Rows[e.RowIndex].DefaultCellStyle.ForeColor = System.Drawing.Color.White;
-            }
-            else //(quantity > EstoqueMinimo)
+            if (quantity > EstoqueMinimo)
             {
                 DgvProdutos.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.GreenYellow;
             }
@@ -223,30 +197,8 @@ namespace CasaMendes
 
         private void BtnListaDeCompra_Click(object sender, EventArgs e)
         {
-            try
-            {
-                frmLoading=false;
-                var lista = new List<string>();
-                DgvProdutos.CurrentCell = DgvProdutos.Rows[0].Cells[3];
-                    this.Refresh();
-                bool b;
-                for (int i = 0; i < DgvProdutos.RowCount; i++)
-                {
-
-                    DgvProdutos.CurrentCell = DgvProdutos.Rows[i].Cells["Listar"];
-                    //Thread.Sleep(25);
-                    //string v = DgvProdutos.Rows[i].Cells["Listar"].Value.ToString();
-                    b = (bool)DgvProdutos.Rows[i].Cells["Listar"].Value;
-                    if (b == true)
-                    {
-                        lista.Add(DgvProdutos.Rows[i].Cells["Produto"].Value.ToString());
-                    }
-                }
-                //b = false;
-                ImprimerListaDeCompra oListaDeCompra = new ImprimerListaDeCompra(DgvProdutos);
-                oListaDeCompra.Print();
-            }
-            catch { }
+            //ImprimerListaDeCompra oListaDeCompra = new ImprimerListaDeCompra(DgvProdutos);
+            //oListaDeCompra.Print();
         }
 
     }
