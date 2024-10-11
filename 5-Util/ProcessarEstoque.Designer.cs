@@ -1,6 +1,6 @@
 ﻿namespace CasaMendes
 {
-    partial class temp
+    partial class ProcessarEstoque
     {
         /// <summary>
         /// Required designer variable.

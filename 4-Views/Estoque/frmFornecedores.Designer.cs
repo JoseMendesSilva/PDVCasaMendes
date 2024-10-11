@@ -85,6 +85,7 @@
             this.dgv.Size = new System.Drawing.Size(815, 381);
             this.dgv.TabIndex = 164;
             this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_CellEnter);
+            this.dgv.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_RowEnter);
             // 
             // btnExcluir
             // 

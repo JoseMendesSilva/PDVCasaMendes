@@ -8,12 +8,12 @@ using System.Windows.Forms;
 
 namespace CasaMendes
 {
-    public partial class temp : Form
+    public partial class ProcessarEstoque : Form
     {
         //Produto produto;
         //pProduto produtoTemp;
 
-        public temp() //
+        public ProcessarEstoque() //
         {
             InitializeComponent();
             ArrayList arr = new ArrayList();

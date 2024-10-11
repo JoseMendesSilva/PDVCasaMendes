@@ -57,14 +57,14 @@ namespace CasaMendes
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBusca.Location = new System.Drawing.Point(6, 25);
             this.txtBusca.Name = "txtBusca";
-            this.txtBusca.Size = new System.Drawing.Size(564, 26);
+            this.txtBusca.Size = new System.Drawing.Size(560, 26);
             this.txtBusca.TabIndex = 0;
             // 
             // BtnCancelar
             // 
             this.BtnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancelar.Location = new System.Drawing.Point(503, 397);
+            this.BtnCancelar.Location = new System.Drawing.Point(499, 401);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(75, 57);
             this.BtnCancelar.TabIndex = 308;
@@ -80,9 +80,9 @@ namespace CasaMendes
             this.DgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvClientes.Location = new System.Drawing.Point(8, 79);
             this.DgvClientes.Name = "DgvClientes";
-            this.DgvClientes.Size = new System.Drawing.Size(570, 235);
+            this.DgvClientes.Size = new System.Drawing.Size(566, 312);
             this.DgvClientes.TabIndex = 307;
-            this.DgvClientes.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_RowEnter);
+            this.DgvClientes.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvClientes_CellEnter);
             this.DgvClientes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DgvClientes_KeyDown);
             // 
             // BtnAceitar

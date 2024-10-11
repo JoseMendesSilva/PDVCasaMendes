@@ -1,13 +1,12 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Wordprocessing;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Data;
 using System.Reflection;
+using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
+using System.Security.Policy;
 
 namespace CasaMendes
 {
@@ -17,15 +16,6 @@ namespace CasaMendes
     public class Base : IBase
     {
         private readonly string connectionString = string.Concat(@ConfigurationManager.AppSettings["ServerDb"], @ConfigurationManager.AppSettings["DirDb"], @"\", ConfigurationManager.AppSettings["NameDb"]);
-
-        //var builder = new MySqlConnectionStringBuilder
-        //{
-        //private string Server = "YOUR-SERVER.mysql.database.azure.com";
-        //private string Database = "YOUR-DATABASE";
-        //private string UserID = "USER@YOUR-SERVER";
-        //private string Password = "PASSWORD";
-        ////    SslMode = MySqlSslMode.Required,
-        //};
 
         public virtual int Key
         {
@@ -150,8 +140,8 @@ namespace CasaMendes
                                 }
                                 else if (pi.PropertyType.Name == "DateTime")
                                 {
-                                    DateTime s = DateTime.Parse(pi.GetValue(this).ToString());
-                                    valores.Add(" " + pi.Name + " = '" + s.ToString("yyyy-MM-dd") + "'");
+                                    DateTime s = DateTime.Parse(pi.GetValue(this).ToString()); // exemplo de formato: FORMAT(CAST('s.ToString("yyyy-MM-dd")' AS DATETIME2), N'dd-MM-yyyy hh:mm:ss')
+                                    valores.Add("" + pi.Name + " = FORMAT(CAST('" + s.ToString() + "' AS DATETIME2), N'dd-MM-yyyy hh:mm:ss')");
                                 }
                                 else
                                 {
@@ -173,7 +163,18 @@ namespace CasaMendes
                 {
                     queryString = "update " + this.GetType().Name + "s  set " + string.Join(", ", valores.ToArray()) + " where " + chavePrimaria + " = " + this.Key + ";";
                 }
+
                 SqlCommand command = new SqlCommand(queryString, connection);
+                command.Connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public virtual void SalvarSql(string Query)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(Query, connection);
                 command.Connection.Open();
                 command.ExecuteNonQuery();
             }
@@ -246,10 +247,10 @@ namespace CasaMendes
                             var valor = pi.GetValue(this);
                             if (valor != null && !valor.Equals(0) && !valor.Equals(""))
                             {
-                                if (pi.PropertyType.Name == "DateTime")
+                                if (pi.PropertyType.Name == "DateTime" || pi.Name.ToString().Equals("deleted_at") || pi.Name.ToString().Equals("created_at") || pi.Name.ToString().Equals("updated_at"))
                                 {
                                     DateTime s = DateTime.Parse(pi.GetValue(this).ToString());
-                                    valor = s.ToString("yyyy-MM-dd");
+                                    valor = s.ToString("dd-MM-yyyy");
                                 }
 
                                 where.Add(pi.Name + " = '" + valor + "'");
@@ -278,7 +279,61 @@ namespace CasaMendes
             return list;
         }
 
-        public List<IBase> BuscaComLike()
+        public virtual List<IBase> BuscaMaiorIgual()
+        {
+            var list = new List<IBase>();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                List<string> where = new List<string>();
+                string chavePrimaria = string.Empty;
+                foreach (PropertyInfo pi in this.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance))
+                {
+                    OpcoesBase pOpcoesBase = (OpcoesBase)pi.GetCustomAttribute(typeof(OpcoesBase));
+                    if (pOpcoesBase != null)
+                    {
+                        if (pOpcoesBase.ChavePrimaria)
+                        {
+                            chavePrimaria = pi.Name;
+                        }
+
+                        if (pOpcoesBase.UsarParaBuscar)
+                        {
+                            var valor = pi.GetValue(this);
+                            if (valor != null && !valor.Equals(0) && !valor.Equals(""))
+                            {
+                                if (pi.PropertyType.Name == "DateTime" || pi.Name.ToString().Equals("deleted_at") || pi.Name.ToString().Equals("created_at") || pi.Name.ToString().Equals("updated_at"))
+                                {
+                                    DateTime s = DateTime.Parse(pi.GetValue(this).ToString());
+                                    valor = s.ToString("dd-MM-yyyy");
+                                }
+
+                                where.Add(pi.Name + " = '" + valor + "'");
+                            }
+                        }
+                    }
+                }
+
+                string queryString = "select * from " + this.GetType().Name + "s where " + chavePrimaria + " is not null";
+                if (where.Count > 0)
+                {
+                    queryString += " and " + string.Join(" and ", where.ToArray());
+                }
+
+                SqlCommand command = new SqlCommand(queryString, connection);
+                command.Connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    var obj = (IBase)Activator.CreateInstance(this.GetType());
+                    SetProperty(ref obj, reader);
+                    list.Add(obj);
+                }
+            }
+            return list;
+        }
+
+        public virtual List<IBase> BuscaComLike()
         {
             var list = new List<IBase>();
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -331,7 +386,29 @@ namespace CasaMendes
             }
             return list;
         }
-        
+
+        public virtual List<IBase> BuscaSqlQuery(string Sql)
+        {
+            var list = new List<IBase>();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+               
+                SqlCommand command = new SqlCommand(Sql, connection);
+                command.Connection.Open();
+
+                //select * from PreVendas where created_at >= '01/10/2024 10:20:40' and tipodevenda = ''
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    var obj = (IBase)Activator.CreateInstance(this.GetType());
+                    SetProperty(ref obj, reader);
+                    list.Add(obj);
+                }
+            }
+            return list;
+        }
+ 
         private void SetProperty(ref IBase obj, SqlDataReader reader)
         {
             foreach (PropertyInfo pi in obj.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance))
@@ -381,7 +458,7 @@ namespace CasaMendes
                             continue;
                         default:
                             value = reader[pi.Name].ToString();
-                            if (value == null || value == "" || pi.Name.ToString().Equals("deleted_at") || pi.Name.ToString().Equals("created_at"))
+                            if (value == null || value == "" || pi.Name.ToString().Equals("deleted_at") || pi.Name.ToString().Equals("created_at") || pi.Name.ToString().Equals("updated_at"))
                             {
                                 break;
                             }
@@ -392,15 +469,6 @@ namespace CasaMendes
                 }
             }
         }
-
-        public void SalvarSql(string Query)
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                SqlCommand command = new SqlCommand(Query, connection);
-                command.Connection.Open();
-                command.ExecuteNonQuery();
-            }
-        }
+    
     }
 }

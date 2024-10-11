@@ -111,11 +111,13 @@ namespace CasaMendes
                             if (lEstoque.Count > 0)
                             {
                                 oEstoque.EstoqueId = lEstoque[0].EstoqueId;
+                                oEstoque.Quantidade = oEstoque.Quantidade + lEstoque[0].Quantidade;
                             }
 
                             lEstoque = null;
                             eEstoque = null;
 
+                            //oEstoque.updated_at = DateTime.Now;
                             oEstoque.Salvar();
                             oEstoque = null;
                         }

@@ -24,6 +24,9 @@ namespace CasaMendes
         public FrmEstoque()
         {
             InitializeComponent();
+            this.Count = 0;
+            this.LinhaIndex = -1;
+            this.frmLoading = true;
         }
 
         private void RedimencionarGrade()
@@ -79,12 +82,10 @@ namespace CasaMendes
                 oProcessando.TopMost = true;
                 oProcessando.Processo(4, "Liste Estoque.", "Carregando.");
                 DgvProdutos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                this.Count = 1;
-                this.LinhaIndex = -1;
-                this.frmLoading = true;
                 using (var oEstoque = new Estoque())
                 {
                     oProcessando.Processo(20, "Liste Estoque.", "Carregando..");
+                    //this.Refresh();
                     DgvProdutos.DataSource = oEstoque.Todos();
                     oProcessando.Processo(33, "Liste Estoque.", "Carregando...");
                     RedimencionarGrade();
@@ -104,7 +105,7 @@ namespace CasaMendes
                     DgvProdutos.Focus();
                     oProcessando.Processo(70, "Liste Estoque.", "Carregando...");
                 }
-                DgvProdutos.CurrentCell = DgvProdutos.Rows[DgvProdutos.Rows.Count - 1].Cells[3];
+                ////DgvProdutos.CurrentCell = DgvProdutos.Rows[DgvProdutos.Rows.Count - 1].Cells[3];
                 LblEstoqueItens.Text = DgvProdutos.RowCount.ToString();
                 LblEstoqueMinimo.Text = string.Concat(this.Count.ToString("0000"), " Produtos passiveis de reposição.").ToString();
                 oProcessando.Processo(100, "Liste Estoque.", "Carregando.");
@@ -125,6 +126,7 @@ namespace CasaMendes
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             this.CodigoProduto = null;
+            DgvProdutos.DataSource = null;
             this.Close();
         }
 
@@ -206,9 +208,11 @@ namespace CasaMendes
             {
                 DgvProdutos.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
                 DgvProdutos.Rows[e.RowIndex].DefaultCellStyle.ForeColor = System.Drawing.Color.White;
-                DgvProdutos.Rows[e.RowIndex].Cells["Listar"].Value = checked(true);
-                if (frmLoading)
+               if (frmLoading)
+                {
+                    DgvProdutos.Rows[e.RowIndex].Cells["Listar"].Value = checked(true);
                     LblEstoqueMinimo.Text = string.Concat((this.Count++).ToString("0000"), " Produtos passiveis de reposição.");
+                }
             }
             else if (quantity <= EmbalagemMaisQueQuarentaUnidades && quantity > EstoqueMinimo)
             {

@@ -28,11 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InicioResumen));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label16 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
@@ -66,16 +62,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lblFecha = new System.Windows.Forms.Label();
-            this.lblhora = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel13 = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.panel14 = new System.Windows.Forms.Panel();
-            this.DgvEstoque = new System.Windows.Forms.DataGridView();
-            this.LblEstoqueItens = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -91,20 +82,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvEstoque)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label16.Location = new System.Drawing.Point(0, 201);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(176, 21);
-            this.label16.TabIndex = 50;
-            this.label16.Text = "Productos bajo stock:";
-            this.label16.Visible = false;
             // 
             // label7
             // 
@@ -158,6 +136,7 @@
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(110, 150);
             this.panel9.TabIndex = 48;
+            this.panel9.Visible = false;
             // 
             // label2
             // 
@@ -236,6 +215,7 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(110, 150);
             this.panel7.TabIndex = 45;
+            this.panel7.Visible = false;
             // 
             // label13
             // 
@@ -301,6 +281,7 @@
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(110, 150);
             this.panel11.TabIndex = 47;
+            this.panel11.Visible = false;
             // 
             // panel5
             // 
@@ -313,6 +294,7 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(110, 150);
             this.panel5.TabIndex = 44;
+            this.panel5.Visible = false;
             // 
             // label10
             // 
@@ -367,6 +349,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(110, 150);
             this.panel3.TabIndex = 43;
+            this.panel3.Visible = false;
             // 
             // label11
             // 
@@ -422,6 +405,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(110, 150);
             this.panel1.TabIndex = 42;
+            this.panel1.Visible = false;
             // 
             // label5
             // 
@@ -465,35 +449,6 @@
             this.panel2.Size = new System.Drawing.Size(108, 30);
             this.panel2.TabIndex = 0;
             // 
-            // lblFecha
-            // 
-            this.lblFecha.AutoSize = true;
-            this.lblFecha.BackColor = System.Drawing.Color.Transparent;
-            this.lblFecha.Font = new System.Drawing.Font("Century Gothic", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFecha.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.lblFecha.Location = new System.Drawing.Point(284, 428);
-            this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(516, 40);
-            this.lblFecha.TabIndex = 41;
-            this.lblFecha.Text = "Miercoles, 10  noviembre  2017";
-            // 
-            // lblhora
-            // 
-            this.lblhora.AutoSize = true;
-            this.lblhora.BackColor = System.Drawing.Color.Transparent;
-            this.lblhora.Font = new System.Drawing.Font("Century Gothic", 80F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblhora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblhora.Location = new System.Drawing.Point(303, 313);
-            this.lblhora.Name = "lblhora";
-            this.lblhora.Size = new System.Drawing.Size(467, 129);
-            this.lblhora.TabIndex = 40;
-            this.lblhora.Text = "10:59:58";
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // panel13
             // 
             this.panel13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -505,6 +460,7 @@
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(110, 150);
             this.panel13.TabIndex = 46;
+            this.panel13.Visible = false;
             // 
             // label17
             // 
@@ -548,62 +504,11 @@
             this.panel14.Size = new System.Drawing.Size(108, 30);
             this.panel14.TabIndex = 0;
             // 
-            // DgvEstoque
-            // 
-            this.DgvEstoque.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.DgvEstoque.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.DgvEstoque.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.DgvEstoque.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.DgvEstoque.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.DgvEstoque.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightSeaGreen;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvEstoque.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.DgvEstoque.ColumnHeadersHeight = 30;
-            this.DgvEstoque.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DgvEstoque.DefaultCellStyle = dataGridViewCellStyle2;
-            this.DgvEstoque.EnableHeadersVisualStyles = false;
-            this.DgvEstoque.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.DgvEstoque.Location = new System.Drawing.Point(4, 231);
-            this.DgvEstoque.Name = "DgvEstoque";
-            this.DgvEstoque.RowHeadersVisible = false;
-            this.DgvEstoque.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvEstoque.Size = new System.Drawing.Size(464, 79);
-            this.DgvEstoque.TabIndex = 51;
-            this.DgvEstoque.Visible = false;
-            // 
-            // LblEstoqueItens
-            // 
-            this.LblEstoqueItens.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LblEstoqueItens.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblEstoqueItens.Location = new System.Drawing.Point(182, 202);
-            this.LblEstoqueItens.Name = "LblEstoqueItens";
-            this.LblEstoqueItens.Size = new System.Drawing.Size(286, 20);
-            this.LblEstoqueItens.TabIndex = 52;
-            this.LblEstoqueItens.Text = "label1";
-            this.LblEstoqueItens.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.LblEstoqueItens.Visible = false;
-            // 
             // InicioResumen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1050, 610);
-            this.Controls.Add(this.LblEstoqueItens);
-            this.Controls.Add(this.label16);
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel11);
@@ -611,10 +516,7 @@
             this.Controls.Add(this.label15);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.lblFecha);
-            this.Controls.Add(this.lblhora);
             this.Controls.Add(this.panel13);
-            this.Controls.Add(this.DgvEstoque);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "InicioResumen";
             this.Text = "InicioResumen";
@@ -642,15 +544,12 @@
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvEstoque)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox pictureBox6;
@@ -684,15 +583,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lblFecha;
-        private System.Windows.Forms.Label lblhora;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.DataGridView DgvEstoque;
-        private System.Windows.Forms.Label LblEstoqueItens;
     }
 }

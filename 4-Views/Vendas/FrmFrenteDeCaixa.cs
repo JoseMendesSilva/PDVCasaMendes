@@ -6,6 +6,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 using System.Drawing;
 using System.Configuration;
 using DocumentFormat.OpenXml.Bibliography;
+using System.ComponentModel;
 
 namespace CasaMendes
 {
@@ -21,16 +22,11 @@ namespace CasaMendes
 
         #endregion
 
-        public FrmFrenteDeCaixa()
+        public FrmFrenteDeCaixa() //: this()
         {
             InitializeComponent();
-
-            this.grid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellDoubleClick);
-            this.grid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grid_KeyDown);
-            this.grid.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.grid_RowsRemoved);
-            this.TxtQuantidade.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtQuantidade_KeyDown);
-            this.TxtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCodigo_KeyPress);
-            this.TxtCodigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtCodigo_KeyDown);
+            backgroundWorker1.WorkerReportsProgress = true;
+            backgroundWorker1.WorkerSupportsCancellation = true;
         }
 
         #region Vendas
@@ -75,10 +71,13 @@ namespace CasaMendes
             try
             {
                 Buscando = true;
+
                 this.oPreVenda.ClienteId = ClienteId;
                 this.oPreVenda.TipoDeVenda = TipoDeVenda;
+
                 this.oPreVenda.NumeroDaVenda = null;
-                this.oPreVenda.created_at = null;
+                //this.oPreVenda.created_at = null;
+
                 var ListaPreVenda = new List<PreVenda>();
                 ListaPreVenda = this.oPreVenda.Busca();
 
@@ -97,13 +96,15 @@ namespace CasaMendes
                             count++;
                         }
                     }
-                    //decimal total = decimal.Parse(grid.Rows[0].Cells[11].Value.ToString());
+
                     decimal total = clsGlobal.Calcular(grid, 11) - oPreVenda.Parcela;
                     this.TxtTotal.Text = total.ToString("N2");
+
                     if (grid.Rows.Count > 0)
                     {
                         grid.CurrentCell = grid.Rows[grid.Rows.Count - 1].Cells[8];
                     }
+
                     Buscando = false;
                     this.TxtCodigo.Focus();
                     this.TxtCodigo.SelectAll();
@@ -120,49 +121,55 @@ namespace CasaMendes
             {
                 string Filtro = TxtCodigo.Text;
                 if (oPreVenda.NumeroDaVenda == "0" || oPreVenda.NumeroDaVenda == null) { GerarNumero(); }
+                //SELECT EstoqueId, ProdutoId, CodigoDeBarras, Produto, Quantidade, PrecoDeVenda, (convert(decimal(18,2), Quantidade) * convert(decimal(8,2), PrecoDeVenda))                                      as SubTotal, QuantidadeItemDesconto, ValorDesconto FROM Estoques where EstoqueId is not null and deleted_at = '' and CodigoDeBarras
+                var oEstoque = new Estoque { CodigoDeBarras = TxtCodigo.Text, EstoqueId = 0 }.Busca()[0];
+                //var oEstoque = new Estoque { CodigoDeBarras = TxtCodigo.Text }.BuscaSqlQuery($"SELECT EstoqueId, ProdutoId, CodigoDeBarras, Produto, Quantidade, PrecoDeVenda, ({clsGlobal.DeStringParaInt(TxtQuantidade.Text)}) * convert(decimal(6,2), PrecoDeVenda), QuantidadeItemDesconto, ValorDesconto FROM Estoques where EstoqueId is not null and deleted_at = '' and CodigoDeBarras = '{this.TxtCodigo.Text}'")[0];
 
-                var oEstoque = new Estoque();
-                List<Estoque> ResEstoque = new List<Estoque>();
-                oEstoque.CodigoDeBarras = Filtro;
-                ResEstoque = oEstoque.Busca();
-
-                if (ResEstoque.Count > 0)
+                if (oEstoque.EstoqueId > 0)
                 {
-                    oEstoque = (Estoque)ResEstoque[0];
-                    ResEstoque = null;
-                    if (oEstoque.Produto != "" && oEstoque.Produto != null)
+                    //oEstoque = (Estoque)ResEstoque[0];
+                    //ResEstoque = null;
+                    //if (oEstoque.Produto != "" && oEstoque.Produto != null)
+                    //{
+                    oEstoque.Quantidade = clsGlobal.DeStringParaInt(TxtQuantidade.Text);
+                    oEstoque.SubTotal = oEstoque.Quantidade * oEstoque.PrecoDeVenda;
+
+                    string[] row = { oPreVenda.ClienteId.ToString(), oPreVenda.NumeroDaVenda.ToString(), oPreVenda.TipoDeVenda.ToString(), oPreVenda.Desconto.ToString(), oPreVenda.Tributos.ToString(), oPreVenda.Juros.ToString(), string.Format("{0,4:#0000}", count), oEstoque.CodigoDeBarras, oEstoque.Produto, oEstoque.Quantidade.ToString(), oEstoque.PrecoDeVenda.ToString("N2"), oEstoque.SubTotal.ToString("N2"), "" };
+                    this.grid.Rows.Add(row);
+
+                    this.TxtUnitario.Text = oEstoque.PrecoDeVenda.ToString("N2");
+                    this.TxtSubTotal.Text = oEstoque.SubTotal.ToString("N2");
+                    this.lblDescricaoProduto.Text = oEstoque.Produto.ToString();
+
+                    //if (oEstoque.Foto != null) this.PicLogoTipo.Image = Image.FromFile(oEstoque.Foto.ToString());
+                    //else this.PicLogoTipo.Image = Properties.Resources.CasaMendes1Jpg;
+
+                    this.PicLogoTipo.Image = Properties.Resources.CasaMendes1Jpg;
+
+                    if (this.grid.Rows.Count > 0)
                     {
-                        int quant = clsGlobal.DeStringParaInt(TxtQuantidade.Text);
-                        decimal SubTotal = quant * oEstoque.PrecoDeVenda;
-
-                        string[] row = { oPreVenda.ClienteId.ToString(), oPreVenda.NumeroDaVenda.ToString(), oPreVenda.TipoDeVenda.ToString(), oPreVenda.Desconto.ToString(), oPreVenda.Tributos.ToString(), oPreVenda.Juros.ToString(), string.Format("{0,4:#0000}", count), oEstoque.CodigoDeBarras, oEstoque.Produto, this.TxtQuantidade.Text, oEstoque.PrecoDeVenda.ToString("N2"), SubTotal.ToString("N2"), "" };
-                        this.grid.Rows.Add(row);
-
-                        this.TxtUnitario.Text = oEstoque.PrecoDeVenda.ToString("N2");
-                        this.TxtSubTotal.Text = SubTotal.ToString("N2");
-                        this.lblDescricaoProduto.Text = oEstoque.Produto.ToString();
-                        if (oEstoque.Foto != null) this.PicLogoTipo.Image = Image.FromFile(oEstoque.Foto.ToString());
-                        else this.PicLogoTipo.Image = Properties.Resources.CasaMendes1Jpg;
-
-                        if (this.grid.Rows.Count > 0) { this.TxtTotal.Text = clsGlobal.Calcular(grid, 11).ToString("N2"); }
-                        if (clsGlobal.DeStringParaInt(this.TxtQuantidade.Text) > 1) { this.TxtQuantidade.Text = "1"; }
-                        this.Buscando = false;
-
-                        if (grid.Rows.Count > 0)
-                        {
-                            grid.CurrentCell = grid.Rows[grid.Rows.Count - 1].Cells[10];
-                        }
-                        count++;
-
-                        lblStatusCaixa.Text = "CAIXA OCUPADO";
-
-
-                        this.TxtCodigo.Focus();
-                        this.TxtCodigo.SelectAll();
+                        this.TxtTotal.Text = clsGlobal.Calcular(grid, 11).ToString("N2");
                     }
+
+                    this.TxtQuantidade.Text = "1";
+                    this.Buscando = false;
+
+                    if (grid.Rows.Count > 0)
+                        grid.CurrentCell = grid.Rows[grid.Rows.Count - 1].Cells[10];
+                    //{
+                    //}
+                    count++;
+
+                    lblStatusCaixa.Text = "CAIXA OCUPADO";
+
+
+                    this.TxtCodigo.Focus();
+                    this.TxtCodigo.SelectAll();
+                    //return;
+                    //}
                     if (Filtro.Length < 14)
                     {
-                        this.TxtCodigo.Focus();
+                        if (TxtCodigo.Text.Length >= 8) this.TxtCodigo.Focus();
                     }
                     else
                     {
@@ -170,9 +177,13 @@ namespace CasaMendes
                         this.TxtCodigo.SelectAll();
                     }
                 }
+                this.TxtCodigo.Focus();
+                //this.TxtCodigo.SelectAll();
             }
             catch
             {
+                //this.TxtCodigo.Focus();
+                //this.TxtCodigo.SelectAll();
             }
         }
 
@@ -228,6 +239,7 @@ namespace CasaMendes
                         grid.Rows[i].Cells["Desconto"].Value = this.oPreVenda.Desconto;
                         grid.Rows[i].Cells["Tributos"].Value = this.oPreVenda.Tributos;
                         grid.Rows[i].Cells["Juros"].Value = this.oPreVenda.Juros;
+
                         if (oPreVenda.Tributos > 0 || oPreVenda.Juros > 0)
                         {
                             SubTotal = clsGlobal.AplicarEncargos((this.oPreVenda.Valor = clsGlobal.DeStringParaDecimal(grid.Rows[i].Cells["ValorTotal"].Value.ToString())), this.oPreVenda.Tributos, this.oPreVenda.Juros);
@@ -244,6 +256,10 @@ namespace CasaMendes
                         this.oPreVenda.NumeroDaVenda = grid.Rows[i].Cells["NumeroDaVenda"].Value.ToString();
                         this.oPreVenda.TipoDeVenda = grid.Rows[i].Cells["TipoDeVenda"].Value.ToString() == null ? "A VISTA" : grid.Rows[i].Cells["TipoDeVenda"].Value.ToString();
                         this.oPreVenda.Valor = clsGlobal.DeStringParaDecimal(grid.Rows[i].Cells["ValorTotal"].Value.ToString());
+
+                        oPreVenda.created_at = DateTime.Now;
+                        oPreVenda.updated_at = DateTime.Now;
+
                         this.oPreVenda.Salvar();
                         string CodigoDeBarras = grid.Rows[i].Cells["CodigoDeBarras"].Value.ToString();
                         string sql = $"UPDATE Estoques SET Quantidade = (Quantidade - '{this.oPreVenda.Quantidade}') WHERE CodigoDeBarras = '{CodigoDeBarras}'";
@@ -418,12 +434,17 @@ namespace CasaMendes
         {
             if (this.grid.Rows.Count > 0)
             {
-                this.TxtTotal.Text = clsGlobal.Calcular(grid, 5).ToString("N2");
+                this.TxtTotal.Text = clsGlobal.Calcular(grid, 11).ToString("N2");
             }
             else { Limpar(); }
 
             TxtCodigo.Focus();
             TxtCodigo.SelectAll();
+        }
+
+        private void TxtQuantidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = clsGlobal.SomenteNumeros(e);
         }
 
         #endregion
@@ -448,18 +469,37 @@ namespace CasaMendes
                     this.TxtCodigo.SelectAll();
                     return;
                 }
-                else
+                //else
+                //{
+                Buscando = false;
+                if (TxtCodigo.Text.Length >= 8 && TxtCodigo.Text.Length <= 14)
                 {
-                    Buscando = false;
-                    if (TxtCodigo.Text.Length < 8)
-                    { this.TxtCodigo.Focus(); return; }
-                }
+                    if (backgroundWorker1.IsBusy != true)
+                    {
+                        // Start the asynchronous operation.
+                        backgroundWorker1.RunWorkerAsync();
+                    }
+                //this.BuscarProduto();
 
-                this.BuscarProduto();
+                }
+                //else
+                //{
+                //this.TxtCodigo.Focus(); 
+                //this.TxtCodigo.SelectAll();
+                //    //return;
+                //}
+                //}
+
             }
             catch
             {
-
+                if (backgroundWorker1.WorkerSupportsCancellation == true)
+                {
+                    // Cancel the asynchronous operation.
+                    backgroundWorker1.CancelAsync();
+                }
+                this.TxtCodigo.Focus();
+                this.TxtCodigo.SelectAll();
             }
         }
 
@@ -484,7 +524,8 @@ namespace CasaMendes
         {
             if (grid.Rows.Count > 0)
             {
-                TxtCodigo.Text = grid.Rows[grid.CurrentRow.Index].Cells["ProdutosId_"].Value.ToString();
+                TxtCodigo.Text = grid.Rows[grid.CurrentRow.Index].Cells["CodigoDeBarras"].Value.ToString();
+                BuscarProduto();
             }
         }
 
@@ -493,12 +534,61 @@ namespace CasaMendes
             this.Close();
         }
 
+
         #endregion
 
-        private void TxtQuantidade_KeyPress(object sender, KeyPressEventArgs e)
+        //private void startAsyncButton_Click(object sender, EventArgs e)
+        //{
+        //    if (backgroundWorker1.IsBusy != true)
+        //    {
+        //        // Start the asynchronous operation.
+        //        backgroundWorker1.RunWorkerAsync();
+        //    }
+        //}
+
+        //private void cancelAsyncButton_Click(object sender, EventArgs e)
+        //{
+        //    if (backgroundWorker1.WorkerSupportsCancellation == true)
+        //    {
+        //        // Cancel the asynchronous operation.
+        //        backgroundWorker1.CancelAsync();
+        //    }
+        //}
+
+        //This event handler is where the time-consuming work is done.
+   
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            e.Handled = clsGlobal.SomenteNumeros(e);
+            BackgroundWorker worker = sender as BackgroundWorker;
+
+            for (int i = 1; i <= 10; i++)
+            {
+                if (worker.CancellationPending == true)
+                {
+                    e.Cancel = true;
+                    break;
+                }
+                else
+                {
+                    // Perform a time consuming operation and report progress.
+                    System.Threading.Thread.Sleep(15);
+                    //worker.ReportProgress(i * 10);
+                }
+            }
         }
 
+        // This event handler updates the progress.
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            //resultLabel.Text = (e.ProgressPercentage.ToString() + "%");
+        }
+
+        // This event handler deals with the results of the background operation.
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+                this.BuscarProduto();
+                this.TxtCodigo.Focus();
+                this.TxtCodigo.SelectAll();
+        }
     }
 }

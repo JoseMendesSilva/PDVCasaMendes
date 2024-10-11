@@ -78,6 +78,7 @@ namespace CasaMendes
                 {
                     RazaoSocial = cadFornecedor.oFornecedor.RazaoSocial
                 };
+                // verifica se fornecedor existe
                 List<Fornecedore> fornecedor = forn.Busca();
                 if (fornecedor.Count > 0)
                 {
@@ -162,6 +163,8 @@ namespace CasaMendes
                 oProcessando.Processo(100, "Lista de fornecedores", "Carregando..");
                 oProcessando.Close();
                 oProcessando.Dispose();
+                if(dgv.Rows.Count > 0) this.btnEditar.Enabled = true;
+                else this.btnEditar.Enabled = false;
             }
         }
 
@@ -199,5 +202,10 @@ namespace CasaMendes
             }
         }
 
+        private void dgv_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (editar && dgv.Rows.Count > 0) this.btnEditar.Enabled = true;
+            else this.btnEditar.Enabled = false;
+        }
     }
 }

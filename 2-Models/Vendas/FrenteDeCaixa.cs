@@ -10,6 +10,7 @@ namespace CasaMendes
     [ComVisible(true)]
     public class FrenteDeCaixa : PreVenda, IDisposable
     {
+       
         //private bool disposedValue;
 
         //[ReliabilityContract(Consistency.WillNotCorruptState, Cer.MayFail)]
@@ -38,7 +39,7 @@ namespace CasaMendes
         public decimal Anotar { get; set; }
 
         //--------------------------------------------
-        public DateTime DataLancamento { get; set; }
+        public DateTime DataLancamento { get; set; } = DateTime.Now;
         public decimal Entrada { get; set; }
         public decimal SaidaAnterior { get; set; }
 

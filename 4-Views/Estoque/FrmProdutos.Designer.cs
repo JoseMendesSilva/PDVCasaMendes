@@ -70,6 +70,8 @@
             this.TxtCodigoDeBarras.Size = new System.Drawing.Size(199, 26);
             this.TxtCodigoDeBarras.TabIndex = 1;
             this.TxtCodigoDeBarras.TextChanged += new System.EventHandler(this.TxtCodigoDeBarras_TextChanged);
+            this.TxtCodigoDeBarras.Enter += new System.EventHandler(this.TxtCodigoDeBarras_Enter);
+            this.TxtCodigoDeBarras.Leave += new System.EventHandler(this.TxtCodigoDeBarras_Leave);
             // 
             // label2
             // 
@@ -99,6 +101,8 @@
             this.TxtBusca.Size = new System.Drawing.Size(397, 26);
             this.TxtBusca.TabIndex = 0;
             this.TxtBusca.TextChanged += new System.EventHandler(this.TxtBusca_TextChanged);
+            this.TxtBusca.Enter += new System.EventHandler(this.TxtBusca_Enter);
+            this.TxtBusca.Leave += new System.EventHandler(this.TxtBusca_Leave);
             // 
             // BtnFechar
             // 

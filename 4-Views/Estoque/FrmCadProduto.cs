@@ -13,9 +13,9 @@ namespace CasaMendes
 
         #region var
 
-#pragma warning disable CS0414 // O campo "FrmCadProduto.Loading" é atribuído, mas seu valor nunca é usado
+//#pragma warning disable CS0414 // O campo "FrmCadProduto.Loading" é atribuído, mas seu valor nunca é usado
         bool Loading;
-#pragma warning restore CS0414 // O campo "FrmCadProduto.Loading" é atribuído, mas seu valor nunca é usado
+//#pragma warning restore CS0414 // O campo "FrmCadProduto.Loading" é atribuído, mas seu valor nunca é usado
         public BindingSource BsProduto;
         public Produto oProduto;
         private List<TabelaDeMargen> oListaDeMargen;
@@ -67,6 +67,48 @@ namespace CasaMendes
             BtnFechar.Enabled = b;
         }
 
+        private bool Gravar()
+        {
+            try
+            {
+                oProduto.Salvar();
+
+                var oEstoque = new Estoque
+                {
+                    EstoqueId = 0,
+                    ProdutoId = oProduto.ProdutoId,
+                    Produto = oProduto.Nome,
+                    CodigoDeBarras = oProduto.CodigoDeBarras,
+                    Quantidade = oProduto.Quantidade,
+                    PrecoDeVenda = oProduto.PrecoDeVenda,
+                    QuantidadeItemDesconto = clsGlobal.DeStringParaInt(TxtQuantidadeItemDesconto.Text),
+                    Foto = oProduto.Foto,
+                    ValorDesconto = decimal.Parse(TxtValorDesconto.Text),
+                };
+
+                //Verificando se o nome já existe no estoque e resgata o EstoqueId.
+                List<Estoque> eEstoque = new Estoque
+                {
+                    CodigoDeBarras = oEstoque.CodigoDeBarras
+                }.Busca();
+
+                //List<Estoque> lEstoque = eEstoque.Busca();
+                if (eEstoque.Count > 0)
+                {
+                    oEstoque.EstoqueId = eEstoque[0].EstoqueId;
+                    oEstoque.Quantidade = oEstoque.Quantidade + eEstoque[0].Quantidade;
+                }
+
+                oEstoque.Salvar();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
         #endregion
 
         #region Evento
@@ -114,36 +156,10 @@ namespace CasaMendes
                 if (string.IsNullOrEmpty(TxtValorDesconto.Text)) 
                     TxtValorDesconto.Text = "0,00";
 
-                //oProduto.CodigoDeBarras = oProduto.CodigoDeBarras;
-
-                var oEstoque = new Estoque
-                {
-                    EstoqueId = 0,
-                    ProdutoId = oProduto.ProdutoId,
-                    Produto = oProduto.Nome,
-                    CodigoDeBarras = oProduto.CodigoDeBarras,
-                    Quantidade = oProduto.Quantidade,
-                    PrecoDeVenda = oProduto.PrecoDeVenda,
-                    QuantidadeItemDesconto = clsGlobal.DeStringParaInt(TxtQuantidadeItemDesconto.Text),
-                    Foto = oProduto.Foto,
-                    ValorDesconto = decimal.Parse(TxtValorDesconto.Text)
-                };
-
-                //Verificando se o nome já existe no estoque e resgata o EstoqueId.
-                var eEstoque = new Estoque
-                {
-                    CodigoDeBarras = oEstoque.CodigoDeBarras
-                };
-
-                List<Estoque> lEstoque = eEstoque.Busca();
-                if (lEstoque.Count > 0)
-                {
-                    oEstoque.EstoqueId = lEstoque[0].EstoqueId;
-                }
-
-                oProduto.Salvar();
-                oEstoque.Salvar();
-                MessageBox.Show("Processo realisado com sucesso.");
+                if(this.Gravar())
+                    MessageBox.Show("Processo realisado com sucesso.");
+                else
+                    MessageBox.Show("Processo não foi realisado com sucesso.");
             }
             catch
             {

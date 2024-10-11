@@ -17,7 +17,7 @@ namespace CasaMendes
 
         #endregion
 
-        #region Variáveis.
+        #region Construtor.
 
         public FrmReceberPendura()
         {
@@ -39,14 +39,14 @@ namespace CasaMendes
                 this.DgvVendas.Columns["Produto"].Visible = true;
                 this.DgvVendas.Columns["Quantidade"].Visible = true;
                 this.DgvVendas.Columns["PrecoDeVenda"].Visible = true;
-                this.DgvVendas.Columns["Parcela"].Visible = true;
+                //this.DgvVendas.Columns["Parcela"].Visible = true;
                 this.DgvVendas.Columns["Valor"].Visible = true;
                 this.DgvVendas.Columns["created_at"].Visible = true;
 
                 this.DgvVendas.Columns["Produto"].Width = clsGlobal.DimencionarColuna(30, DgvVendas.Width);
                 this.DgvVendas.Columns["Quantidade"].Width = clsGlobal.DimencionarColuna(12, DgvVendas.Width);
                 this.DgvVendas.Columns["PrecoDeVenda"].Width = clsGlobal.DimencionarColuna(12, DgvVendas.Width);
-                this.DgvVendas.Columns["Parcela"].Width = clsGlobal.DimencionarColuna(8, DgvVendas.Width);
+                //this.DgvVendas.Columns["Parcela"].Width = clsGlobal.DimencionarColuna(8, DgvVendas.Width);
                 this.DgvVendas.Columns["Valor"].Width = clsGlobal.DimencionarColuna(15, DgvVendas.Width);
                 this.DgvVendas.Columns["created_at"].Width = clsGlobal.DimencionarColuna(16, DgvVendas.Width);
 
@@ -70,7 +70,6 @@ namespace CasaMendes
                 {
                     oPreV.ClienteId = this._Codigo;
                     oPreV.TipoDeVenda = "PENDURA";
-                    oPreV.created_at = null;
                     if (DgvVendas.Rows.Count > 0) DgvVendas.DataSource = null;
                     DgvVendas.DataSource = oPreV.Busca();
 
@@ -78,10 +77,13 @@ namespace CasaMendes
                     RedimencionarColunas();
                     Arrumado = true;
 
-                    oPreV.Parcela = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[0].Cells["Parcela"].Value.ToString());
+
 
                     decimal valor = clsGlobal.Calcular(DgvVendas, 7);
                     this.txtTotalGeral.Text = valor.ToString("N2");
+
+                    oPreV.Parcela = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[0].Cells["Parcela"].Value.ToString());
+                    this.txtParcela.Text = oPreV.Parcela.ToString("N2");
 
                     if (oPreV.Parcela != 0)
                     {
@@ -109,26 +111,20 @@ namespace CasaMendes
 
         private void BtnGravarParcela_Click(object sender, EventArgs e)
         {
-            if (txtDinheiro.Text != "0.00")
+            if (txtParcela.Text != "0.00")
             {
                 var oPreV = new PreVenda();
+                
+                this.txtParcela.Text = (clsGlobal.DeStringParaDecimal(this.txtParcela.Text) + clsGlobal.DeStringParaDecimal(this.txtDinheiro.Text)).ToString("N2");
 
-                int iCount = 0;
-                do
-                {
-                    oPreV = (PreVenda)this.DgvVendas.Rows[iCount].DataBoundItem;
-                    oPreV.Parcela = clsGlobal.DeStringParaDecimal(txtDinheiro.Text);
-                    oPreV.Salvar();
-                    iCount++;
-                } while (iCount < this.DgvVendas.Rows.Count);
+                    //oPreV = (PreVenda)this.DgvVendas.Rows[0].DataBoundItem;
+                    string sql = $"UPDATE PreVendas SET Parcela = '{txtParcela.Text.Replace(",", ".")}'";
+                    oPreV.SalvarSql(sql); 
                 BuscarAnotado();
             }
-            else
-            {
                 txtDinheiro.Text = "0.00";
                 this.txtDinheiro.Focus();
                 this.txtDinheiro.SelectAll();
-            }
         }
 
         private void BtnReceber_Click(object sender, EventArgs e)
@@ -142,6 +138,7 @@ namespace CasaMendes
                 this.Dispose();
                 fntCaixa.Show();
                 fntCaixa.CarregarPendura(ClienteId, TipoDeVenda);
+                fntCaixa.Visible = true;
             }
         }
 
@@ -203,8 +200,9 @@ namespace CasaMendes
             this.Text = clsGlobal.MontarTitulo("Casa Mendes", "Vendas em aberto");
             try
             {
-                var oCliente = new Cliente();
-                dgvClientes.DataSource = oCliente.Todos();
+                //var oCliente =
+                    dgvClientes.DataSource = new Cliente().Todos();
+                //dgvClientes.DataSource = oCliente.Todos();
 
                 if (!dgvClientesRowEnter)
                 {

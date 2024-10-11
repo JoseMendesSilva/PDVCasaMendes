@@ -4,22 +4,15 @@ using System.Collections.Generic;
 
 namespace CasaMendes
 {
-    public class Cliente : Base,IDisposable
+    public class Cliente : Base, IDisposable
     {
         private bool disposedValue;
-
-        public Cliente()
-        {
-        }
 
         [OpcoesBase(UsarNoBancoDeDados = true, ChavePrimaria = true, UsarParaBuscar = true)]
         public int ClienteId { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
         public string Nome { get; set; }
-
-        //[OpcoesBase(UsarNoBancoDeDados = true)]
-        //public Destinatario Endereco { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public string Endereco { get; set; }
@@ -53,12 +46,6 @@ namespace CasaMendes
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public string Cnpj { get; set; }
-
-        //[OpcoesBase(UsarNoBancoDeDados = true)]
-        //public PessoaFisica PessoasFisica { get; set; }
-
-        //[OpcoesBase(UsarNoBancoDeDados = true)]
-        //public PessoaJuridica  PessoasJuridica{ get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public string Telefone { get; set; }

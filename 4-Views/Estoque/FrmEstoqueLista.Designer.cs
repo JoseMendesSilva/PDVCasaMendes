@@ -37,9 +37,8 @@ namespace CasaMendes
             this.panel2 = new System.Windows.Forms.Panel();
             this.DgvProdutos = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.BtnListaDeCompra = new System.Windows.Forms.Button();
-            this.BtnExcluir = new System.Windows.Forms.Button();
             this.BtnCancelar = new System.Windows.Forms.Button();
+            this.BtnAceitar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.gbBusca.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -53,7 +52,7 @@ namespace CasaMendes
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1099, 65);
+            this.panel1.Size = new System.Drawing.Size(729, 65);
             this.panel1.TabIndex = 171;
             // 
             // gbBusca
@@ -66,7 +65,7 @@ namespace CasaMendes
             this.gbBusca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbBusca.Location = new System.Drawing.Point(12, 3);
             this.gbBusca.Name = "gbBusca";
-            this.gbBusca.Size = new System.Drawing.Size(1074, 58);
+            this.gbBusca.Size = new System.Drawing.Size(704, 58);
             this.gbBusca.TabIndex = 159;
             this.gbBusca.TabStop = false;
             this.gbBusca.Text = "Buscar";
@@ -77,19 +76,20 @@ namespace CasaMendes
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtBusca.Location = new System.Drawing.Point(71, 25);
             this.TxtBusca.Name = "TxtBusca";
-            this.TxtBusca.Size = new System.Drawing.Size(893, 26);
+            this.TxtBusca.Size = new System.Drawing.Size(250, 26);
             this.TxtBusca.TabIndex = 2;
             this.TxtBusca.TextChanged += new System.EventHandler(this.TxtBusca_TextChanged);
+            this.TxtBusca.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtBusca_KeyDown);
             // 
             // LblEstoqueItens
             // 
-            this.LblEstoqueItens.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.LblEstoqueItens.AutoSize = true;
-            this.LblEstoqueItens.Location = new System.Drawing.Point(1017, 28);
+            this.LblEstoqueItens.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LblEstoqueItens.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblEstoqueItens.Location = new System.Drawing.Point(349, 22);
             this.LblEstoqueItens.Name = "LblEstoqueItens";
-            this.LblEstoqueItens.Size = new System.Drawing.Size(51, 20);
+            this.LblEstoqueItens.Size = new System.Drawing.Size(349, 33);
             this.LblEstoqueItens.TabIndex = 4;
-            this.LblEstoqueItens.Text = "label1";
             this.LblEstoqueItens.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
@@ -103,10 +103,13 @@ namespace CasaMendes
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.DgvProdutos);
             this.panel2.Location = new System.Drawing.Point(0, 65);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1107, 388);
+            this.panel2.Size = new System.Drawing.Size(737, 493);
             this.panel2.TabIndex = 172;
             // 
             // DgvProdutos
@@ -117,53 +120,26 @@ namespace CasaMendes
             this.DgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvProdutos.Location = new System.Drawing.Point(12, 6);
             this.DgvProdutos.Name = "DgvProdutos";
-            this.DgvProdutos.Size = new System.Drawing.Size(1074, 379);
+            this.DgvProdutos.Size = new System.Drawing.Size(704, 484);
             this.DgvProdutos.TabIndex = 171;
             this.DgvProdutos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvProdutos_CellEnter);
-            this.DgvProdutos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DgvProdutos_CellFormatting);
             this.DgvProdutos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DgvProdutos_KeyDown);
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.BtnListaDeCompra);
-            this.panel3.Controls.Add(this.BtnExcluir);
+            this.panel3.Controls.Add(this.BtnAceitar);
             this.panel3.Controls.Add(this.BtnCancelar);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 448);
+            this.panel3.Location = new System.Drawing.Point(0, 552);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1099, 74);
+            this.panel3.Size = new System.Drawing.Size(729, 74);
             this.panel3.TabIndex = 173;
-            // 
-            // BtnListaDeCompra
-            // 
-            this.BtnListaDeCompra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BtnListaDeCompra.Location = new System.Drawing.Point(190, 12);
-            this.BtnListaDeCompra.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.BtnListaDeCompra.Name = "BtnListaDeCompra";
-            this.BtnListaDeCompra.Size = new System.Drawing.Size(142, 54);
-            this.BtnListaDeCompra.TabIndex = 172;
-            this.BtnListaDeCompra.Text = "Lista de compras";
-            this.BtnListaDeCompra.UseVisualStyleBackColor = true;
-            this.BtnListaDeCompra.Visible = false;
-            this.BtnListaDeCompra.Click += new System.EventHandler(this.BtnListaDeCompra_Click);
-            // 
-            // BtnExcluir
-            // 
-            this.BtnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BtnExcluir.Location = new System.Drawing.Point(12, 13);
-            this.BtnExcluir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.BtnExcluir.Name = "BtnExcluir";
-            this.BtnExcluir.Size = new System.Drawing.Size(69, 54);
-            this.BtnExcluir.TabIndex = 171;
-            this.BtnExcluir.Text = "Excluir";
-            this.BtnExcluir.UseVisualStyleBackColor = true;
-            this.BtnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
             // 
             // BtnCancelar
             // 
             this.BtnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancelar.Location = new System.Drawing.Point(1011, 13);
+            this.BtnCancelar.Location = new System.Drawing.Point(641, 13);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(75, 53);
             this.BtnCancelar.TabIndex = 170;
@@ -171,12 +147,26 @@ namespace CasaMendes
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
+            // BtnAceitar
+            // 
+            this.BtnAceitar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BtnAceitar.Location = new System.Drawing.Point(12, 13);
+            this.BtnAceitar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.BtnAceitar.Name = "BtnAceitar";
+            this.BtnAceitar.Size = new System.Drawing.Size(69, 54);
+            this.BtnAceitar.TabIndex = 171;
+            this.BtnAceitar.Text = "Aceitar";
+            this.BtnAceitar.UseVisualStyleBackColor = true;
+            this.BtnAceitar.Click += new System.EventHandler(this.BtnAceitar_Click);
+            // 
             // FrmEstoqueLista
             // 
+            this.AcceptButton = this.BtnAceitar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1099, 522);
+            this.CancelButton = this.BtnCancelar;
+            this.ClientSize = new System.Drawing.Size(729, 626);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -207,8 +197,7 @@ namespace CasaMendes
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView DgvProdutos;
         private System.Windows.Forms.Panel panel3;
-        public System.Windows.Forms.Button BtnListaDeCompra;
-        public System.Windows.Forms.Button BtnExcluir;
         private System.Windows.Forms.Button BtnCancelar;
+        public System.Windows.Forms.Button BtnAceitar;
     }
 }

@@ -7,7 +7,7 @@ namespace CasaMendes
     {
         public int ClienteId { get; set; }
         public string Cliente { get; set; }
-
+        bool Aceitar;
         public FrmBuscarCliente()
         {
             InitializeComponent();
@@ -15,16 +15,18 @@ namespace CasaMendes
 
         private void BtnAceitar_Click(object sender, EventArgs e)
         {
+            Aceitar = true;
             this.Close();
         }
 
-        private void Dgv_RowEnter(object sender, DataGridViewCellEventArgs e)
+        private void DgvClientes_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                if (DgvClientes.Rows.Count < 1) { return; }
+                if (Aceitar) { return; }
                 ClienteId = 0;
                 Cliente = null;
+                if (DgvClientes.Rows.Count < 1) { return; }
                 ClienteId = int.Parse(DgvClientes.Rows[e.RowIndex].Cells[0].Value.ToString());
                 Cliente = DgvClientes.Rows[e.RowIndex].Cells[1].Value.ToString();
                 this.Text = "ID: " + ClienteId + " - Cliente: " + Cliente;
@@ -89,6 +91,7 @@ namespace CasaMendes
                 oProcessando.Processo(100, "Lista de clientes", "Garregado.");
                 oProcessando.Close();
                 oProcessando.Dispose();
+                Aceitar = false;
             }
             catch { }
         }
@@ -105,5 +108,6 @@ namespace CasaMendes
             }
             else return;
         }
+
     }
 }

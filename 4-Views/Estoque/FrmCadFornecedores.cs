@@ -40,6 +40,8 @@ namespace CasaMendes
 
         private void VincularBindingSource()
         {
+            //DtpDataDoCadastro.Value = DateTime.Now;
+
             TxtCodigoDoFornecedor.DataBindings.Add(new Binding("Text", BsFornecedor, "FornecedorId"));
             TxtRazaoSocial.DataBindings.Add(new Binding("Text", BsFornecedor, "RazaoSocial"));
             TxtEndereco.DataBindings.Add(new Binding("Text", BsFornecedor, "Endereco"));

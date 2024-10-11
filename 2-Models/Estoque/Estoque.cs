@@ -2,12 +2,21 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace CasaMendes
 {
+
+    [Serializable]
+    [ComVisible(true)]
+    //[__DynamicallyInvokable]
     public class Estoque : Base, IDisposable
     {
         private bool disposedValue;
+
+        //public Estoque(IBase iB) : base(iB)
+        //{
+        //}
 
         [OpcoesBase(UsarNoBancoDeDados = true, ChavePrimaria = true, UsarParaBuscar = true)]
         public int EstoqueId { get; set; }
@@ -26,6 +35,12 @@ namespace CasaMendes
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public decimal PrecoDeVenda { get; set; }
+
+        //[OpcoesBase(UsarNoBancoDeDados = false)]
+        //public decimal PrecoUnitario { get; set; }
+
+        [OpcoesBase(UsarNoBancoDeDados = false)]
+        public decimal SubTotal { get; set; }
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public decimal QuantidadeItemDesconto { get; set; }
@@ -77,8 +92,18 @@ namespace CasaMendes
             }
             return estoque;
         }
+        
+        public new List<Estoque> BuscaSqlQuery(string Sql)
+        {
+            var estoque = new List<Estoque>();
+            foreach (var ibase in base.BuscaSqlQuery(Sql))
+            {
+                estoque.Add((Estoque)ibase);
+            }
+            return estoque;
+        }
 
-        protected virtual void Dispose(bool disposing)
+        protected void Dispose(bool disposing)
         {
             if (!disposedValue)
             {

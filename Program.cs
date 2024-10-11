@@ -15,6 +15,7 @@ namespace CasaMendes
             //Cl_Dados.Cl_DadosInicio();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new FrmCasaMendes());
             Application.Run(new FrmCasaMendes());
         }
     }

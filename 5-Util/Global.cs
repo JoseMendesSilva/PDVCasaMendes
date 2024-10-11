@@ -62,7 +62,6 @@ namespace CasaMendes
             cb.EndUpdate();
         }
 
-
         #region métodos  
         /// <summary>
         /// Carrega uma imagem selecionada e a copia, se ela não, para a pasta dentro do diretório padrão do sistema.
@@ -463,7 +462,6 @@ namespace CasaMendes
 
         //===============================================================================================
         //public static string sCaminho = Application.StartupPath;
-
         public static string ValidarDiretorio(string pDiretorio = "", string pArquivo = "")
         {
             if(pDiretorio=="") pDiretorio = Application.StartupPath;
@@ -475,138 +473,6 @@ namespace CasaMendes
             else
             { sDir = string.Concat(pDiretorio, @"\", pArquivo); }
             return sDir.ToString();
-        }
-
-        //===============================================================================================
-        public static void LimparControles(Control.ControlCollection c)
-        {
-            try
-            {
-                foreach (Control control in c)
-                {
-                    if (control.HasChildren)
-                    {
-                        //LimparControles(control.Controls);
-                    }
-                    else
-                    {
-                        if (control is TextBox)
-                        {
-                            TextBox txt = (TextBox)control;
-                            txt.Clear();
-                        }
-                        if (control is ComboBox)
-                        {
-                            ComboBox cmb = (ComboBox)control;
-                            if (cmb.Items.Count > 0)
-                                cmb.Items.Clear();
-                            cmb.Text = null;
-                        }
-
-                        if (control is CheckBox)
-                        {
-                            CheckBox chk = (CheckBox)control;
-                            chk.Checked = false;
-                        }
-
-                        if (control is RadioButton)
-                        {
-                            RadioButton rdo = (RadioButton)control;
-                            rdo.Checked = false;
-                        }
-
-                        if (control is ListBox)
-                        {
-                            ListBox listBox = (ListBox)control;
-                            listBox.ClearSelected();
-                        }
-
-                        if (control is MaskedTextBox)
-                        {
-                            MaskedTextBox MtB = (MaskedTextBox)control;
-                            MtB.Text = null;
-                        }
-
-                        if (control is DateTimePicker)
-                        {
-                            DateTimePicker DtP = (DateTimePicker)control;
-                            DtP.Text = "#11/07/2019#";
-                        }
-
-                        if (control is PictureBox)
-                        {
-                            PictureBox pic = (PictureBox)control;
-                            pic.Image = null;
-                        }
-
-                    }
-                }
-
-            }
-            catch { }
-        }
-
-        //===============================================================================================
-        public static void AbilitarControles(Control.ControlCollection c, bool status)
-        {
-            foreach (Control control in c)
-            {
-                if (control.HasChildren)
-                {
-                    AbilitarControles(control.Controls, status);
-                }
-                else
-                {
-                    if (control is TextBox)
-                    {
-                        TextBox txt = (TextBox)control;
-                        txt.Enabled = status;
-                    }
-                    if (control is ComboBox)
-                    {
-                        ComboBox cmb = (ComboBox)control;
-                        if (cmb.Items.Count > 0)
-                            cmb.Enabled = status;
-                    }
-
-                    if (control is CheckBox)
-                    {
-                        CheckBox chk = (CheckBox)control;
-                        chk.Enabled = status;
-                    }
-
-                    if (control is RadioButton)
-                    {
-                        RadioButton rdo = (RadioButton)control;
-                        rdo.Enabled = status;
-                    }
-
-                    if (control is ListBox)
-                    {
-                        ListBox listBox = (ListBox)control;
-                        listBox.Enabled = status;
-                    }
-
-                    if (control is MaskedTextBox)
-                    {
-                        MaskedTextBox MtB = (MaskedTextBox)control;
-                        MtB.Enabled = status;
-                    }
-
-                    if (control is DateTimePicker)
-                    {
-                        DateTimePicker DtP = (DateTimePicker)control;
-                        DtP.Enabled = status;
-                    }
-
-                    if (control is PictureBox)
-                    {
-                        //PictureBox pic = (PictureBox)control;
-                        //pic.Enabled = status;
-                    }
-
-                }
-            }
         }
 
         //===============================================================================================

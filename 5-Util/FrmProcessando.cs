@@ -25,7 +25,7 @@ namespace CasaMendes
             LblTitulo.Text = lblTitulo;
             LblMensagem.Text = lblMensagem;
             this.Refresh();
-            Thread.Sleep(100);
+            //Thread.Sleep(20);
         }
 
         public FrmProcessando()
@@ -36,7 +36,7 @@ namespace CasaMendes
 
         ~FrmProcessando()
         {
-            Thread.Sleep(1000);
+            //Thread.Sleep(200);
             this.Dispose(disposing: false);
         }
 

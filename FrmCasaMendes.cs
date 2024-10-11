@@ -140,7 +140,7 @@ namespace CasaMendes
             // Set the Parent Form of the Child window.
             frenteDeCaixa.Text = "FrenteDeCaixa ";
             // Display the new form.
-            frenteDeCaixa.ShowDialog();
+            frenteDeCaixa.Show();
         }
 
         private void PicConfiguracoes_Click(object sender, EventArgs e)
@@ -164,9 +164,9 @@ namespace CasaMendes
 
         private void BtnProcessarDados_Click(object sender, EventArgs e)
         {
-            var temp = new temp();
-            temp.ShowDialog();
-            temp.Dispose();
+            var ProcessarEstoque = new ProcessarEstoque();
+            ProcessarEstoque.ShowDialog();
+            ProcessarEstoque.Dispose();
         }
 
         private void BtnTabelaDeMargens_Click(object sender, EventArgs e)

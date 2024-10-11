@@ -17,24 +17,13 @@ namespace CasaMendes
             InitializeComponent();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            lblhora.Text = DateTime.Now.ToString("hh:mm:ss ");
-            lblFecha.Text = DateTime.Now.ToLongDateString();
-        }
-
         private void InicioResumen_Load(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    this.Refresh();
-            //    using (var oEstoque = new Estoque())
-            //    {
-            //        DgvEstoque.DataSource = oEstoque.Todos();
-            //        LblEstoqueItens.Text = DgvEstoque.RowCount.ToString();
-            //        RedimencionarGrade();
-            //    }
-            //}catch  { }
+            try
+            {
+
+            }
+            catch { }
         }//07896327511984
 
     }

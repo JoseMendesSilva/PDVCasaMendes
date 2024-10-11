@@ -42,21 +42,21 @@
             this.btnVendasDia = new System.Windows.Forms.Button();
             this.btnprod = new System.Windows.Forms.Button();
             this.MenuVertical = new System.Windows.Forms.Panel();
-            this.BtnTabelaDeMargens = new System.Windows.Forms.Button();
-            this.BtnReceberPendura = new System.Windows.Forms.Button();
-            this.BtnCategorias = new System.Windows.Forms.Button();
-            this.PicConfiguracoes = new System.Windows.Forms.PictureBox();
-            this.btnlogoInicio = new System.Windows.Forms.PictureBox();
-            this.panelContenedor = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.BtnPlateleiraEstoque = new System.Windows.Forms.Button();
             this.BtnProcessarDados = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblcorreo = new System.Windows.Forms.Label();
             this.lbluser = new System.Windows.Forms.Label();
             this.lblusuario = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.PicConfiguracoes = new System.Windows.Forms.PictureBox();
+            this.BtnTabelaDeMargens = new System.Windows.Forms.Button();
+            this.BtnReceberPendura = new System.Windows.Forms.Button();
+            this.BtnCategorias = new System.Windows.Forms.Button();
+            this.btnlogoInicio = new System.Windows.Forms.PictureBox();
+            this.panelContenedor = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.iconmaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconminimizar)).BeginInit();
@@ -64,12 +64,12 @@
             this.BarraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconcerrar)).BeginInit();
             this.MenuVertical.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicConfiguracoes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnlogoInicio)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // iconmaximizar
@@ -266,6 +266,131 @@
             this.MenuVertical.Size = new System.Drawing.Size(250, 762);
             this.MenuVertical.TabIndex = 4;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.BtnPlateleiraEstoque);
+            this.panel2.Controls.Add(this.BtnProcessarDados);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 626);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(250, 66);
+            this.panel2.TabIndex = 0;
+            // 
+            // BtnPlateleiraEstoque
+            // 
+            this.BtnPlateleiraEstoque.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnPlateleiraEstoque.FlatAppearance.BorderSize = 0;
+            this.BtnPlateleiraEstoque.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.BtnPlateleiraEstoque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnPlateleiraEstoque.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnPlateleiraEstoque.ForeColor = System.Drawing.Color.White;
+            this.BtnPlateleiraEstoque.Image = ((System.Drawing.Image)(resources.GetObject("BtnPlateleiraEstoque.Image")));
+            this.BtnPlateleiraEstoque.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnPlateleiraEstoque.Location = new System.Drawing.Point(0, 0);
+            this.BtnPlateleiraEstoque.Name = "BtnPlateleiraEstoque";
+            this.BtnPlateleiraEstoque.Size = new System.Drawing.Size(250, 28);
+            this.BtnPlateleiraEstoque.TabIndex = 25;
+            this.BtnPlateleiraEstoque.Text = "Plateleira Estoque ";
+            this.BtnPlateleiraEstoque.UseVisualStyleBackColor = true;
+            this.BtnPlateleiraEstoque.Click += new System.EventHandler(this.BtnPlateleiraEstoque_Click);
+            // 
+            // BtnProcessarDados
+            // 
+            this.BtnProcessarDados.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.BtnProcessarDados.FlatAppearance.BorderSize = 0;
+            this.BtnProcessarDados.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.BtnProcessarDados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnProcessarDados.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnProcessarDados.ForeColor = System.Drawing.Color.White;
+            this.BtnProcessarDados.Image = ((System.Drawing.Image)(resources.GetObject("BtnProcessarDados.Image")));
+            this.BtnProcessarDados.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnProcessarDados.Location = new System.Drawing.Point(0, 38);
+            this.BtnProcessarDados.Name = "BtnProcessarDados";
+            this.BtnProcessarDados.Size = new System.Drawing.Size(250, 28);
+            this.BtnProcessarDados.TabIndex = 24;
+            this.BtnProcessarDados.Text = "Processar dados";
+            this.BtnProcessarDados.UseVisualStyleBackColor = true;
+            this.BtnProcessarDados.Visible = false;
+            this.BtnProcessarDados.Click += new System.EventHandler(this.BtnProcessarDados_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Controls.Add(this.PicConfiguracoes);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 692);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(250, 70);
+            this.panel1.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.lblcorreo);
+            this.panel3.Controls.Add(this.lbluser);
+            this.panel3.Controls.Add(this.lblusuario);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(115, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(135, 70);
+            this.panel3.TabIndex = 0;
+            // 
+            // lblcorreo
+            // 
+            this.lblcorreo.AutoSize = true;
+            this.lblcorreo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblcorreo.ForeColor = System.Drawing.Color.White;
+            this.lblcorreo.Location = new System.Drawing.Point(6, 44);
+            this.lblcorreo.Name = "lblcorreo";
+            this.lblcorreo.Size = new System.Drawing.Size(53, 17);
+            this.lblcorreo.TabIndex = 24;
+            this.lblcorreo.Text = "Correo";
+            // 
+            // lbluser
+            // 
+            this.lbluser.AutoSize = true;
+            this.lbluser.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbluser.ForeColor = System.Drawing.Color.White;
+            this.lbluser.Location = new System.Drawing.Point(6, 26);
+            this.lbluser.Name = "lbluser";
+            this.lbluser.Size = new System.Drawing.Size(54, 17);
+            this.lbluser.TabIndex = 23;
+            this.lbluser.Text = "Usuario";
+            // 
+            // lblusuario
+            // 
+            this.lblusuario.AutoSize = true;
+            this.lblusuario.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblusuario.ForeColor = System.Drawing.Color.White;
+            this.lblusuario.Location = new System.Drawing.Point(6, 9);
+            this.lblusuario.Name = "lblusuario";
+            this.lblusuario.Size = new System.Drawing.Size(50, 17);
+            this.lblusuario.TabIndex = 22;
+            this.lblusuario.Text = "Cargo";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(45, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(70, 70);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 19;
+            this.pictureBox2.TabStop = false;
+            // 
+            // PicConfiguracoes
+            // 
+            this.PicConfiguracoes.Dock = System.Windows.Forms.DockStyle.Left;
+            this.PicConfiguracoes.Image = ((System.Drawing.Image)(resources.GetObject("PicConfiguracoes.Image")));
+            this.PicConfiguracoes.Location = new System.Drawing.Point(0, 0);
+            this.PicConfiguracoes.Name = "PicConfiguracoes";
+            this.PicConfiguracoes.Size = new System.Drawing.Size(45, 70);
+            this.PicConfiguracoes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PicConfiguracoes.TabIndex = 18;
+            this.PicConfiguracoes.TabStop = false;
+            this.PicConfiguracoes.Click += new System.EventHandler(this.PicConfiguracoes_Click);
+            // 
             // BtnTabelaDeMargens
             // 
             this.BtnTabelaDeMargens.FlatAppearance.BorderSize = 0;
@@ -316,18 +441,6 @@
             this.BtnCategorias.Text = "Categorias";
             this.BtnCategorias.UseVisualStyleBackColor = true;
             // 
-            // PicConfiguracoes
-            // 
-            this.PicConfiguracoes.Dock = System.Windows.Forms.DockStyle.Left;
-            this.PicConfiguracoes.Image = ((System.Drawing.Image)(resources.GetObject("PicConfiguracoes.Image")));
-            this.PicConfiguracoes.Location = new System.Drawing.Point(0, 0);
-            this.PicConfiguracoes.Name = "PicConfiguracoes";
-            this.PicConfiguracoes.Size = new System.Drawing.Size(45, 70);
-            this.PicConfiguracoes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PicConfiguracoes.TabIndex = 18;
-            this.PicConfiguracoes.TabStop = false;
-            this.PicConfiguracoes.Click += new System.EventHandler(this.PicConfiguracoes_Click);
-            // 
             // btnlogoInicio
             // 
             this.btnlogoInicio.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -347,117 +460,6 @@
             this.panelContenedor.Name = "panelContenedor";
             this.panelContenedor.Size = new System.Drawing.Size(1050, 717);
             this.panelContenedor.TabIndex = 8;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add(this.PicConfiguracoes);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 692);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(250, 70);
-            this.panel1.TabIndex = 0;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(45, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(70, 70);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 19;
-            this.pictureBox2.TabStop = false;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.BtnPlateleiraEstoque);
-            this.panel2.Controls.Add(this.BtnProcessarDados);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 626);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(250, 66);
-            this.panel2.TabIndex = 0;
-            // 
-            // BtnPlateleiraEstoque
-            // 
-            this.BtnPlateleiraEstoque.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BtnPlateleiraEstoque.FlatAppearance.BorderSize = 0;
-            this.BtnPlateleiraEstoque.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.BtnPlateleiraEstoque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnPlateleiraEstoque.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnPlateleiraEstoque.ForeColor = System.Drawing.Color.White;
-            this.BtnPlateleiraEstoque.Image = ((System.Drawing.Image)(resources.GetObject("BtnPlateleiraEstoque.Image")));
-            this.BtnPlateleiraEstoque.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnPlateleiraEstoque.Location = new System.Drawing.Point(0, 0);
-            this.BtnPlateleiraEstoque.Name = "BtnPlateleiraEstoque";
-            this.BtnPlateleiraEstoque.Size = new System.Drawing.Size(250, 28);
-            this.BtnPlateleiraEstoque.TabIndex = 25;
-            this.BtnPlateleiraEstoque.Text = "Plateleira Estoque ";
-            this.BtnPlateleiraEstoque.UseVisualStyleBackColor = true;
-            this.BtnPlateleiraEstoque.Click += new System.EventHandler(this.BtnPlateleiraEstoque_Click);
-            // 
-            // BtnProcessarDados
-            // 
-            this.BtnProcessarDados.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BtnProcessarDados.FlatAppearance.BorderSize = 0;
-            this.BtnProcessarDados.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.BtnProcessarDados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnProcessarDados.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnProcessarDados.ForeColor = System.Drawing.Color.White;
-            this.BtnProcessarDados.Image = ((System.Drawing.Image)(resources.GetObject("BtnProcessarDados.Image")));
-            this.BtnProcessarDados.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnProcessarDados.Location = new System.Drawing.Point(0, 38);
-            this.BtnProcessarDados.Name = "BtnProcessarDados";
-            this.BtnProcessarDados.Size = new System.Drawing.Size(250, 28);
-            this.BtnProcessarDados.TabIndex = 24;
-            this.BtnProcessarDados.Text = "Processar dados";
-            this.BtnProcessarDados.UseVisualStyleBackColor = true;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.lblcorreo);
-            this.panel3.Controls.Add(this.lbluser);
-            this.panel3.Controls.Add(this.lblusuario);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(115, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(135, 70);
-            this.panel3.TabIndex = 0;
-            // 
-            // lblcorreo
-            // 
-            this.lblcorreo.AutoSize = true;
-            this.lblcorreo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcorreo.ForeColor = System.Drawing.Color.White;
-            this.lblcorreo.Location = new System.Drawing.Point(6, 44);
-            this.lblcorreo.Name = "lblcorreo";
-            this.lblcorreo.Size = new System.Drawing.Size(53, 17);
-            this.lblcorreo.TabIndex = 24;
-            this.lblcorreo.Text = "Correo";
-            // 
-            // lbluser
-            // 
-            this.lbluser.AutoSize = true;
-            this.lbluser.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbluser.ForeColor = System.Drawing.Color.White;
-            this.lbluser.Location = new System.Drawing.Point(6, 26);
-            this.lbluser.Name = "lbluser";
-            this.lbluser.Size = new System.Drawing.Size(54, 17);
-            this.lbluser.TabIndex = 23;
-            this.lbluser.Text = "Usuario";
-            // 
-            // lblusuario
-            // 
-            this.lblusuario.AutoSize = true;
-            this.lblusuario.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblusuario.ForeColor = System.Drawing.Color.White;
-            this.lblusuario.Location = new System.Drawing.Point(6, 9);
-            this.lblusuario.Name = "lblusuario";
-            this.lblusuario.Size = new System.Drawing.Size(50, 17);
-            this.lblusuario.TabIndex = 22;
-            this.lblusuario.Text = "Cargo";
             // 
             // FrmCasaMendes
             // 
@@ -480,13 +482,13 @@
             this.BarraTitulo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.iconcerrar)).EndInit();
             this.MenuVertical.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PicConfiguracoes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnlogoInicio)).EndInit();
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicConfiguracoes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnlogoInicio)).EndInit();
             this.ResumeLayout(false);
 
         }

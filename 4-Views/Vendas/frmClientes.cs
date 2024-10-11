@@ -70,12 +70,15 @@ namespace CasaMendes
             {
                 var cli = new Cliente
                 {
-                    Nome = oCliente.Nome
+                    Nome = oCliente.Nome,
+                    created_at = DateTime.Now,
+                    updated_at = DateTime.Now,
+                    deleted_at = null
                 };
                 List<Cliente> cliente = cli.Busca();
                 if (cliente.Count > 0)
                 {
-                    MessageBox.Show($"Cliente {cliente[0].Nome} já existe!");
+                    MessageBox.Show($"O cliente '{cliente[0].Nome}' já existe!");
                     return;
                 }
             }

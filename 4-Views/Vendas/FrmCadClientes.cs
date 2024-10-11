@@ -27,6 +27,7 @@ namespace CasaMendes
             InitializeComponent();
             this.Text = clsGlobal.MontarTitulo("Cadastrar Cliente");
             oCliente = new Cliente();
+            //oCliente.DataNascimento = DateTime.Now;
             BsCliente = new BindingSource { oCliente };
         }
 

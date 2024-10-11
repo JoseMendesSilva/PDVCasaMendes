@@ -25,30 +25,28 @@ namespace CasaMendes
         {
             try
             {
-                
-                    for (int i = 0; i < DgvVendas.ColumnCount; i++)
-                    {
-                        DgvVendas.Columns[i].Visible = false;
-                    }
 
-                    this.DgvVendas.Columns["Produto"].Visible = true;
-                    this.DgvVendas.Columns["Quantidade"].Visible = true;
-                    this.DgvVendas.Columns["PrecoDeVenda"].Visible = true;
-                    this.DgvVendas.Columns["Valor"].Visible = true;
-                    this.DgvVendas.Columns["created_at"].Visible = true;
+                for (int i = 0; i < DgvVendas.ColumnCount; i++)
+                {
+                    DgvVendas.Columns[i].Visible = false;
+                }
 
-                    this.DgvVendas.Columns["Produto"].Width = clsGlobal.DimencionarColuna(40, DgvVendas.Width);
-                    this.DgvVendas.Columns["Quantidade"].Width = clsGlobal.DimencionarColuna(15, DgvVendas.Width);
-                    this.DgvVendas.Columns["PrecoDeVenda"].Width = clsGlobal.DimencionarColuna(15, DgvVendas.Width);
-                    this.DgvVendas.Columns["Valor"].Width = clsGlobal.DimencionarColuna(15, DgvVendas.Width);
-                    this.DgvVendas.Columns["created_at"].Width = clsGlobal.DimencionarColuna(15, DgvVendas.Width);
-                    this.DgvVendas.Columns["created_at"].HeaderText = "Data cadastro";
+                this.DgvVendas.Columns["Produto"].Visible = true;
+                this.DgvVendas.Columns["Quantidade"].Visible = true;
+                this.DgvVendas.Columns["Valor"].Visible = true;
+                this.DgvVendas.Columns["created_at"].Visible = true;
 
-                    clsGlobal.AlinharElementosNoGridView(DgvVendas, 2, "left");
-                    clsGlobal.AlinharElementosNoGridView(DgvVendas, 3, "right");
-                    clsGlobal.AlinharElementosNoGridView(DgvVendas, 4, "right");
-                    clsGlobal.AlinharElementosNoGridView(DgvVendas, 7, "right");
-                    clsGlobal.AlinharElementosNoGridView(DgvVendas, 8, "right");
+                this.DgvVendas.Columns["created_at"].HeaderText = "Data cadastro";
+
+                this.DgvVendas.Columns["Produto"].Width = clsGlobal.DimencionarColuna(40, DgvVendas.Width);
+                this.DgvVendas.Columns["Quantidade"].Width = clsGlobal.DimencionarColuna(15, DgvVendas.Width);
+                this.DgvVendas.Columns["Valor"].Width = clsGlobal.DimencionarColuna(14, DgvVendas.Width);
+                this.DgvVendas.Columns["created_at"].Width = clsGlobal.DimencionarColuna(13, DgvVendas.Width);
+
+                clsGlobal.AlinharElementosNoGridView(DgvVendas, 2, "left");
+                clsGlobal.AlinharElementosNoGridView(DgvVendas, 3, "right");
+                clsGlobal.AlinharElementosNoGridView(DgvVendas, 7, "right");
+                clsGlobal.AlinharElementosNoGridView(DgvVendas, 8, "right");
             }
             catch
             {
@@ -56,46 +54,38 @@ namespace CasaMendes
             }
         }
 
-        private void CarregarVendas(string filtro = null)
+        private void CarregarVendas()
         {
             try
             {
-                DgvVendas.DataSource = null;
-                DgvVendas.Rows.Clear();
-                if (filtro == null)
-                {
-                    oPreVenda.ClienteId = 0;
+                this.DgvVendas.DataSource = null;
+                this.DgvVendas.Rows.Clear();
+                this.TxtVendas.Text = "0,00";
+
+                oPreVenda.ClienteId = 0;
+
+                  if(DgvVendas.Rows.Count > 0) DgvVendas.Rows.Clear();
+
+                if (oPreVenda.TipoDeVenda == "TODOS")
                     DgvVendas.DataSource = oPreVenda.Todos();
-                }
-                else
-                {
-                    oPreVenda.created_at = null;
-                    oPreVenda.ClienteId = 0;
-                    oPreVenda.TipoDeVenda = filtro;
-                    DgvVendas.DataSource = oPreVenda.Busca();
-                }
+                else // exemplo de busca gerada: select * from PreVendas where created_at BETWEEN FORMAT(CAST('10/10/2024 11:09:42' AS DATETIME2), N'dd-MM-yyyy') and FORMAT(CAST('10/10/2024 11:09:43' AS DATETIME2), N'dd-MM-yyyy') and tipodevenda = 'TODOS';
+                    DgvVendas.DataSource = oPreVenda.BuscaSqlQuery($"select * from PreVendas where created_at BETWEEN FORMAT(CAST('{oPreVenda.created_at }' AS DATETIME2), N'dd-MM-yyyy') and FORMAT(CAST('{DateTime.Now}' AS DATETIME2), N'dd-MM-yyyy') and tipodevenda = '{oPreVenda.TipoDeVenda}';");
+
+
 
                 if (this.DgvVendas.Rows.Count > 0)
                 {
                     RedimencionarColunas();
                     decimal vendas = clsGlobal.Calcular(this.DgvVendas, 4);
-                    if (oPreVenda.ClienteId > 0)
-                    {
-                        decimal porcentagemPendura = clsGlobal.DeStringParaDecimal(DgvVendas.Rows[0].Cells["Tributos"].Value.ToString());
-                        porcentagemPendura += clsGlobal.DeStringParaDecimal(DgvVendas.Rows[0].Cells["Juros"].Value.ToString());
-                        porcentagemPendura = 1 - (porcentagemPendura / 100);
-                        decimal totalPendura = vendas;
-                        vendas = (totalPendura / porcentagemPendura) - oPreVenda.Parcela;
-                    }
-
                     this.TxtVendas.Text = vendas.ToString("N2");
                     StatusLabel = (DgvVendas.RowCount - 1).ToString();
                 }
                 else
                 {
                     DgvVendas.Rows.Clear();
-                    this.TxtVendas.Text = "R$ 0.00";
+                    this.TxtVendas.Text = "0,00";
                 }
+
             }
             catch { }
         }
@@ -118,11 +108,12 @@ namespace CasaMendes
                 oPreVenda = new PreVenda();
 
                 oPreVenda.ClienteId = 0;
-                this.LblCliente.Text = "A VISTA";
+                //this.LblCliente.Text = "A VISTA";
 
-                CarregarVendas();
-                this.RedimencionarColunas();
-                decimal vendas = clsGlobal.Calcular(this.DgvVendas, 4);
+                //CarregarVendas();
+                //this.RedimencionarColunas();
+                //decimal vendas = clsGlobal.Calcular(this.DgvVendas, 4);
+                CbTipoDeVenda.SelectedIndex = 5;
             }
             catch
             {
@@ -163,7 +154,8 @@ namespace CasaMendes
         {
             try
             {
-                oPreVenda.created_at = DtpDataCadastro.Value;
+                oPreVenda.created_at = this.DtpDataCadastro.Value;
+                oPreVenda.TipoDeVenda = "";// LblCliente.Text;
                 CarregarVendas();
             }
             catch
@@ -172,23 +164,15 @@ namespace CasaMendes
             }
         }
 
-        private void RbPendura_Click(object sender, EventArgs e)
+        private void CbTipoDeVenda_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LblCliente.Text = RbPendura.Text;
-            CarregarVendas(RbPendura.Text);
+
+            this.LblCliente.Text = CbTipoDeVenda.Text.Replace("É", "E").ToUpper();
+            oPreVenda.TipoDeVenda = LblCliente.Text;
+            //oPreVenda.created_at = null;// this.DtpDataCadastro.Value;
+            this.CarregarVendas();
         }
 
-        private void RbAVista_Click(object sender, EventArgs e)
-        {
-            LblCliente.Text = RbAVista.Text;
-            CarregarVendas(RbAVista.Text);
-        }
-
-        private void RbTodos_Click(object sender, EventArgs e)
-        {
-            LblCliente.Text = RbTodos.Text;
-            CarregarVendas();
-        }
     }
 }
 

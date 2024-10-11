@@ -52,8 +52,8 @@ namespace CasaMendes
         //[OpcoesBase(UsarNoBancoDeDados = true)]
         //public decimal SubTotal { get; set; }
 
-        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
-        public DateTime? created_at { get; set; } = DateTime.Now;
+        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = false)]
+        public DateTime created_at { get; set; } = DateTime.Now;
 
         [OpcoesBase(UsarNoBancoDeDados = true)]
         public DateTime updated_at { get; set; } = DateTime.Now;
@@ -72,6 +72,26 @@ namespace CasaMendes
         {
             var PreVenda = new List<PreVenda>();
             foreach (var ibase in base.Busca())
+            {
+                PreVenda.Add((PreVenda)ibase);
+            }
+            return PreVenda;
+        }
+
+        public new List<PreVenda> BuscaMaiorIgual()
+        {
+            var PreVenda = new List<PreVenda>();
+            foreach (var ibase in base.BuscaMaiorIgual())
+            {
+                PreVenda.Add((PreVenda)ibase);
+            }
+            return PreVenda;
+        }
+
+        public new List<PreVenda> BuscaSqlQuery(string Sql)
+        {
+            var PreVenda = new List<PreVenda>();
+            foreach (var ibase in base.BuscaSqlQuery(Sql))
             {
                 PreVenda.Add((PreVenda)ibase);
             }

@@ -147,16 +147,12 @@ namespace CasaMendes
         {
             try
             {
-                if (this.TxtBusca.Text.Length > 0)
-                {
-                    this.TxtBusca.Clear();
-                }
-                if (!string.IsNullOrEmpty(this.TxtCodigoDeBarras.Text))
+                if (!string.IsNullOrEmpty(this.TxtCodigoDeBarras.Text) && this.TxtCodigoDeBarras.TextLength >= 8 && this.TxtCodigoDeBarras.TextLength <= 15)
                 {
                     oProduto.CodigoDeBarras = this.TxtCodigoDeBarras.Text;
+                    oProduto.Nome = "";
                     DgvProdutos.DataSource = oProduto.BuscaComLike();
                 }
-
             }
             catch { }
         }
@@ -165,12 +161,9 @@ namespace CasaMendes
         {
             try
             {
-                if (this.TxtCodigoDeBarras.Text.Length > 0)
-                {
-                    this.TxtCodigoDeBarras.Clear();
-                }
                 if (!string.IsNullOrEmpty(this.TxtBusca.Text))
                 {
+                    oProduto.CodigoDeBarras = "";
                     oProduto.Nome = TxtBusca.Text;
                     DgvProdutos.DataSource = oProduto.BuscaComLike();
                 }
@@ -264,7 +257,37 @@ namespace CasaMendes
             //}
         }
 
- 
+        private void TxtCodigoDeBarras_Enter(object sender, EventArgs e)
+        {
+            if (this.TxtBusca.Text.Length > 0)
+            {
+                this.TxtBusca.Clear();
+            }
+        }
+
+        private void TxtBusca_Enter(object sender, EventArgs e)
+        {
+            if (this.TxtCodigoDeBarras.Text.Length > 0)
+            {
+                this.TxtCodigoDeBarras.Clear();
+            }
+        }
+
+        private void TxtBusca_Leave(object sender, EventArgs e)
+        {
+            if (this.TxtCodigoDeBarras.Text.Length > 0)
+            {
+                this.TxtCodigoDeBarras.Clear();
+            }
+        }
+
+        private void TxtCodigoDeBarras_Leave(object sender, EventArgs e)
+        {
+            if (this.TxtBusca.Text.Length > 0)
+            {
+                this.TxtBusca.Clear();
+            }
+        }
     }
 
 }

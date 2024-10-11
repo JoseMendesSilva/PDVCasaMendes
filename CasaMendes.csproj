@@ -157,6 +157,9 @@
     <EmbeddedResource Include="5-Util\ImprimerListaDeCompra .resx">
       <DependentUpon>ImprimerListaDeCompra .cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCasaMendes.resx">
       <DependentUpon>FrmCasaMendes.cs</DependentUpon>
     </EmbeddedResource>
@@ -324,6 +327,12 @@
     </Compile>
     <Compile Include="5-Util\ImprimerListaDeCompra .cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmCasaMendes.cs">
       <SubType>Form</SubType>

@@ -36,6 +36,12 @@ namespace CasaMendes
         [MethodImpl(MethodImplOptions.InternalCall)]
         List<IBase> BuscaComLike();
 
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        List<IBase> BuscaMaiorIgual();
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        List<IBase> BuscaSqlQuery(string Sql);
+
     }
     
 }
