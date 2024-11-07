@@ -1,10 +1,8 @@
-﻿
-using DocumentFormat.OpenXml.Drawing;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Drawing;
-using System.Threading;
+using System.Threading.Tasks;
+
 //using System.Reflection.Emit;
 using System.Windows.Forms;
 
@@ -24,9 +22,6 @@ namespace CasaMendes
         public FrmEstoque()
         {
             InitializeComponent();
-            this.Count = 0;
-            this.LinhaIndex = -1;
-            this.frmLoading = true;
         }
 
         private void RedimencionarGrade()
@@ -37,12 +32,12 @@ namespace CasaMendes
 
                 for (int i = 0; i < DgvProdutos.Columns.Count; i++)
                 {
-                    if ((DgvProdutos.Columns[i] == DgvProdutos.Columns["EstoqueId"]) || (DgvProdutos.Columns[i] == DgvProdutos.Columns["ProdutoId"]) || (DgvProdutos.Columns[i] == DgvProdutos.Columns["Foto"]) || (DgvProdutos.Columns[i] == DgvProdutos.Columns["Key"]))
+                    if (DgvProdutos.Columns[i] == DgvProdutos.Columns["EstoqueId"] || DgvProdutos.Columns[i] == DgvProdutos.Columns["ProdutoId"] || DgvProdutos.Columns[i] == DgvProdutos.Columns["Foto"] || DgvProdutos.Columns[i] == DgvProdutos.Columns["Key"])
                     {
                         DgvProdutos.Columns[i].Visible = false;
                     }
                 }
-
+                if (DgvProdutos.Rows.Count < 1) return;
                 DgvProdutos.Columns["CodigoDeBarras"].HeaderText = "Cód Barras".ToUpper();
                 DgvProdutos.Columns["QuantidadeItemDesconto"].HeaderText = "Dsc. Q. Itens".ToUpper();
                 DgvProdutos.Columns["ValorDesconto"].HeaderText = "Desc. aplicado".ToUpper();
@@ -53,74 +48,34 @@ namespace CasaMendes
                 DgvProdutos.Columns["updated_at"].HeaderText = "Atualizado".ToUpper();
                 DgvProdutos.Columns["deleted_at"].HeaderText = "Inativo".ToUpper();
 
-                DgvProdutos.Columns["CodigoDeBarras"].Width = clsGlobal.DimencionarColuna(9, this.Width);
-                DgvProdutos.Columns["QuantidadeItemDesconto"].Width = clsGlobal.DimencionarColuna(10, this.Width);
-                DgvProdutos.Columns["ValorDesconto"].Width = clsGlobal.DimencionarColuna(11, this.Width);
-                DgvProdutos.Columns["Produto"].Width = clsGlobal.DimencionarColuna(20, this.Width);
-                DgvProdutos.Columns["Quantidade"].Width = clsGlobal.DimencionarColuna(8, this.Width);
-                DgvProdutos.Columns["PrecoDeVenda"].Width = clsGlobal.DimencionarColuna(9, this.Width);
-                DgvProdutos.Columns["created_at"].Width = clsGlobal.DimencionarColuna(9, this.Width);
-                DgvProdutos.Columns["updated_at"].Width = clsGlobal.DimencionarColuna(9, this.Width);
-                DgvProdutos.Columns["deleted_at"].Width = clsGlobal.DimencionarColuna(7, this.Width);
-                DgvProdutos.Columns["Listar"].Width = clsGlobal.DimencionarColuna(6, this.Width);
+                DgvProdutos.Columns["CodigoDeBarras"].Width = clsGlobal.DimencionarColuna(9, Width);
+                DgvProdutos.Columns["QuantidadeItemDesconto"].Width = clsGlobal.DimencionarColuna(10, Width);
+                DgvProdutos.Columns["ValorDesconto"].Width = clsGlobal.DimencionarColuna(11, Width);
+                DgvProdutos.Columns["Produto"].Width = clsGlobal.DimencionarColuna(20, Width);
+                DgvProdutos.Columns["Quantidade"].Width = clsGlobal.DimencionarColuna(8, Width);
+                DgvProdutos.Columns["PrecoDeVenda"].Width = clsGlobal.DimencionarColuna(9, Width);
+                DgvProdutos.Columns["created_at"].Width = clsGlobal.DimencionarColuna(9, Width);
+                DgvProdutos.Columns["updated_at"].Width = clsGlobal.DimencionarColuna(9, Width);
+                DgvProdutos.Columns["deleted_at"].Width = clsGlobal.DimencionarColuna(7, Width);
+                DgvProdutos.Columns["Listar"].Width = clsGlobal.DimencionarColuna(6, Width);
 
             }
             catch
             {
 
             }
+
+            //return //Task.CompletedTask;
         }
 
         #endregion
 
         private void FrmEstoque_Load(object sender, EventArgs e)
         {
-            var oProcessando = new FrmProcessando();
-            try
-            {
-                oProcessando.Show();
-                oProcessando.TopMost = true;
-                oProcessando.Processo(4, "Liste Estoque.", "Carregando.");
-                DgvProdutos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                using (var oEstoque = new Estoque())
-                {
-                    oProcessando.Processo(20, "Liste Estoque.", "Carregando..");
-                    //this.Refresh();
-                    DgvProdutos.DataSource = oEstoque.Todos();
-                    oProcessando.Processo(33, "Liste Estoque.", "Carregando...");
-                    RedimencionarGrade();
-                    oProcessando.Processo(45, "Liste Estoque.", "Carregando.");
-                }
-                if (this.DgvProdutos.Rows.Count > 1)
-                {
-                    oProcessando.Processo(58, "Liste Estoque.", "Carregando..");
-                    TxtBusca.Focus();
-                    oProcessando.Processo(70, "Liste Estoque.", "Carregando...");
-                    TxtBusca.SelectAll();
-                    oProcessando.Processo(100, "Liste Estoque.", "Carregando.");
-                }
-                else
-                {
-                    oProcessando.Processo(58, "Liste Estoque.", "Carregando..");
-                    DgvProdutos.Focus();
-                    oProcessando.Processo(70, "Liste Estoque.", "Carregando...");
-                }
-                ////DgvProdutos.CurrentCell = DgvProdutos.Rows[DgvProdutos.Rows.Count - 1].Cells[3];
-                LblEstoqueItens.Text = DgvProdutos.RowCount.ToString();
-                LblEstoqueMinimo.Text = string.Concat(this.Count.ToString("0000"), " Produtos passiveis de reposição.").ToString();
-                oProcessando.Processo(100, "Liste Estoque.", "Carregando.");
-
-                oProcessando.Close();
-                oProcessando.Dispose();
-
-                frmLoading = false;
-                this.Count = 0;
-            }
-            catch { }
-            finally
-            {
-            }
-
+            this.Refresh();
+            this.Count = 0;
+            this.LinhaIndex = -1;
+            this.frmLoading = true;
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
@@ -130,15 +85,15 @@ namespace CasaMendes
             this.Close();
         }
 
-        private void TxtCodigoDeBarras_TextChanged(object sender, EventArgs e)
+        private async void TxtCodigoDeBarras_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                var oEstoque = new Estoque
-                {
-                    Produto = TxtBusca.Text
-                };
-                DgvProdutos.DataSource = oEstoque.BuscaComLike();
+                //DgvProdutos.DataSource = await new Estoque
+                //{
+                //    CodigoDeBarras = TxtBusca.Text,
+                //    //Produto = TxtBusca.Text
+                //}.BuscaComLike();
             }
             catch { }
         }
@@ -169,7 +124,7 @@ namespace CasaMendes
             }
         }
 
-        private void BtnExcluir_Click(object sender, EventArgs e)
+        private async void BtnExcluir_Click(object sender, EventArgs e)
         {
             try
             {
@@ -180,9 +135,9 @@ namespace CasaMendes
                     DialogResult dresult = MensagemBox.Mostrar($"Esta ação é definitiva, você deseja excluir o produto '{oEstoque.Produto}'", "Sim", "Não");
                     if (dresult == DialogResult.Yes)
                     {
-                        oEstoque.Excluir();
+                       //var rowsAffected = await oEstoque.Excluir();
                         MessageBox.Show($"O produro {oEstoque.Produto} foi excluido com sucesso do estoque.");
-                        DgvProdutos.DataSource = oEstoque.Todos();
+                        //DgvProdutos.DataSource = await oEstoque.Todos();
                     }
                     else
                         return;
@@ -238,20 +193,63 @@ namespace CasaMendes
                 {
 
                     DgvProdutos.CurrentCell = DgvProdutos.Rows[i].Cells["Listar"];
-                    //Thread.Sleep(25);
-                    //string v = DgvProdutos.Rows[i].Cells["Listar"].Value.ToString();
                     b = (bool)DgvProdutos.Rows[i].Cells["Listar"].Value;
                     if (b == true)
                     {
                         lista.Add(DgvProdutos.Rows[i].Cells["Produto"].Value.ToString());
                     }
                 }
-                //b = false;
-                ImprimerListaDeCompra oListaDeCompra = new ImprimerListaDeCompra(DgvProdutos);
+                var oListaDeCompra = new ImprimerListaDeCompra(DgvProdutos);
                 oListaDeCompra.Print();
             }
             catch { }
         }
 
+        private async void FrmEstoque_Shown(object sender, EventArgs e)
+        {
+
+            //var oProcessando = new FrmProcessando();
+            try
+            {
+                //oProcessando.Show();
+                //oProcessando.TopMost = true;
+                //oProcessando.Processo(4, "Liste Estoque.", "Carregando.");
+                DgvProdutos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                var oEstoque = new Estoque();
+
+                //oProcessando.Processo(20, "Liste Estoque.", "Carregando..");
+                this.Refresh();
+                //DgvProdutos.DataSource = await oEstoque.Todos();
+                //oProcessando.Processo(33, "Liste Estoque.", "Carregando...");
+                RedimencionarGrade();
+                    //oProcessando.Processo(45, "Liste Estoque.", "Carregando.");
+                if (this.DgvProdutos.Rows.Count > 1)
+                {
+                    //oProcessando.Processo(58, "Liste Estoque.", "Carregando..");
+                    TxtBusca.Focus();
+                    //oProcessando.Processo(70, "Liste Estoque.", "Carregando...");
+                    TxtBusca.SelectAll();
+                    //oProcessando.Processo(100, "Liste Estoque.", "Carregando.");
+                }
+                else
+                {
+                    //oProcessando.Processo(58, "Liste Estoque.", "Carregando..");
+                    DgvProdutos.Focus();
+                    //oProcessando.Processo(70, "Liste Estoque.", "Carregando...");
+                }
+                ////DgvProdutos.CurrentCell = DgvProdutos.Rows[DgvProdutos.Rows.Count - 1].Cells[3];
+                LblEstoqueItens.Text = DgvProdutos.RowCount.ToString();
+                LblEstoqueMinimo.Text = string.Concat(this.Count.ToString("0000"), " Produtos passiveis de reposição.").ToString();
+                //oProcessando.Processo(100, "Liste Estoque.", "Carregando.");
+
+                //oProcessando.Close();
+                //oProcessando.Dispose();
+                
+
+                frmLoading = false;
+                this.Count = 0;
+            }
+            catch { }
+        }
     }
 }

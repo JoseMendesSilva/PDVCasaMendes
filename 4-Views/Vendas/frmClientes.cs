@@ -9,7 +9,7 @@ namespace CasaMendes
 
         #region Variáveis
 
-        Cliente oCliente;
+        //Cliente oCliente;
         private BindingSource BsCliente;
         bool editar;
         int LinhaIndex;
@@ -59,11 +59,11 @@ namespace CasaMendes
 
         private void Carregar()
         {
-            DgvClientes.DataSource = oCliente.Todos();
-            StatusLabel = (DgvClientes.RowCount - 1).ToString();
+            //DgvClientes.DataSource = oCliente.Todos();
+            //StatusLabel = (DgvClientes.RowCount - 1).ToString();
         }
 
-        private void Gravar()
+        private async void Gravar()
         {
             //Verificando se o nome já existe.
             if (oCliente.ClienteId == 0)
@@ -75,14 +75,14 @@ namespace CasaMendes
                     updated_at = DateTime.Now,
                     deleted_at = null
                 };
-                List<Cliente> cliente = cli.Busca();
-                if (cliente.Count > 0)
-                {
-                    MessageBox.Show($"O cliente '{cliente[0].Nome}' já existe!");
-                    return;
-                }
+                //List<Cliente> cliente = await cli.Busca();
+                //if (cliente.Count > 0)
+                //{
+                //    MessageBox.Show($"O cliente '{cliente[0].Nome}' já existe!");
+                //    return;
+                //}
             }
-            oCliente.Salvar();
+         //var rowAffected = await oCliente.Salvar();
             Carregar();
         }
 
@@ -118,16 +118,16 @@ namespace CasaMendes
         {
             try
             {
-                if (editar.Equals(true) && LinhaIndex != -1)
-                {
-                    DialogResult dresult = MensagemBox.Mostrar($"Esta ação é definitiva, você deseja excluir o produto '{oCliente.Nome}'", "Sim", "Não");
-                    if (dresult == DialogResult.Yes)
-                    {
-                        oCliente = (Cliente)DgvClientes.Rows[LinhaIndex].DataBoundItem;
-                        oCliente.Excluir();
-                        Carregar();
-                    }
-                }
+                //if (editar.Equals(true) && LinhaIndex != -1)
+                //{
+                //    DialogResult dresult = MensagemBox.Mostrar($"Esta ação é definitiva, você deseja excluir o produto '{oCliente.Nome}'", "Sim", "Não");
+                //    if (dresult == DialogResult.Yes)
+                //    {
+                //        oCliente = (Cliente)DgvClientes.Rows[LinhaIndex].DataBoundItem;
+                //        oCliente.Excluir();
+                //        Carregar();
+                //    }
+                //}
             }
             catch {; }
         }
@@ -249,8 +249,8 @@ namespace CasaMendes
 
         private void TxtBusca_TextChanged(object sender, EventArgs e)
         {
-            oCliente.Nome = TxtBusca.Text;
-            DgvClientes.DataSource = oCliente.Busca();
+            //oCliente.Nome = TxtBusca.Text;
+            //DgvClientes.DataSource = oCliente.Busca();
         }
 
         #endregion

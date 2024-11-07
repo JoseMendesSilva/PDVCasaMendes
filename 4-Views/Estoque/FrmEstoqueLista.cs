@@ -60,57 +60,18 @@ namespace CasaMendes
         #endregion
 
         private void FrmEstoque_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                var oProcessando = new FrmProcessando();
-                oProcessando.Show();
-                oProcessando.TopMost = true;
-                oProcessando.Processo(4, "Liste Estoque.", "Carregando.");
-                LinhaIndex = -1;
-                frmLoading = true;
-                using (var oEstoque = new Estoque())
-                {
-                    oProcessando.Processo(20, "Liste Estoque.", "Carregando..");
-                    DgvProdutos.DataSource = oEstoque.Todos();
-                    frmLoading = false;
-                    oProcessando.Processo(33, "Liste Estoque.", "Carregando...");
-                    RedimencionarGrade();
-                    oProcessando.Processo(45, "Liste Estoque.", "Carregando.");
-                }
-                if (this.DgvProdutos.Rows.Count > 1)
-                {
-                    oProcessando.Processo(58, "Liste Estoque.", "Carregando..");
-                    TxtBusca.Focus();
-                    oProcessando.Processo(70, "Liste Estoque.", "Carregando...");
-                    TxtBusca.SelectAll();
-                    oProcessando.Processo(100, "Liste Estoque.", "Carregando.");
-                }
-                else
-                {
-                    oProcessando.Processo(58, "Liste Estoque.", "Carregando..");
-                    DgvProdutos.Focus();
-                    oProcessando.Processo(70, "Liste Estoque.", "Carregando...");
-                }
-                oProcessando.Processo(100, "Liste Estoque.", "Carregando.");
-
-                DgvProdutos.RowHeadersVisible = false;
-
-                oProcessando.Close();
-                oProcessando.Dispose();
-            }
-            catch { }
+        { 
+            this.Refresh();
         }
 
-        private void TxtBusca_TextChanged(object sender, EventArgs e)
+        private async void TxtBusca_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                var oEstoque = new Estoque
-                {
-                    Produto = TxtBusca.Text
-                };
-                DgvProdutos.DataSource = oEstoque.BuscaComLike();
+                //DgvProdutos.DataSource = await new Estoque
+                //{
+                //    Produto = TxtBusca.Text
+                //}.BuscaComLike();
             }
             catch { }
         }
@@ -167,5 +128,47 @@ namespace CasaMendes
             this.Close();
         }
 
+        private async void FrmEstoqueLista_Shown(object sender, EventArgs e)
+        {
+            try
+            {
+                //var oProcessando = new FrmProcessando();
+                //oProcessando.Show();
+                //oProcessando.TopMost = true;
+                //oProcessando.Processo(4, "Liste Estoque.", "Carregando.");
+                LinhaIndex = -1;
+                frmLoading = true;
+                var oEstoque = new Estoque();
+                
+                    //oProcessando.Processo(20, "Liste Estoque.", "Carregando..");
+                    //DgvProdutos.DataSource = await oEstoque.Todos();
+                    frmLoading = false;
+                    //oProcessando.Processo(33, "Liste Estoque.", "Carregando...");
+                    RedimencionarGrade();
+                    //oProcessando.Processo(45, "Liste Estoque.", "Carregando.");
+                
+                if (this.DgvProdutos.Rows.Count > 1)
+                {
+                    //oProcessando.Processo(58, "Liste Estoque.", "Carregando..");
+                    TxtBusca.Focus();
+                    //oProcessando.Processo(70, "Liste Estoque.", "Carregando...");
+                    TxtBusca.SelectAll();
+                    //oProcessando.Processo(100, "Liste Estoque.", "Carregando.");
+                }
+                else
+                {
+                    //oProcessando.Processo(58, "Liste Estoque.", "Carregando..");
+                    DgvProdutos.Focus();
+                    //oProcessando.Processo(70, "Liste Estoque.", "Carregando...");
+                }
+                //oProcessando.Processo(100, "Liste Estoque.", "Carregando.");
+
+                DgvProdutos.RowHeadersVisible = false;
+
+                //oProcessando.Close();
+                //oProcessando.Dispose();
+            }
+            catch { }
+        }
     }
 }

@@ -55,11 +55,11 @@
             this.txtTroco.BackColor = System.Drawing.Color.White;
             this.txtTroco.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTroco.ForeColor = System.Drawing.Color.Blue;
-            this.txtTroco.Location = new System.Drawing.Point(455, 503);
+            this.txtTroco.Location = new System.Drawing.Point(241, 338);
             this.txtTroco.Margin = new System.Windows.Forms.Padding(4);
             this.txtTroco.Name = "txtTroco";
             this.txtTroco.ReadOnly = true;
-            this.txtTroco.Size = new System.Drawing.Size(328, 62);
+            this.txtTroco.Size = new System.Drawing.Size(164, 62);
             this.txtTroco.TabIndex = 4;
             this.txtTroco.Text = "0,00";
             this.txtTroco.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -70,7 +70,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Blue;
-            this.label11.Location = new System.Drawing.Point(450, 474);
+            this.label11.Location = new System.Drawing.Point(236, 309);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(73, 25);
@@ -82,10 +82,10 @@
             this.txtDinheiro.BackColor = System.Drawing.Color.White;
             this.txtDinheiro.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDinheiro.ForeColor = System.Drawing.Color.Blue;
-            this.txtDinheiro.Location = new System.Drawing.Point(23, 337);
+            this.txtDinheiro.Location = new System.Drawing.Point(241, 194);
             this.txtDinheiro.Margin = new System.Windows.Forms.Padding(4);
             this.txtDinheiro.Name = "txtDinheiro";
-            this.txtDinheiro.Size = new System.Drawing.Size(369, 62);
+            this.txtDinheiro.Size = new System.Drawing.Size(164, 62);
             this.txtDinheiro.TabIndex = 0;
             this.txtDinheiro.Text = "0,00";
             this.txtDinheiro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -98,7 +98,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Blue;
-            this.label9.Location = new System.Drawing.Point(20, 308);
+            this.label9.Location = new System.Drawing.Point(236, 165);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(98, 25);
@@ -110,11 +110,11 @@
             this.txtTotal.BackColor = System.Drawing.Color.White;
             this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotal.ForeColor = System.Drawing.Color.Blue;
-            this.txtTotal.Location = new System.Drawing.Point(25, 66);
+            this.txtTotal.Location = new System.Drawing.Point(23, 192);
             this.txtTotal.Margin = new System.Windows.Forms.Padding(4);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = true;
-            this.txtTotal.Size = new System.Drawing.Size(369, 62);
+            this.txtTotal.Size = new System.Drawing.Size(168, 62);
             this.txtTotal.TabIndex = 3;
             this.txtTotal.Text = "0,00";
             this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -125,7 +125,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Blue;
-            this.label7.Location = new System.Drawing.Point(13, 41);
+            this.label7.Location = new System.Drawing.Point(20, -15);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(66, 25);
@@ -154,7 +154,7 @@
             this.label2.BackColor = System.Drawing.Color.Green;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(0, 596);
+            this.label2.Location = new System.Drawing.Point(0, 416);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(820, 41);
@@ -167,7 +167,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Blue;
-            this.label3.Location = new System.Drawing.Point(18, 167);
+            this.label3.Location = new System.Drawing.Point(20, 45);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(98, 25);
             this.label3.TabIndex = 8;
@@ -211,9 +211,9 @@
             this.LblCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.LblCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblCliente.ForeColor = System.Drawing.Color.Blue;
-            this.LblCliente.Location = new System.Drawing.Point(25, 192);
+            this.LblCliente.Location = new System.Drawing.Point(23, 72);
             this.LblCliente.Name = "LblCliente";
-            this.LblCliente.Size = new System.Drawing.Size(369, 55);
+            this.LblCliente.Size = new System.Drawing.Size(382, 55);
             this.LblCliente.TabIndex = 11;
             this.LblCliente.Text = "A VISTA";
             this.LblCliente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -222,9 +222,9 @@
             // 
             this.LblClienteId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.LblClienteId.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblClienteId.Location = new System.Drawing.Point(258, 73);
+            this.LblClienteId.Location = new System.Drawing.Point(225, 74);
             this.LblClienteId.Name = "LblClienteId";
-            this.LblClienteId.Size = new System.Drawing.Size(136, 55);
+            this.LblClienteId.Size = new System.Drawing.Size(180, 55);
             this.LblClienteId.TabIndex = 22;
             this.LblClienteId.Text = "0000";
             this.LblClienteId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -235,10 +235,10 @@
             this.TxtDesconto.BackColor = System.Drawing.Color.White;
             this.TxtDesconto.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtDesconto.ForeColor = System.Drawing.Color.Blue;
-            this.TxtDesconto.Location = new System.Drawing.Point(23, 503);
+            this.TxtDesconto.Location = new System.Drawing.Point(23, 338);
             this.TxtDesconto.Margin = new System.Windows.Forms.Padding(4);
             this.TxtDesconto.Name = "TxtDesconto";
-            this.TxtDesconto.Size = new System.Drawing.Size(371, 62);
+            this.TxtDesconto.Size = new System.Drawing.Size(168, 62);
             this.TxtDesconto.TabIndex = 1;
             this.TxtDesconto.Text = "0,00";
             this.TxtDesconto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -251,7 +251,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Blue;
-            this.label5.Location = new System.Drawing.Point(18, 474);
+            this.label5.Location = new System.Drawing.Point(20, 309);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(109, 25);
@@ -264,13 +264,14 @@
             this.TxtJuros.BackColor = System.Drawing.Color.White;
             this.TxtJuros.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtJuros.ForeColor = System.Drawing.Color.Blue;
-            this.TxtJuros.Location = new System.Drawing.Point(457, 337);
+            this.TxtJuros.Location = new System.Drawing.Point(457, 479);
             this.TxtJuros.Margin = new System.Windows.Forms.Padding(4);
             this.TxtJuros.Name = "TxtJuros";
             this.TxtJuros.Size = new System.Drawing.Size(326, 62);
             this.TxtJuros.TabIndex = 28;
             this.TxtJuros.Text = "0,00";
             this.TxtJuros.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TxtJuros.Visible = false;
             // 
             // label6
             // 
@@ -278,12 +279,13 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Blue;
-            this.label6.Location = new System.Drawing.Point(450, 308);
+            this.label6.Location = new System.Drawing.Point(450, 462);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(71, 25);
             this.label6.TabIndex = 32;
             this.label6.Text = "Juros:";
+            this.label6.Visible = false;
             // 
             // TxtTributos
             // 
@@ -291,13 +293,14 @@
             this.TxtTributos.BackColor = System.Drawing.Color.White;
             this.TxtTributos.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtTributos.ForeColor = System.Drawing.Color.Blue;
-            this.TxtTributos.Location = new System.Drawing.Point(457, 204);
+            this.TxtTributos.Location = new System.Drawing.Point(455, 479);
             this.TxtTributos.Margin = new System.Windows.Forms.Padding(4);
             this.TxtTributos.Name = "TxtTributos";
             this.TxtTributos.Size = new System.Drawing.Size(328, 62);
             this.TxtTributos.TabIndex = 27;
             this.TxtTributos.Text = "0,00";
             this.TxtTributos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TxtTributos.Visible = false;
             // 
             // label10
             // 
@@ -305,18 +308,19 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Blue;
-            this.label10.Location = new System.Drawing.Point(452, 175);
+            this.label10.Location = new System.Drawing.Point(450, 462);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(96, 25);
             this.label10.TabIndex = 29;
             this.label10.Text = "Tributos:";
+            this.label10.Visible = false;
             // 
             // frmFinlizarVendas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(804, 636);
+            this.ClientSize = new System.Drawing.Size(804, 456);
             this.ControlBox = false;
             this.Controls.Add(this.TxtJuros);
             this.Controls.Add(this.label6);

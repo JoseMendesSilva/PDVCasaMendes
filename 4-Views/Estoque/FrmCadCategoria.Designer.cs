@@ -214,6 +214,7 @@
             this.Name = "FrmCadCategoria";
             this.Text = "FrmCadCategoria";
             this.Load += new System.EventHandler(this.FrmCadCategoria_Load);
+            this.Shown += new System.EventHandler(this.FrmCadCategoria_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.DgvCategorias)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

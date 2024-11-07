@@ -9,7 +9,7 @@ namespace CasaMendes
 
         #region Variáveis
 
-        public Cliente oCliente;
+        //public Cliente oCliente;
         readonly BindingSource BsCliente;
 
         #endregion

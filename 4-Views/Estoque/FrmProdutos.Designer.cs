@@ -219,6 +219,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Produtos";
             this.Load += new System.EventHandler(this.FrmProdutos_Load);
+            this.Shown += new System.EventHandler(this.FrmProdutos_Shown);
             this.GbBusca.ResumeLayout(false);
             this.GbBusca.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvProdutos)).EndInit();

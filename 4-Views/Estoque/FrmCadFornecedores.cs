@@ -10,11 +10,8 @@ namespace CasaMendes
 
         #region Variáveis
 
-        public Fornecedore oFornecedor;
-        private readonly BindingSource BsFornecedor;
-
-        //int LinhaIndex;
-        //bool editar;
+        //public Fornecedore oFornecedor;
+        private BindingSource BsFornecedor;
 
         #endregion
 
@@ -29,9 +26,6 @@ namespace CasaMendes
         public FrmCadFornecedores()
         {
             InitializeComponent();
-            oFornecedor = new Fornecedore();
-            BsFornecedor = new BindingSource { oFornecedor };
-            this.Text = clsGlobal.MontarTitulo("Cadastrar fornecedores");
         }
 
         #endregion
@@ -40,8 +34,6 @@ namespace CasaMendes
 
         private void VincularBindingSource()
         {
-            //DtpDataDoCadastro.Value = DateTime.Now;
-
             TxtCodigoDoFornecedor.DataBindings.Add(new Binding("Text", BsFornecedor, "FornecedorId"));
             TxtRazaoSocial.DataBindings.Add(new Binding("Text", BsFornecedor, "RazaoSocial"));
             TxtEndereco.DataBindings.Add(new Binding("Text", BsFornecedor, "Endereco"));
@@ -59,7 +51,7 @@ namespace CasaMendes
 
         private void AtribuirValores()
         {
-            CbEstado.Text = oFornecedor.Estado;
+            //CbEstado.Text = oFornecedor.Estado;
         }
 
         #endregion
@@ -68,9 +60,9 @@ namespace CasaMendes
 
         private void BtnGravar_Click(object sender, EventArgs e)
         {
-            if (oFornecedor.Cnpj != null) oFornecedor.Cnpj = oFornecedor.Cnpj.Replace(",", "").Replace("-", "").Replace("-", "").Replace("/", "");
-            if (oFornecedor.InscricaoEstadual != null) oFornecedor.InscricaoEstadual = oFornecedor.InscricaoEstadual.Replace(",", "");
-            if (oFornecedor.Estado != null) this.oFornecedor.Estado = CbEstado.Text;
+            //if (oFornecedor.Cnpj != null) oFornecedor.Cnpj = oFornecedor.Cnpj.Replace(",", "").Replace("-", "").Replace("-", "").Replace("/", "");
+            //if (oFornecedor.InscricaoEstadual != null) oFornecedor.InscricaoEstadual = oFornecedor.InscricaoEstadual.Replace(",", "");
+            //if (oFornecedor.Estado != null) this.oFornecedor.Estado = CbEstado.Text;
             this.Close();
         }
 
@@ -131,7 +123,6 @@ namespace CasaMendes
         {
             if ((e.KeyCode == Keys.Enter) || (this.TxtBairro.Text.Length >= 29))
             {
-                //Classes.cl_Fornecedores.CarregarComboBox(this.cbEstado);
                 CbEstado.SelectedIndex = 0;
                 this.CbEstado.Enabled = true;
                 this.CbEstado.Focus();
@@ -218,21 +209,23 @@ namespace CasaMendes
             }
         }
 
-        public static implicit operator FrmCadFornecedores(FrmCadClientes v)
-        {
-            throw new NotImplementedException();
-        }
-
         #endregion
 
         private void FrmCadastrarFornecedores_Load(object sender, EventArgs e)
         {
+            this.Refresh();
+        }
+
+        private void FrmCadFornecedores_Shown(object sender, EventArgs e)
+        {
+            oFornecedor = new Fornecedore();
+            BsFornecedor = new BindingSource { oFornecedor };
+            this.Text = clsGlobal.MontarTitulo("Cadastrar fornecedores");
+
             clsGlobal.CarregarEstados(this.CbEstado);
             BsFornecedor.DataSource = oFornecedor;
             VincularBindingSource();
             AtribuirValores();
         }
-
-        /*frmBuscarProduto*/
     }
 }

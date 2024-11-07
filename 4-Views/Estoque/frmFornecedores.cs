@@ -9,8 +9,6 @@ namespace CasaMendes
 
         #region Variáveis
 
-        //BindingSource BsFornecedor;
-        //tFornecedore oFornecedor;
         int LinhaIndex;
         bool editar;
         public string StatusLabel;
@@ -21,8 +19,6 @@ namespace CasaMendes
         public FrmFornecedores()
         {
             InitializeComponent();
-            LinhaIndex = -1;
-            editar = false;
         }
 
         #region Métodos auxiliares
@@ -53,53 +49,52 @@ namespace CasaMendes
 
         private void Carregar()
         {
-            using (Fornecedore oFornecedor = new Fornecedore())
-            {
-                dgv.DataSource = oFornecedor.Todos();
-                StatusLabel = (dgv.RowCount - 1).ToString();
-            }
+            //Fornecedore oFornecedor = new Fornecedore();
+            
+            //    dgv.DataSource = await oFornecedor.Todos();
+            //    StatusLabel = (dgv.RowCount - 1).ToString();
+            
         }
 
-        private void Gravar()
+        private async void Gravar()
         {
 
-            cadFornecedor = new FrmCadFornecedores();
+            //cadFornecedor = new FrmCadFornecedores();
 
-            if (editar.Equals(true) && LinhaIndex != -1)
-            {
-                cadFornecedor.oFornecedor = (Fornecedore)dgv.Rows[LinhaIndex].DataBoundItem;
-            }
+            //if (editar.Equals(true) && LinhaIndex != -1)
+            //{
+            //    cadFornecedor.oFornecedor = (Fornecedore)dgv.Rows[LinhaIndex].DataBoundItem;
+            //}
 
-            cadFornecedor.ShowDialog();
-            //Verificando se o nome já existe.
-            if (cadFornecedor.oFornecedor.FornecedorId == 0)
-            {
-                var forn = new Fornecedore
-                {
-                    RazaoSocial = cadFornecedor.oFornecedor.RazaoSocial
-                };
-                // verifica se fornecedor existe
-                List<Fornecedore> fornecedor = forn.Busca();
-                if (fornecedor.Count > 0)
-                {
-                    MessageBox.Show("O cadastro já existe!");
-                    return;
-                }
-            }
+            //cadFornecedor.ShowDialog();
+            ////Verificando se o nome já existe.
+            //if (cadFornecedor.oFornecedor.FornecedorId == 0)
+            //{
+            //    //var fornecedor = await new Fornecedore
+            //    //{
+            //    //    RazaoSocial = cadFornecedor.oFornecedor.RazaoSocial
+            //    //}.BuscaBase();
 
-            if (cadFornecedor.DialogResult.Equals(DialogResult.Cancel)) return;
-            cadFornecedor.oFornecedor.Salvar();
-            cadFornecedor.Dispose();
-            Carregar();
+            //    //if (fornecedor.FornecedorId > 0)
+            //    //{
+            //    //    MessageBox.Show($"A RazãoSocial '{fornecedor.RazaoSocial}' com o CNPJ '{fornecedor.Cnpj}' já existe em nosso cadastro!");
+            //    //    return;
+            //    //}
+            //}
 
-            if (editar)
-            {
-                MessageBox.Show("O registro foi atualizado com sucesso!");
-            }
-            else
-            {
-                MessageBox.Show("Cadastro realizado com sucesso!");
-            }
+           // if (cadFornecedor.DialogResult.Equals(DialogResult.Cancel)) return;
+           //var rowsAffected = await cadFornecedor.oFornecedor.Salvar();
+           // cadFornecedor.Dispose();
+           // Carregar();
+
+           // if (editar)
+           // {
+           //     MessageBox.Show("O registro foi atualizado com sucesso!");
+           // }
+           // else
+           // {
+           //     MessageBox.Show("Cadastro realizado com sucesso!");
+           // }
             Botoes(true);
         }
 
@@ -117,15 +112,17 @@ namespace CasaMendes
                     var oFornecedor = new Fornecedore();
                 if (editar.Equals(true) && LinhaIndex != -1)
                 {
-                    oFornecedor = (Fornecedore)dgv.Rows[LinhaIndex].DataBoundItem;
-                    DialogResult dresult = MensagemBox.Mostrar($"Esta ação é definitiva, você deseja excluir o produto '{oFornecedor.RazaoSocial}'", "Sim", "Não");
-                    if (dresult == DialogResult.Yes)
-                    {
-                    oFornecedor.Excluir();
-                    oFornecedor.Dispose();
-                    MessageBox.Show($"O Fornecedor ' {oFornecedor.RazaoSocial} ' foi excluido com sucesso.");
-                    Carregar();
-                    }
+                    //oFornecedor = (Fornecedore)dgv.Rows[LinhaIndex].DataBoundItem;
+                  
+                    //    DialogResult dresult = MensagemBox.Mostrar($"Esta ação é definitiva, você deseja excluir o produto '{oFornecedor.RazaoSocial}'", "Sim", "Não");
+                    //    if (dresult == DialogResult.Yes)
+                    //    {
+                    //        var rowsAffected = await oFornecedor.Excluir();
+                    //        oFornecedor.Dispose();
+                    //        MessageBox.Show($"O Fornecedor ' {oFornecedor.RazaoSocial} ' foi excluido com sucesso.");
+                    //        Carregar();
+                    //    }
+                   
                 }
                 else
                 {
@@ -147,25 +144,9 @@ namespace CasaMendes
 
         private void FrmFornecedores_Load(object sender, EventArgs e)
         {
-            var oProcessando = new FrmProcessando();
-            oProcessando.Show();
-            oProcessando.TopMost = true;
-            oProcessando.Processo(15,"Lista de fornecedores","Carregando.");
-            using (Fornecedore oFornecedor = new Fornecedore())
-            {
-                oProcessando.Processo(35, "Lista de fornecedores", "Carregando..");
-                dgv.DataSource = oFornecedor.Todos();
-                oProcessando.Processo(60, "Lista de fornecedores", "Carregando...");
-                StatusLabel = (dgv.RowCount - 1).ToString();
-                oProcessando.Processo(75, "Lista de fornecedores", "Carregando.");
-
-                RedimencionarGrade();
-                oProcessando.Processo(100, "Lista de fornecedores", "Carregando..");
-                oProcessando.Close();
-                oProcessando.Dispose();
-                if(dgv.Rows.Count > 0) this.btnEditar.Enabled = true;
-                else this.btnEditar.Enabled = false;
-            }
+            this.Refresh();
+            LinhaIndex = -1;
+            editar = false;
         }
 
         private void BtnFechar_Click(object sender, EventArgs e)
@@ -206,6 +187,33 @@ namespace CasaMendes
         {
             if (editar && dgv.Rows.Count > 0) this.btnEditar.Enabled = true;
             else this.btnEditar.Enabled = false;
+        }
+
+        private async void FrmFornecedores_Shown(object sender, EventArgs e)
+        {
+            try
+            {
+                ////var oProcessando = new FrmProcessando();
+                ////oProcessando.Show();
+                ////oProcessando.TopMost = true;
+                ////oProcessando.Processo(15, "Lista de fornecedores", "Carregando.");
+                //var oFornecedor = new Fornecedore();
+                
+                //    //oProcessando.Processo(35, "Lista de fornecedores", "Carregando..");
+                //    dgv.DataSource = await oFornecedor.Todos();
+                //    //oProcessando.Processo(60, "Lista de fornecedores", "Carregando...");
+                //    StatusLabel = (dgv.RowCount - 1).ToString();
+                //    //oProcessando.Processo(75, "Lista de fornecedores", "Carregando.");
+
+                //    RedimencionarGrade();
+                //    //oProcessando.Processo(100, "Lista de fornecedores", "Carregando..");
+                //    //oProcessando.Close();
+                //    //oProcessando.Dispose();
+                //    if (dgv.Rows.Count > 0) this.btnEditar.Enabled = true;
+                //    else this.btnEditar.Enabled = false;
+                
+            }
+            catch { }
         }
     }
 }

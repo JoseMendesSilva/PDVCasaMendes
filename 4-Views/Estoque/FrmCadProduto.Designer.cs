@@ -418,6 +418,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmCadProduto";
             this.Load += new System.EventHandler(this.FrmCadProduto_Load);
+            this.Shown += new System.EventHandler(this.FrmCadProduto_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.PicFoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

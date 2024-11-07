@@ -267,6 +267,7 @@ namespace CasaMendes
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Estoque";
             this.Load += new System.EventHandler(this.FrmAtualizarQuantValorEstoque_Load);
+            this.Shown += new System.EventHandler(this.FrmAtualizarQuantValorEstoque_Shown);
             this.gbBusca.ResumeLayout(false);
             this.gbBusca.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvProdutos)).EndInit();

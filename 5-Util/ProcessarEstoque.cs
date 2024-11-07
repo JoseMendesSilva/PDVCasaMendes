@@ -43,27 +43,27 @@ namespace CasaMendes
         {
             try
             {
-                Produto oProduto = new Produto();
+                //Produto oProduto = new Produto();
 
-                for (int i = 0; i < DgvProdutos.Rows.Count - 1; i++)
-                {
-                    if (DgvProdutos.Rows[i].Cells[1].Value.ToString() != null)
-                    {
-                        oProduto.CodigoDeBarras = DgvProdutos.Rows[i].Cells[1].Value.ToString();
-                        oProduto.FornecedorId = 1;
-                        oProduto.SubCategoriaId = 1;
-                        oProduto.Nome = DgvProdutos.Rows[i].Cells[3].Value.ToString();
-                        oProduto.DataDeValidade = DateTime.Parse(DgvProdutos.Rows[i].Cells[4].Value.ToString());
-                        oProduto.Quantidade = clsGlobal.DeStringParaInt(DgvProdutos.Rows[i].Cells[6].Value.ToString());
-                        oProduto.ValorCompra = clsGlobal.DeStringParaDecimal(DgvProdutos.Rows[i].Cells[5].Value.ToString());
-                        oProduto.PrecoUnitario = clsGlobal.DeStringParaDecimal(DgvProdutos.Rows[i].Cells[8].Value.ToString());
-                        oProduto.PrecoDeVenda = clsGlobal.DeStringParaDecimal(DgvProdutos.Rows[i].Cells[9].Value.ToString());
-                        oProduto.Foto = "";
-                        oProduto.Salvar();
-                    }
-                }
+                //for (int i = 0; i < DgvProdutos.Rows.Count - 1; i++)
+                //{
+                //    if (DgvProdutos.Rows[i].Cells[1].Value.ToString() != null)
+                //    {
+                //        oProduto.CodigoDeBarras = DgvProdutos.Rows[i].Cells[1].Value.ToString();
+                //        oProduto.FornecedorId = 1;
+                //        oProduto.SubCategoriaId = 1;
+                //        oProduto.Nome = DgvProdutos.Rows[i].Cells[3].Value.ToString();
+                //        oProduto.DataDeValidade = DateTime.Parse(DgvProdutos.Rows[i].Cells[4].Value.ToString());
+                //        oProduto.Quantidade = clsGlobal.DeStringParaInt(DgvProdutos.Rows[i].Cells[6].Value.ToString());
+                //        oProduto.ValorCompra = clsGlobal.DeStringParaDecimal(DgvProdutos.Rows[i].Cells[5].Value.ToString());
+                //        oProduto.PrecoUnitario = clsGlobal.DeStringParaDecimal(DgvProdutos.Rows[i].Cells[8].Value.ToString());
+                //        oProduto.PrecoDeVenda = clsGlobal.DeStringParaDecimal(DgvProdutos.Rows[i].Cells[9].Value.ToString());
+                //        //oProduto.Foto = "";
+                //        //oProduto.Salvar();
+                //    }
+                //}
 
-                MessageBox.Show("Processo realisado com sucesso.");
+                //MessageBox.Show("Processo realisado com sucesso.");
             }
             catch (Exception ex)
             {
@@ -82,15 +82,15 @@ namespace CasaMendes
             DialogResult dresult = MensagemBox.Mostrar("Você quer mesmo RECRIAR a tabela produtos? Esta ação não poderá ser desfeita. Todos os dados serão substiyuidos.".ToUpper(), "Sim", "Não");
             if (dresult == DialogResult.Yes)
             {
-                var p = new Produto();
-                p.CriarTabela();
+                //var p = new Produto();
+                //p.CriarTabela();
                 Gravar();
             }
              dresult = MensagemBox.Mostrar("Você quer mesmo RECRIAR a tabela estoques? Esta ação não poderá ser desfeita. Todos os dados serão substiyuidos.".ToUpper(), "Sim", "Não");
             if (dresult == DialogResult.Yes)
             {
-                var et = new Estoque();
-                et.CriarTabela();
+                //var et = new Estoque();
+                //et.CriarTabela();
             }
         }
     }

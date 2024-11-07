@@ -144,6 +144,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Fornecedores";
             this.Load += new System.EventHandler(this.FrmFornecedores_Load);
+            this.Shown += new System.EventHandler(this.FrmFornecedores_Shown);
             this.gbBusca.ResumeLayout(false);
             this.gbBusca.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();

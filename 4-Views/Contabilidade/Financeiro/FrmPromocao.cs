@@ -19,7 +19,7 @@ namespace CasaMendes
             InitializeComponent();
         }
 
-        [STAThreadAttribute()]
+        //[STAThreadAttribute()]
         private void FrmPromocao_Load(object sender, EventArgs e)
         {
             try
@@ -42,7 +42,7 @@ namespace CasaMendes
 
 
                 //oP = null;
-                GC.Collect();
+                //GC.Collect();
             }
             catch
             {

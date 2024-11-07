@@ -78,13 +78,26 @@
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dapper.2.1.35\lib\net461\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="DocumentFormat.OpenXml, Version=2.9.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
       <HintPath>packages\DocumentFormat.OpenXml.2.9.1\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=8.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.8.0.1\lib\net462\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=8.0.0.2, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System">
       <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -94,9 +107,16 @@
       <HintPath>packages\System.Drawing.Common.7.0.0\lib\net462\System.Drawing.Common.dll</HintPath>
     </Reference>
     <Reference Include="System.Messaging" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Speech" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
@@ -154,13 +174,25 @@
     <EmbeddedResource Include="4-Views\Estoque\FrmPlateleiraEstoque .resx">
       <DependentUpon>FrmPlateleiraEstoque .cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="4-Views\Vendas\Caixa\FrmAbrirCaixa.resx">
+      <DependentUpon>FrmAbrirCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4-Views\Vendas\Caixa\FrmSangia.resx">
+      <DependentUpon>FrmSangia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4-Views\Vendas\Caixa\FrmSuprimento.resx">
+      <DependentUpon>FrmSuprimento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4-Views\Vendas\Caixa\FrmPagamento.resx">
+      <DependentUpon>FrmPagamento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="5-Util\ImprimerListaDeCompra .resx">
       <DependentUpon>ImprimerListaDeCompra .cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="4-Views\Empresa\FrmConfiguracoes.resx">
+      <DependentUpon>FrmConfiguracoes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmCasaMendes.resx">
+    <EmbeddedResource Include="4-Views\Empresa\FrmCasaMendes.resx">
       <DependentUpon>FrmCasaMendes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="4-Views\Estoque\FrmProdutos.resx">
@@ -187,8 +219,8 @@
     <EmbeddedResource Include="4-Views\Estoque\FrmCadFornecedores.resx">
       <DependentUpon>FrmCadFornecedores.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="4-Views\Vendas\FrmReceberPendura.resx">
-      <DependentUpon>FrmReceberPendura.cs</DependentUpon>
+    <EmbeddedResource Include="4-Views\Vendas\FrmInventario.resx">
+      <DependentUpon>FrmInventario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="4-Views\Vendas\frmClientes.resx">
       <DependentUpon>frmClientes.cs</DependentUpon>
@@ -214,7 +246,7 @@
     <EmbeddedResource Include="5-Util\MyPrinters.resx">
       <DependentUpon>MyPrinters.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InicioResumen.resx">
+    <EmbeddedResource Include="4-Views\Empresa\InicioResumen.resx">
       <DependentUpon>InicioResumen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -231,6 +263,7 @@
     <Folder Include=".vs\GCProSharp\v15\" />
     <Folder Include=".vs\GCPro\DesignTimeBuild\" />
     <Folder Include=".vs\GCPro\v15\Server\sqlite3\" />
+    <Folder Include="Servicos\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -245,17 +278,14 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="1-DataBase\CriarTabelasDoSistema.cs" />
-    <Compile Include="2-Models\Estoque\Categoria.cs" />
-    <Compile Include="2-Models\Vendas\FrenteDeCaixa.cs" />
-    <Compile Include="2-Models\Estoque\Estoque.cs" />
-    <Compile Include="2-Models\Vendas\Cliente.cs" />
-    <Compile Include="2-Models\Contabilidade\Financeiro\TabelaDeMargen.cs" />
-    <Compile Include="2-Models\RH\Funcionario.cs" />
-    <Compile Include="2-Models\Vendas\Inadimplente.cs" />
-    <Compile Include="2-Models\Vendas\PreVenda.cs" />
-    <Compile Include="2-Models\Estoque\SubCategoria.cs" />
-    <Compile Include="2-Models\Estoque\Fornecedore.cs" />
+    <Compile Include="1-DataBase\ORM\Conexao.cs" />
+    <Compile Include="1-DataBase\ORM\Dados.cs" />
+    <Compile Include="1-DataBase\ORM\DatabaseService.cs" />
+    <Compile Include="1-DataBase\ORM\Interfaces\IDados.cs" />
+    <Compile Include="2-Models\CaixaResumo.cs" />
+    <Compile Include="2-Models\OCaixa.cs" />
+    <Compile Include="2-Models\ItensCarrinho.cs" />
+    <Compile Include="2-Models\MigracaoPreVendas.cs" />
     <Compile Include="3-JMS Comp\AttributesDemoControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -325,19 +355,46 @@
     <Compile Include="4-Views\Estoque\FrmPlateleiraEstoque .Designer.cs">
       <DependentUpon>FrmPlateleiraEstoque .cs</DependentUpon>
     </Compile>
+    <Compile Include="4-Views\Vendas\Caixa\FrmAbrirCaixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4-Views\Vendas\Caixa\FrmAbrirCaixa.Designer.cs">
+      <DependentUpon>FrmAbrirCaixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="4-Views\Vendas\Caixa\FrmSangia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4-Views\Vendas\Caixa\FrmSangia.Designer.cs">
+      <DependentUpon>FrmSangia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="4-Views\Vendas\Caixa\FrmSuprimento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4-Views\Vendas\Caixa\FrmSuprimento.Designer.cs">
+      <DependentUpon>FrmSuprimento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="4-Views\Vendas\Caixa\FrmPagamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4-Views\Vendas\Caixa\FrmPagamento.Designer.cs">
+      <DependentUpon>FrmPagamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="5-Util\ImprimerListaDeCompra .cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="5-Util\ImprimirResumoDeVendas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="4-Views\Empresa\FrmConfiguracoes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="4-Views\Empresa\FrmConfiguracoes.Designer.cs">
+      <DependentUpon>FrmConfiguracoes.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmCasaMendes.cs">
+    <Compile Include="4-Views\Empresa\FrmCasaMendes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmCasaMendes.Designer.cs">
+    <Compile Include="4-Views\Empresa\FrmCasaMendes.Designer.cs">
       <DependentUpon>FrmCasaMendes.cs</DependentUpon>
     </Compile>
     <Compile Include="4-Views\Contabilidade\Financeiro\FrmTabelaDeMargen.cs">
@@ -346,16 +403,13 @@
     <Compile Include="4-Views\Contabilidade\Financeiro\FrmTabelaDeMargen.Designer.cs">
       <DependentUpon>FrmTabelaDeMargen.cs</DependentUpon>
     </Compile>
-    <Compile Include="1-DataBase\ORM\Base.cs" />
-    <Compile Include="1-DataBase\Interfaces\IBase.cs" />
-    <Compile Include="2-Models\Estoque\Produto.cs" />
+    <Compile Include="1-DataBase\ORM\Interfaces\IBase.cs" />
     <Compile Include="4-Views\Estoque\FrmCadProduto.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="4-Views\Estoque\FrmCadProduto.Designer.cs">
       <DependentUpon>FrmCadProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="1-DataBase\ORM\OpcoesBase.cs" />
     <Compile Include="3-JMS Comp\Numero.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -395,11 +449,11 @@
     <Compile Include="4-Views\Estoque\FrmCadFornecedores.Designer.cs">
       <DependentUpon>FrmCadFornecedores.cs</DependentUpon>
     </Compile>
-    <Compile Include="4-Views\Vendas\FrmReceberPendura.cs">
+    <Compile Include="4-Views\Vendas\FrmInventario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="4-Views\Vendas\FrmReceberPendura.Designer.cs">
-      <DependentUpon>FrmReceberPendura.cs</DependentUpon>
+    <Compile Include="4-Views\Vendas\FrmInventario.Designer.cs">
+      <DependentUpon>FrmInventario.cs</DependentUpon>
     </Compile>
     <Compile Include="4-Views\Vendas\frmClientes.cs">
       <SubType>Form</SubType>
@@ -458,10 +512,10 @@
     <Compile Include="5-Util\MyPrinters.Designer.cs">
       <DependentUpon>MyPrinters.cs</DependentUpon>
     </Compile>
-    <Compile Include="InicioResumen.cs">
+    <Compile Include="4-Views\Empresa\InicioResumen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InicioResumen.Designer.cs">
+    <Compile Include="4-Views\Empresa\InicioResumen.Designer.cs">
       <DependentUpon>InicioResumen.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -488,6 +542,16 @@
     <Compile Include="5-Util\ProcessarEstoque.Designer.cs">
       <DependentUpon>ProcessarEstoque.cs</DependentUpon>
     </Compile>
+    <Compile Include="Repositorios\Interfaces\IRepositorioAbrirCaixa.cs" />
+    <Compile Include="Repositorios\Interfaces\IRepositorioBase.cs" />
+    <Compile Include="Repositorios\Interfaces\IRepositorioCaixa.cs" />
+    <Compile Include="Repositorios\Interfaces\IRepositorioFuncionario.cs" />
+    <Compile Include="Repositorios\Interfaces\IRepositorioPreVenda.cs" />
+    <Compile Include="Repositorios\RepositorioAbrirCaixa.cs" />
+    <Compile Include="Repositorios\RepositorioCaixa.cs" />
+    <Compile Include="Repositorios\RepositorioFuncionario.cs" />
+    <Compile Include="Repositorios\RepositorioPreVenda.cs" />
+    <Compile Include="Repositorios\Repository.cs" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="stdole">

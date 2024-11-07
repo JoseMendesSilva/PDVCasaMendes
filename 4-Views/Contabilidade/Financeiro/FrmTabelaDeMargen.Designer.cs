@@ -73,7 +73,7 @@
             this.TxtBuscar.Name = "TxtBuscar";
             this.TxtBuscar.Size = new System.Drawing.Size(250, 21);
             this.TxtBuscar.TabIndex = 49;
-            this.TxtBuscar.TextChanged += new System.EventHandler(this.TxtBuscar_TextChanged);
+            //this.TxtBuscar.TextChanged += new System.EventHandler(this.TxtBuscar_TextChanged);
             // 
             // label5
             // 
@@ -95,7 +95,7 @@
             this.BtnExcluir.TabIndex = 9;
             this.BtnExcluir.Text = "Excluir";
             this.BtnExcluir.UseVisualStyleBackColor = true;
-            this.BtnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
+            //this.BtnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
             // 
             // BtnRetornar
             // 
@@ -107,7 +107,7 @@
             this.BtnRetornar.TabIndex = 10;
             this.BtnRetornar.Text = "Retornar";
             this.BtnRetornar.UseVisualStyleBackColor = true;
-            this.BtnRetornar.Click += new System.EventHandler(this.BtnRetornar_Click);
+            //this.BtnRetornar.Click += new System.EventHandler(this.BtnRetornar_Click);
             // 
             // BtnGravar
             // 
@@ -119,7 +119,7 @@
             this.BtnGravar.TabIndex = 7;
             this.BtnGravar.Text = "Gravar";
             this.BtnGravar.UseVisualStyleBackColor = true;
-            this.BtnGravar.Click += new System.EventHandler(this.BtnGravar_Click);
+            //this.BtnGravar.Click += new System.EventHandler(this.BtnGravar_Click);
             // 
             // BtnNovo
             // 
@@ -131,7 +131,7 @@
             this.BtnNovo.TabIndex = 8;
             this.BtnNovo.Text = "Novo";
             this.BtnNovo.UseVisualStyleBackColor = true;
-            this.BtnNovo.Click += new System.EventHandler(this.BtnNovo_Click);
+            //this.BtnNovo.Click += new System.EventHandler(this.BtnNovo_Click);
             // 
             // TxtNumeroDeItensNaLoja
             // 
@@ -143,7 +143,7 @@
             this.TxtNumeroDeItensNaLoja.Size = new System.Drawing.Size(137, 21);
             this.TxtNumeroDeItensNaLoja.TabIndex = 0;
             this.TxtNumeroDeItensNaLoja.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TxtNumeroDeItensNaLoja.TextChanged += new System.EventHandler(this.TxtNumeroDeItensNaLoja_TextChanged);
+            //this.TxtNumeroDeItensNaLoja.TextChanged += new System.EventHandler(this.TxtNumeroDeItensNaLoja_TextChanged);
             // 
             // TxtSubCategoriaId
             // 
@@ -185,7 +185,7 @@
             this.DgvTabelaDeMargem.Name = "DgvTabelaDeMargem";
             this.DgvTabelaDeMargem.Size = new System.Drawing.Size(789, 313);
             this.DgvTabelaDeMargem.TabIndex = 33;
-            this.DgvTabelaDeMargem.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvTabelaDeMargem_CellEnter);
+            //this.DgvTabelaDeMargem.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvTabelaDeMargem_CellEnter);
             // 
             // TxtTabelaDeMargenId
             // 
@@ -207,7 +207,7 @@
             this.TxtPorcentagemPesoPorItem.Size = new System.Drawing.Size(137, 21);
             this.TxtPorcentagemPesoPorItem.TabIndex = 3;
             this.TxtPorcentagemPesoPorItem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TxtPorcentagemPesoPorItem.TextChanged += new System.EventHandler(this.TxtPorcentagemPesoPorItem_TextChanged);
+            //this.TxtPorcentagemPesoPorItem.TextChanged += new System.EventHandler(this.TxtPorcentagemPesoPorItem_TextChanged);
             // 
             // label1
             // 
@@ -230,7 +230,7 @@
             this.TxtDespesa.Size = new System.Drawing.Size(137, 21);
             this.TxtDespesa.TabIndex = 4;
             this.TxtDespesa.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TxtDespesa.TextChanged += new System.EventHandler(this.TxtDespesa_TextChanged);
+            //this.TxtDespesa.TextChanged += new System.EventHandler(this.TxtDespesa_TextChanged);
             // 
             // label3
             // 
@@ -253,7 +253,7 @@
             this.TxtMargemDeLucro.Size = new System.Drawing.Size(137, 21);
             this.TxtMargemDeLucro.TabIndex = 6;
             this.TxtMargemDeLucro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TxtMargemDeLucro.TextChanged += new System.EventHandler(this.TxtMargemDeLucro_TextChanged);
+            //this.TxtMargemDeLucro.TextChanged += new System.EventHandler(this.TxtMargemDeLucro_TextChanged);
             // 
             // label6
             // 
@@ -276,7 +276,7 @@
             this.TxtEncargo.Size = new System.Drawing.Size(137, 21);
             this.TxtEncargo.TabIndex = 5;
             this.TxtEncargo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TxtEncargo.TextChanged += new System.EventHandler(this.TxtEncargo_TextChanged);
+            //this.TxtEncargo.TextChanged += new System.EventHandler(this.TxtEncargo_TextChanged);
             // 
             // label7
             // 
@@ -299,7 +299,7 @@
             this.TxtCusto.Size = new System.Drawing.Size(137, 21);
             this.TxtCusto.TabIndex = 2;
             this.TxtCusto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TxtCusto.TextChanged += new System.EventHandler(this.TxtCusto_TextChanged);
+            //this.TxtCusto.TextChanged += new System.EventHandler(this.TxtCusto_TextChanged);
             // 
             // label8
             // 
@@ -320,8 +320,7 @@
             this.DgvSubcategorias.Name = "DgvSubcategorias";
             this.DgvSubcategorias.Size = new System.Drawing.Size(349, 180);
             this.DgvSubcategorias.TabIndex = 60;
-            //this.DgvSubcategorias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvSubcategorias_CellContentClick);
-            this.DgvSubcategorias.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvSubcategorias_CellEnter);
+            //this.DgvSubcategorias.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvSubcategorias_CellEnter);
             // 
             // label9
             // 
@@ -343,7 +342,7 @@
             this.TxtValorDeBase.Size = new System.Drawing.Size(137, 21);
             this.TxtValorDeBase.TabIndex = 1;
             this.TxtValorDeBase.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TxtValorDeBase.TextChanged += new System.EventHandler(this.TxtValorDeBase_TextChanged);
+            //this.TxtValorDeBase.TextChanged += new System.EventHandler(this.TxtValorDeBase_TextChanged);
             // 
             // label10
             // 
@@ -463,7 +462,8 @@
             this.MinimizeBox = false;
             this.Name = "FrmTabelaDeMargen";
             this.Text = "FrmTabelaDeMargen";
-            this.Load += new System.EventHandler(this.FrmTabelaDeMargen_Load);
+            //this.Load += new System.EventHandler(this.FrmTabelaDeMargen_Load);
+            //this.Shown += new System.EventHandler(this.FrmTabelaDeMargen_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.DgvTabelaDeMargem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvSubcategorias)).EndInit();
             this.ResumeLayout(false);

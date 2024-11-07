@@ -19,7 +19,7 @@ namespace CasaMendes
         #region variaveis
 
         BindingSource oBsCategoria;
-        Categoria oCategoria;
+        //Categoria oCategoria;
         int LinhaIndex;
         bool loading;
         private FrmProcessando oProcessamento;
@@ -34,8 +34,8 @@ namespace CasaMendes
 
         private void LerDados()
         {
-            oCategoria.CategoriaId = clsGlobal.DeStringParaInt(TxtCategoriaId.Text);
-            oCategoria.Nome = TxtNome.Text;
+            oCategoria.CategoriaID = clsGlobal.DeStringParaInt(TxtCategoriaId.Text);
+            oCategoria.Descricao = TxtNome.Text;
             oCategoria.Descricao = TxtDescricao.Text;
         }
 
@@ -56,8 +56,8 @@ namespace CasaMendes
         {
             if (loading || DgvCategorias.Rows.Count < 1) return;
             oCategoria = (Categoria)DgvCategorias.Rows[LinhaIndex].DataBoundItem;
-            TxtCategoriaId.Text = oCategoria.CategoriaId.ToString();
-            TxtNome.Text= oCategoria.Nome;
+            TxtCategoriaId.Text = oCategoria.CategoriaID.ToString();
+            TxtNome.Text= oCategoria.Descricao;
             TxtDescricao.Text= oCategoria.Descricao;
         }
 
@@ -67,8 +67,8 @@ namespace CasaMendes
 
         private void Novo()
         {
-            oCategoria.CategoriaId = 0;
-            oCategoria.Nome = "";
+            oCategoria.CategoriaID = 0;
+            oCategoria.Descricao = "";
             oCategoria.Descricao = "";
 
             BtnGravar.Enabled = true;
@@ -98,8 +98,8 @@ namespace CasaMendes
             BtnGravar.Enabled = true;
             BtnNovo.Enabled = true;
             BtnRetornar.Enabled = true;
-            oCategoria.Salvar();
-            DgvCategorias.DataSource = oCategoria.Todos();
+           //var rowsAffected = await oCategoria.Salvar();
+           // DgvCategorias.DataSource = await oCategoria.Todos();
             Carregar();
             MessageBox.Show("Cadastro realizado com sucesso!");
             DgvCategorias.Focus();
@@ -112,13 +112,13 @@ namespace CasaMendes
             {
                 if (LinhaIndex != -1)
                 {
-                    DialogResult dresult = MensagemBox.Mostrar($"Esta ação é definitiva, você deseja excluir o produto '{oCategoria.Nome}'", "Sim", "Não");
+                    DialogResult dresult = MensagemBox.Mostrar($"Esta ação é definitiva, você deseja excluir o produto '{oCategoria.Descricao}'", "Sim", "Não");
                     if (dresult == DialogResult.Yes)
                     {
                         if (TxtCategoriaId.Text == "0" || TxtCategoriaId.Text == string.Empty) { return; }
-                        oCategoria.CategoriaId = int.Parse(TxtCategoriaId.Text);
-                        oCategoria.Excluir();
-                        msg = $"A categoria ' {oCategoria.Nome} ' foi excluido com sucesso.";
+                        oCategoria.CategoriaID = int.Parse(TxtCategoriaId.Text);
+                      //var rowsAffected =  oCategoria.Excluir();
+                        msg = $"A categoria ' {oCategoria.Descricao} ' foi excluido com sucesso.";
                         Carregar();
                     }
                 }
@@ -138,39 +138,6 @@ namespace CasaMendes
 
         private void FrmCadCategoria_Load(object sender, EventArgs e)
         {
-            try
-            {
-                oProcessamento = new FrmProcessando();
-                oProcessamento.Show();
-                oProcessamento.TopMost = true;
-
-                oCategoria = new Categoria();
-                if (oBsCategoria != null) oBsCategoria = null;
-                oBsCategoria = new BindingSource { oCategoria };
-
-                oProcessamento.Processo(16, "Formulário.", "iniciando a carga do formulário.");
-                loading = true;
-
-                oProcessamento.Processo(32, "Formulário.", "iniciando a carga do formulário.");
-
-                oProcessamento.Processo(48, "Formulário.", "carregondo dados.");
-                DgvCategorias.DataSource = oCategoria.Todos();
-
-                oProcessamento.Processo(66, "Formulário.", "organisando a tabela");
-                OrganizarColunas();
-
-                oProcessamento.Processo(82, "Formulário.", "exibindo a primeira linha de dados nos controles.");
-                Carregar();
-
-                oProcessamento.Processo(100, "Formulário.", "finalisando a carga do formulário.");
-                loading = false;
-            }
-            catch { }
-            finally
-            {
-                oProcessamento.Close();
-                oProcessamento.Dispose();
-            }
         }
 
         #endregion
@@ -200,12 +167,12 @@ namespace CasaMendes
         {
             try
             {
-                var oCategory = new Categoria
-                {
-                    Nome = this.TxtBuscar.Text,
-                };
-                DgvCategorias.DataSource = oCategory.Busca();
-                OrganizarColunas();
+                //var oCategory = new Categoria
+                //{
+                //    Nome = this.TxtBuscar.Text,
+                //};
+                //DgvCategorias.DataSource = oCategory.Busca();
+                //OrganizarColunas();
             }
             catch { }
         }
@@ -248,5 +215,41 @@ namespace CasaMendes
             catch { }
         }
 
+        private void FrmCadCategoria_Shown(object sender, EventArgs e)
+        {
+            try
+            {
+                //oProcessamento = new FrmProcessando();
+                //oProcessamento.Show();
+                //oProcessamento.TopMost = true;
+
+                oCategoria = new Categoria();
+                if (oBsCategoria != null) oBsCategoria = null;
+                oBsCategoria = new BindingSource { oCategoria };
+
+                //oProcessamento.Processo(16, "Formulário.", "iniciando a carga do formulário.");
+                loading = true;
+
+                //oProcessamento.Processo(32, "Formulário.", "iniciando a carga do formulário.");
+
+                //oProcessamento.Processo(48, "Formulário.", "carregondo dados.");
+                //DgvCategorias.DataSource = await oCategoria.Todos();
+
+                //oProcessamento.Processo(66, "Formulário.", "organisando a tabela");
+                OrganizarColunas();
+
+                //oProcessamento.Processo(82, "Formulário.", "exibindo a primeira linha de dados nos controles.");
+                Carregar();
+
+                //oProcessamento.Processo(100, "Formulário.", "finalisando a carga do formulário.");
+                loading = false;
+            }
+            catch { }
+            //finally
+            //{
+            //    oProcessamento.Close();
+            //    oProcessamento.Dispose();
+            //}
+        }
     }
 }

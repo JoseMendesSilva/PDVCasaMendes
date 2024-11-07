@@ -14,7 +14,7 @@ namespace CasaMendes
         //List<string> lsita;
         private DataGridView DgvProdutos;
         private Font bold = new Font(FontFamily.GenericSansSerif, 9, FontStyle.Bold);
-        private Font regularItens = new Font(FontFamily.GenericSansSerif, 6, FontStyle.Regular);
+        private Font regularItens = new Font(FontFamily.GenericSansSerif, 8, FontStyle.Regular);
 
         //public ImprimerListaDeCompra(DataGridView DgvProduto, List<string> lsita)
         public ImprimerListaDeCompra(DataGridView DgvProduto)

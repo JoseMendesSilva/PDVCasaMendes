@@ -17,7 +17,7 @@ namespace CasaMendes
         #region variaveis
 
         BindingSource BsSubcategoria;
-        SubCategoria oSubcategoria;
+        //SubCategoria oSubcategoria;
         FrmProcessando oProcessando { get; set; }
         int LinhaIndex;
         bool loading;
@@ -70,46 +70,46 @@ namespace CasaMendes
         {
             try
             {
-                oProcessando = new FrmProcessando();
-                oProcessando.Show();
-                oProcessando.TopMost = true;
+                ////oProcessando = new FrmProcessando();
+                //oProcessando.Show();
+                //oProcessando.TopMost = true;
 
-                oProcessando.Processo(12, "Subcategoria.", "iniciando a carga do formulário.");
+                ////oProcessando.Processo(12, "Subcategoria.", "iniciando a carga do formulário.");
                 oSubcategoria = new SubCategoria();
 
-                oProcessando.Processo(25, "Subcategoria.", "instãnciano objetos.");
+                ////oProcessando.Processo(25, "Subcategoria.", "instãnciano objetos.");
                 BsSubcategoria = new BindingSource { oSubcategoria };
 
-                oProcessando.Processo(37, "Subcategoria.", "carregando categorias.");
+                ////oProcessando.Processo(37, "Subcategoria.", "carregando categorias.");
                 loading = true;
 
                 CbCategorias.DisplayMember = "Nome";
-                CbCategorias.DataSource = new Categoria().Todos();
+                //CbCategorias.DataSource = new Categoria().Todos();
 
-                oProcessando.Processo(49, "Subcategoria.", "carregando subcategorias.");
-                DgvSubcategorias.DataSource = oSubcategoria.Todos();
+                ////oProcessando.Processo(49, "Subcategoria.", "carregando subcategorias.");
+                //DgvSubcategorias.DataSource = await oSubcategoria.Todos();
 
-                oProcessando.Processo(65, "Subcategoria.", "Associando dados.");
+                ////oProcessando.Processo(65, "Subcategoria.", "Associando dados.");
                 AssociarDataBinding();
 
-                oProcessando.Processo(77, "Subcategoria.", "Tratando colunas da tabela.");
+                ////oProcessando.Processo(77, "Subcategoria.", "Tratando colunas da tabela.");
                 OrganizarColunas();
 
-                oProcessando.Processo(89, "Subcategoria.", "Priorisando os controles.");
+                ////oProcessando.Processo(89, "Subcategoria.", "Priorisando os controles.");
                 BtnCancelar.Visible = false;
                 BtnExcluir.Enabled = false;
                 loading = false;
 
                 if (CbCategorias.Items.Count < 1)
                 {
-                    oProcessando.Processo(100, "Subcategoria.", "categorias não cadastradas, desativando controles.");
+                    ////oProcessando.Processo(100, "Subcategoria.", "categorias não cadastradas, desativando controles.");
                     BtnNovo.Enabled = false;
                     BtnCancelar.Enabled = false;
                     BtnGravar.Enabled = false;
                 }
                 else
                 {
-                    oProcessando.Processo(100, "Subcategoria.", "Mostrando os ados no formulário.");
+                    ////oProcessando.Processo(100, "Subcategoria.", "Mostrando os ados no formulário.");
                     Carregar();
                     BtnExcluir.Enabled = true;
                     BtnNovo.Enabled = true;
@@ -120,8 +120,8 @@ namespace CasaMendes
             catch { }
             finally
             {
-                oProcessando.Close();
-                oProcessando.Dispose();
+                //oProcessando.Close();
+                //oProcessando.Dispose();
             }
         }
 
@@ -134,11 +134,10 @@ namespace CasaMendes
             try
             {
                 //loading= true;
-                var oCat = new SubCategoria
-                {
-                    Nome = this.TxtBuscar.Text
-                };
-                DgvSubcategorias.DataSource = oCat.Busca();
+                //DgvSubcategorias.DataSource = await new SubCategoria
+                //{
+                //    Nome = this.TxtBuscar.Text
+                //}.Busca();
                 //OrganizarColunas();
             }
             catch { }
@@ -146,13 +145,11 @@ namespace CasaMendes
 
         private void SelectedIndexChanged()
         {
-            var oCat = new SubCategoria
-            {
-                Nome = this.TxtBuscar.Text
-            };
-            var c = oCat.Busca();
-            oSubcategoria.CategoriaId = c[0].CategoriaId;
-            TxtCategoriaId.Text = oSubcategoria.CategoriaId.ToString();
+            //var oCategoria = await new SubCategoria
+            //{
+            //    Nome = this.TxtBuscar.Text
+            //}.BuscaBase();
+            //TxtCategoriaId.Text = (oSubcategoria.CategoriaId = oCategoria.CategoriaId).ToString();
         }
 
         #endregion
@@ -161,8 +158,7 @@ namespace CasaMendes
 
         private void FrmCadSubcategoria_Load(object sender, EventArgs e)
         {
-            FrmLoad();
-            loading = false;
+            this.Refresh();
         }
 
         #endregion
@@ -210,8 +206,6 @@ namespace CasaMendes
             BtnRetornar.Enabled = false;
             BtnExcluir.Enabled = false;
             BtnCancelar.Visible = !BtnNovo.Visible;
-            //TxtSubCategoriaId.Clear();
-            //TxtCategoriaId.Clear();
             TxtNome.Clear();
             TxtDescricao.Clear();
             CbCategorias.Text = string.Empty;
@@ -241,21 +235,21 @@ namespace CasaMendes
             {
                 if (CbCategorias.Items.Count > 0)
                 {
-                    loading = true;
-                    BtnNovo.Visible = true;
-                    BtnExcluir.Enabled = true;
-                    BtnRetornar.Enabled = true;
-                    BtnCancelar.Visible = false;
-                    if (!string.IsNullOrEmpty(TxtCategoriaId.Text)) oSubcategoria.CategoriaId = int.Parse(TxtCategoriaId.Text);
-                    oSubcategoria.Salvar();
-                    DgvSubcategorias.DataSource = oSubcategoria.Todos();
-                    loading = false;
-                    loading = true;
+                    //loading = true;
+                    //BtnNovo.Visible = true;
+                    //BtnExcluir.Enabled = true;
+                    //BtnRetornar.Enabled = true;
+                    //BtnCancelar.Visible = false;
+                    //if (!string.IsNullOrEmpty(TxtCategoriaId.Text)) oSubcategoria.CategoriaId = int.Parse(TxtCategoriaId.Text);
+                    //var rowsAffected = await oSubcategoria.Salvar();
+                    //DgvSubcategorias.DataSource = await oSubcategoria.Todos();
+                    //loading = false;
+                    //loading = true;
 
-                    if (editar && oSubcategoria.SubCategoriaId > 0)
-                        MessageBox.Show("Registro atualizado com sucesso!");
-                    else
-                        MessageBox.Show("Cadastro realizado com sucesso!");
+                    //if (editar && oSubcategoria.SubCategoriaId > 0)
+                    //    MessageBox.Show("Registro atualizado com sucesso!");
+                    //else
+                    //    MessageBox.Show("Cadastro realizado com sucesso!");
 
                 }
                 else
@@ -271,15 +265,15 @@ namespace CasaMendes
             loading = true;
             if (oSubcategoria.SubCategoriaId > 0)
             {
-                DialogResult dresult = MensagemBox.Mostrar($"Esta ação é definitiva, você deseja excluir o produto '{oSubcategoria.Nome}'", "Sim", "Não");
-                if (dresult == DialogResult.Yes)
-                {
-                    oSubcategoria.SubCategoriaId = int.Parse(TxtSubCategoriaId.Text);
-                    oSubcategoria.Excluir();
-                    MessageBox.Show($"A subcategoria ' {oSubcategoria.Nome} ' foi excluida com sucesso.");
+                //DialogResult dresult = MensagemBox.Mostrar($"Esta ação é definitiva, você deseja excluir o produto '{oSubcategoria.Nome}'", "Sim", "Não");
+                //if (dresult == DialogResult.Yes)
+                //{
+                //    oSubcategoria.SubCategoriaId = int.Parse(TxtSubCategoriaId.Text);
+                //    var rowsAffected = await oSubcategoria.Excluir();
+                //    MessageBox.Show($"A subcategoria ' {oSubcategoria.Nome} ' foi excluida com sucesso.");
 
-                    DgvSubcategorias.DataSource = oSubcategoria.Todos();
-                }
+                //    DgvSubcategorias.DataSource = oSubcategoria.Todos();
+                //}
             }
             else
             {
@@ -299,5 +293,14 @@ namespace CasaMendes
 
         #endregion
 
+        private void FrmCadSubcategoria_Shown(object sender, EventArgs e)
+        {
+            try
+            {
+                FrmLoad();
+                loading = false;
+            }
+            catch { }
+        }
     }
 }

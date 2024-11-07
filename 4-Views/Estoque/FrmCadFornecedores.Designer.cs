@@ -487,6 +487,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmFornecedores";
             this.Load += new System.EventHandler(this.FrmCadastrarFornecedores_Load);
+            this.Shown += new System.EventHandler(this.FrmCadFornecedores_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

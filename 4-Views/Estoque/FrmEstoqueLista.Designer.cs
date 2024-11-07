@@ -37,8 +37,8 @@ namespace CasaMendes
             this.panel2 = new System.Windows.Forms.Panel();
             this.DgvProdutos = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnAceitar = new System.Windows.Forms.Button();
+            this.BtnCancelar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.gbBusca.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -109,7 +109,7 @@ namespace CasaMendes
             this.panel2.Controls.Add(this.DgvProdutos);
             this.panel2.Location = new System.Drawing.Point(0, 65);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(737, 493);
+            this.panel2.Size = new System.Drawing.Size(726, 493);
             this.panel2.TabIndex = 172;
             // 
             // DgvProdutos
@@ -120,7 +120,7 @@ namespace CasaMendes
             this.DgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvProdutos.Location = new System.Drawing.Point(12, 6);
             this.DgvProdutos.Name = "DgvProdutos";
-            this.DgvProdutos.Size = new System.Drawing.Size(704, 484);
+            this.DgvProdutos.Size = new System.Drawing.Size(693, 484);
             this.DgvProdutos.TabIndex = 171;
             this.DgvProdutos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvProdutos_CellEnter);
             this.DgvProdutos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DgvProdutos_KeyDown);
@@ -135,18 +135,6 @@ namespace CasaMendes
             this.panel3.Size = new System.Drawing.Size(729, 74);
             this.panel3.TabIndex = 173;
             // 
-            // BtnCancelar
-            // 
-            this.BtnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancelar.Location = new System.Drawing.Point(641, 13);
-            this.BtnCancelar.Name = "BtnCancelar";
-            this.BtnCancelar.Size = new System.Drawing.Size(75, 53);
-            this.BtnCancelar.TabIndex = 170;
-            this.BtnCancelar.Text = "Cancelar";
-            this.BtnCancelar.UseVisualStyleBackColor = true;
-            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
-            // 
             // BtnAceitar
             // 
             this.BtnAceitar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -158,6 +146,18 @@ namespace CasaMendes
             this.BtnAceitar.Text = "Aceitar";
             this.BtnAceitar.UseVisualStyleBackColor = true;
             this.BtnAceitar.Click += new System.EventHandler(this.BtnAceitar_Click);
+            // 
+            // BtnCancelar
+            // 
+            this.BtnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.BtnCancelar.Location = new System.Drawing.Point(641, 13);
+            this.BtnCancelar.Name = "BtnCancelar";
+            this.BtnCancelar.Size = new System.Drawing.Size(75, 53);
+            this.BtnCancelar.TabIndex = 170;
+            this.BtnCancelar.Text = "Cancelar";
+            this.BtnCancelar.UseVisualStyleBackColor = true;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // FrmEstoqueLista
             // 
@@ -177,6 +177,7 @@ namespace CasaMendes
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Estoque";
             this.Load += new System.EventHandler(this.FrmEstoque_Load);
+            this.Shown += new System.EventHandler(this.FrmEstoqueLista_Shown);
             this.panel1.ResumeLayout(false);
             this.gbBusca.ResumeLayout(false);
             this.gbBusca.PerformLayout();

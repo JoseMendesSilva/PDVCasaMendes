@@ -2,30 +2,93 @@
 using System.Configuration;
 using System.Drawing;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
+using System.Globalization;
+using System.Threading;
+using System.Linq;
 
 namespace CasaMendes
 {
     public class clsGlobal //Início da classe clsGlobal.
     {
-
         private static OpenFileDialog fDialogo;
+
+
+        public static T CriarInstancoa<T>() where T : class, new()
+        {
+            T obj = new T();
+            return obj;
+        }
+
+        public static string AlinharEsquerdaDireita( string text, int totalWidth)
+        {
+            //string input = "AlinharTextoExemplo";
+            if(totalWidth == 0) totalWidth = 219; // Largura total da linha
+
+            // Dividir a string ao meio
+            int midIndex = text.Length / 2;
+            string leftPart = text.Substring(0, midIndex);
+            string rightPart = text.Substring(midIndex);
+
+            // Formatar para alinhar a esquerda e a direita
+            string formattedOutput = leftPart.PadRight(totalWidth / 2) + rightPart.PadLeft(totalWidth / 2);
+
+            return formattedOutput;
+        }
 
         /// <summary>
         /// Função para conbeter de string para decimal
         /// </summary>
-        /// <param name="sValor">Valor a ser convertido</param>
-        /// <returns>Decimal</returns>
-        public static decimal DeStringParaDecimal(string sValor)
+        /// <param name="Valor">Valor a ser convertido</param>
+        /// <returns>Retorna o valor convertido ou 0.00 se ouver erro</returns>
+        public static decimal DeStringParaDecimal(string valorMonetarioString)
         {
-            if (sValor != string.Empty) return Convert.ToDecimal(sValor);
-            else return 0;
+            //Definindo a cultura vigente(por exemplo, pt-BR para Brasil)
+            CultureInfo cultura = new CultureInfo("pt-BR");
+
+            //string valorMonetarioString = "1.234,56"; // Formato brasileiro: separador de milhar "." e separador decimal ","
+
+            // Convertendo a string para DateTime com base na cultura vigente
+            decimal valorMonetario;
+            if (decimal.TryParse(valorMonetarioString, NumberStyles.Currency, cultura, out valorMonetario))
+                return valorMonetario;
+            return 0.00M;
+            //if (Valor != string.Empty) return Convert.ToDecimal(Valor);
+            //else return 0;
         }
 
-        public static decimal De_String_Para_decimal(string sValor)
+        //public static decimal DeStringParaDecimal(object obj)
+        //{
+        //    var Valor = (string)obj;
+        //    if (decimal.TryParse(Valor, out decimal valor))
+        //        return valor;
+        //    return 0.00M;
+        //    //if (Valor != string.Empty) return Convert.ToDecimal(Valor);
+        //    //else return 0;
+        //}
+
+        public static DateTime DeStringParaData(string Data)
         {
-            decimal valor_decimal = Convert.ToDecimal(sValor);
-            return valor_decimal;
+            //Definindo a cultura vigente(por exemplo, pt-BR para Brasil)
+            CultureInfo cultura = new CultureInfo("pt-BR");
+
+            // Exemplo de data com base na cultura vigente
+            //string dataString = "19/10/2024 15:30:00"; // Formato brasileiro: dd/MM/yyyy HH:mm:ss
+
+            // Convertendo a string para DateTime com base na cultura vigente
+            DateTime data;
+            if (DateTime.TryParseExact(Data, "dd/MM/yyyy HH:mm:ss", cultura, DateTimeStyles.None, out data))
+                return data;
+            return DateTime.Now;
+        }
+
+        public static decimal AplicarFormato(string Valor)
+        {
+            var valor = Valor.Replace(".",",");
+            if (decimal.TryParse(valor, out decimal Value))
+                return Value;
+            return 0.00M;
         }
 
         public static decimal AplicarEncargos(decimal Valor, decimal Tributos, decimal Juros)
@@ -34,6 +97,45 @@ namespace CasaMendes
             encargos = 1 - encargos;
             decimal SubTotal = Valor / encargos;
             return SubTotal;
+        }
+
+        public static void TextChangedFormat(ref object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (string.IsNullOrWhiteSpace(textBox.Text))
+                return;
+
+            // Remove todos os caracteres não numéricos temporariamente para facilitar a formatação
+            string numericText = new string(textBox.Text.Where(char.IsDigit).ToArray());
+
+            // Converte para decimal para adicionar as casas decimais
+            if (decimal.TryParse(numericText, out decimal valor))
+            {
+                valor /= 100; // Move duas casas decimais
+                textBox.Text = valor.ToString("N2"); // Formata com duas casas decimais
+                textBox.SelectionStart = textBox.Text.Length; // Move o cursor para o final
+            }
+        }
+
+        public static void TxtKeyDownChnangeFocus(ref TextBox text, ref KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                text.Focus();
+        }
+
+        public static void BtnKeyDownChnangeFocus(ref Button button, ref KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                button.Focus();
+        }
+
+        public static void ApenasNumeros_e_TeclaBackspace(object sender, ref KeyPressEventArgs e)
+        {
+            // Permite apenas números e a tecla de backspace
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
         }
 
         //====================================================================================================
@@ -170,7 +272,7 @@ namespace CasaMendes
         /// Carrega um PictureBox com uma imagem/foto selecionada pelo usuário.
         /// </summary>
         /// <param name="PicFoto">void</param>
-        public static void Abririmagens(PictureBox PicFoto)
+        public static void AbrirImagem(ref PictureBox PicFoto)
         {
             fDialogo = new OpenFileDialog();
             fDialogo.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
@@ -464,7 +566,7 @@ namespace CasaMendes
         //public static string sCaminho = Application.StartupPath;
         public static string ValidarDiretorio(string pDiretorio = "", string pArquivo = "")
         {
-            if(pDiretorio=="") pDiretorio = Application.StartupPath;
+            if (pDiretorio == "") pDiretorio = Application.StartupPath;
 
             if (pDiretorio == null) { return (null); }
             string sDir = pDiretorio.Substring(pDiretorio.Length - 1, 1);
@@ -605,16 +707,18 @@ namespace CasaMendes
         {
             try
             {
-                var path = ValidarDiretorio(ConfigurationManager.AppSettings["DirLogs"], @"\CasaMendes.Log");
+                var path = ConfigurationManager.AppSettings["DirLogs"];
+                var fileDir = ValidarDiretorio(path, "CasaMendes.Log.log");
+
+                //// Create the dir if it not exists.
+                if (!Directory.Exists(path)) { Directory.CreateDirectory(path); }
 
                 //// Create the file if it not exists.
-                if (!File.Exists(path))
-                {
-                    File.Create(path);
-                }
+                if (!File.Exists(fileDir))
+                    using (var r = File.Create(fileDir)) ;
 
-                //Create the file.
-                using (StreamWriter sw = new StreamWriter(path, true))
+                //Write the file.
+                using (StreamWriter sw = new StreamWriter(fileDir, true))
                 {
                     sw.WriteLine(numeroDoErro.ToString() + ": " + MenssagemDeErro);
                     sw.Flush();
@@ -622,7 +726,32 @@ namespace CasaMendes
                 }
 
             }
-            catch {}
+            catch { }
+        }
+        //===============================================================================================
+        public static void RegistrarLogs(StringBuilder Logs)
+        {
+            try
+            {
+                var path = ConfigurationManager.AppSettings["DirLogs"];
+                var fileDir = ValidarDiretorio(path, "LogDeVendas.log");
+
+                if(!Directory.Exists(path)) { Directory.CreateDirectory(path); }
+                //// Create the file if it not exists.
+                if (!File.Exists(fileDir)) 
+                    using (var r = File.Create(fileDir));
+
+
+                //Create the file.
+                using (StreamWriter sw = new StreamWriter(fileDir, true))
+                {
+                    sw.WriteLine(Logs.ToString());
+                    sw.Flush();
+                    sw.Dispose();
+                }
+
+            }
+            catch { }
         }
 
         //===============================================================================================
@@ -666,18 +795,6 @@ namespace CasaMendes
         }
 
         //===============================================================================================
-        public static string MontarTitulo(string pTitulo = "", string pTitulo2 = "")
-        {
-            string tmp;
-            if ((pTitulo == "") && (pTitulo2 != "")) { tmp = "PDV - " + pTitulo2 + "."; }
-            else if ((pTitulo2 == "") && (pTitulo != "")) { tmp = "PDV - " + pTitulo + "."; }
-            else if ((pTitulo != "") && (pTitulo2 != "")) { tmp = "PDV - " + pTitulo + " - " + pTitulo2 + "."; }
-            else { tmp = Application.ProductName; }
-
-            return tmp;
-        }
-
-        //===============================================================================================
         public static int DimencionarColuna(int tColuna, int tGrid)
         {
             int Tamanho = tGrid - 16;
@@ -696,7 +813,19 @@ namespace CasaMendes
                 dgv.Width = Espaco - (dgv.Left * 2);
                 dgv.Height = frm.Height - 200;
             }
-            catch{}
+            catch { }
+        }
+
+        //===============================================================================================
+        public static string MontarTitulo(string pTitulo = "", string pTitulo2 = "")
+        {
+            string tmp;
+            if ((pTitulo == "") && (pTitulo2 != "")) { tmp = "PDV - " + pTitulo2 + "."; }
+            else if ((pTitulo2 == "") && (pTitulo != "")) { tmp = "PDV - " + pTitulo + "."; }
+            else if ((pTitulo != "") && (pTitulo2 != "")) { tmp = "PDV - " + pTitulo + " - " + pTitulo2 + "."; }
+            else { tmp = Application.ProductName; }
+
+            return tmp;
         }
 
         //===============================================================================================

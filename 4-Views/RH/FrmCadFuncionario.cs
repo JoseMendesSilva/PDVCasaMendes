@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 
 delegate void Salvar();
@@ -15,13 +14,14 @@ namespace CasaMendes
         #region Propriedaddes
 
         public string StatusLabel { get; set; }
+        //public Funcionario oFuncionario { get; set; }
+        private RepositorioFuncionario repositorio;
 
         #endregion
 
         #region Variáveis
 
         public BindingSource BsFuncionario;
-        private Funcionario oFuncionario;
 
         private int LinhaIndex;
         private string valor;
@@ -35,6 +35,7 @@ namespace CasaMendes
         public FrmCadFuncionario()
         {
             InitializeComponent();
+
         }
 
         #endregion
@@ -97,13 +98,15 @@ namespace CasaMendes
 
         }
 
-        private void Carregar()
+        private  void Carregar()
         {
             //se a flag DataLoding for true, então carrega os dados no grid, se não retorna
             if (frmLoading) return;
 
+
             DgvFuncionarios.DataSource = null;
-            DgvFuncionarios.DataSource = oFuncionario.Todos();
+            using(this.repositorio = new RepositorioFuncionario()) { 
+                DgvFuncionarios.DataSource =  repositorio.Select("Funcionarios");
 
             // se está carregando os dados e o grid ainda não estiver sedo carregado antes
             // enão formata as colunas
@@ -116,6 +119,7 @@ namespace CasaMendes
                     if (!DgvFuncionarios.Columns[i].Equals(DgvFuncionarios.Columns["Nome"])) DgvFuncionarios.Columns[i].Visible = false;
                 }
                 DgvFuncionarios.Columns["Nome"].Width = clsGlobal.DimencionarColuna(100, this.DgvFuncionarios.Width);
+            }
             }
         }
 
@@ -138,48 +142,59 @@ namespace CasaMendes
 
         #endregion
 
-        #region Form Load
+        #region Carga do formulário
 
         private void FrmCadastroDeFuncionarios_Load(object sender, EventArgs e)
         {
+            BtnAtualizar.Enabled = false;
+            BtnCancelar.Enabled = false;
+            BtnExcluir.Enabled = false;
+            BtnFechar.Enabled = false;
+            BtnNovo.Enabled = false;
+            BtnSalvar.Enabled = false;
+            this.Refresh();
+        }
+
+        private void FrmCadFuncionario_Shown(object sender, EventArgs e)
+        {
             try
             {
-                var oProcessando = new FrmProcessando();
-                oProcessando.Show();
-                oProcessando.TopMost = true;
-                oProcessando.Processo(3, "Cadastro de funcionário", "Carregando.");
+                //var oProcessando = new FrmProcessando();
+                //oProcessando.Show();
+                //oProcessando.TopMost = true;
+                //oProcessando.Processo(3, "Cadastro de funcionário", "Carregando.");
                 LinhaIndex = -1;
-                oProcessando.Processo(10, "Cadastro de funcionário", "Carregando.");
+                //oProcessando.Processo(10, "Cadastro de funcionário", "Carregando.");
                 this.Text = clsGlobal.MontarTitulo(Mensagens.M00041);
-                oProcessando.Processo(16, "Cadastro de funcionário", "Carregando.");
+                //oProcessando.Processo(16, "Cadastro de funcionário", "Carregando.");
                 frmLoading = true;
-                oProcessando.Processo(22, "Cadastro de funcionário", "Carregando.");
+                //oProcessando.Processo(22, "Cadastro de funcionário", "Carregando.");
                 frmLoaded = false;
-                oProcessando.Processo(28, "Cadastro de funcionário", "Carregando.");
+                //oProcessando.Processo(28, "Cadastro de funcionário", "Carregando.");
                 BsFuncionario = new BindingSource();
-                oProcessando.Processo(34, "Cadastro de funcionário", "Carregando.");
+                //oProcessando.Processo(34, "Cadastro de funcionário", "Carregando.");
                 oFuncionario = new Funcionario();
-                oProcessando.Processo(40, "Cadastro de funcionário", "Carregando.");
+                //oProcessando.Processo(40, "Cadastro de funcionário", "Carregando.");
                 if (oFuncionario.FuncionarioId.Equals(0)) BsFuncionario.Add(oFuncionario);
-                oProcessando.Processo(46, "Cadastro de funcionário", "Carregando.");
+                //oProcessando.Processo(46, "Cadastro de funcionário", "Carregando.");
                 Limpar();
-                oProcessando.Processo(52, "Cadastro de funcionário", "Carregando.");
+                //oProcessando.Processo(52, "Cadastro de funcionário", "Carregando.");
                 Botoes(true);
-                oProcessando.Processo(58, "Cadastro de funcionário", "Carregando.");
+                //oProcessando.Processo(58, "Cadastro de funcionário", "Carregando.");
                 CarregarCombo();
-                oProcessando.Processo(64, "Cadastro de funcionário", "Carregando.");
+                //oProcessando.Processo(64, "Cadastro de funcionário", "Carregando.");
                 VincularBindingSource();
-                oProcessando.Processo(70, "Cadastro de funcionário", "Carregando.");
+                //oProcessando.Processo(70, "Cadastro de funcionário", "Carregando.");
                 frmLoading = false;
-                oProcessando.Processo(76, "Cadastro de funcionário", "Carregando.");
+                //oProcessando.Processo(76, "Cadastro de funcionário", "Carregando.");
                 Carregar();
-                oProcessando.Processo(84, "Cadastro de funcionário", "Carregando.");
+                //oProcessando.Processo(84, "Cadastro de funcionário", "Carregando.");
                 frmLoaded = true;
-                oProcessando.Processo(90, "Cadastro de funcionário", "Carregando.");
+                //oProcessando.Processo(90, "Cadastro de funcionário", "Carregando.");
                 this.TxtNome.Focus();
-                oProcessando.Processo(96, "Cadastro de funcionário", "Carregando.");
-                oProcessando.Close();
-                oProcessando.Dispose();
+                //oProcessando.Processo(96, "Cadastro de funcionário", "Carregando.");
+                //oProcessando.Close();
+                //oProcessando.Dispose();
             }
             catch
             {
@@ -210,23 +225,14 @@ namespace CasaMendes
             this.Close();
         }
 
-        private void BtnGravar_Click(object sender, EventArgs e)
+        private void BtnAtualizar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                oFuncionario.Pais = CbPais.Text;
-                oFuncionario.Estado = CbEstado.Text;
-                oFuncionario.EstadoCivil = CbEstadoCivil.Text;
-                oFuncionario.Salvar();
-                Carregar();
-                AtribuirValores();
-                Botoes(true);
-                MessageBox.Show($"O funcionário: ' {oFuncionario.Nome} ', foi cadastrado com sucesso.");
-            }
-            catch
-            {
-                MessageBox.Show($"O funcionário: ' {oFuncionario.Nome} ', não foi cadastrado.");
-            }
+
+        }
+
+        private void BtnSalvar_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void BtnExcluir_Click(object sender, EventArgs e)
@@ -234,14 +240,14 @@ namespace CasaMendes
             if (this.TxtCodigo.Text != null && this.TxtCodigo.Text != "0")
             {
                 DialogResult dresult = MensagemBox.Mostrar($"Esta ação é definitiva, você deseja excluir o produto '{oFuncionario.Nome}'", "Sim", "Não");
-                if (dresult == DialogResult.Yes)
-                {
-                    oFuncionario.Excluir();
-                    MessageBox.Show($"O funcionário ' {oFuncionario.Nome} ' foi excluido com sucesso.");
-                    Carregar();
-                    if (DgvFuncionarios.Rows.Count > 0)
-                    { AtribuirValores(); }
-                }
+                //if (dresult == DialogResult.Yes)
+                //{
+                //    oFuncionario.Excluir();
+                //    MessageBox.Show($"O funcionário ' {oFuncionario.Nome} ' foi excluido com sucesso.");
+                //    Carregar();
+                //    if (DgvFuncionarios.Rows.Count > 0)
+                //    { AtribuirValores(); }
+                //}
             }
             else
                 MessageBox.Show($"O funcionário ' {oFuncionario.Nome} ' naõ foi excluido.");
@@ -265,15 +271,15 @@ namespace CasaMendes
         {
             try
             {
-                if (DgvFuncionarios.Rows.Count > 0 && !frmLoading && frmLoaded)
+                if (DgvFuncionarios.Rows.Count > 0 && !frmLoading)
                 {
                     LinhaIndex = e.RowIndex;
                     AtribuirValores();
-                    BtnGravar.Enabled = true;
+                    BtnSalvar.Enabled = true;
                 }
                 else
                 {
-                    BtnGravar.Enabled = false;
+                    BtnSalvar.Enabled = false;
                 }
             }
             catch { }

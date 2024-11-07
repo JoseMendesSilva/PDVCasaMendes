@@ -262,6 +262,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmCadSubcategoria";
             this.Load += new System.EventHandler(this.FrmCadSubcategoria_Load);
+            this.Shown += new System.EventHandler(this.FrmCadSubcategoria_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.DgvSubcategorias)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -58,7 +58,7 @@
             this.BtnExcluir = new System.Windows.Forms.Button();
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.DtpDataDeNascimento = new System.Windows.Forms.DateTimePicker();
-            this.BtnGravar = new System.Windows.Forms.Button();
+            this.BtnSalvar = new System.Windows.Forms.Button();
             this.LblDataNascimento = new System.Windows.Forms.Label();
             this.LblNome = new System.Windows.Forms.Label();
             this.LblEndereco = new System.Windows.Forms.Label();
@@ -67,6 +67,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.DgvFuncionarios = new System.Windows.Forms.DataGridView();
+            this.BtnAtualizar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PicFoto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvFuncionarios)).BeginInit();
             this.SuspendLayout();
@@ -441,7 +442,7 @@
             // 
             this.BtnExcluir.FlatAppearance.BorderSize = 0;
             this.BtnExcluir.ForeColor = System.Drawing.Color.Blue;
-            this.BtnExcluir.Location = new System.Drawing.Point(564, 383);
+            this.BtnExcluir.Location = new System.Drawing.Point(565, 383);
             this.BtnExcluir.Name = "BtnExcluir";
             this.BtnExcluir.Size = new System.Drawing.Size(76, 43);
             this.BtnExcluir.TabIndex = 22;
@@ -453,7 +454,7 @@
             // 
             this.BtnCancelar.FlatAppearance.BorderSize = 0;
             this.BtnCancelar.ForeColor = System.Drawing.Color.Blue;
-            this.BtnCancelar.Location = new System.Drawing.Point(482, 383);
+            this.BtnCancelar.Location = new System.Drawing.Point(483, 383);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(76, 43);
             this.BtnCancelar.TabIndex = 21;
@@ -471,17 +472,18 @@
             this.DtpDataDeNascimento.Size = new System.Drawing.Size(113, 27);
             this.DtpDataDeNascimento.TabIndex = 12;
             // 
-            // BtnGravar
+            // BtnSalvar
             // 
-            this.BtnGravar.FlatAppearance.BorderSize = 0;
-            this.BtnGravar.ForeColor = System.Drawing.Color.Blue;
-            this.BtnGravar.Location = new System.Drawing.Point(398, 383);
-            this.BtnGravar.Name = "BtnGravar";
-            this.BtnGravar.Size = new System.Drawing.Size(76, 43);
-            this.BtnGravar.TabIndex = 203;
-            this.BtnGravar.Text = "Gravar";
-            this.BtnGravar.UseVisualStyleBackColor = true;
-            this.BtnGravar.Click += new System.EventHandler(this.BtnGravar_Click);
+            this.BtnSalvar.FlatAppearance.BorderSize = 0;
+            this.BtnSalvar.ForeColor = System.Drawing.Color.Blue;
+            this.BtnSalvar.Location = new System.Drawing.Point(320, 383);
+            this.BtnSalvar.Name = "BtnSalvar";
+            this.BtnSalvar.Size = new System.Drawing.Size(76, 43);
+            this.BtnSalvar.TabIndex = 203;
+            this.BtnSalvar.Text = "Salvar";
+            this.BtnSalvar.UseVisualStyleBackColor = true;
+            this.BtnSalvar.Visible = false;
+            this.BtnSalvar.Click += new System.EventHandler(this.BtnSalvar_Click);
             // 
             // LblDataNascimento
             // 
@@ -599,11 +601,25 @@
             this.DgvFuncionarios.TabIndex = 241;
             this.DgvFuncionarios.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvFuncionarios_CellEnter);
             // 
+            // BtnAtualizar
+            // 
+            this.BtnAtualizar.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.BtnAtualizar.FlatAppearance.BorderSize = 0;
+            this.BtnAtualizar.ForeColor = System.Drawing.Color.Blue;
+            this.BtnAtualizar.Location = new System.Drawing.Point(402, 383);
+            this.BtnAtualizar.Name = "BtnAtualizar";
+            this.BtnAtualizar.Size = new System.Drawing.Size(76, 43);
+            this.BtnAtualizar.TabIndex = 242;
+            this.BtnAtualizar.Text = "Atualizar";
+            this.BtnAtualizar.UseVisualStyleBackColor = true;
+            this.BtnAtualizar.Click += new System.EventHandler(this.BtnAtualizar_Click);
+            // 
             // FrmCadFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(913, 440);
+            this.Controls.Add(this.BtnAtualizar);
             this.Controls.Add(this.TxtObservacao);
             this.Controls.Add(this.CbPais);
             this.Controls.Add(this.DgvFuncionarios);
@@ -638,7 +654,7 @@
             this.Controls.Add(this.BtnExcluir);
             this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.DtpDataDeNascimento);
-            this.Controls.Add(this.BtnGravar);
+            this.Controls.Add(this.BtnSalvar);
             this.Controls.Add(this.LblDataNascimento);
             this.Controls.Add(this.LblNome);
             this.Controls.Add(this.LblEndereco);
@@ -652,6 +668,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de funcionários";
             this.Load += new System.EventHandler(this.FrmCadastroDeFuncionarios_Load);
+            this.Shown += new System.EventHandler(this.FrmCadFuncionario_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.PicFoto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvFuncionarios)).EndInit();
             this.ResumeLayout(false);
@@ -686,7 +703,7 @@
         internal System.Windows.Forms.Button BtnExcluir;
         internal System.Windows.Forms.Button BtnCancelar;
         public System.Windows.Forms.DateTimePicker DtpDataDeNascimento;
-        internal System.Windows.Forms.Button BtnGravar;
+        internal System.Windows.Forms.Button BtnSalvar;
         public System.Windows.Forms.Label LblDataNascimento;
         public System.Windows.Forms.Label LblNome;
         public System.Windows.Forms.Label LblEndereco;
@@ -700,5 +717,6 @@
         private System.Windows.Forms.MaskedTextBox MkbCelular;
         private System.Windows.Forms.MaskedTextBox MkbRg;
         private System.Windows.Forms.MaskedTextBox MkbCep;
+        internal System.Windows.Forms.Button BtnAtualizar;
     }
 }

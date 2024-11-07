@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CasaMendes
@@ -49,51 +50,61 @@ namespace CasaMendes
             catch {; }
         }
 
-        private void FrmBuscarCliente_Load(object sender, EventArgs e)
+        private async void FrmBuscarCliente_Load(object sender, EventArgs e)
         {
             try
             {
-                FrmProcessando oProcessando = new FrmProcessando();
-                oProcessando.Show();
-                oProcessando.TopMost = true;
-                oProcessando.Processo(3, "Lista de clientes", "Garregando.");
-                this.Text = clsGlobal.MontarTitulo("Clientes");
-                oProcessando.Processo(9, "Lista de clientes", "Garregando..");
-                clsGlobal.RedimencionarGrade(this, ref DgvClientes);
-                oProcessando.Processo(19, "Lista de clientes", "Garregando...");
-                var oCliente = new Cliente();
-                oProcessando.Processo(27, "Lista de clientes", "Garregando.");
-                this.DgvClientes.DataSource = oCliente.Todos();
-                oProcessando.Processo(36, "Lista de clientes", "Garregando..");
-                if (DgvClientes.Rows.Count > 0)
-                {
-                    for (int i = 0; i < DgvClientes.Rows.Count; i++)
-                    {
-                        oProcessando.Processo(45, "Lista de clientes", "Garregando...");
-                        DgvClientes.Columns[i].Visible = false;
-                        oProcessando.Processo(36, "Lista de clientes", "Garregando...");
-                    }
-                    oProcessando.Processo(45, "Lista de clientes", "Garregando...");
-                    DgvClientes.Columns["Nome"].Visible = true;
-                    oProcessando.Processo(56, "Lista de clientes", "Garregando.");
-                    DgvClientes.Columns["Nome"].Width = DgvClientes.Width - 22;
-                    oProcessando.Processo(65, "Lista de clientes", "Garregando..");
-                    txtBusca.Focus();
-                    oProcessando.Processo(74, "Lista de clientes", "Garregando..");
-                    txtBusca.SelectAll();
-                    oProcessando.Processo(83, "Lista de clientes", "Garregando...");
-                }
-                else
-                {
-                    oProcessando.Processo(163, "Lista de clientes", "Garregando...");
-                    MessageBox.Show("Nenhum cliente cadastrado.");
-                }
-                oProcessando.Processo(100, "Lista de clientes", "Garregado.");
-                oProcessando.Close();
-                oProcessando.Dispose();
-                Aceitar = false;
+                ////FrmProcessando oProcessando = new FrmProcessando();
+                ////oProcessando.Show();
+                ////oProcessando.TopMost = true;
+                ////oProcessando.Processo(3, "Lista de clientes", "Garregando.");
+                //this.Text = clsGlobal.MontarTitulo("Clientes");
+                ////oProcessando.Processo(9, "Lista de clientes", "Garregando..");
+                //clsGlobal.RedimencionarGrade(this, ref DgvClientes);
+                ////oProcessando.Processo(19, "Lista de clientes", "Garregando...");
+                //var oCliente = new Cliente();
+                ////oProcessando.Processo(27, "Lista de clientes", "Garregando.");
+                //this.CarregarClientes();
+                //this.Refresh();
+                ////oProcessando.Processo(36, "Lista de clientes", "Garregando..");
+                //if (DgvClientes.Rows.Count > 0)
+                //{
+                //    for (int i = 0; i < DgvClientes.Rows.Count; i++)
+                //    {
+                //        //oProcessando.Processo(45, "Lista de clientes", "Garregando...");
+                //        DgvClientes.Columns[i].Visible = false;
+                //        //oProcessando.Processo(36, "Lista de clientes", "Garregando...");
+                //    }
+                //    //oProcessando.Processo(45, "Lista de clientes", "Garregando...");
+                //    DgvClientes.Columns["Nome"].Visible = true;
+                //    //oProcessando.Processo(56, "Lista de clientes", "Garregando.");
+                //    DgvClientes.Columns["Nome"].Width = DgvClientes.Width - 22;
+                //    //oProcessando.Processo(65, "Lista de clientes", "Garregando..");
+                //    txtBusca.Focus();
+                //    //oProcessando.Processo(74, "Lista de clientes", "Garregando..");
+                //    txtBusca.SelectAll();
+                //    //oProcessando.Processo(83, "Lista de clientes", "Garregando...");
+                //}
+                //else
+                //{
+                //    //oProcessando.Processo(163, "Lista de clientes", "Garregando...");
+                //    MessageBox.Show("Nenhum cliente cadastrado.");
+                //}
+                ////oProcessando.Processo(100, "Lista de clientes", "Garregado.");
+                ////oProcessando.Close();
+                ////oProcessando.Dispose();
+                //Aceitar = false;
             }
             catch { }
+        }
+
+        private void CarregarClientes()
+        {
+            //using (var d = new Dados())
+            //{
+            //    var res = d.Select<Cliente>("SELECT * FROM Clientes");
+            //    this.DgvClientes.DataSource = res;
+            //}
         }
 
         private void DgvClientes_KeyDown(object sender, KeyEventArgs e)
